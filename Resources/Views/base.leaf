@@ -1,0 +1,54 @@
+<title>diabyArmy</title>
+<body>
+
+  <h1>diabyArmy Tippspiel Stats</h1>
+
+  <h2>Optimistischste Fans</h2>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Torverhätnis</th>
+      <th>Differenz</th>
+    </tr>
+    #for(user in opt):
+    <tr>
+      <td>#(user.name)</td>
+      <td>#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+      <td>#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+    </tr>
+    #endfor
+  </table>
+
+  <h2>Pessimistischste Fans</h2>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Torverhätnis</th>
+      <th>Differenz</th>
+    </tr>
+    #for(user in pess):
+    <tr>
+      <td>#(user.name)</td>
+      <td>#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+      <td>#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+    </tr>
+    #endfor
+  </table>
+
+  <h2>K*ln Fans?</h2>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Torverhätnis</th>
+      <th>Differenz</th>
+    </tr>
+    #for(user in col):
+    <tr>
+      <td>#(user.name)</td>
+      <td>#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+      <td>#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+    </tr>
+    #endfor
+  </table>
+
+</body>
