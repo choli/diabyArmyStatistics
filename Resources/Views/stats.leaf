@@ -5,6 +5,7 @@
     <div class="stats">
         <div class="stat">
             <h2>Optimistischste Fans</h2>
+            <p class="subtitle">Wer tippt die Spiele des<br/>Bayers am optimistischsten?</p>
             <table>
                 <tr>
                     <th></th>
@@ -29,6 +30,7 @@
 
         <div class="stat">
             <h2>Pessimistischste Fans</h2>
+            <p class="subtitle">Wer hält nichts auf den Bayer?</p>
             <table>
                 <tr>
                     <th></th>
@@ -53,6 +55,7 @@
 
         <div class="stat">
             <h2>K*ln Fans?</h2>
+            <p class="subtitle">Wer glaubt denn so fest an</br>diese eine andere Mannschaft?</p>
             <table>
                 <tr>
                     <th></th>
@@ -77,6 +80,7 @@
 
         <div class="stat">
             <h2>Heimstärke</h2>
+            <p class="subtitle">Wer tippt nur auf</br>die Heimmannschaften?</p>
             <table>
                 #for(user in home):
                 <tr>
@@ -90,6 +94,7 @@
 
         <div class="stat">
             <h2>Eher unentschieden</h2>
+            <p class="subtitle">Wer glaubt noch an die</br>Ausgeglichenheit der Liga?</p>
             <table>
                 #for(user in draw):
                 <tr>
@@ -103,6 +108,7 @@
 
         <div class="stat">
             <h2>Auswärtsfans!</h2>
+            <p class="subtitle">Wer denkt, dass es auswärts in</br>halbvollen Stadien besser geht?</p>
             <table>
                 #for(user in away):
                 <tr>

@@ -12,7 +12,11 @@
             div.stats {
 
             }
-        
+
+            p.subtitle {
+                text-align: center;
+            }
+
             div.stat {
                 display: inline-block;
                 //border: 1px solid red;
