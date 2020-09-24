@@ -13,14 +13,10 @@ struct MatchdayController: RouteCollection {
               let matchday = Int(matchdayString)
         else { return req.eventLoop.makeFailedFuture(RequstError.unknownMatchday) }
 
-        return Self.getMatchday(matchday, req: req)
+        return self.getMatchday(matchday, req: req)
     }
 
-    private func getAllMatchdays(req: Request) throws -> EventLoopFuture<[Spieltag]> {
-        return Self.getAllMatchdays(req: req)
-    }
-
-    static func getMatchday(_ matchday: Int, req: Request, force: Bool = true) -> EventLoopFuture<Spieltag> {
+    func getMatchday(_ matchday: Int, req: Request, force: Bool = true) -> EventLoopFuture<Spieltag> {
         return req.fileio.collectFile(at: "Resources/Matchdays/matchday\(matchday).json")
             .flatMapThrowing { buffer -> Spieltag in
                 guard let spieltag = try? JSONDecoder().decode(Spieltag.self, from: buffer)
@@ -33,7 +29,7 @@ struct MatchdayController: RouteCollection {
             }
     }
 
-    static func getAllMatchdays(req: Request) -> EventLoopFuture<[Spieltag]> {
+    func getAllMatchdays(req: Request) -> EventLoopFuture<[Spieltag]> {
         var matchdayFutures: [EventLoopFuture<Spieltag>] = []
 
         for index in 0..<34 {

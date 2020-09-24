@@ -1,54 +1,120 @@
 <title>diabyArmy</title>
 <body>
 
-  <h1>diabyArmy Tippspiel Stats</h1>
+    <h1>diabyArmy Tippspiel Stats</h1>
 
-  <h2>Optimistischste Fans</h2>
-  <table>
-    <tr>
-      <th>User</th>
-      <th>Torverhätnis</th>
-      <th>Differenz</th>
-    </tr>
-    #for(user in opt):
-    <tr>
-      <td>#(user.name)</td>
-      <td>#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
-      <td>#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
-    </tr>
-    #endfor
-  </table>
+    <h2>Optimistischste Fans</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>S</th>
+            <th>U</th>
+            <th>N</th>
+            <th>Torverh.</th>
+            <th>Diff.</th>
+        </tr>
+        #for(user in opt):
+        <tr>
+            <td>#(user.name)</td>
+            <td style="text-align:right">#(user.siege)</td>
+            <td style="text-align:right">#(user.unentschieden)</td>
+            <td style="text-align:right">#(user.niederlagen)</td>
+            <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+            <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+        </tr>
+        #endfor
+    </table>
 
-  <h2>Pessimistischste Fans</h2>
-  <table>
-    <tr>
-      <th>User</th>
-      <th>Torverhätnis</th>
-      <th>Differenz</th>
-    </tr>
-    #for(user in pess):
-    <tr>
-      <td>#(user.name)</td>
-      <td>#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
-      <td>#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
-    </tr>
-    #endfor
-  </table>
+    <h2>Pessimistischste Fans</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>S</th>
+            <th>U</th>
+            <th>N</th>
+            <th>Torverh.</th>
+            <th>Diff.</th>
+        </tr>
+        #for(user in pess):
+        <tr>
+            <td>#(user.name)</td>
+            <td style="text-align:right">#(user.siege)</td>
+            <td style="text-align:right">#(user.unentschieden)</td>
+            <td style="text-align:right">#(user.niederlagen)</td>
+            <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+            <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+        </tr>
+        #endfor
+    </table>
 
-  <h2>K*ln Fans?</h2>
-  <table>
-    <tr>
-      <th>User</th>
-      <th>Torverhätnis</th>
-      <th>Differenz</th>
-    </tr>
-    #for(user in col):
-    <tr>
-      <td>#(user.name)</td>
-      <td>#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
-      <td>#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
-    </tr>
-    #endfor
-  </table>
+    <h2>K*ln Fans?</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>S</th>
+            <th>U</th>
+            <th>N</th>
+            <th>Torverh.</th>
+            <th>Diff.</th>
+        </tr>
+        #for(user in col):
+        <tr>
+            <td>#(user.name)</td>
+            <td style="text-align:right">#(user.siege)</td>
+            <td style="text-align:right">#(user.unentschieden)</td>
+            <td style="text-align:right">#(user.niederlagen)</td>
+            <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+            <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+        </tr>
+        #endfor
+    </table>
+
+    <h2>Heimstärke</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th></th>
+            <th></th>
+        </tr>
+        #for(user in home):
+        <tr>
+            <td>#(user.name)</td>
+            <td style="text-align:right">#(user.heimsiege)</td>
+            <td>Heimsiege</td>
+        </tr>
+        #endfor
+    </table>
+
+    <h2>Eher unentschieden</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th></th>
+            <th></th>
+        </tr>
+        #for(user in draw):
+        <tr>
+            <td>#(user.name)</td>
+            <td style="text-align:right">#(user.unentschieden)</td>
+            <td>Unentschieden</td>
+        </tr>
+        #endfor
+    </table>
+
+    <h2>Auswärtsfans!</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th></th>
+            <th></th>
+        </tr>
+        #for(user in away):
+        <tr>
+            <td>#(user.name)</td>
+            <td style="text-align:right">#(user.gastsiege)</td>
+            <td>Auswärtssiege</td>
+        </tr>
+        #endfor
+    </table>
 
 </body>
