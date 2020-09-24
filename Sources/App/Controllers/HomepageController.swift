@@ -24,7 +24,7 @@ struct HomepageController: RouteCollection {
 
          return EventLoopFuture.whenAllSucceed(allEvents, on: req.eventLoop)
             .flatMap { tipps -> EventLoopFuture<View> in
-                return req.view.render("base", ["opt": tipps[0],
+                return req.view.render("stats", ["opt": tipps[0],
                                                 "pess": tipps[1],
                                                 "col": tipps[2],
                                                 "home": tipps[3],
