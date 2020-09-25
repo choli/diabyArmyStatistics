@@ -55,7 +55,7 @@
 
         <div class="stat">
             <h2>K*ln Fans?</h2>
-            <p class="subtitle">Wer glaubt denn so fest an</br>diese eine andere Mannschaft?</p>
+            <p class="subtitle">Wer glaubt denn so fest an<br/>diese eine andere Mannschaft?</p>
             <table>
                 <tr>
                     <th></th>
@@ -80,7 +80,7 @@
 
         <div class="stat">
             <h2>Heimstärke</h2>
-            <p class="subtitle">Wer tippt nur auf</br>die Heimmannschaften?</p>
+            <p class="subtitle">Wer tippt nur auf<br/>die Heimmannschaften?</p>
             <table>
                 #for(user in home):
                 <tr>
@@ -94,7 +94,7 @@
 
         <div class="stat">
             <h2>Eher unentschieden</h2>
-            <p class="subtitle">Wer glaubt noch an die</br>Ausgeglichenheit der Liga?</p>
+            <p class="subtitle">Wer glaubt noch an die<br/>Ausgeglichenheit der Liga?</p>
             <table>
                 #for(user in draw):
                 <tr>
@@ -108,13 +108,55 @@
 
         <div class="stat">
             <h2>Auswärtsfans!</h2>
-            <p class="subtitle">Wer denkt, dass es auswärts in</br>halbvollen Stadien besser geht?</p>
+            <p class="subtitle">Wer denkt, dass es auswärts in<br/>halbvollen Stadien besser geht?</p>
             <table>
                 #for(user in away):
                 <tr>
                     <td>#(user.name)</td>
                     <td style="text-align:right">#(user.gastsiege)</td>
                     <td>Auswärtssiege</td>
+                </tr>
+                #endfor
+            </table>
+        </div>
+
+        <div class="stat">
+            <h2>Zwei-zu-Eins Tipper</h2>
+            <p class="subtitle">Wer denkt, dass Fussballspiele<br/>immer die Gleichen sind?</p>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Total</th>
+                    <th>2-1</th>
+                    <th>1-2</th>
+                </tr>
+                #for(user in twoOne):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    <td style="text-align:right">#(user.gastsiege)</td>
+                </tr>
+                #endfor
+            </table>
+        </div>
+
+        <div class="stat">
+            <h2>Alles ist knapp</h2>
+            <p class="subtitle">Wer tippt die meisten Spiele<br/>mit nur einem Tor Unterschied?</p>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Total</th>
+                    <th>Heim</th>
+                    <th>Gast</th>
+                </tr>
+                #for(user in oneDiff):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    <td style="text-align:right">#(user.gastsiege)</td>
                 </tr>
                 #endfor
             </table>

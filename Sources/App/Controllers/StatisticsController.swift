@@ -25,6 +25,22 @@ struct StatisticsController: RouteCollection {
             }
     }
 
+    func getSpecificResult(teamX: Int, teamY: Int, req: Request) throws -> EventLoopFuture<StatisticObject> {
+        return self.getAllTipsOfUsers(req: req)
+            .flatMapThrowing { tipps -> StatisticObject in
+                let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5)
+                return StatisticObject.tendenzCounter(result)
+            }
+    }
+
+    func getResultDifference(difference: Int, req: Request) throws -> EventLoopFuture<StatisticObject> {
+        return self.getAllTipsOfUsers(req: req)
+            .flatMapThrowing { tipps -> StatisticObject in
+                let result = tipps.countTipps(difference: difference).getTop(5)
+                return StatisticObject.tendenzCounter(result)
+            }
+    }
+
     private func getAllTipsOfUsers(req: Request) -> EventLoopFuture<[UserTipps]> {
         return MatchdayController().getAllMatchdays(req: req)
             .flatMapThrowing { matchdays -> [UserTipps] in

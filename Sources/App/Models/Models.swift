@@ -119,6 +119,24 @@ extension Array where Element == UserTipps {
             return TendenzCounter(name: userTipps.name, heimsiege: home, gastsiege: away, unentschieden: draw)
         }
     }
+
+    func countTipps(teamX: Int, teamY: Int) -> [TendenzCounter] {
+        self.map { userTipps -> TendenzCounter in
+            let home = userTipps.tipps.filter { $0.goalsFor == teamX && $0.goalsAgainst == teamY }.count
+            let away = userTipps.tipps.filter { $0.goalsAgainst == teamX && $0.goalsFor == teamY }.count
+            return TendenzCounter(name: userTipps.name, heimsiege: home, gastsiege: away, unentschieden: 0)
+        }
+        .sortTotal()
+    }
+
+    func countTipps(difference: Int) -> [TendenzCounter] {
+        self.map { userTipps -> TendenzCounter in
+            let home = userTipps.tipps.filter { $0.goalsFor - $0.goalsAgainst == difference }.count
+            let away = userTipps.tipps.filter { $0.goalsAgainst - $0.goalsFor == difference }.count
+            return TendenzCounter(name: userTipps.name, heimsiege: home, gastsiege: away, unentschieden: 0)
+        }
+        .sortTotal()
+    }
 }
 
 extension Array where Element: Equatable {
@@ -152,6 +170,22 @@ extension Array where Element == TendenzCounter {
                 if $0.heimsiege != $1.heimsiege { return $0.heimsiege > $1.heimsiege }
                 if $0.gastsiege != $1.gastsiege { return $0.gastsiege > $1.gastsiege }
             }
+            return $0.name < $1.name
+        }
+    }
+
+    func sortTotal() -> [TendenzCounter] {
+        self.sorted {
+            guard $0.unentschieden == 0, $1.unentschieden == 0 else {
+                fatalError("Data is corrupt")
+            }
+            if ($1.name == "ErbederElfen" || $0.name == "ErbederElfen") && ($1.name == "Janek" || $0.name == "Janek") {
+                print("hallo")
+            }
+            let total0 = $0.heimsiege + $0.gastsiege
+            let total1 = $1.heimsiege + $1.gastsiege
+            if total0 != total1 { return total0 > total1 }
+            if $0.heimsiege != $1.heimsiege { return $0.heimsiege > $1.heimsiege }
             return $0.name < $1.name
         }
     }
