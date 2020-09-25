@@ -15,8 +15,16 @@
             }
 
             p.subtitle {
-                text-align: center;
+                margin-bottom: 0;
             }
+            
+            header {
+                overflow: hidden;
+                }
+                
+                td {
+                    padding: 4px;
+                    }
 
             div.stat {
                 display: inline-block;
@@ -24,15 +32,55 @@
                 vertical-align: top;
                 padding: 20px;
             }
+            .bg-red {
+                background-color: \#d0021b!important;
+            }
+            .diaby {
+                position: relative;
+            /* top: 0; */
+            margin-bottom: -45px;
+            margin-top: -10px;
+            width: 100px;
+            }
+            
+            table.table td {
+                padding: 0.25rem;
+            }
+            
+            .navbar-brand h1 {
+                    margin-left: 30px;
+                    font-size: 1.5rem;
+            }
+            
+            @media screen and (min-width: 600px)  {
+                .mobile-break { display: none; }
+            }
+}
         </style>
     </head>
     <body>
+    
+    <header>
+      <div class="navbar navbar-dark bg-red shadow-sm">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+          <img src="https://b04-ep-media-prod.azureedge.net/pickerimages/Diaby_Freisteller_1920_16180_152198_M.png" class="diaby">
+            <h1>diabyArmy <br class="mobile-break"> Tippspiel Stats</h1>
+          </a>
+        
+        </div>
+      </div>
+    </header>
 
         #import("body")
 
+<footer class="text-muted">
+<div class="container">
         <p>
             ---
             </br>Follow me on Twitter: <a href="https://twitter.com/__choli/">@__choli</a>
         </p>
+        </div>
+        </footer>
     </body>
 </html>
