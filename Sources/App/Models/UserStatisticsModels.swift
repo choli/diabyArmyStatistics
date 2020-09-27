@@ -62,24 +62,11 @@ struct TendenzCounter: Content, Equatable {
     }
 }
 
-enum StatisticObject: Encodable {
-    case aggregatedUserTipp([AggregatedUserTipp])
-    case tendenzCounter([TendenzCounter])
-
-    func encode(to encoder: Encoder) throws {
-        switch self {
-        case .aggregatedUserTipp(let aggregatedTipp):
-            try? aggregatedTipp.encode(to: encoder)
-        case .tendenzCounter(let tendenzCounter):
-            try? tendenzCounter.encode(to: encoder)
-        }
-    }
-}
-
 enum Tendenz {
     case heimsieg
     case unentschieden
     case gastsieg
+    case total
 }
 
 extension Array where Element == UserTipps {
@@ -169,6 +156,10 @@ extension Array where Element == TendenzCounter {
                 if $0.unentschieden != $1.unentschieden { return $0.unentschieden > $1.unentschieden }
                 if $0.heimsiege != $1.heimsiege { return $0.heimsiege > $1.heimsiege }
                 if $0.gastsiege != $1.gastsiege { return $0.gastsiege > $1.gastsiege }
+            case .total:
+                let first = $0.heimsiege + $0.unentschieden + $0.gastsiege
+                let second = $1.heimsiege + $1.unentschieden + $1.gastsiege
+                if first != second { return first > second }
             }
             return $0.name < $1.name
         }

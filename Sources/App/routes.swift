@@ -4,5 +4,5 @@ import Leaf
 func routes(_ app: Application) throws {
     try app.register(collection: HomepageController())
     try app.register(collection: MatchdayController())
-    try app.register(collection: StatisticsController())
+    try app.register(collection: UserStatisticsController())
 }

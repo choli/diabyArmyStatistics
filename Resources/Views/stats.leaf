@@ -6,8 +6,28 @@
         
         <div class="card">
         <div class="card-header">
+            <h4>Bayer-Kenner</h4>
+            <p>Wer tippt die meisten Spiele des Bayers genau richtig?</p>
+            <p class="inventor">By Germanbsfan</p>
+            </div>
+            <div class="card-body">
+            <table class="">
+                #for(user in exact):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.unentschieden + user.niederlagen)</td>
+                    <td>Spiel(e) richtig</td>
+                </tr>
+                #endfor
+            </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+        <div class="card-header">
             <h4>Optimistischste Fans</h4>
-            <p class="subtitle">Wer tippt die Spiele des<br/>Bayers am optimistischsten?</p>
+            <p class="subtitle">Wer tippt die Spiele des Bayers am optimistischsten?</p>
             </div>
             <div class="card-body">
             <table class="">
@@ -33,7 +53,7 @@
             </div>
         </div>
 
-        
+
         <div class="card">
          <div class="card-header">
             <h4>Pessimistischste Fans</h4>
@@ -67,7 +87,7 @@
         <div class="card">
          <div class="card-header">
             <h4>K*ln Fans?</h4>
-            <p class="subtitle">Wer glaubt denn so fest an<br/>diese eine andere Mannschaft?</p>
+            <p class="subtitle">Wer glaubt denn so fest an diese eine andere Mannschaft?</p>
             </div>
                  <div class="card-body">
             <table class="">
@@ -97,7 +117,7 @@
         <div class="card">
          <div class="card-header">
             <h4>Heimstärke</h4>
-            <p class="subtitle">Wer tippt nur auf<br/>die Heimmannschaften?</p>
+            <p class="subtitle">Wer tippt nur auf die Heimmannschaften?</p>
             </div>
                  <div class="card-body">
             <table class="">
@@ -116,7 +136,7 @@
         <div class="card">
          <div class="card-header">
             <h4>Eher unentschieden</h4>
-            <p class="subtitle">Wer glaubt noch an die<br/>Ausgeglichenheit der Liga?</p>
+            <p class="subtitle">Wer glaubt noch an die Ausgeglichenheit der Liga?</p>
             </div>
                  <div class="card-body">
             <table class="">
@@ -135,7 +155,7 @@
         <div class="card">
          <div class="card-header">
             <h4>Auswärtsfans!</h4>
-            <p class="subtitle">Wer denkt, dass es auswärts in<br/>halbvollen Stadien besser geht?</p>
+            <p class="subtitle">Wer denkt, dass es auswärts in halbvollen Stadien besser geht?</p>
             </div>
                  <div class="card-body">
             <table class="">
@@ -154,7 +174,7 @@
         <div class="card">
          <div class="card-header">
             <h4>Zwei-zu-Eins Tipper</h4>
-            <p class="subtitle">Wer denkt, dass Fussballspiele<br/>immer die Gleichen sind?</p>
+            <p class="subtitle">Wer denkt, dass Fussballspiele immer die Gleichen sind?</p>
             </div>
                  <div class="card-body">
             <table class="">
@@ -176,11 +196,11 @@
             </div>
         </div>
 
-        
+
         <div class="card">
          <div class="card-header">
             <h4>Alles ist knapp</h4>
-            <p class="subtitle">Wer tippt die meisten Spiele<br/>mit nur einem Tor Unterschied?</p>
+            <p class="subtitle">Wer tippt die meisten Spiele mit nur einem Tor Unterschied?</p>
             </div>
             <div class="card-body">
             <table class="">
@@ -196,6 +216,44 @@
                     <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
                     <td style="text-align:right">#(user.heimsiege)</td>
                     <td style="text-align:right">#(user.gastsiege)</td>
+                </tr>
+                #endfor
+            </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+         <div class="card-header">
+            <h4>Spätaufsteher</h4>
+            <p class="subtitle">Wer vergisst die meisten Spiele zu tippen? (Komplett verpasste Spieltage nicht mitgezählt)</p>
+            </div>
+            <div class="card-body">
+            <table class="">
+                #for(user in missed):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
+                    <td>Spiel(e) verpasst</td>
+                </tr>
+                #endfor
+            </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+         <div class="card-header">
+            <h4>Nicht-Tipper</h4>
+            <p class="subtitle">Wieviele User haben es wieder verschwitzt oder sind raus?</p>
+            </div>
+                 <div class="card-body">
+            <table class="">
+                #for(matchday in empty):
+                <tr>
+                    <td style="text-align:right">#(matchday.spieltag).) </td>
+                    <td style="text-align:right">#(matchday.total)</td>
+                    <td>User</td>
                 </tr>
                 #endfor
             </table>
