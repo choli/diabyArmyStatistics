@@ -89,8 +89,7 @@ struct UserStatisticsController: RouteCollection {
                     var matchResult: Spiel?
                     if exactOnly {
                         guard let result =  matchday.resultate.first(where: { $0.heimteam == team || $0.gastteam == team })
-                        else { assertionFailure("This team didn't play on this matchday")
-                            continue }
+                        else { assertionFailure("This team didn't play on this matchday"); continue }
                         matchResult = result
                     }
                     for tippspieler in matchday.tippspieler {
@@ -100,9 +99,8 @@ struct UserStatisticsController: RouteCollection {
                         if exactOnly {
                             guard let matchResult = matchResult,
                                   matchResult.heim == teamTipp.heim,
-                                  matchResult.gast == matchResult.gast else {
-                                continue
-                            }
+                                  matchResult.gast == teamTipp.gast
+                            else { continue }
                         }
 
                         if var tipps = userTipps[tippspieler.name] {
