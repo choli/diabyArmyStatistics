@@ -9,6 +9,7 @@ struct HomepageController: RouteCollection {
         let userStats = UserStatisticsController()
         let roundStats = RoundStatisticsController()
         guard let levExact = try? userStats.getExactTipps(for: "Lev", req: req),
+              let correctTendencies = try? userStats.getCorrectTendencies(by: .total, req: req),
               let levOptimists = try? userStats.getAggregatedTipps(for: "Lev", optimist: true, req: req),
               let levPessimists = try? userStats.getAggregatedTipps(for: "Lev", optimist: false, req: req),
               let cologne = try? userStats.getAggregatedTipps(for: "Köln", optimist: true, req: req),
@@ -24,6 +25,7 @@ struct HomepageController: RouteCollection {
         else { fatalError("This should not happen") }
 
         let allEvents: [EventLoopFuture<StatisticObject>] = [levExact,
+                                                             correctTendencies,
                                                              levOptimists,
                                                              levPessimists,
                                                              cologne,
@@ -40,17 +42,19 @@ struct HomepageController: RouteCollection {
          return EventLoopFuture.whenAllSucceed(allEvents, on: req.eventLoop)
             .flatMap { tipps -> EventLoopFuture<View> in
                 return req.view.render("stats", ["exact": tipps[0],
-                                                 "opt": tipps[1],
-                                                 "pess": tipps[2],
-                                                 "col": tipps[3],
-                                                 "home": tipps[4],
-                                                 "draw": tipps[5],
-                                                 "away": tipps[6],
-                                                 "twoOne": tipps[7],
-                                                 "oneDiff": tipps[8],
-                                                 "missed": tipps[9],
+                                                 "tendencies": tipps[1],
+                                                 "opt": tipps[2],
+                                                 "pess": tipps[3],
+                                                 "col": tipps[4],
+                                                 "home": tipps[5],
+                                                 "draw": tipps[6],
+                                                 "away": tipps[7],
+                                                 "twoOne": tipps[8],
+                                                 "oneDiff": tipps[9],
+                                                 "missed": tipps[10],
 
-                                                 "empty":tipps[10]])
+
+                                                 "empty":tipps[11]])
             }
             .flatMapErrorThrowing { error -> View in throw error }
     }

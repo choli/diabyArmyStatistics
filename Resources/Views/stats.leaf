@@ -26,6 +26,35 @@
 
         <div class="card">
         <div class="card-header">
+            <h4>Korrekter Sieger</h4>
+            <p>Wer weiss oft schon vor dem Spiel, wie der Gewinner heisst?</p>
+            <p class="inventor">By RWingartz</p>
+            </div>
+            <div class="card-body">
+            <table class="">
+                <tr>
+                    <th></th>
+                    <th>Total</th>
+                    <th>Heim</th>
+                    <th>Un.</th>
+                    <th>Gast</th>
+                </tr>
+                #for(user in tendencies):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    <td style="text-align:right">#(user.unentschieden)</td>
+                    <td style="text-align:right">#(user.gastsiege)</td>
+                </tr>
+                #endfor
+            </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+        <div class="card-header">
             <h4>Optimistischste Fans</h4>
             <p class="subtitle">Wer tippt die Spiele des Bayers am optimistischsten?</p>
             </div>

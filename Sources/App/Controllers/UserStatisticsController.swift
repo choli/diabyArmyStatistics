@@ -28,6 +28,14 @@ struct UserStatisticsController: RouteCollection {
             }
     }
 
+    func getCorrectTendencies(by tendency: Tendenz, req: Request) throws -> EventLoopFuture<StatisticObject> {
+        return self.getAllCorrectUserTendencies(req: req)
+            .flatMapThrowing { tendencies -> StatisticObject in
+                let result = tendencies.sorted(by: tendency).getTop(5)
+                return StatisticObject.tendenzCounter(result)
+            }
+    }
+
     func getSpecificResult(teamX: Int, teamY: Int, req: Request) throws -> EventLoopFuture<StatisticObject> {
         return self.getAllTippsOfUsers(req: req)
             .flatMapThrowing { tipps -> StatisticObject in
@@ -60,6 +68,40 @@ struct UserStatisticsController: RouteCollection {
                 let tendencies = userTipps.map { TendenzCounter(name: $0.key, heimsiege: $0.value, gastsiege: 0, unentschieden: 0) }
                     .sorted(by: .total).getTop(5)
                 return StatisticObject.tendenzCounter(tendencies)
+            }
+    }
+
+    private func getAllCorrectUserTendencies(req: Request) -> EventLoopFuture<[TendenzCounter]> {
+        return MatchdayController().getAllMatchdays(req: req)
+            .flatMapThrowing { matchdays -> [TendenzCounter] in
+                var userTendencies: [String: [Tendenz: Int]] = [:]
+                let emptyDict: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]
+                for matchday in matchdays {
+                    matchday.tippspieler.forEach { user in
+                        var currentUserTendencies: [Tendenz: Int]
+                        if let alreadyThere = userTendencies[user.name] {
+                            currentUserTendencies = alreadyThere
+                        } else {
+                            currentUserTendencies = emptyDict
+                        }
+
+                        let correct = user.tipps.getCorrectTippTendencies(for: matchday.resultate)
+                        guard let correctHome = correct[.heimsieg],
+                              let correctDraw = correct[.unentschieden],
+                              let correctAway = correct[.gastsieg]
+                        else { fatalError("New User added, not included, or parsing error for correct tendencies in matchday") }
+
+                        currentUserTendencies[.heimsieg]! += correctHome
+                        currentUserTendencies[.unentschieden]! += correctDraw
+                        currentUserTendencies[.gastsieg]! += correctAway
+
+                        userTendencies[user.name] = currentUserTendencies
+                    }
+                }
+                return userTendencies.map { TendenzCounter(name: $0.key,
+                                                           heimsiege: $0.value[.heimsieg]!,
+                                                           gastsiege: $0.value[.gastsieg]!,
+                                                           unentschieden: $0.value[.unentschieden]!) }
             }
     }
 

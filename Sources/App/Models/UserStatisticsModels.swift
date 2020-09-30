@@ -69,6 +69,26 @@ enum Tendenz {
     case total
 }
 
+extension Array where Element == Spiel {
+    func getCorrectTippTendencies(for results: [Spiel]) -> [Tendenz: Int] {
+        var correct: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]
+        self.forEach { userTipp in
+            guard let result = results.first(where: { $0.heimteam == userTipp.heimteam && $0.gastteam == userTipp.gastteam })
+            else {  fatalError("Match not played on this matchday") }
+
+            if result.heim > result.gast && userTipp.heim > userTipp.gast {
+                correct[.heimsieg]! += 1
+            } else if result.heim == result.gast && userTipp.heim == userTipp.gast {
+                correct[.unentschieden]! += 1
+            } else if result.heim < result.gast && userTipp.heim < userTipp.gast {
+                correct[.gastsieg]! += 1
+            }
+        }
+        return correct
+    }
+}
+
+
 extension Array where Element == UserTipps {
     func summedUpAndSorted(descending: Bool) -> [AggregatedUserTipp] {
         return self.map {
