@@ -6,6 +6,7 @@ struct HomepageController: RouteCollection {
     }
 
     private func getHomeStats(req: Request) throws -> EventLoopFuture<View> {
+        req.parameters.set("client", to: "diabyarmy")
         let userStats = UserStatisticsController()
         let roundStats = RoundStatisticsController()
         guard let levExact = try? userStats.getExactTipps(for: "Lev", req: req),

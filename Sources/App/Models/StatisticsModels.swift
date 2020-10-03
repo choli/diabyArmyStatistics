@@ -1,6 +1,6 @@
 import Vapor
 
-enum StatisticObject: Encodable {
+enum StatisticObject: Content {
     case aggregatedUserTipp([AggregatedUserTipp])
     case tendenzCounter([TendenzCounter])
     case roundStatistics([RoundStatisticsObject])
@@ -14,6 +14,10 @@ enum StatisticObject: Encodable {
         case .roundStatistics(let rounds):
             try? rounds.encode(to: encoder)
         }
+    }
+
+    init(from decoder: Decoder) throws {
+        fatalError("why do i need to decode?")
     }
 }
 

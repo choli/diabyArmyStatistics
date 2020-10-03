@@ -2,6 +2,14 @@ import Vapor
 
 struct UserStatisticsController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
+        let usersRoute = routes.grouped("users")
+
+        usersRoute.get(":team", use: getExactTipps)
+    }
+
+    private func getExactTipps(req: Request) throws -> EventLoopFuture<StatisticObject> {
+        guard let team = req.parameters.get("team") else { fatalError("no team defined") }
+        return try getExactTipps(for: team, req: req)
     }
 
     func getExactTipps(for team: String, req: Request) throws -> EventLoopFuture<StatisticObject> {
