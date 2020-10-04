@@ -57,6 +57,18 @@ struct TendenzCounter: Content, Equatable {
     let gastsiege: Int
     let unentschieden: Int
 
+    let average: Double?
+
+
+    init(name: String, heimsiege: Int, gastsiege: Int, unentschieden: Int, average: Double? = nil) {
+        self.name = name
+        self.heimsiege = heimsiege
+        self.gastsiege = gastsiege
+        self.unentschieden = unentschieden
+        self.average = average
+    }
+
+
     static func ==(lhs: TendenzCounter, rhs: TendenzCounter) -> Bool {
         return lhs.heimsiege == rhs.heimsiege && lhs.gastsiege == rhs.gastsiege && lhs.unentschieden == rhs.unentschieden
     }
@@ -148,6 +160,18 @@ extension Array where Element == UserTipps {
         }
         .sortTotal()
     }
+
+    func countGoals(most: Bool) -> [TendenzCounter] {
+        let all = self.map { userTipps -> TendenzCounter in
+            let home = userTipps.tipps.reduce(0) { $0 + $1.goalsFor }
+            let away = userTipps.tipps.reduce(0) { $0 + $1.goalsAgainst }
+
+            let avg = round((Double(home) + Double(away)) / Double(userTipps.tipps.count) * 100.0) / 100.0
+
+            return TendenzCounter(name: userTipps.name, heimsiege: home, gastsiege: away, unentschieden: 0, average: avg)
+        }
+        return all.sortAverage(descending: most)
+    }
 }
 
 extension Array where Element: Equatable {
@@ -189,19 +213,22 @@ extension Array where Element == TendenzCounter {
         }
     }
 
-    func sortTotal() -> [TendenzCounter] {
+    func sortTotal(descending: Bool = true) -> [TendenzCounter] {
         self.sorted {
-            guard $0.unentschieden == 0, $1.unentschieden == 0 else {
-                fatalError("Data is corrupt")
-            }
-            if ($1.name == "ErbederElfen" || $0.name == "ErbederElfen") && ($1.name == "Janek" || $0.name == "Janek") {
-                print("hallo")
-            }
             let total0 = $0.heimsiege + $0.gastsiege
             let total1 = $1.heimsiege + $1.gastsiege
-            if total0 != total1 { return total0 > total1 }
-            if $0.heimsiege != $1.heimsiege { return $0.heimsiege > $1.heimsiege }
+            if total0 != total1 { return descending ? total0 > total1 : total0 < total1 }
+            if $0.heimsiege != $1.heimsiege { return descending ? $0.heimsiege > $1.heimsiege : $0.heimsiege < $1.heimsiege }
             return $0.name < $1.name
         }
+    }
+
+    func sortAverage(descending: Bool = true) -> [TendenzCounter] {
+        self.filter { $0.heimsiege + $0.gastsiege > 0 }
+            .sorted {
+                if let avg0 = $0.average, let avg1 = $1.average, avg0 != avg1 { return descending ? avg0 > avg1 : avg0 < avg1 }
+                if $0.heimsiege != $1.heimsiege { return descending ? $0.heimsiege > $1.heimsiege : $0.heimsiege < $1.heimsiege }
+                return $0.name < $1.name
+            }
     }
 }

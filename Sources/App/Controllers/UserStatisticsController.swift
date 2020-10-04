@@ -52,6 +52,14 @@ struct UserStatisticsController: RouteCollection {
             }
     }
 
+    func getTotalGoals(most: Bool, req: Request) throws -> EventLoopFuture<StatisticObject> {
+        return self.getAllTippsOfUsers(req: req)
+            .flatMapThrowing { tipps -> StatisticObject in
+                let result = tipps.countGoals(most: most).getTop(5)
+                return StatisticObject.tendenzCounter(result)
+            }
+    }
+
     func getMissedTipps(req: Request) throws -> EventLoopFuture<StatisticObject> {
         return MatchdayController().getAllMatchdays(req: req)
             .flatMapThrowing { matchdays -> StatisticObject in

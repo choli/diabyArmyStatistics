@@ -254,6 +254,64 @@
 
         <div class="card">
          <div class="card-header">
+            <h4>Torfestival</h4>
+            <p>Wer glaubt noch an torreiche Spiele?</p>
+            <p class="inventor">By mario_1196</p>
+            </div>
+            <div class="card-body">
+            <table class="">
+                <tr>
+                    <th></th>
+                    <th>Ø Tore</th>
+                    <th>Total</th>
+                    <th>Heim</th>
+                    <th>Gast</th>
+                </tr>
+                #for(user in mostGoals):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.average)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    <td style="text-align:right">#(user.gastsiege)</td>
+                </tr>
+                #endfor
+            </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+         <div class="card-header">
+            <h4>Mourinho-Versteher</h4>
+            <p>Wer tippt bei Spielen darauf, dass wenige Tore fallen?</p>
+            <p class="inventor">By mario_1196</p>
+            </div>
+            <div class="card-body">
+            <table class="">
+                <tr>
+                    <th></th>
+                    <th>Ø Tore</th>
+                    <th>Total</th>
+                    <th>Heim</th>
+                    <th>Gast</th>
+                </tr>
+                #for(user in fewestGoals):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.average)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    <td style="text-align:right">#(user.gastsiege)</td>
+                </tr>
+                #endfor
+            </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+         <div class="card-header">
             <h4>Spätaufsteher</h4>
             <p class="subtitle">Wer vergisst die meisten Spiele zu tippen? (Komplett verpasste Spieltage nicht mitgezählt)</p>
             </div>

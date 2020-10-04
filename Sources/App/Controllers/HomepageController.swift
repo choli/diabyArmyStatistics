@@ -18,6 +18,9 @@ struct HomepageController: RouteCollection {
               let awayTipps = try? userStats.getTendencies(by: .gastsieg, req: req),
               let twoToOne = try? userStats.getSpecificResult(teamX: 2, teamY: 1, req: req),
               let oneDiff = try? userStats.getResultDifference(difference: 1, req: req),
+              let mostGoals = try? userStats.getTotalGoals(most: true, req: req),
+              let fewestGoals = try? userStats.getTotalGoals(most: false, req: req),
+
               let missed = try? userStats.getMissedTipps(req: req),
 
               let empty = try? roundStats.getNumberOfNonTippers(req: req)
@@ -34,6 +37,8 @@ struct HomepageController: RouteCollection {
                                                              awayTipps,
                                                              twoToOne,
                                                              oneDiff,
+                                                             mostGoals,
+                                                             fewestGoals,
                                                              missed,
 
                                                              empty
@@ -51,10 +56,11 @@ struct HomepageController: RouteCollection {
                                                  "away": tipps[7],
                                                  "twoOne": tipps[8],
                                                  "oneDiff": tipps[9],
-                                                 "missed": tipps[10],
+                                                 "mostGoals": tipps[10],
+                                                 "fewestGoals": tipps[11],
+                                                 "missed": tipps[12],
 
-
-                                                 "empty":tipps[11]])
+                                                 "empty":tipps[13]])
             }
             .flatMapErrorThrowing { error -> View in throw error }
     }
