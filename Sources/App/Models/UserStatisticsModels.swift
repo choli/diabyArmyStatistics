@@ -101,15 +101,19 @@ extension Array where Element == UserTipps {
             return AggregatedUserTipp(name: $0.name, tipp: tipp, siege: wins, unentschieden: draws, niederlagen: losses)
         }
         .sorted {
+            let points0 = $0.siege * 3 + $0.unentschieden * 1
+            let points1 = $1.siege * 3 + $1.unentschieden * 1
             if descending {
+                if points0 != points1 { return points0 > points1 }
                 if $0.siege != $1.siege { return $0.siege > $1.siege }
                 if $0.unentschieden != $1.unentschieden { return $0.unentschieden > $1.unentschieden }
                 if $0.niederlagen != $1.niederlagen { return $0.niederlagen < $1.niederlagen } // Just for my inner Monk
                 if $0.tipp.difference != $1.tipp.difference { return $0.tipp.difference > $1.tipp.difference}
                 if $0.tipp.goalsFor != $1.tipp.goalsFor { return $0.tipp.goalsFor > $1.tipp.goalsFor }
             } else {
+                if points0 != points1 { return points0 < points1 }
                 if $0.niederlagen != $1.niederlagen { return $0.niederlagen > $1.niederlagen }
-                if $0.unentschieden != $1.unentschieden { return $0.unentschieden < $1.unentschieden }
+                if $0.unentschieden != $1.unentschieden { return $0.unentschieden > $1.unentschieden }
                 if $0.siege != $1.siege { return $0.siege < $1.siege } // see above
                 if $0.tipp.difference != $1.tipp.difference { return $0.tipp.difference < $1.tipp.difference}
                 if $0.tipp.goalsFor != $1.tipp.goalsFor { return $0.tipp.goalsFor < $1.tipp.goalsFor }
