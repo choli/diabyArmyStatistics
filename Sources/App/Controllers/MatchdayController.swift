@@ -2,11 +2,11 @@ import Vapor
 
 struct MatchdayController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
-        let matchdayRoute = routes.grouped(":client", "matchday")
+        let matchdayRoute = routes.grouped(":client")
 
         try matchdayRoute.register(collection: UserStatisticsController())
-        matchdayRoute.get(":matchday", use: getMatchday)
         matchdayRoute.get("all", use: getAllMatchdays)
+        matchdayRoute.get("matchday", ":matchday", use: getMatchday)
     }
 
     private func getMatchday(req: Request) throws -> Spieltag {
