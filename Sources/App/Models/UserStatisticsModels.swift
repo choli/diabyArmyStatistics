@@ -1,5 +1,11 @@
 import Vapor
 
+infix operator %% : ComparisonPrecedence
+
+protocol TotalEquatable: Equatable {
+    static func %%(lhs: Self, rhs: Self) -> Bool
+}
+
 struct Spiel: Content {
     let heimteam: String
     let gastteam: String
@@ -39,7 +45,7 @@ struct UserTipps: Content {
     let tipps: [UserTipp]
 }
 
-struct AggregatedUserTipp: Content, Equatable {
+struct AggregatedUserTipp: Content, TotalEquatable {
     let name: String
     let tipp: UserTipp
     let siege: Int
@@ -49,9 +55,14 @@ struct AggregatedUserTipp: Content, Equatable {
     static func ==(lhs: AggregatedUserTipp, rhs: AggregatedUserTipp) -> Bool {
         return lhs.tipp.goalsFor == rhs.tipp.goalsFor && lhs.tipp.goalsAgainst == rhs.tipp.goalsAgainst
     }
+
+    static func %%(lhs: AggregatedUserTipp, rhs: AggregatedUserTipp) -> Bool {
+        return lhs.tipp.goalsFor + lhs.tipp.goalsAgainst == rhs.tipp.goalsFor + rhs.tipp.goalsAgainst
+    }
 }
 
-struct TendenzCounter: Content, Equatable {
+
+struct TendenzCounter: Content, TotalEquatable {
     let name: String
     let heimsiege: Int
     let gastsiege: Int
@@ -71,6 +82,10 @@ struct TendenzCounter: Content, Equatable {
 
     static func ==(lhs: TendenzCounter, rhs: TendenzCounter) -> Bool {
         return lhs.heimsiege == rhs.heimsiege && lhs.gastsiege == rhs.gastsiege && lhs.unentschieden == rhs.unentschieden
+    }
+
+    static func %%(lhs: TendenzCounter, rhs: TendenzCounter) -> Bool {
+        return lhs.heimsiege + lhs.gastsiege + lhs.unentschieden == rhs.heimsiege + rhs.gastsiege + rhs.unentschieden
     }
 }
 
@@ -115,6 +130,10 @@ extension Array where Element == UserTipps {
         .sorted {
             let points0 = $0.siege * 3 + $0.unentschieden * 1
             let points1 = $1.siege * 3 + $1.unentschieden * 1
+            let count0 = $0.siege + $0.unentschieden + $0.niederlagen
+            let count1 = $1.siege + $1.unentschieden + $1.niederlagen
+            let pointsAvg0 = Double(points0) / Double(count0)
+            let pointsAvg1 = Double(points1) / Double(count1)
             if descending {
                 if points0 != points1 { return points0 > points1 }
                 if $0.siege != $1.siege { return $0.siege > $1.siege }
@@ -123,7 +142,8 @@ extension Array where Element == UserTipps {
                 if $0.tipp.difference != $1.tipp.difference { return $0.tipp.difference > $1.tipp.difference}
                 if $0.tipp.goalsFor != $1.tipp.goalsFor { return $0.tipp.goalsFor > $1.tipp.goalsFor }
             } else {
-                if points0 != points1 { return points0 < points1 }
+                if pointsAvg0 != pointsAvg1 { return pointsAvg0 < pointsAvg1 }
+                if count0 != count1 { return count0 > count1 }
                 if $0.niederlagen != $1.niederlagen { return $0.niederlagen > $1.niederlagen }
                 if $0.unentschieden != $1.unentschieden { return $0.unentschieden > $1.unentschieden }
                 if $0.siege != $1.siege { return $0.siege < $1.siege } // see above
@@ -174,13 +194,13 @@ extension Array where Element == UserTipps {
     }
 }
 
-extension Array where Element: Equatable {
-    func getTop(_ x: Int) -> [Element] {
+extension Array where Element: TotalEquatable {
+    func getTop(_ x: Int, total: Bool = false) -> [Element] {
         guard x > 0, self.count > x else { return self }
         let elementX = self[x - 1]
 
         var i = x
-        while (i < self.count && self[i] == elementX) {
+        while (i < self.count && (total ? self[i] %% elementX : self[i] == elementX)) {
             i += 1
         }
 

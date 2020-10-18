@@ -4,7 +4,7 @@ struct UserStatisticsController {
     
     func getExactTipps(for team: String, req: Request) -> StatisticObject {
         let tipps = self.getAllTippResults(of: team, exactOnly: true, req: req)
-        let result = tipps.convertedToTendencies.sorted(by: .total).getTop(5)
+        let result = tipps.convertedToTendencies.sorted(by: .total).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
@@ -22,19 +22,19 @@ struct UserStatisticsController {
 
     func getCorrectTendencies(by tendency: Tendenz, req: Request) -> StatisticObject {
         let tendencies = self.getAllCorrectUserTendencies(req: req)
-        let result = tendencies.sorted(by: tendency).getTop(5)
+        let result = tendencies.sorted(by: tendency).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
     func getSpecificResult(teamX: Int, teamY: Int, req: Request) -> StatisticObject {
         let tipps = self.getAllTippsOfUsers(req: req)
-        let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5)
+        let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
     func getResultDifference(difference: Int, req: Request) -> StatisticObject {
         let tipps = self.getAllTippsOfUsers(req: req)
-        let result = tipps.countTipps(difference: difference).getTop(5)
+        let result = tipps.countTipps(difference: difference).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
