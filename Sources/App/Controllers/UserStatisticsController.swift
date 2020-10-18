@@ -46,7 +46,7 @@ struct UserStatisticsController {
 
     func getMissedTipps(req: Request) -> StatisticObject {
         var userTipps: [String: Int] = [:]
-        MatchdayController().getAllMatchdays(req: req).forEach { matchday in
+        MatchdayController().getAllMatchdays(req: req) { matchday in
             for user in matchday.tippspieler where (user.tipps.count > 0 && user.tipps.count < matchday.resultate.count) {
                 if let currentUserTipps = userTipps[user.name] {
                     userTipps[user.name] = currentUserTipps + (matchday.resultate.count - user.tipps.count)
@@ -63,7 +63,7 @@ struct UserStatisticsController {
     private func getAllCorrectUserTendencies(req: Request) -> [TendenzCounter] {
         var userTendencies: [String: [Tendenz: Int]] = [:]
         let emptyDict: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]
-        MatchdayController().getAllMatchdays(req: req).forEach { matchday  in
+        MatchdayController().getAllMatchdays(req: req) { matchday  in
             matchday.tippspieler.forEach { user in
                 var currentUserTendencies: [Tendenz: Int]
                 if let alreadyThere = userTendencies[user.name] {
@@ -93,7 +93,7 @@ struct UserStatisticsController {
 
     private func getAllTippsOfUsers(req: Request) -> [UserTipps] {
         var userTipps: [String: [UserTipp]] = [:]
-        MatchdayController().getAllMatchdays(req: req).forEach { matchday in
+        MatchdayController().getAllMatchdays(req: req) { matchday in
             matchday.tippspieler.forEach { user in
                 if var currentUserTipps = userTipps[user.name] {
                     currentUserTipps.append(contentsOf: user.tipps.map { $0.asUserTipp })
@@ -108,7 +108,7 @@ struct UserStatisticsController {
 
     private func getAllTipps(of team: String, exactOnly: Bool, req: Request) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
-        MatchdayController().getAllMatchdays(req: req).forEach { matchday in
+        MatchdayController().getAllMatchdays(req: req) { matchday in
             var matchResult: Spiel?
             if exactOnly {
                 guard let result =  matchday.resultate.first(where: { $0.heimteam == team || $0.gastteam == team })

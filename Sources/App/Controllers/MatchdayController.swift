@@ -1,12 +1,6 @@
 import Vapor
 
 struct MatchdayController {
-    
-    func getAllMatchdays(req: Request) -> [Spieltag] {
-        guard let client = req.parameters.get("client")
-        else { assertionFailure("Couldn't find client in request."); return [] }
-        return self.getAllMatchdays(client: client, req: req)
-    }
 
     func getMatchday(_ matchday: Int, client: String, req: Request, force: Bool = true) -> Spieltag {
 
@@ -23,13 +17,16 @@ struct MatchdayController {
         return spieltag
     }
 
-    func getAllMatchdays(client: String, req: Request) -> [Spieltag] {
-        var matchdays: [Spieltag] = []
+    func getAllMatchdays(req: Request, matchdayCompletion: (Spieltag) -> Void) {
+        guard let client = req.parameters.get("client")
+        else { assertionFailure("Couldn't find client in request."); return }
 
-        for index in 0..<34 {
-            matchdays.append(self.getMatchday(index + 1, client: client, req: req, force: false))
+        var nextMatchday = 1
+        while true {
+            let matchday = self.getMatchday(nextMatchday, client: client, req: req, force: false)
+            guard !matchday.resultate.isEmpty else { break }
+            matchdayCompletion(matchday)
+            nextMatchday += 1
         }
-        
-        return matchdays.filter  { !$0.resultate.isEmpty }
     }
 }

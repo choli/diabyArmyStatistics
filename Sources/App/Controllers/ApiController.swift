@@ -27,9 +27,11 @@ struct ApiController: RouteCollection {
     }
 
     private func getAllMatchdays(req: Request) -> [Spieltag] {
-        guard let client = req.parameters.get("client")
-        else { assertionFailure("Couldn't find client in request."); return [] }
-        return MatchdayController().getAllMatchdays(client: client, req: req)
+        var matchdays: [Spieltag] = []
+        MatchdayController().getAllMatchdays(req: req) { matchday in
+            matchdays.append(matchday)
+        }
+        return matchdays
     }
 
     private func getExactTipps(req: Request) -> StatisticObject {

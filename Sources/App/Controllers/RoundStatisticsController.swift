@@ -3,10 +3,10 @@ import Vapor
 struct RoundStatisticsController {
 
     func getNumberOfNonTippers(req: Request) -> StatisticObject {
-        let matchdays = MatchdayController().getAllMatchdays(req: req)
-        let roundStats = matchdays.map { matchday -> RoundStatisticsObject in
+        var roundStats: [RoundStatisticsObject] = []
+        MatchdayController().getAllMatchdays(req: req) { matchday in
             let emptyTippers = matchday.tippspieler.filter { $0.tipps.isEmpty }
-            return RoundStatisticsObject(spieltag: matchday.spieltag, total: emptyTippers.count)
+            roundStats.append(RoundStatisticsObject(spieltag: matchday.spieltag, total: emptyTippers.count))
         }
         return StatisticObject.roundStatistics(roundStats)
     }
