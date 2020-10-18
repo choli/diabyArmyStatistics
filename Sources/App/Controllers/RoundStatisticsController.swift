@@ -1,8 +1,6 @@
 import Vapor
 
-struct RoundStatisticsController: RouteCollection {
-    func boot(routes: RoutesBuilder) throws {
-    }
+struct RoundStatisticsController {
 
     func getNumberOfNonTippers(req: Request) -> StatisticObject {
         let matchdays = MatchdayController().getAllMatchdays(req: req)

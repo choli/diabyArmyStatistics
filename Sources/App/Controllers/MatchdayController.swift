@@ -1,24 +1,11 @@
 import Vapor
 
-struct MatchdayController: RouteCollection {
-    func boot(routes: RoutesBuilder) throws {
-        let matchdayRoute = routes.grouped(":client")
-
-        try matchdayRoute.register(collection: UserStatisticsController())
-        matchdayRoute.get("all", use: getAllMatchdays)
-        matchdayRoute.get("matchday", ":matchday", use: getMatchday)
-    }
-
-    private func getMatchday(req: Request) throws -> Spieltag {
-
-        guard let client = req.parameters.get("client"),
-              let matchdayString = req.parameters.get("matchday"),
-              let matchday = Int(matchdayString)
-        else { assertionFailure("This matchday doesn't exist")
-            throw RequestErrorObject(error: .unknownMatchday)
-        }
-
-        return self.getMatchday(matchday, client: client, req: req)
+struct MatchdayController {
+    
+    func getAllMatchdays(req: Request) -> [Spieltag] {
+        guard let client = req.parameters.get("client")
+        else { assertionFailure("Couldn't find client in request."); return [] }
+        return self.getAllMatchdays(client: client, req: req)
     }
 
     func getMatchday(_ matchday: Int, client: String, req: Request, force: Bool = true) -> Spieltag {
@@ -34,12 +21,6 @@ struct MatchdayController: RouteCollection {
             }
         }
         return spieltag
-    }
-
-    func getAllMatchdays(req: Request) -> [Spieltag] {
-        guard let client = req.parameters.get("client")
-        else { assertionFailure("Couldn't find client in request."); return [] }
-        return self.getAllMatchdays(client: client, req: req)
     }
 
     func getAllMatchdays(client: String, req: Request) -> [Spieltag] {

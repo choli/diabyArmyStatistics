@@ -1,41 +1,11 @@
 import Vapor
 
-struct UserStatisticsController: RouteCollection {
-    func boot(routes: RoutesBuilder) throws {
-        let usersRoute = routes.grouped("users")
-
-        usersRoute.get("experts", ":team", use: getExactTipps)
-        usersRoute.get("optimists", ":team", use: getAggregatedTipps)
-        usersRoute.get("pessimists", ":team", use: getAggregatedTipps)
-    }
-
-    private func getExactTipps(req: Request) -> StatisticObject {
-        guard let team = req.parameters.get("team") else { fatalError("no team defined") }
-        return getExactTipps(for: team, req: req)
-    }
-
+struct UserStatisticsController {
+    
     func getExactTipps(for team: String, req: Request) -> StatisticObject {
         let tipps = self.getAllTippResults(of: team, exactOnly: true, req: req)
         let result = tipps.convertedToTendencies.sorted(by: .total).getTop(5)
         return StatisticObject.tendenzCounter(result)
-    }
-
-    func getAggregatedTipps(req: Request) -> StatisticObject {
-        let optimists = "optimists"
-        let pessimists = "pessimists"
-        guard let team = req.parameters.get("team") else { fatalError("no team defined") }
-        guard let paths = req.route?.path else { fatalError("empty paths, not cool") }
-
-        let opt: Bool
-        if (paths.first(where: { $0.isConstantComponent(optimists) }) != nil) {
-            opt = true
-        } else if (paths.first(where: { $0.isConstantComponent(pessimists) }) != nil) {
-            opt = false
-        } else {
-            fatalError("Wrong path in here")
-        }
-
-        return getAggregatedTipps(for: team, optimist: opt, req: req)
     }
 
     func getAggregatedTipps(for team: String, optimist: Bool, req: Request) -> StatisticObject {
@@ -181,12 +151,5 @@ struct UserStatisticsController: RouteCollection {
             }
             return UserTipps(name: name, tipps: allTippResults)
         }
-    }
-}
-
-private extension PathComponent {
-    func isConstantComponent(_ component: String) -> Bool {
-        guard case let .constant(constant) = self else { return false }
-        return constant == component
     }
 }
