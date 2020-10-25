@@ -15,7 +15,7 @@
                 #for(user in exact):
                 <tr>
                     <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.unentschieden + user.niederlagen)</td>
+                    <td style="text-align:right">#(user.heimsiege + user.unentschieden + user.gastsiege)</td>
                     <td>Spiel(e) richtig</td>
                 </tr>
                 #endfor
