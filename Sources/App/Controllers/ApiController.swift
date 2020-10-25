@@ -3,7 +3,7 @@ import Vapor
 struct ApiController: RouteCollection {
     
     func boot(routes: RoutesBuilder) throws {
-        let matchdayRoute = routes.grouped(":client")
+        let matchdayRoute = routes.grouped("api", ":client")
         matchdayRoute.get("all", use: getAllMatchdays)
         matchdayRoute.get("matchday", ":matchday", use: getMatchday)
 
