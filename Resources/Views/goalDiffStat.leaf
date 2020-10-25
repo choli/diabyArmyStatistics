@@ -1,0 +1,39 @@
+#extend("base"):
+    #export("body"):
+
+    <div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+        
+        <div class="card">
+        <div class="card-header">
+            <h4>#(category) für #(team)</h4>
+            <p class="subtitle">Wer tippt die Spiele am #(categoryAdj)?</p>
+            </div>
+            <div class="card-body">
+            <table class="">
+                <tr>
+                    <th></th>
+                    <th>S</th>
+                    <th>U</th>
+                    <th>N</th>
+                    <th>Torverh.</th>
+                    <th>Diff.</th>
+                </tr>
+                #for(user in results):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.siege)</td>
+                    <td style="text-align:right">#(user.unentschieden)</td>
+                    <td style="text-align:right">#(user.niederlagen)</td>
+                    <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+                    <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+                </tr>
+                #endfor
+            </table>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    #endexport
+#endextend
