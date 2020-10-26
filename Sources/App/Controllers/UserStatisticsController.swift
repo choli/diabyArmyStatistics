@@ -4,7 +4,7 @@ struct UserStatisticsController {
     
     func getExactTipps(for team: String? = nil, req: Request) -> StatisticObject {
         let tipps = self.getAllTippResults(of: team, exactOnly: true, req: req)
-        let result = tipps.convertedToTendencies.sorted(by: .total).getTop(5, total: true)
+        let result = tipps.convertedToTendencies.sorted(by: .total).getTop(4, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
