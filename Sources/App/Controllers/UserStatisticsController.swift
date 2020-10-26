@@ -2,7 +2,7 @@ import Vapor
 
 struct UserStatisticsController {
     
-    func getExactTipps(for team: String, req: Request) -> StatisticObject {
+    func getExactTipps(for team: String? = nil, req: Request) -> StatisticObject {
         let tipps = self.getAllTippResults(of: team, exactOnly: true, req: req)
         let result = tipps.convertedToTendencies.sorted(by: .total).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
@@ -106,6 +106,14 @@ struct UserStatisticsController {
         return userTipps.map { UserTipps(name: $0.key, tipps: $0.value) }
     }
 
+    private func getAllTipps(of team: String?, exactOnly: Bool, req: Request) -> [String: [Spiel]] {
+        if let team = team {
+            return self.getAllTipps(of: team, exactOnly: exactOnly, req: req)
+        } else {
+            return self.getAllTipps(exactOnly: exactOnly, req: req)
+        }
+    }
+
     private func getAllTipps(of team: String, exactOnly: Bool, req: Request) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
         MatchdayController().getAllMatchdays(req: req) { matchday in
@@ -137,7 +145,38 @@ struct UserStatisticsController {
         return userTipps
     }
 
-    private func getAllTippResults(of team: String, exactOnly: Bool, req: Request) -> [UserTipps] {
+    private func getAllTipps(exactOnly: Bool, req: Request) -> [String: [Spiel]] {
+        var userTipps: [String: [Spiel]] = [:]
+        MatchdayController().getAllMatchdays(req: req) { matchday in
+            for tippspieler in matchday.tippspieler {
+                for teamTipp in tippspieler.tipps {
+                    var matchResult: Spiel?
+                    if exactOnly {
+                        guard let result =  matchday.resultate.first(where: { $0.heimteam == teamTipp.heimteam && $0.gastteam == teamTipp.gastteam })
+                        else { assertionFailure("This game didn't happen on this matchday"); return }
+                        matchResult = result
+                    }
+
+                    if exactOnly {
+                        guard let matchResult = matchResult,
+                              matchResult.heim == teamTipp.heim,
+                              matchResult.gast == teamTipp.gast
+                        else { continue }
+                    }
+
+                    if var tipps = userTipps[tippspieler.name] {
+                        tipps.append(teamTipp)
+                        userTipps[tippspieler.name] = tipps
+                    } else {
+                        userTipps[tippspieler.name] = [teamTipp]
+                    }
+                }
+            }
+        }
+        return userTipps
+    }
+
+    private func getAllTippResults(of team: String?, exactOnly: Bool, req: Request) -> [UserTipps] {
         return self.getAllTipps(of: team, exactOnly: exactOnly, req: req).map { (name, userTipps) in
             var allTippResults: [UserTipp] = []
             for tipp in userTipps {
@@ -146,7 +185,8 @@ struct UserStatisticsController {
                 } else if tipp.gastteam == team {
                     allTippResults.append(UserTipp(goalsFor: tipp.gast, goalsAgainst: tipp.heim))
                 } else {
-                    fatalError("This should not happen")
+                    guard team == nil else { fatalError("This should not happen") }
+                    allTippResults.append(UserTipp(goalsFor: tipp.heim, goalsAgainst: tipp.gast))
                 }
             }
             return UserTipps(name: name, tipps: allTippResults)
