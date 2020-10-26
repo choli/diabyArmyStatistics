@@ -251,4 +251,8 @@ extension Array where Element == TendenzCounter {
                 return $0.name < $1.name
             }
     }
+
+    var cutOffEmpty: [TendenzCounter] {
+        self.filter { $0.heimsiege + $0.gastsiege + $0.unentschieden > 0 }
+    }
 }

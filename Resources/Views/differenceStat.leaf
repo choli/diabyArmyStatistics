@@ -34,10 +34,49 @@
                 </tr>
                 #endfor
             </table>
-            </div>
+        </div>
         </div>
 
+        #for(results in resultsTab):
+        <div class="card">
+        <div class="card-header">
+            <h4>#(diff + index)-#(index) Tipper</h4>
+            <p class="subtitle">Wer tippt dieses Resultat am meisten?</p>
         </div>
+        <div class="card-body">
+            #if(isEmpty(results)):
+            <p>Dieses Resultat hat noch niemand getippt.</p>
+            #else:
+            <table class="">
+                <tr>
+                    <th></th>
+                    #if(diff > 0):
+                    <th>Total</th>
+                    <th>#(diff + index)-#(index)</th>
+                    <th>#(index)-#(diff + index)</th>
+                    #else:
+                    <th>#(index)-#(index)</th>
+                    #endif
+                </tr>
+                #for(user in results):
+                <tr>
+                    <td>#(user.name)</td>
+                    #if(diff > 0):
+                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    <td style="text-align:right">#(user.gastsiege)</td>
+                    #else:
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    #endif
+                </tr>
+                #endfor
+            </table>
+            #endif
+        </div>
+        </div>
+        #endfor
+
+    </div>
     </div>
     #endexport
 #endextend

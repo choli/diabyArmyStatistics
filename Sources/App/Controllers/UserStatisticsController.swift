@@ -28,13 +28,13 @@ struct UserStatisticsController {
 
     func getSpecificResult(teamX: Int, teamY: Int, req: Request) -> StatisticObject {
         let tipps = self.getAllTippsOfUsers(req: req)
-        let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5, total: true)
+        let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5, total: true).cutOffEmpty
         return StatisticObject.tendenzCounter(result)
     }
 
     func getResultDifference(difference: Int, req: Request) -> StatisticObject {
         let tipps = self.getAllTippsOfUsers(req: req)
-        let result = tipps.countTipps(difference: difference).getTop(5, total: true)
+        let result = tipps.countTipps(difference: difference).getTop(5, total: true).cutOffEmpty
         return StatisticObject.tendenzCounter(result)
     }
 
