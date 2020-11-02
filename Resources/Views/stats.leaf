@@ -310,12 +310,12 @@
 
 
         <div class="card">
-         <div class="card-header">
+        <div class="card-header">
             <h4>Mourinho-Versteher</h4>
             <p>Wer tippt bei Spielen darauf, dass wenige Tore fallen?</p>
             <p class="inventor">By mario_1196</p>
-            </div>
-            <div class="card-body">
+        </div>
+        <div class="card-body">
             <table class="">
                 <tr>
                     <th></th>
@@ -334,16 +334,16 @@
                 </tr>
                 #endfor
             </table>
-            </div>
+        </div>
         </div>
 
 
         <div class="card">
-         <div class="card-header">
+        <div class="card-header">
             <h4>Spätaufsteher</h4>
             <p class="subtitle">Wer vergisst die meisten Spiele zu tippen? (Komplett verpasste Spieltage nicht mitgezählt)</p>
-            </div>
-            <div class="card-body">
+        </div>
+        <div class="card-body">
             <table class="">
                 #for(user in missed):
                 <tr>
@@ -353,27 +353,10 @@
                 </tr>
                 #endfor
             </table>
-            </div>
+        </div>
         </div>
 
-
-        <div class="card">
-         <div class="card-header">
-            <h4>Nicht-Tipper</h4>
-            <p class="subtitle">Wieviele User haben es wieder verschwitzt oder sind raus?</p>
-            </div>
-                 <div class="card-body">
-            <table class="">
-                #for(matchday in empty):
-                <tr>
-                    <td style="text-align:right">#(matchday.spieltag).) </td>
-                    <td style="text-align:right">#(matchday.total)</td>
-                    <td>User</td>
-                </tr>
-                #endfor
-            </table>
-            </div>
-        </div>
+    </div>
     </div>
     #endexport
 #endextend
