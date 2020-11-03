@@ -25,6 +25,7 @@ struct MatchdayController {
         while true {
             let matchday = self.getMatchday(nextMatchday, client: client, req: req, force: false)
             guard !matchday.resultate.isEmpty else { break }
+            req.logger.notice("Matchday: \(nextMatchday), games: \(matchday.resultate.count)")
             matchdayCompletion(matchday)
             nextMatchday += 1
         }

@@ -9,12 +9,14 @@ struct SingleStatisticController: RouteCollection {
             guard let team = req.parameters.get("team")
             else { throw Abort(.badRequest, reason: "Team not provided.") }
 
+            let userStats = UserStatisticsController()
+
             return req.view.render(
                 "teamStats",
                 ["team": StatisticObject.singleString(team),
-                 "exact": UserStatisticsController().getExactTipps(for: team, req: req),
-                 "optimists": UserStatisticsController().getAggregatedTipps(for: team, optimist: true, req: req),
-                 "pessimists": UserStatisticsController().getAggregatedTipps(for: team, optimist: false, req: req)]
+                 "exact": userStats.getExactTipps(for: team, req: req),
+                 "optimists": userStats.getAggregatedTipps(for: team, optimist: true, req: req),
+                 "pessimists": userStats.getAggregatedTipps(for: team, optimist: false, req: req)]
             )
         }
 
