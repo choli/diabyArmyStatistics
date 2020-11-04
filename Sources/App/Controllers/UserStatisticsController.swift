@@ -7,60 +7,44 @@ struct UserStatisticsController {
     }
     
     func getExactTipps(for team: String? = nil, req: Request) -> StatisticObject {
-        req.logger.notice("Getting exact tipps for \(team ?? "no team")")
         let tipps = self.getAllTippResults(of: team, exactOnly: true, req: req)
-        req.logger.notice("Exact tipps count: \(tipps.count)")
         let result = tipps.convertedToTendencies.sorted(by: .total).getTop(4, total: true)
-        req.logger.notice("\(result.count) results")
         return StatisticObject.tendenzCounter(result)
     }
 
     func getAggregatedTipps(for team: String, optimist: Bool, req: Request) -> StatisticObject {
-        req.logger.notice("Getting aggregated \(optimist ? "optimist" : "pessimist") tipps for \(team)")
         let tipps = self.getAllTippResults(of: team, exactOnly: false, req: req)
-        req.logger.notice("Aggregated \(optimist ? "optimist" : "pessimist") count: \(tipps.count)")
         let result = tipps.summedUpAndSorted(descending: optimist).getTop(5)
-        req.logger.notice("\(result.count) results")
         return StatisticObject.aggregatedUserTipp(result)
     }
 
     func getTendencies(by tendency: Tendenz, req: Request) -> StatisticObject {
-        req.logger.notice("Getting tendencies")
         let tipps = self.getAllTippsOfUsers(req: req)
         let result = tipps.convertedToTendencies.sorted(by: tendency).getTop(5)
-        req.logger.notice("\(result.count) results")
         return StatisticObject.tendenzCounter(result)
     }
 
     func getCorrectTendencies(by tendency: Tendenz, req: Request) -> StatisticObject {
-        req.logger.notice("Getting correct tendencies")
         let tendencies = self.getAllCorrectUserTendencies(req: req)
         let result = tendencies.sorted(by: tendency).getTop(5, total: true)
-        req.logger.notice("\(result.count) results")
         return StatisticObject.tendenzCounter(result)
     }
 
     func getSpecificResult(teamX: Int, teamY: Int, req: Request) -> StatisticObject {
-        req.logger.notice("Getting specific result: \(teamX):\(teamY)")
         let tipps = self.getAllTippsOfUsers(req: req)
         let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5, total: true).cutOffEmpty
-        req.logger.notice("\(result.count) results")
         return StatisticObject.tendenzCounter(result)
     }
 
     func getResultDifference(difference: Int, req: Request) -> StatisticObject {
-        req.logger.notice("Getting result difference of \(difference)")
         let tipps = self.getAllTippsOfUsers(req: req)
         let result = tipps.countTipps(difference: difference).getTop(5, total: true).cutOffEmpty
-        req.logger.notice("\(result.count) results")
         return StatisticObject.tendenzCounter(result)
     }
 
     func getTotalGoals(most: Bool, req: Request) -> StatisticObject {
-        req.logger.notice("Getting \(most ? "most" : "least") total goals")
         let tipps = self.getAllTippsOfUsers(req: req)
         let result = tipps.countGoals(most: most).getTop(5)
-        req.logger.notice("\(result.count) results")
         return StatisticObject.tendenzCounter(result)
     }
 
@@ -136,9 +120,7 @@ struct UserStatisticsController {
 
     private func getAllTipps(of team: String, exactOnly: Bool, req: Request) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
-        req.logger.notice("Get all \(exactOnly ? "exact": "exact and not exact") tipps of \(team)")
         self.mdc.matchdays.forEach { matchday in
-            req.logger.notice("Getting \(exactOnly ? "exact": "") tipps of \(team) on matchday \(matchday.spieltag)")
             var matchResult: Spiel?
             if exactOnly {
                 guard let result =  matchday.resultate.first(where: { $0.heimteam == team || $0.gastteam == team })
@@ -146,7 +128,6 @@ struct UserStatisticsController {
                 matchResult = result
             }
             for tippspieler in matchday.tippspieler {
-                req.logger.notice("Getting \(exactOnly ? "exact": "") tipps of \(team) on matchday \(matchday.spieltag) for \(tippspieler.name)")
                 guard let teamTipp = tippspieler.tipps.first(where: { $0.heimteam == team || $0.gastteam == team })
                 else { continue }
 
@@ -212,7 +193,6 @@ struct UserStatisticsController {
                     allTippResults.append(UserTipp(goalsFor: tipp.heim, goalsAgainst: tipp.gast))
                 }
             }
-            req.logger.notice("Getting all tipp results of \(team ?? "no team"): \(name) --> \(allTippResults.count)")
             return UserTipps(name: name, tipps: allTippResults)
         }
     }

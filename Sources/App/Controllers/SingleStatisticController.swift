@@ -5,9 +5,9 @@ struct SingleStatisticController: RouteCollection {
     init(mdc: MatchdayController) {
         self.mdc = mdc
     }
-    
+
     func boot(routes: RoutesBuilder) throws {
-        
+
         routes.get("team", ":team") { (req) -> EventLoopFuture<View> in
             guard let team = req.parameters.get("team")
             else { throw Abort(.badRequest, reason: "Team not provided.") }
