@@ -6,49 +6,49 @@ struct UserStatisticsController {
         self.mdc = mdc
     }
     
-    func getExactTipps(for team: String? = nil, req: Request) -> StatisticObject {
-        let tipps = self.getAllTippResults(of: team, exactOnly: true, req: req)
+    func getExactTipps(for team: String? = nil) -> StatisticObject {
+        let tipps = self.getAllTippResults(of: team, exactOnly: true)
         let result = tipps.convertedToTendencies.sorted(by: .total).getTop(4, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getAggregatedTipps(for team: String, optimist: Bool, req: Request) -> StatisticObject {
-        let tipps = self.getAllTippResults(of: team, exactOnly: false, req: req)
+    func getAggregatedTipps(for team: String, optimist: Bool) -> StatisticObject {
+        let tipps = self.getAllTippResults(of: team, exactOnly: false)
         let result = tipps.summedUpAndSorted(descending: optimist).getTop(5)
         return StatisticObject.aggregatedUserTipp(result)
     }
 
-    func getTendencies(by tendency: Tendenz, req: Request) -> StatisticObject {
-        let tipps = self.getAllTippsOfUsers(req: req)
+    func getTendencies(by tendency: Tendenz) -> StatisticObject {
+        let tipps = self.getAllTippsOfUsers()
         let result = tipps.convertedToTendencies.sorted(by: tendency).getTop(5)
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getCorrectTendencies(by tendency: Tendenz, req: Request) -> StatisticObject {
-        let tendencies = self.getAllCorrectUserTendencies(req: req)
+    func getCorrectTendencies(by tendency: Tendenz) -> StatisticObject {
+        let tendencies = self.getAllCorrectUserTendencies()
         let result = tendencies.sorted(by: tendency).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getSpecificResult(teamX: Int, teamY: Int, req: Request) -> StatisticObject {
-        let tipps = self.getAllTippsOfUsers(req: req)
+    func getSpecificResult(teamX: Int, teamY: Int) -> StatisticObject {
+        let tipps = self.getAllTippsOfUsers()
         let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5, total: true).cutOffEmpty
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getResultDifference(difference: Int, req: Request) -> StatisticObject {
-        let tipps = self.getAllTippsOfUsers(req: req)
+    func getResultDifference(difference: Int) -> StatisticObject {
+        let tipps = self.getAllTippsOfUsers()
         let result = tipps.countTipps(difference: difference).getTop(5, total: true).cutOffEmpty
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getTotalGoals(most: Bool, req: Request) -> StatisticObject {
-        let tipps = self.getAllTippsOfUsers(req: req)
+    func getTotalGoals(most: Bool) -> StatisticObject {
+        let tipps = self.getAllTippsOfUsers()
         let result = tipps.countGoals(most: most).getTop(5)
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getMissedTipps(req: Request) -> StatisticObject {
+    func getPoints(for team: String) {}
         var userTipps: [String: Int] = [:]
         self.mdc.matchdays.forEach { matchday in
             for user in matchday.tippspieler where (user.tipps.count > 0 && user.tipps.count < matchday.resultate.count) {
@@ -64,7 +64,7 @@ struct UserStatisticsController {
         return StatisticObject.tendenzCounter(tendencies)
     }
 
-    private func getAllCorrectUserTendencies(req: Request) -> [TendenzCounter] {
+    private func getAllCorrectUserTendencies() -> [TendenzCounter] {
         var userTendencies: [String: [Tendenz: Int]] = [:]
         let emptyDict: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]
         self.mdc.matchdays.forEach { matchday in
@@ -95,7 +95,7 @@ struct UserStatisticsController {
                                                    unentschieden: $0.value[.unentschieden]!) }
     }
 
-    private func getAllTippsOfUsers(req: Request) -> [UserTipps] {
+    private func getAllTippsOfUsers() -> [UserTipps] {
         var userTipps: [String: [UserTipp]] = [:]
         self.mdc.matchdays.forEach { matchday in
             matchday.tippspieler.forEach { user in
@@ -110,15 +110,15 @@ struct UserStatisticsController {
         return userTipps.map { UserTipps(name: $0.key, tipps: $0.value) }
     }
 
-    private func getAllTipps(of team: String?, exactOnly: Bool, req: Request) -> [String: [Spiel]] {
+    private func getAllTipps(of team: String?, exactOnly: Bool) -> [String: [Spiel]] {
         if let team = team {
-            return self.getAllTipps(of: team, exactOnly: exactOnly, req: req)
+            return self.getAllTipps(of: team, exactOnly: exactOnly)
         } else {
-            return self.getAllTipps(exactOnly: exactOnly, req: req)
+            return self.getAllTipps(exactOnly: exactOnly)
         }
     }
 
-    private func getAllTipps(of team: String, exactOnly: Bool, req: Request) -> [String: [Spiel]] {
+    private func getAllTipps(of team: String, exactOnly: Bool) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
         self.mdc.matchdays.forEach { matchday in
             var matchResult: Spiel?
@@ -149,7 +149,7 @@ struct UserStatisticsController {
         return userTipps
     }
 
-    private func getAllTipps(exactOnly: Bool, req: Request) -> [String: [Spiel]] {
+    private func getAllTipps(exactOnly: Bool) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
         self.mdc.matchdays.forEach { matchday in
             for tippspieler in matchday.tippspieler {
@@ -180,8 +180,8 @@ struct UserStatisticsController {
         return userTipps
     }
 
-    private func getAllTippResults(of team: String?, exactOnly: Bool, req: Request) -> [UserTipps] {
-        return self.getAllTipps(of: team, exactOnly: exactOnly, req: req).map { (name, userTipps) in
+    private func getAllTippResults(of team: String?, exactOnly: Bool) -> [UserTipps] {
+        return self.getAllTipps(of: team, exactOnly: exactOnly).map { (name, userTipps) in
             var allTippResults: [UserTipp] = []
             for tipp in userTipps {
                 if tipp.heimteam == team {

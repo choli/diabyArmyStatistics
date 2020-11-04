@@ -15,20 +15,20 @@ struct HomepageController: RouteCollection {
 
         return req.view.render(
             "stats",
-            ["exactLev": userStats.getExactTipps(for: "Lev", req: req),
-             "exactAll": userStats.getExactTipps(req: req),
-             "tendencies": userStats.getCorrectTendencies(by: .total, req: req),
-             "opt": userStats.getAggregatedTipps(for: "Lev", optimist: true, req: req),
-             "pess": userStats.getAggregatedTipps(for: "Lev", optimist: false, req: req),
-             "col": userStats.getAggregatedTipps(for: "Köln", optimist: true, req: req),
-             "home": userStats.getTendencies(by: .heimsieg, req: req),
-             "draw": userStats.getTendencies(by: .unentschieden, req: req),
-             "away": userStats.getTendencies(by: .gastsieg, req: req),
-             "twoOne": userStats.getSpecificResult(teamX: 2, teamY: 1, req: req),
-             "oneDiff": userStats.getResultDifference(difference: 1, req: req),
-             "mostGoals": userStats.getTotalGoals(most: true, req: req),
-             "fewestGoals": userStats.getTotalGoals(most: false, req: req),
-             "missed": userStats.getMissedTipps(req: req)
+            ["exactLev": userStats.getExactTipps(for: "Lev"),
+             "exactAll": userStats.getExactTipps(),
+             "tendencies": userStats.getCorrectTendencies(by: .total),
+             "opt": userStats.getAggregatedTipps(for: "Lev", optimist: true),
+             "pess": userStats.getAggregatedTipps(for: "Lev", optimist: false),
+             "col": userStats.getAggregatedTipps(for: "Köln", optimist: true),
+             "home": userStats.getTendencies(by: .heimsieg),
+             "draw": userStats.getTendencies(by: .unentschieden),
+             "away": userStats.getTendencies(by: .gastsieg),
+             "twoOne": userStats.getSpecificResult(teamX: 2, teamY: 1),
+             "oneDiff": userStats.getResultDifference(difference: 1),
+             "mostGoals": userStats.getTotalGoals(most: true),
+             "fewestGoals": userStats.getTotalGoals(most: false),
+             "missed": userStats.getMissedTipps()
             ]
         )
     }

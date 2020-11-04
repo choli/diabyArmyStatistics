@@ -17,9 +17,9 @@ struct SingleStatisticController: RouteCollection {
             return req.view.render(
                 "teamStats",
                 ["team": StatisticObject.singleString(team),
-                 "exact": userStats.getExactTipps(for: team, req: req),
-                 "optimists": userStats.getAggregatedTipps(for: team, optimist: true, req: req),
-                 "pessimists": userStats.getAggregatedTipps(for: team, optimist: false, req: req)]
+                 "exact": userStats.getExactTipps(for: team),
+                 "optimists": userStats.getAggregatedTipps(for: team, optimist: true),
+                 "pessimists": userStats.getAggregatedTipps(for: team, optimist: false)]
             )
         }
 
@@ -34,13 +34,13 @@ struct SingleStatisticController: RouteCollection {
 
             var results: [StatisticObject] = []
             for i in 0..<5 {
-                results.append(userStats.getSpecificResult(teamX: i, teamY: i+diff, req: req))
+                results.append(userStats.getSpecificResult(teamX: i, teamY: i+diff))
             }
 
             return req.view.render(
                 "differenceStat",
                 ["diff": StatisticObject.singleInt(diff),
-                 "results": userStats.getResultDifference(difference: diff, req: req),
+                 "results": userStats.getResultDifference(difference: diff),
                  "resultsTab": StatisticObject.statsObjectArray(results)]
             )
         }

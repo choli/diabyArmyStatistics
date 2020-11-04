@@ -30,13 +30,13 @@ struct ApiController: RouteCollection {
         return self.mdc.matchdays[matchday - 1]
     }
 
-    private func getAllMatchdays(req: Request) -> [Spieltag] {
+    private func getAllMatchdays(_: Request) -> [Spieltag] {
         return self.mdc.matchdays
     }
 
     private func getExactTipps(req: Request) -> StatisticObject {
         guard let team = req.parameters.get("team") else { fatalError("no team defined") }
-        return UserStatisticsController(mdc: self.mdc).getExactTipps(for: team, req: req)
+        return UserStatisticsController(mdc: self.mdc).getExactTipps(for: team)
     }
 
     func getAggregatedTipps(req: Request) -> StatisticObject {
@@ -54,13 +54,8 @@ struct ApiController: RouteCollection {
             fatalError("Wrong path in here")
         }
 
-        return UserStatisticsController(mdc: self.mdc).getAggregatedTipps(for: team, optimist: opt, req: req)
+        return UserStatisticsController(mdc: self.mdc).getAggregatedTipps(for: team, optimist: opt)
     }
-}
-
-struct RequestVariables {
-    let client: String
-    let team: String?
 }
 
 private extension PathComponent {
