@@ -1,15 +1,18 @@
 import Vapor
 
 struct SingleStatisticController: RouteCollection {
+    let mdc: MatchdayController
+    init(mdc: MatchdayController) {
+        self.mdc = mdc
+    }
     
     func boot(routes: RoutesBuilder) throws {
-        let matchdayRoute = routes.grouped(":client")
-
-        matchdayRoute.get("team", ":team") { (req) -> EventLoopFuture<View> in
+        
+        routes.get("team", ":team") { (req) -> EventLoopFuture<View> in
             guard let team = req.parameters.get("team")
             else { throw Abort(.badRequest, reason: "Team not provided.") }
 
-            let userStats = UserStatisticsController()
+            let userStats = UserStatisticsController(mdc: self.mdc)
 
             return req.view.render(
                 "teamStats",
@@ -20,22 +23,24 @@ struct SingleStatisticController: RouteCollection {
             )
         }
 
-        matchdayRoute.get("difference", ":diff") { (req) -> EventLoopFuture<View> in
+        routes.get("difference", ":diff") { (req) -> EventLoopFuture<View> in
             guard let diffString = req.parameters.get("diff")
             else { throw Abort(.badRequest, reason: "A number is needed.") }
 
             guard let diff = Int(diffString), diff >= 0
             else { throw Abort(.badRequest, reason: "Argument is not a positive number.") }
 
+            let userStats = UserStatisticsController(mdc: self.mdc)
+
             var results: [StatisticObject] = []
             for i in 0..<5 {
-                results.append(UserStatisticsController().getSpecificResult(teamX: i, teamY: i+diff, req: req))
+                results.append(userStats.getSpecificResult(teamX: i, teamY: i+diff, req: req))
             }
 
             return req.view.render(
                 "differenceStat",
                 ["diff": StatisticObject.singleInt(diff),
-                 "results": UserStatisticsController().getResultDifference(difference: diff, req: req),
+                 "results": userStats.getResultDifference(difference: diff, req: req),
                  "resultsTab": StatisticObject.statsObjectArray(results)]
             )
         }

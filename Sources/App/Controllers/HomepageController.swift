@@ -1,14 +1,17 @@
 import Vapor
 
 struct HomepageController: RouteCollection {
+    let mdc: MatchdayController
+    init(mdc: MatchdayController) {
+        self.mdc = mdc
+    }
+
     func boot(routes: RoutesBuilder) throws {
         routes.get(use: getHomeStats)
     }
 
     private func getHomeStats(req: Request) throws -> EventLoopFuture<View> {
-        req.parameters.set("client", to: "diabyarmy")
-        let userStats = UserStatisticsController()
-        let roundStats = RoundStatisticsController()
+        let userStats = UserStatisticsController(mdc: self.mdc)
 
         return req.view.render(
             "stats",
@@ -25,9 +28,7 @@ struct HomepageController: RouteCollection {
              "oneDiff": userStats.getResultDifference(difference: 1, req: req),
              "mostGoals": userStats.getTotalGoals(most: true, req: req),
              "fewestGoals": userStats.getTotalGoals(most: false, req: req),
-             "missed": userStats.getMissedTipps(req: req),
-
-             "empty":roundStats.getNumberOfNonTippers(req: req)
+             "missed": userStats.getMissedTipps(req: req)
             ]
         )
     }

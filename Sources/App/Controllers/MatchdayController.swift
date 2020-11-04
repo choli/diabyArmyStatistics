@@ -1,33 +1,21 @@
 import Vapor
 
 struct MatchdayController {
+    let matchdays: [Spieltag]
 
-    func getMatchday(_ matchday: Int, client: String, req: Request, force: Bool = true) -> Spieltag {
+    init() {
+        var matchdays: [Spieltag] = []
 
-        guard let fileContent = FileManager.default.contents(atPath: "Resources/Matchdays/\(client)\(matchday).json"),
-              let spieltag = try? JSONDecoder().decode(Spieltag.self, from: fileContent)
-        else {
-            if force {
-                assertionFailure("This matchday was not played yet.")
-                return Spieltag(resultate: [], tippspieler: [], spieltag: matchday)
-            } else {
-                return Spieltag(resultate: [], tippspieler: [], spieltag: matchday)
+        for index in 1..<35 {
+            guard let fileContent = FileManager.default.contents(atPath: "Resources/Matchdays/diabyarmy\(index).json"),
+                  let matchday = try? JSONDecoder().decode(Spieltag.self, from: fileContent)
+            else {
+                self.matchdays = matchdays
+                return
             }
+            matchdays.append(matchday)
         }
-        return spieltag
-    }
 
-    func getAllMatchdays(req: Request, matchdayCompletion: (Spieltag) -> Void) {
-        guard let client = req.parameters.get("client")
-        else { assertionFailure("Couldn't find client in request."); return }
-
-        var nextMatchday = 1
-        while true {
-            let matchday = self.getMatchday(nextMatchday, client: client, req: req, force: false)
-            guard !matchday.resultate.isEmpty else { break }
-            req.logger.notice("Matchday: \(nextMatchday), games: \(matchday.resultate.count)")
-            matchdayCompletion(matchday)
-            nextMatchday += 1
-        }
+        self.matchdays = matchdays
     }
 }

@@ -1,7 +1,10 @@
 import Vapor
 
 struct UserStatisticsController {
-    let mdc = MatchdayController()
+    let mdc: MatchdayController
+    init(mdc: MatchdayController) {
+        self.mdc = mdc
+    }
     
     func getExactTipps(for team: String? = nil, req: Request) -> StatisticObject {
         req.logger.notice("Getting exact tipps for \(team ?? "no team")")
@@ -63,7 +66,7 @@ struct UserStatisticsController {
 
     func getMissedTipps(req: Request) -> StatisticObject {
         var userTipps: [String: Int] = [:]
-        self.mdc.getAllMatchdays(req: req) { matchday in
+        self.mdc.matchdays.forEach { matchday in
             for user in matchday.tippspieler where (user.tipps.count > 0 && user.tipps.count < matchday.resultate.count) {
                 if let currentUserTipps = userTipps[user.name] {
                     userTipps[user.name] = currentUserTipps + (matchday.resultate.count - user.tipps.count)
@@ -80,7 +83,7 @@ struct UserStatisticsController {
     private func getAllCorrectUserTendencies(req: Request) -> [TendenzCounter] {
         var userTendencies: [String: [Tendenz: Int]] = [:]
         let emptyDict: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]
-        self.mdc.getAllMatchdays(req: req) { matchday  in
+        self.mdc.matchdays.forEach { matchday in
             matchday.tippspieler.forEach { user in
                 var currentUserTendencies: [Tendenz: Int]
                 if let alreadyThere = userTendencies[user.name] {
@@ -110,7 +113,7 @@ struct UserStatisticsController {
 
     private func getAllTippsOfUsers(req: Request) -> [UserTipps] {
         var userTipps: [String: [UserTipp]] = [:]
-        self.mdc.getAllMatchdays(req: req) { matchday in
+        self.mdc.matchdays.forEach { matchday in
             matchday.tippspieler.forEach { user in
                 if var currentUserTipps = userTipps[user.name] {
                     currentUserTipps.append(contentsOf: user.tipps.map { $0.asUserTipp })
@@ -134,7 +137,7 @@ struct UserStatisticsController {
     private func getAllTipps(of team: String, exactOnly: Bool, req: Request) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
         req.logger.notice("Get all \(exactOnly ? "exact": "exact and not exact") tipps of \(team)")
-        self.mdc.getAllMatchdays(req: req) { matchday in
+        self.mdc.matchdays.forEach { matchday in
             req.logger.notice("Getting \(exactOnly ? "exact": "") tipps of \(team) on matchday \(matchday.spieltag)")
             var matchResult: Spiel?
             if exactOnly {
@@ -167,7 +170,7 @@ struct UserStatisticsController {
 
     private func getAllTipps(exactOnly: Bool, req: Request) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
-        self.mdc.getAllMatchdays(req: req) { matchday in
+        self.mdc.matchdays.forEach { matchday in
             for tippspieler in matchday.tippspieler {
                 for teamTipp in tippspieler.tipps {
                     var matchResult: Spiel?

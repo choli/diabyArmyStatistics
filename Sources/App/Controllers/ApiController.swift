@@ -1,6 +1,10 @@
 import Vapor
 
 struct ApiController: RouteCollection {
+    let mdc: MatchdayController
+    init(mdc: MatchdayController) {
+        self.mdc = mdc
+    }
     
     func boot(routes: RoutesBuilder) throws {
         let matchdayRoute = routes.grouped("api", ":client")
@@ -16,27 +20,23 @@ struct ApiController: RouteCollection {
 
     private func getMatchday(req: Request) throws -> Spieltag {
 
-        guard let client = req.parameters.get("client"),
-              let matchdayString = req.parameters.get("matchday"),
-              let matchday = Int(matchdayString)
+        guard let matchdayString = req.parameters.get("matchday"),
+              let matchday = Int(matchdayString),
+              matchday > 0, matchday < 35
         else { assertionFailure("This matchday doesn't exist")
             throw RequestErrorObject(error: .unknownMatchday)
         }
 
-        return MatchdayController().getMatchday(matchday, client: client, req: req)
+        return self.mdc.matchdays[matchday - 1]
     }
 
     private func getAllMatchdays(req: Request) -> [Spieltag] {
-        var matchdays: [Spieltag] = []
-        MatchdayController().getAllMatchdays(req: req) { matchday in
-            matchdays.append(matchday)
-        }
-        return matchdays
+        return self.mdc.matchdays
     }
 
     private func getExactTipps(req: Request) -> StatisticObject {
         guard let team = req.parameters.get("team") else { fatalError("no team defined") }
-        return UserStatisticsController().getExactTipps(for: team, req: req)
+        return UserStatisticsController(mdc: self.mdc).getExactTipps(for: team, req: req)
     }
 
     func getAggregatedTipps(req: Request) -> StatisticObject {
@@ -54,7 +54,7 @@ struct ApiController: RouteCollection {
             fatalError("Wrong path in here")
         }
 
-        return UserStatisticsController().getAggregatedTipps(for: team, optimist: opt, req: req)
+        return UserStatisticsController(mdc: self.mdc).getAggregatedTipps(for: team, optimist: opt, req: req)
     }
 }
 
