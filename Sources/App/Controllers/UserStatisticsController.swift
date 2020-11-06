@@ -48,7 +48,13 @@ struct UserStatisticsController {
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getPoints(for team: String) {}
+    func getPoints(for team: String) -> StatisticObject {
+        let tipps = self.getAllTippResults(of: team, exactOnly: false)
+        let result = tipps.summedUpTippPoints.getTop(5)
+        return StatisticObject.tendenzCounter(result)
+    }
+
+    func getMissedTipps() -> StatisticObject {
         var userTipps: [String: Int] = [:]
         self.mdc.matchdays.forEach { matchday in
             for user in matchday.tippspieler where (user.tipps.count > 0 && user.tipps.count < matchday.resultate.count) {
@@ -185,12 +191,12 @@ struct UserStatisticsController {
             var allTippResults: [UserTipp] = []
             for tipp in userTipps {
                 if tipp.heimteam == team {
-                    allTippResults.append(UserTipp(goalsFor: tipp.heim, goalsAgainst: tipp.gast))
+                    allTippResults.append(tipp.asUserTipp)
                 } else if tipp.gastteam == team {
-                    allTippResults.append(UserTipp(goalsFor: tipp.gast, goalsAgainst: tipp.heim))
+                    allTippResults.append(UserTipp(goalsFor: tipp.gast, goalsAgainst: tipp.heim, points: tipp.spielpunkte))
                 } else {
                     guard team == nil else { fatalError("This should not happen") }
-                    allTippResults.append(UserTipp(goalsFor: tipp.heim, goalsAgainst: tipp.gast))
+                    allTippResults.append(tipp.asUserTipp)
                 }
             }
             return UserTipps(name: name, tipps: allTippResults)

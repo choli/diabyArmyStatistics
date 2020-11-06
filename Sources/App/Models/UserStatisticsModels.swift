@@ -11,9 +11,10 @@ struct Spiel: Content {
     let gastteam: String
     let heim: Int
     let gast: Int
+    let spielpunkte: Int
 
     var asUserTipp: UserTipp {
-        return UserTipp(goalsFor: heim, goalsAgainst: gast)
+        return UserTipp(goalsFor: heim, goalsAgainst: gast, points: spielpunkte)
     }
 }
 
@@ -33,6 +34,7 @@ struct Spieltag: Content {
 struct UserTipp: Content {
     let goalsFor: Int
     let goalsAgainst: Int
+    let points: Int
 
     // Computed properties
     var difference: Int {
@@ -121,10 +123,11 @@ extension Array where Element == UserTipps {
         return self.map {
             let goalsFor = $0.tipps.reduce(0) { x,y in x + y.goalsFor }
             let goalsAgainst = $0.tipps.reduce(0) { x,y in x + y.goalsAgainst }
+            let points = $0.tipps.reduce(0) { x,y in x + y.points }
             let wins = $0.tipps.filter { tipp in tipp.goalsFor > tipp.goalsAgainst }.count
             let draws = $0.tipps.filter { tipp in tipp.goalsFor == tipp.goalsAgainst }.count
             let losses = $0.tipps.filter { tipp in tipp.goalsFor < tipp.goalsAgainst }.count
-            let tipp = UserTipp(goalsFor: goalsFor, goalsAgainst: goalsAgainst)
+            let tipp = UserTipp(goalsFor: goalsFor, goalsAgainst: goalsAgainst, points: points)
             return AggregatedUserTipp(name: $0.name, tipp: tipp, siege: wins, unentschieden: draws, niederlagen: losses)
         }
         .sorted {
@@ -152,6 +155,14 @@ extension Array where Element == UserTipps {
             }
             return $0.name < $1.name
         }
+    }
+
+    var summedUpTippPoints: [TendenzCounter] {
+        self.map { userTipps -> TendenzCounter in
+            let points = userTipps.tipps.reduce(0) { x,y in x + y.points }
+            return TendenzCounter(name: userTipps.name, heimsiege: points, gastsiege: 0, unentschieden: 0)
+        }
+        .sortTotal()
     }
 
     var convertedToTendencies: [TendenzCounter] {

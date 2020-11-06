@@ -19,7 +19,8 @@ struct SingleStatisticController: RouteCollection {
                 ["team": StatisticObject.singleString(team),
                  "exact": userStats.getExactTipps(for: team),
                  "optimists": userStats.getAggregatedTipps(for: team, optimist: true),
-                 "pessimists": userStats.getAggregatedTipps(for: team, optimist: false)]
+                 "pessimists": userStats.getAggregatedTipps(for: team, optimist: false),
+                 "points": userStats.getPoints(for: team)]
             )
         }
 
