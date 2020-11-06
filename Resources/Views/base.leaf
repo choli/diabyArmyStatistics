@@ -96,8 +96,16 @@
           <img src="https://b04-ep-media-prod.azureedge.net/pickerimages/Diaby_Freisteller_1920_16180_152198_M.png" class="diaby">
             <h1>diabyArmy <br class="mobile-break"> Tippspiel Stats</h1>
           </a>
-        
+
         </div>
+
+        <ul class="navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/team/Lev">Teams</a></li>
+          <li><a href="/difference/1">Tordifferenz</a></li>
+          <li><a href="/placeholder">Platzhalter</a></li>
+        </ul>
+
       </div>
     </header>
 

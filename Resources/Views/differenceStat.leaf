@@ -1,6 +1,27 @@
 #extend("base"):
     #export("body"):
 
+    <div class="container">
+
+      <form>
+        <select name="teams" class="custom-select" onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
+          <option selected>Differenz auswählen</option>
+          <option value="/difference/0">0 Tore</option>
+          <option value="/difference/1">1 Tore</option>
+          <option value="/difference/2">2 Tore</option>
+          <option value="/difference/3">3 Tore</option>
+          <option value="/difference/4">4 Tore</option>
+          <option value="/difference/5">5 Tore</option>
+          <option value="/difference/6">6 Tore</option>
+          <option value="/difference/7">7 Tore</option>
+          <option value="/difference/8">8 Tore</option>
+          <option value="/difference/9">9 Tore</option>
+        </select>
+      </form>
+
+    </div>
+
+
     <div class="container stats">
     <div class="card-columns mb-5 mt-5">
         

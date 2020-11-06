@@ -1,6 +1,35 @@
 #extend("base"):
     #export("body"):
 
+    <div class="container">
+
+        <form>
+         <select name="teams" class="custom-select" onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
+           <option selected>Verein auswählen</option>
+           <option value="/team/ArmB">ArmB</option>
+           <option value="/team/BMG">BMG</option>
+           <option value="/team/BVB">BVB</option>
+           <option value="/team/FCA">FCA</option>
+           <option value="/team/FCB">FCB</option>
+           <option value="/team/Frei">Frei</option>
+           <option value="/team/Herth">Herth</option>
+           <option value="/team/Hoff">Hoff</option>
+           <option value="/team/Köln">Köln</option>
+           <option value="/team/Leip">Leip</option>
+           <option value="/team/Lev">Lev</option>
+           <option value="/team/M05">M05</option>
+           <option value="/team/S04">S04</option>
+           <option value="/team/SGE">SGE</option>
+           <option value="/team/SVW">SVW</option>
+           <option value="/team/Stgt">Stgt</option>
+           <option value="/team/Union">Union</option>
+           <option value="/team/Wolf">Wolf</option>
+          </select>
+       </form>
+
+    </div>
+
+
     <div class="container stats">
     <div class="card-columns mb-5 mt-5">
         
@@ -74,6 +103,24 @@
                     <td style="text-align:right">#(user.niederlagen)</td>
                     <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
                     <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+                </tr>
+                #endfor
+            </table>
+        </div>
+        </div>
+
+        <div class="card">
+        <div class="card-header">
+            <h4>#(team) als Punktegarant</h4>
+            <p class="subtitle">Wer holt sich die meisten Tippspielpunkte in Spielen von #(team)?</p>
+            </div>
+            <div class="card-body">
+            <table class="">
+                #for(user in points):
+                <tr>
+                    <td>#(user.name)</td>
+                    <td style="text-align:right">#(user.heimsiege)</td>
+                    <td style="text-align:left">Punkte</td>
                 </tr>
                 #endfor
             </table>
