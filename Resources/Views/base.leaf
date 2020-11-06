@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>diabyArmy</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous"></script>
         <style>
             body {
             }
@@ -40,6 +43,16 @@
             }
             .bg-red {
                 background-color: \#d0021b!important;
+            }
+            .btn-primary {
+                color: \#d0021b!important;
+                background-color: white!important;
+                border-color: \#d0021b!important;
+            }
+            .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+                color: white!important;
+                background-color: \#d0021b!important;
+                border-color: white;
             }
             .diaby {
                 position: relative;
@@ -96,18 +109,27 @@
           <img src="https://b04-ep-media-prod.azureedge.net/pickerimages/Diaby_Freisteller_1920_16180_152198_M.png" class="diaby">
             <h1>diabyArmy <br class="mobile-break"> Tippspiel Stats</h1>
           </a>
-
+          
         </div>
-
-        <ul class="navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/team/Lev">Teams</a></li>
-          <li><a href="/difference/1">Tordifferenz</a></li>
-          <li><a href="/placeholder">Platzhalter</a></li>
-        </ul>
 
       </div>
     </header>
+    
+    <div class="container text-center mt-2 mb-4">
+    <div class="btn-group">
+      <a href="/" class="btn btn-primary">Home</a>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/team/Lev">Teams</a>
+                      <a class="dropdown-item" href="/difference/1">Tordifferenz</a>
+                      <a class="dropdown-item" href="/placeholder">Platzhalter</a>
+      </div>
+    </div>
+    
+
+    </div>
 
         #import("body")
 
