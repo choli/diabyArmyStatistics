@@ -1,103 +1,102 @@
 #extend("base"):
-    #export("body"):
+#export("body"):
 
-    <div class="container">
-
-      <form>
-        <select name="teams" class="custom-select" onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
-          <option selected>Differenz auswählen</option>
-          <option value="/difference/0">0 Tore</option>
-          <option value="/difference/1">1 Tore</option>
-          <option value="/difference/2">2 Tore</option>
-          <option value="/difference/3">3 Tore</option>
-          <option value="/difference/4">4 Tore</option>
-          <option value="/difference/5">5 Tore</option>
-          <option value="/difference/6">6 Tore</option>
-          <option value="/difference/7">7 Tore</option>
-          <option value="/difference/8">8 Tore</option>
-          <option value="/difference/9">9 Tore</option>
+<div class="container">
+    <form>
+        <select name="teams" class="custom-select"
+            onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
+            <option selected>Differenz auswählen</option>
+            <option value="/difference/0">0 Tore</option>
+            <option value="/difference/1">1 Tore</option>
+            <option value="/difference/2">2 Tore</option>
+            <option value="/difference/3">3 Tore</option>
+            <option value="/difference/4">4 Tore</option>
+            <option value="/difference/5">5 Tore</option>
+            <option value="/difference/6">6 Tore</option>
+            <option value="/difference/7">7 Tore</option>
+            <option value="/difference/8">8 Tore</option>
+            <option value="/difference/9">9 Tore</option>
         </select>
-      </form>
+    </form>
+</div>
 
-    </div>
 
-
-    <div class="container stats">
+<div class="container stats">
     <div class="card-columns mb-5 mt-5">
-        
+
         <div class="card">
-        <div class="card-header">
-            <h4>#(diff)-Tore Differenz</h4>
-            <p class="subtitle">Wer tippt die meisten Spiele mit dieser Differenz?</p>
+            <div class="card-header">
+                <h4>#(diff)-Tore Differenz</h4>
+                <p class="subtitle">Wer tippt die meisten Spiele mit dieser Differenz?</p>
             </div>
             <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    #if(diff > 0):
-                    <th>Total</th>
-                    <th>Heim</th>
-                    <th>Gast</th>
-                    #else:
-                    <th>Total</th>
-                    #endif
-                </tr>
-                #for(user in results):
-                <tr>
-                    <td>#(user.name)</td>
-                    #if(diff > 0):
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                    #else:
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    #endif
-                </tr>
-                #endfor
-            </table>
-        </div>
+                <table class="">
+                    <tr>
+                        <th></th>
+                        #if(diff > 0):
+                        <th>Total</th>
+                        <th>Heim</th>
+                        <th>Gast</th>
+                        #else:
+                        <th>Total</th>
+                        #endif
+                    </tr>
+                    #for(user in results):
+                    <tr>
+                        <td>#(user.name)</td>
+                        #if(diff > 0):
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                        #else:
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        #endif
+                    </tr>
+                    #endfor
+                </table>
+            </div>
         </div>
 
         #for(results in resultsTab):
         <div class="card">
-        <div class="card-header">
-            <h4>#(diff + index)-#(index) Tipper</h4>
-            <p class="subtitle">Wer tippt dieses Resultat am meisten?</p>
-        </div>
-        <div class="card-body">
-            #if(isEmpty(results)):
-            <p>Dieses Resultat hat noch niemand getippt.</p>
-            #else:
-            <table class="">
-                <tr>
-                    <th></th>
-                    #if(diff > 0):
-                    <th>Total</th>
-                    <th>#(diff + index)-#(index)</th>
-                    <th>#(index)-#(diff + index)</th>
-                    #else:
-                    <th>#(index)-#(index)</th>
-                    #endif
-                </tr>
-                #for(user in results):
-                <tr>
-                    <td>#(user.name)</td>
-                    #if(diff > 0):
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                    #else:
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    #endif
-                </tr>
-                #endfor
-            </table>
-            #endif
-        </div>
+            <div class="card-header">
+                <h4>#(diff + index)-#(index) Tipper</h4>
+                <p class="subtitle">Wer tippt dieses Resultat am meisten?</p>
+            </div>
+            <div class="card-body">
+                #if(isEmpty(results)):
+                <p>Dieses Resultat hat noch niemand getippt.</p>
+                #else:
+                <table class="">
+                    <tr>
+                        <th></th>
+                        #if(diff > 0):
+                        <th>Total</th>
+                        <th>#(diff + index)-#(index)</th>
+                        <th>#(index)-#(diff + index)</th>
+                        #else:
+                        <th>#(index)-#(index)</th>
+                        #endif
+                    </tr>
+                    #for(user in results):
+                    <tr>
+                        <td>#(user.name)</td>
+                        #if(diff > 0):
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                        #else:
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        #endif
+                    </tr>
+                    #endfor
+                </table>
+                #endif
+            </div>
         </div>
         #endfor
 
     </div>
-    </div>
-    #endexport
+</div>
+#endexport
 #endextend

@@ -1,148 +1,163 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>diabyArmy</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous"></script>
-        <style>
-            body {
-            }
 
-            div.stats {
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>diabyArmy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"
+        integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw=="
+        crossorigin="anonymous"></script>
+    <style>
+        body {}
 
-            }
+        div.stats {}
 
-            p.subtitle {
-                margin-bottom: 0;
-            }
+        p.subtitle {
+            margin-bottom: 0;
+        }
 
-            p.inventor {
-                margin-top: 0;
-                margin-bottom: 0;
-                font-style: italic;
-                font-size: 90%;
-            }
-            
-            header {
-                overflow: hidden;
-                }
-                
-                td {
-                    padding: 4px;
-                    }
+        p.inventor {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-style: italic;
+            font-size: 90%;
+        }
 
-            div.stat {
-                display: inline-block;
-                //border: 1px solid red;
-                vertical-align: top;
-                padding: 20px;
-            }
-            .bg-red {
-                background-color: \#d0021b!important;
-            }
-            .btn-primary {
-                color: \#d0021b!important;
-                background-color: white!important;
-                border-color: \#d0021b!important;
-            }
-            .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
-                color: white!important;
-                background-color: \#d0021b!important;
-                border-color: white;
-            }
-            .diaby {
-                position: relative;
-            /* top: 0; */
+        header {
+            overflow: hidden;
+        }
+
+        td {
+            padding: 4px;
+        }
+
+        div.stat {
+            display: inline-block;
+            vertical-align: top;
+            padding: 20px;
+        }
+
+        .bg-red {
+            background-color: \#d0021b !important;
+        }
+
+        .btn-primary {
+            color: \#d0021b !important;
+            background-color: white !important;
+            border-color: \#d0021b !important;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:focus {
+            color: white !important;
+            background-color: \#d0021b !important;
+            border-color: white;
+        }
+
+        .diaby {
+            position: relative;
             margin-bottom: -45px;
             margin-top: -10px;
             width: 100px;
+        }
+
+        table.table td {
+            padding: 0.25rem;
+        }
+
+        .navbar-brand h1 {
+            margin-left: 30px;
+            font-size: 1.5rem;
+        }
+
+        @media screen and (min-width: 600px) {
+            .mobile-break {
+                display: none;
             }
-            
-            table.table td {
-                padding: 0.25rem;
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1000px) {
+            .mobile-break {
+                display: none;
             }
-            
-            .navbar-brand h1 {
-                    margin-left: 30px;
-                    font-size: 1.5rem;
+
+            .card-columns {
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+                column-count: 2;
             }
-            
-            @media screen and (min-width: 600px)  {
-                .mobile-break { display: none; }
+        }
+
+        @media screen and (max-width: 767px) {
+            .card-columns {
+                -webkit-column-count: 1;
+                -moz-column-count: 1;
+                column-count: 1;
             }
-            
-            @media screen and (min-width: 768px) and (max-width: 1000px)  {
-                         .mobile-break { display: none; }
-                         
-                         .card-columns {
-                            -webkit-column-count: 2;
-                            -moz-column-count: 2;
-                            column-count: 2;
-                         }
+        }
+
+        @media screen and (min-width: 1020px) and (max-width: 1199px) {
+            .container,
+            .container-lg,
+            .container-md,
+            .container-sm {
+                max-width: 1020px;
             }
-            
-            @media screen and (max-width: 767px)  {
-                                    .card-columns {
-                                       -webkit-column-count: 1;
-                                       -moz-column-count: 1;
-                                       column-count: 1;
-                                    }
-                       }
-                       
-                       @media screen and (min-width: 1020px) and (max-width: 1199px) {
-                       .container, .container-lg, .container-md, .container-sm {
-                           max-width: 1020px;
-                       }
-}
-        </style>
-    </head>
-    <body>
-    
+        }
+    </style>
+</head>
+
+<body>
+
     <header>
-      <div class="navbar navbar-dark bg-red shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-          <img src="https://b04-ep-media-prod.azureedge.net/pickerimages/Diaby_Freisteller_1920_16180_152198_M.png" class="diaby">
-            <h1>diabyArmy <br class="mobile-break"> Tippspiel Stats</h1>
-          </a>
-          
+        <div class="navbar navbar-dark bg-red shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <img src="https://b04-ep-media-prod.azureedge.net/pickerimages/Diaby_Freisteller_1920_16180_152198_M.png"
+                        class="diaby">
+                    <h1>diabyArmy <br class="mobile-break"> Tippspiel Stats</h1>
+                </a>
+            </div>
         </div>
-
-      </div>
     </header>
-    
+
     <div class="container text-center mt-2 mb-4">
-    <div class="btn-group">
-      <a href="/" class="btn btn-primary">Home</a>
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/team/Lev">Teams</a>
-                      <a class="dropdown-item" href="/difference/1">Tordifferenz</a>
-      </div>
-    </div>
-    
-
-    </div>
-
-        #import("body")
-
-<footer class="text-muted">
-<div class="container">
-        <p>
-            ---
-            <br/>Follow us on Twitter:
-            <br/>Statistics by <a href="https://twitter.com/__choli/">@__choli</a>
-            <br/>Design by <a href="https://twitter.com/Schnix25/">@Schnix25</a>
-            <br/>
-            <br/>Use \#diabyArmyStats for discussion and stat requests
-        </p>
+        <div class="btn-group">
+            <a href="/" class="btn btn-primary">Home</a>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/team/Lev">Teams</a>
+                <a class="dropdown-item" href="/difference/1">Tordifferenz</a>
+            </div>
         </div>
-        </footer>
-    </body>
+    </div>
+
+    #import("body")
+
+    <footer class="text-muted">
+        <div class="container">
+            <p>
+                ---
+                <br />Follow us on Twitter:
+                <br />Statistics by <a href="https://twitter.com/__choli/">@__choli</a>
+                <br />Design by <a href="https://twitter.com/Schnix25/">@Schnix25</a>
+                <br />
+                <br />Use \#diabyArmyStats for discussion and stat requests
+            </p>
+        </div>
+    </footer>
+</body>
+
 </html>

@@ -1,362 +1,363 @@
 #extend("base"):
-    #export("body"):
+#export("body"):
 
-    <div class="container stats">
+<div class="container stats">
     <div class="card-columns mb-5 mt-5">
-        
+
         <div class="card">
-        <div class="card-header">
-            <h4>Bayer-Kenner</h4>
-            <p>Wer tippt die meisten Spiele des Bayers genau richtig?</p>
-            <p class="inventor">By Germanbsfan</p>
+            <div class="card-header">
+                <h4>Bayer-Kenner</h4>
+                <p>Wer tippt die meisten Spiele des Bayers genau richtig?</p>
+                <p class="inventor">By Germanbsfan</p>
             </div>
             <div class="card-body">
-            <table class="">
-                #for(user in exactLev):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.unentschieden + user.gastsiege)</td>
-                    <td>Spiel(e) richtig</td>
-                </tr>
-                #endfor
-            </table>
+                <table class="">
+                    #for(user in exactLev):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.unentschieden + user.gastsiege)</td>
+                        <td>Spiel(e) richtig</td>
+                    </tr>
+                    #endfor
+                </table>
             </div>
         </div>
 
 
         <div class="card">
-        <div class="card-header">
-            <h4>Exaktes Ergebnis</h4>
-            <p class="subtitle">Wer kennt die ganze Liga am besten?</p>
+            <div class="card-header">
+                <h4>Exaktes Ergebnis</h4>
+                <p class="subtitle">Wer kennt die ganze Liga am besten?</p>
             </div>
             <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>Total</th>
-                    <th>Heim</th>
-                    <th>Un.</th>
-                    <th>Gast</th>
-                </tr>
-                #for(user in exactAll):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.unentschieden)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                </tr>
-                #endfor
-            </table>
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Total</th>
+                        <th>Heim</th>
+                        <th>Un.</th>
+                        <th>Gast</th>
+                    </tr>
+                    #for(user in exactAll):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                    </tr>
+                    #endfor
+                </table>
             </div>
         </div>
 
 
         <div class="card">
-        <div class="card-header">
-            <h4>Korrekter Sieger</h4>
-            <p>Wer weiss oft schon vor dem Spiel, wie der Gewinner heisst?</p>
-            <p class="inventor">By RWingartz</p>
+            <div class="card-header">
+                <h4>Korrekter Sieger</h4>
+                <p>Wer weiss oft schon vor dem Spiel, wie der Gewinner heisst?</p>
+                <p class="inventor">By RWingartz</p>
             </div>
             <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>Total</th>
-                    <th>Heim</th>
-                    <th>Un.</th>
-                    <th>Gast</th>
-                </tr>
-                #for(user in tendencies):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.unentschieden)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                </tr>
-                #endfor
-            </table>
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Total</th>
+                        <th>Heim</th>
+                        <th>Un.</th>
+                        <th>Gast</th>
+                    </tr>
+                    #for(user in tendencies):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                    </tr>
+                    #endfor
+                </table>
             </div>
         </div>
 
 
         <div class="card">
-        <div class="card-header">
-            <h4>Optimistischste Fans</h4>
-            <p class="subtitle">Wer tippt die Spiele des Bayers am optimistischsten?</p>
+            <div class="card-header">
+                <h4>Optimistischste Fans</h4>
+                <p class="subtitle">Wer tippt die Spiele des Bayers am optimistischsten?</p>
             </div>
             <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>S</th>
-                    <th>U</th>
-                    <th>N</th>
-                    <th>Torverh.</th>
-                    <th>Diff.</th>
-                </tr>
-                #for(user in opt):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.siege)</td>
-                    <td style="text-align:right">#(user.unentschieden)</td>
-                    <td style="text-align:right">#(user.niederlagen)</td>
-                    <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
-                    <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
-                </tr>
-                #endfor
-            </table>
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>S</th>
+                        <th>U</th>
+                        <th>N</th>
+                        <th>Torverh.</th>
+                        <th>Diff.</th>
+                    </tr>
+                    #for(user in opt):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.siege)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                        <td style="text-align:right">#(user.niederlagen)</td>
+                        <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+                        <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+                    </tr>
+                    #endfor
+                </table>
             </div>
         </div>
 
 
         <div class="card">
-         <div class="card-header">
-            <h4>Pessimistischste Fans</h4>
-            <p class="subtitle">Wer hält nichts auf den Bayer?</p>
-            </div>
-                 <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>S</th>
-                    <th>U</th>
-                    <th>N</th>
-                    <th>Torverh.</th>
-                    <th>Diff.</th>
-                </tr>
-                #for(user in pess):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.siege)</td>
-                    <td style="text-align:right">#(user.unentschieden)</td>
-                    <td style="text-align:right">#(user.niederlagen)</td>
-                    <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
-                    <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
-                </tr>
-                #endfor
-            </table>
-            </div>
-        </div>
-
-        
-        <div class="card">
-         <div class="card-header">
-            <h4>K*ln Fans?</h4>
-            <p class="subtitle">Wer glaubt denn so fest an diese eine andere Mannschaft?</p>
-            </div>
-                 <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>S</th>
-                    <th>U</th>
-                    <th>N</th>
-                    <th>Torverh.</th>
-                    <th>Diff.</th>
-                </tr>
-                #for(user in col):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.siege)</td>
-                    <td style="text-align:right">#(user.unentschieden)</td>
-                    <td style="text-align:right">#(user.niederlagen)</td>
-                    <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
-                    <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
-                </tr>
-                #endfor
-            </table>
-            </div>
-        </div>
-
-        
-        <div class="card">
-         <div class="card-header">
-            <h4>Heimstärke</h4>
-            <p class="subtitle">Wer tippt nur auf die Heimmannschaften?</p>
-            </div>
-                 <div class="card-body">
-            <table class="">
-                #for(user in home):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td>Heimsiege</td>
-                </tr>
-                #endfor
-            </table>
-            </div>
-        </div>
-
-        
-        <div class="card">
-         <div class="card-header">
-            <h4>Eher unentschieden</h4>
-            <p class="subtitle">Wer glaubt noch an die Ausgeglichenheit der Liga?</p>
-            </div>
-                 <div class="card-body">
-            <table class="">
-                #for(user in draw):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.unentschieden)</td>
-                    <td>Unentschieden</td>
-                </tr>
-                #endfor
-            </table>
-            </div>
-        </div>
-
-        
-        <div class="card">
-         <div class="card-header">
-            <h4>Auswärtsfans!</h4>
-            <p class="subtitle">Wer denkt, dass es auswärts in halbvollen Stadien besser geht?</p>
-            </div>
-                 <div class="card-body">
-            <table class="">
-                #for(user in away):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                    <td>Auswärtssiege</td>
-                </tr>
-                #endfor
-            </table>
-            </div>
-        </div>
-
-        
-        <div class="card">
-         <div class="card-header">
-            <h4>Zwei-zu-Eins Tipper</h4>
-            <p class="subtitle">Wer denkt, dass Fussballspiele immer die Gleichen sind?</p>
-            </div>
-                 <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>Total</th>
-                    <th>2-1</th>
-                    <th>1-2</th>
-                </tr>
-                #for(user in twoOne):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                </tr>
-                #endfor
-            </table>
-            </div>
-        </div>
-
-
-        <div class="card">
-         <div class="card-header">
-            <h4>Alles ist knapp</h4>
-            <p class="subtitle">Wer tippt die meisten Spiele mit nur einem Tor Unterschied?</p>
+            <div class="card-header">
+                <h4>Pessimistischste Fans</h4>
+                <p class="subtitle">Wer hält nichts auf den Bayer?</p>
             </div>
             <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>Total</th>
-                    <th>Heim</th>
-                    <th>Gast</th>
-                </tr>
-                #for(user in oneDiff):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                </tr>
-                #endfor
-            </table>
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>S</th>
+                        <th>U</th>
+                        <th>N</th>
+                        <th>Torverh.</th>
+                        <th>Diff.</th>
+                    </tr>
+                    #for(user in pess):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.siege)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                        <td style="text-align:right">#(user.niederlagen)</td>
+                        <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+                        <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+                    </tr>
+                    #endfor
+                </table>
             </div>
         </div>
 
 
         <div class="card">
-         <div class="card-header">
-            <h4>Torfestival</h4>
-            <p>Wer glaubt noch an torreiche Spiele?</p>
-            <p class="inventor">By mario_1196</p>
+            <div class="card-header">
+                <h4>K*ln Fans?</h4>
+                <p class="subtitle">Wer glaubt denn so fest an diese eine andere Mannschaft?</p>
             </div>
             <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>Ø Tore</th>
-                    <th>Total</th>
-                    <th>Heim</th>
-                    <th>Gast</th>
-                </tr>
-                #for(user in mostGoals):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.average)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                </tr>
-                #endfor
-            </table>
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>S</th>
+                        <th>U</th>
+                        <th>N</th>
+                        <th>Torverh.</th>
+                        <th>Diff.</th>
+                    </tr>
+                    #for(user in col):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.siege)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                        <td style="text-align:right">#(user.niederlagen)</td>
+                        <td style="text-align:center">#(user.tipp.goalsFor):#(user.tipp.goalsAgainst)</td>
+                        <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
+                    </tr>
+                    #endfor
+                </table>
             </div>
         </div>
 
 
         <div class="card">
-        <div class="card-header">
-            <h4>Mourinho-Versteher</h4>
-            <p>Wer tippt bei Spielen darauf, dass wenige Tore fallen?</p>
-            <p class="inventor">By mario_1196</p>
-        </div>
-        <div class="card-body">
-            <table class="">
-                <tr>
-                    <th></th>
-                    <th>Ø Tore</th>
-                    <th>Total</th>
-                    <th>Heim</th>
-                    <th>Gast</th>
-                </tr>
-                #for(user in fewestGoals):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.average)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
-                    <td style="text-align:right">#(user.heimsiege)</td>
-                    <td style="text-align:right">#(user.gastsiege)</td>
-                </tr>
-                #endfor
-            </table>
-        </div>
+            <div class="card-header">
+                <h4>Heimstärke</h4>
+                <p class="subtitle">Wer tippt nur auf die Heimmannschaften?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(user in home):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td>Heimsiege</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
         </div>
 
 
         <div class="card">
-        <div class="card-header">
-            <h4>Spätaufsteher</h4>
-            <p class="subtitle">Wer vergisst die meisten Spiele zu tippen? (Komplett verpasste Spieltage nicht mitgezählt)</p>
+            <div class="card-header">
+                <h4>Eher unentschieden</h4>
+                <p class="subtitle">Wer glaubt noch an die Ausgeglichenheit der Liga?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(user in draw):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                        <td>Unentschieden</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
         </div>
-        <div class="card-body">
-            <table class="">
-                #for(user in missed):
-                <tr>
-                    <td>#(user.name)</td>
-                    <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
-                    <td>Spiel(e) verpasst</td>
-                </tr>
-                #endfor
-            </table>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Auswärtsfans!</h4>
+                <p class="subtitle">Wer denkt, dass es auswärts in halbvollen Stadien besser geht?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(user in away):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                        <td>Auswärtssiege</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
         </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Zwei-zu-Eins Tipper</h4>
+                <p class="subtitle">Wer denkt, dass Fussballspiele immer die Gleichen sind?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Total</th>
+                        <th>2-1</th>
+                        <th>1-2</th>
+                    </tr>
+                    #for(user in twoOne):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Alles ist knapp</h4>
+                <p class="subtitle">Wer tippt die meisten Spiele mit nur einem Tor Unterschied?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Total</th>
+                        <th>Heim</th>
+                        <th>Gast</th>
+                    </tr>
+                    #for(user in oneDiff):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Torfestival</h4>
+                <p>Wer glaubt noch an torreiche Spiele?</p>
+                <p class="inventor">By mario_1196</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Ø Tore</th>
+                        <th>Total</th>
+                        <th>Heim</th>
+                        <th>Gast</th>
+                    </tr>
+                    #for(user in mostGoals):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.average)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Mourinho-Versteher</h4>
+                <p>Wer tippt bei Spielen darauf, dass wenige Tore fallen?</p>
+                <p class="inventor">By mario_1196</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Ø Tore</th>
+                        <th>Total</th>
+                        <th>Heim</th>
+                        <th>Gast</th>
+                    </tr>
+                    #for(user in fewestGoals):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.average)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.gastsiege)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Spätaufsteher</h4>
+                <p class="subtitle">Wer vergisst die meisten Spiele zu tippen? (Komplett verpasste Spieltage nicht
+                    mitgezählt)</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(user in missed):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege + user.gastsiege + user.unentschieden)</td>
+                        <td>Spiel(e) verpasst</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
         </div>
 
     </div>
-    </div>
-    #endexport
+</div>
+#endexport
 #endextend
