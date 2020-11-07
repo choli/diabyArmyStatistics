@@ -21,6 +21,7 @@ struct HomepageController: RouteCollection {
              "opt": userStats.getAggregatedTipps(for: "Lev", optimist: true),
              "pess": userStats.getAggregatedTipps(for: "Lev", optimist: false),
              "col": userStats.getAggregatedTipps(for: "Köln", optimist: true),
+             "levpoints": userStats.getPoints(for: "Lev"),
              "home": userStats.getTendencies(by: .heimsieg),
              "draw": userStats.getTendencies(by: .unentschieden),
              "away": userStats.getTendencies(by: .gastsieg),

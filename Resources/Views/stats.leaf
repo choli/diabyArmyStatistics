@@ -173,6 +173,26 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>Bayer bringt Punkte</h4>
+                <p>Wer holt sich die meisten Tippspielpunkte in Spielen von Bayer 04?</p>
+                <p class="inventor">By RWingartz</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(user in levpoints):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:left">Punkte</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Heimstärke</h4>
                 <p class="subtitle">Wer tippt nur auf die Heimmannschaften?</p>
             </div>
