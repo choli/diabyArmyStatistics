@@ -127,22 +127,10 @@ struct UserStatisticsController {
     private func getAllTipps(of team: String, exactOnly: Bool) -> [String: [Spiel]] {
         var userTipps: [String: [Spiel]] = [:]
         self.mdc.matchdays.forEach { matchday in
-            var matchResult: Spiel?
-            if exactOnly {
-                guard let result =  matchday.resultate.first(where: { $0.heimteam == team || $0.gastteam == team })
-                else { assertionFailure("This team didn't play on this matchday"); return }
-                matchResult = result
-            }
             for tippspieler in matchday.tippspieler {
-                guard let teamTipp = tippspieler.tipps.first(where: { $0.heimteam == team || $0.gastteam == team })
+                guard let teamTipp = tippspieler.tipps.first(where: { $0.heimteam == team || $0.gastteam == team }),
+                      (!exactOnly || teamTipp.spielpunkte == 4)
                 else { continue }
-
-                if exactOnly {
-                    guard let matchResult = matchResult,
-                          matchResult.heim == teamTipp.heim,
-                          matchResult.gast == teamTipp.gast
-                    else { continue }
-                }
 
                 if var tipps = userTipps[tippspieler.name] {
                     tipps.append(teamTipp)
