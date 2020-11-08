@@ -61,7 +61,7 @@ struct UserStatisticsController {
     func getMissedTipps() -> StatisticObject {
         var userTipps: [String: Int] = [:]
         self.mdc.matchdays.forEach { matchday in
-            for user in matchday.tippspieler where (user.tipps.count > 0 && user.tipps.count < matchday.resultate.count) {
+            for user in matchday.tippspieler where user.tipps.count < matchday.resultate.count {
                 if let currentUserTipps = userTipps[user.name] {
                     userTipps[user.name] = currentUserTipps + (matchday.resultate.count - user.tipps.count)
                 } else {
