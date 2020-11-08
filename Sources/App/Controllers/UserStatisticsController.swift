@@ -30,16 +30,20 @@ struct UserStatisticsController {
         return StatisticObject.tendenzCounter(result)
     }
 
+    func getRawSpecificResult(teamX: Int, teamY: Int) -> [TendenzCounter] {
+        self.getAllTippsOfUsers().countTipps(teamX: teamX, teamY: teamY).getTop(5, total: true).cutOffEmpty
+    }
+
     func getSpecificResult(teamX: Int, teamY: Int) -> StatisticObject {
-        let tipps = self.getAllTippsOfUsers()
-        let result = tipps.countTipps(teamX: teamX, teamY: teamY).getTop(5, total: true).cutOffEmpty
-        return StatisticObject.tendenzCounter(result)
+        StatisticObject.tendenzCounter(self.getRawSpecificResult(teamX: teamX, teamY: teamY))
+    }
+
+    func getRawResultDifference(difference: Int) -> [TendenzCounter] {
+        self.getAllTippsOfUsers().countTipps(difference: difference).getTop(5, total: true).cutOffEmpty
     }
 
     func getResultDifference(difference: Int) -> StatisticObject {
-        let tipps = self.getAllTippsOfUsers()
-        let result = tipps.countTipps(difference: difference).getTop(5, total: true).cutOffEmpty
-        return StatisticObject.tendenzCounter(result)
+        StatisticObject.tendenzCounter(self.getRawResultDifference(difference: difference))
     }
 
     func getTotalGoals(most: Bool) -> StatisticObject {

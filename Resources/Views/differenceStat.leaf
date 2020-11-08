@@ -41,7 +41,7 @@
                         <th>Total</th>
                         #endif
                     </tr>
-                    #for(user in results):
+                    #for(user in results.tipps):
                     <tr>
                         <td>#(user.name)</td>
                         #if(diff > 0):
@@ -53,6 +53,17 @@
                         #endif
                     </tr>
                     #endfor
+                    <tr style="border-bottom:1px solid black">
+                       <td colspan="100%"></td>
+                    </tr>
+                    <td>#(results.result.name)</td>
+                    #if(diff > 0):
+                    <td style="text-align:right">#(results.result.heimsiege + results.result.gastsiege)</td>
+                    <td style="text-align:right">#(results.result.heimsiege)</td>
+                    <td style="text-align:right">#(results.result.gastsiege)</td>
+                    #else:
+                    <td style="text-align:right">#(results.result.heimsiege)</td>
+                    #endif
                 </table>
             </div>
         </div>
@@ -64,10 +75,7 @@
                 <p class="subtitle">Wer tippt dieses Resultat am meisten?</p>
             </div>
             <div class="card-body">
-                #if(isEmpty(results)):
-                <p>Dieses Resultat hat noch niemand getippt.</p>
-                #else:
-                <table class="">
+               <table class="">
                     <tr>
                         <th></th>
                         #if(diff > 0):
@@ -78,7 +86,7 @@
                         <th>#(index)-#(index)</th>
                         #endif
                     </tr>
-                    #for(user in results):
+                    #for(user in results.tipps):
                     <tr>
                         <td>#(user.name)</td>
                         #if(diff > 0):
@@ -90,8 +98,18 @@
                         #endif
                     </tr>
                     #endfor
+                    <tr style="border-bottom:1px solid black">
+                       <td colspan="100%"></td>
+                    </tr>
+                    <td>#(results.result.name)</td>
+                    #if(diff > 0):
+                    <td style="text-align:right">#(results.result.heimsiege + results.result.gastsiege)</td>
+                    <td style="text-align:right">#(results.result.heimsiege)</td>
+                    <td style="text-align:right">#(results.result.gastsiege)</td>
+                    #else:
+                    <td style="text-align:right">#(results.result.heimsiege)</td>
+                    #endif
                 </table>
-                #endif
             </div>
         </div>
         #endfor

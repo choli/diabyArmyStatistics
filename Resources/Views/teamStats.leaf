@@ -77,6 +77,15 @@
                         <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
                     </tr>
                     #endfor
+                    <tr style="border-bottom:1px solid black">
+                       <td colspan="100%"></td>
+                    </tr>
+                    <td>#(result.name)</td>
+                    <td style="text-align:right">#(result.siege)</td>
+                    <td style="text-align:right">#(result.unentschieden)</td>
+                    <td style="text-align:right">#(result.niederlagen)</td>
+                    <td style="text-align:center">#(result.tipp.goalsFor):#(result.tipp.goalsAgainst)</td>
+                    <td style="text-align:right">#(result.tipp.goalsFor - result.tipp.goalsAgainst)</td>
                 </table>
             </div>
         </div>
@@ -106,6 +115,15 @@
                         <td style="text-align:right">#(user.tipp.goalsFor - user.tipp.goalsAgainst)</td>
                     </tr>
                     #endfor
+                    <tr style="border-bottom:1px solid black">
+                       <td colspan="100%"></td>
+                    </tr>
+                    <td>#(result.name)</td>
+                    <td style="text-align:right">#(result.siege)</td>
+                    <td style="text-align:right">#(result.unentschieden)</td>
+                    <td style="text-align:right">#(result.niederlagen)</td>
+                    <td style="text-align:center">#(result.tipp.goalsFor):#(result.tipp.goalsAgainst)</td>
+                    <td style="text-align:right">#(result.tipp.goalsFor - result.tipp.goalsAgainst)</td>
                 </table>
             </div>
         </div>

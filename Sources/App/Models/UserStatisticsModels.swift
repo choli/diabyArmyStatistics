@@ -91,6 +91,11 @@ struct TendenzCounter: Content, TotalEquatable {
     }
 }
 
+struct TendenzCounterWithResult: Content {
+    let result: TendenzCounter
+    let tipps: [TendenzCounter]
+}
+
 enum Tendenz {
     case heimsieg
     case unentschieden
