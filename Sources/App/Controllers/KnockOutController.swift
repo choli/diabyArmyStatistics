@@ -74,25 +74,17 @@ struct KnockOutController: RouteCollection {
 
     private func getNewDuel(from first: KnockOutDuel, against second: KnockOutDuel, matchNumber: Int, results: Spieltag?) -> KnockOutDuel {
         let tipperA: Tippspieler
-        if let firstPointsA = first.punkteA, let firstPointsB = first.punkteB {
-            if firstPointsA == firstPointsB {
-                tipperA = first.tipperA.gesamtpunkte > first.tipperB.gesamtpunkte ? first.tipperA : first.tipperB
-            } else {
-                tipperA = firstPointsA > firstPointsB ? first.tipperA : first.tipperB
-            }
-        } else {
+        if first.winner == 0 {
             tipperA = Tippspieler(name: "Sieger*in Spiel \(first.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0)
+        } else {
+            tipperA = first.winner == 1 ? first.tipperA : first.tipperB
         }
 
         let tipperB: Tippspieler
-        if let secondPointsA = second.punkteA, let secondPointsB = second.punkteB {
-            if secondPointsA == secondPointsB {
-                tipperB = second.tipperA.gesamtpunkte > second.tipperB.gesamtpunkte ? second.tipperA : second.tipperB
-            } else {
-                tipperB = secondPointsA > secondPointsB ? second.tipperA : second.tipperB
-            }
-        } else {
+        if second.winner == 0 {
             tipperB = Tippspieler(name: "Sieger*in Spiel \(second.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0)
+        } else {
+            tipperB = second.winner == 1 ? second.tipperA : second.tipperB
         }
 
         if let results = results {
@@ -122,7 +114,7 @@ struct KnockOutController: RouteCollection {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }),
               log2(Double(participants)).truncatingRemainder(dividingBy: 1) == 0 else { fatalError("Wrong setup") }
         let tippers = firstMatchday.tippspieler
-            .filter { !filter.contains($0.name) }
+            .filter { !filter.contains($0.name) }[0..<participants]
             .sorted(by: { a,b in
                 let pseudoA = String(a.name.data(using: .utf8)!.base64EncodedString().reversed())
                 let pseudoB = String(b.name.data(using: .utf8)!.base64EncodedString().reversed())

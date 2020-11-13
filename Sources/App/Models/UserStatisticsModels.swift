@@ -112,6 +112,25 @@ struct KnockOutDuel: Content {
     let tipperB: Tippspieler
     let punkteA: Int?
     let punkteB: Int?
+    let winner: Int // winner: 0 for none, 1 for A, 2 for B
+    init(spielnummer: Int, tipperA: Tippspieler, tipperB: Tippspieler, punkteA: Int?, punkteB: Int?) {
+        self.spielnummer = spielnummer
+        self.tipperA = tipperA
+        self.tipperB = tipperB
+        self.punkteA = punkteA
+        self.punkteB = punkteB
+
+        if let pointsA = punkteA, let pointsB = punkteB {
+            if pointsA == pointsB {
+                self.winner = tipperA.gesamtpunkte > tipperB.gesamtpunkte ? 1 : 2
+            } else {
+                self.winner = pointsA > pointsB ? 1 : 2
+            }
+        } else {
+            self.winner = 0
+        }
+        
+    }
 }
 
 extension Array where Element == Spiel {
