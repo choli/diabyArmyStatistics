@@ -23,6 +23,9 @@ struct Tippspieler: Content {
     let tipps: [Spiel]
     let punkte: Int
     let position: Int
+    let bonus: Int
+    let siege: Decimal
+    let gesamtpunkte: Int
 }
 
 struct Spieltag: Content {
