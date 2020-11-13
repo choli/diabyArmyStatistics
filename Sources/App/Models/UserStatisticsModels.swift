@@ -106,6 +106,14 @@ enum Tendenz {
     case total
 }
 
+struct KnockOutDuel: Content {
+    let spielnummer: Int
+    let tipperA: Tippspieler
+    let tipperB: Tippspieler
+    let punkteA: Int?
+    let punkteB: Int?
+}
+
 extension Array where Element == Spiel {
     func getCorrectTippTendencies(for results: [Spiel]) -> [Tendenz: Int] {
         var correct: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]

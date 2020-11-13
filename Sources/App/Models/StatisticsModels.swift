@@ -6,6 +6,7 @@ enum StatisticObject: Content {
     case tendenzCounter([TendenzCounter])
     case tendenzCounterWithResult(TendenzCounterWithResult)
     case roundStatistics([RoundStatisticsObject])
+    case knockOutDuels([KnockOutDuel])
     case singleString(String)
     case singleInt(Int)
     case statsObjectArray([StatisticObject])
@@ -22,6 +23,8 @@ enum StatisticObject: Content {
             try tendenzCounterWithResult.encode(to: encoder)
         case .roundStatistics(let rounds):
             try rounds.encode(to: encoder)
+        case .knockOutDuels(let knockOutDuels):
+            try knockOutDuels.encode(to: encoder)
         case .singleString(let string):
             try string.encode(to: encoder)
         case .singleInt(let int):
