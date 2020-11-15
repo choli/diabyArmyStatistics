@@ -131,6 +131,15 @@ struct KnockOutDuel: Content {
         }
         
     }
+
+    init(withWildcard spielnummer: Int, tipper: Tippspieler) {
+        self.spielnummer = spielnummer
+        self.tipperA = tipper
+        self.tipperB = Tippspieler(name: "Freilos", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: -1)
+        self.punkteA = nil
+        self.punkteB = nil
+        self.winner = 1
+    }
 }
 
 extension Array where Element == Spiel {

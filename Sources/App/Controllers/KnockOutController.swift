@@ -122,11 +122,13 @@ struct KnockOutController: RouteCollection {
 
         let participants = Int(pow(2,ceil(log2(Double(tippers.count)))))
 
+        let nonWildcardDuelsCount = (participants / 2) - (participants - tippers.count)
+
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start })
 
         var duels: [KnockOutDuel] = []
 
-        for i in 0..<(participants / 2) {
+        for i in 0..<nonWildcardDuelsCount {
             let tipperA = tippers[2 * i]
             let tipperB = tippers[2 * i + 1]
 
@@ -149,6 +151,11 @@ struct KnockOutController: RouteCollection {
                     punkteB: nil
                 ))
             }
+        }
+
+        for i in (2 * nonWildcardDuelsCount)..<tippers.count {
+            let tipper = tippers[i]
+            duels.append(KnockOutDuel(withWildcard: (nonWildcardDuelsCount / 2) + 1, tipper: tipper))
         }
 
         return duels
