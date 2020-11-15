@@ -12,25 +12,24 @@ struct KnockOutController: RouteCollection {
             guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
-            let duels = self.getDuels(round, start: 8, participants: 64, filter: ["choli"])
+            let duels = self.getDuels(round, start: 8, filter: ["choli"])
 
             return req.view.render(
                 "apertura",
                 [
                     "duels": StatisticObject.knockOutDuels(duels),
-                    "title": StatisticObject.singleString(self.title(for: round, participants: 64))
+                    "title": StatisticObject.singleString(self.title(for: round, duels: duels.count))
                 ]
             )
         }
     }
 
-    private func title(for round: Int, participants: Int) -> String {
-        let rounds = Int(log2(Double(participants)))
-        switch rounds - round {
-        case 0: return "Finale"
-        case 1: return "Halbfinale"
-        case 2: return "Viertelfinale"
-        case 3: return "Achtelfinale"
+    private func title(for round: Int, duels: Int) -> String {
+        switch duels {
+        case 1: return "Finale"
+        case 2: return "Halbfinale"
+        case 4: return "Viertelfinale"
+        case 8: return "Achtelfinale"
         default: break
         }
 
@@ -45,18 +44,18 @@ struct KnockOutController: RouteCollection {
         return ""
     }
 
-    private func getDuels(_ round: Int, start: Int, participants: Int, filter: [String]? = nil) -> [KnockOutDuel] {
+    private func getDuels(_ round: Int, start: Int, filter: [String]? = nil) -> [KnockOutDuel] {
         guard round > 1
-        else { return self.getFirstRoundDuels(start: start, participants: participants, filter: filter ?? []) }
+        else { return self.getFirstRoundDuels(start: start, filter: filter ?? []) }
 
-        let round = self.getDuelsInRound(round, start: start, participants: participants, filter: filter ?? [])
+        let round = self.getDuelsInRound(round, start: start, filter: filter ?? [])
         return round
     }
 
-    private func getDuelsInRound(_ round: Int, start: Int, participants: Int, filter: [String]) -> [KnockOutDuel] {
+    private func getDuelsInRound(_ round: Int, start: Int, filter: [String]) -> [KnockOutDuel] {
         let previousDuels = round == 2 ?
-            self.getFirstRoundDuels(start: start, participants: participants, filter: filter) :
-            self.getDuelsInRound(round - 1, start: start, participants: participants, filter: filter)
+            self.getFirstRoundDuels(start: start, filter: filter) :
+            self.getDuelsInRound(round - 1, start: start, filter: filter)
         let maxId = previousDuels.map { $0.spielnummer }.max()!
 
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start + round - 1 })
@@ -110,16 +109,18 @@ struct KnockOutController: RouteCollection {
 
     }
 
-    private func getFirstRoundDuels(start: Int, participants: Int, filter: [String]) -> [KnockOutDuel] {
-        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }),
-              log2(Double(participants)).truncatingRemainder(dividingBy: 1) == 0 else { fatalError("Wrong setup") }
+    private func getFirstRoundDuels(start: Int, filter: [String]) -> [KnockOutDuel] {
+        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
+
         let tippers = firstMatchday.tippspieler
-            .filter { !filter.contains($0.name) }[0..<participants]
+            .filter { !filter.contains($0.name) }
             .sorted(by: { a,b in
                 let pseudoA = String(a.name.data(using: .utf8)!.base64EncodedString().reversed())
                 let pseudoB = String(b.name.data(using: .utf8)!.base64EncodedString().reversed())
                 return pseudoA < pseudoB
             })
+
+        let participants = Int(pow(2,ceil(log2(Double(tippers.count)))))
 
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start })
 
