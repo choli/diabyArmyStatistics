@@ -13,15 +13,33 @@ struct KnockOutController: RouteCollection {
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
             let duels = self.getDuels(round, start: 8, filter: ["choli"])
+            let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
                 "apertura",
                 [
                     "duels": StatisticObject.knockOutDuels(duels),
-                    "title": StatisticObject.singleString(self.title(for: round, duels: duels.count))
+                    "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
+                    "dropDown": StatisticObject.dropDownDataObject(dropDowns)
                 ]
             )
         }
+    }
+
+    private func getDropDownMenu(for url: String, duels: Int, in round: Int) -> [DropDownDataObject] {
+        var items: [DropDownDataObject] = []
+
+        let rounds = Int(log2(Double(duels))) + round
+
+        for i in 1..<(rounds + 1) {
+            let duelsInRound = Int(pow(2,Double(rounds - i)))
+            items.append(DropDownDataObject(
+                            name: self.title(for: i, duels: duelsInRound),
+                            url: "/\(url)/\(i)")
+            )
+        }
+
+        return items
     }
 
     private func title(for round: Int, duels: Int) -> String {
@@ -38,6 +56,7 @@ struct KnockOutController: RouteCollection {
         case 2: return "Zweite Runde"
         case 3: return "Dritte Runde"
         case 4: return "Vierte Runde"
+        case 5: return "Fünfte Runde"
         default: break
         }
 

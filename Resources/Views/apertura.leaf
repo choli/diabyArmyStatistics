@@ -7,12 +7,9 @@
         <select name="teams" class="custom-select"
             onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
             <option selected>Runde auswählen</option>
-            <option value="/apertura/1">Erste Runde</option>
-            <option value="/apertura/2">Zweite Runde</option>
-            <option value="/apertura/3">Achtelfinale</option>
-            <option value="/apertura/4">Viertelfinale</option>
-            <option value="/apertura/5">Halbfinale</option>
-            <option value="/apertura/6">Finale</option>
+            #for(d in dropDown):
+            <option value="#(d.url)">#(d.name)</option>
+            #endfor
         </select>
     </form>
 
