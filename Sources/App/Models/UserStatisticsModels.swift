@@ -107,22 +107,42 @@ enum Tendenz {
 }
 
 struct KnockOutDuel: Content {
+    enum TieBreaker {
+        case gesamtpunkte
+        case mehrTeamPunkte(String)
+    }
+
     let spielnummer: Int
     let tipperA: Tippspieler
     let tipperB: Tippspieler
+    let positionA: Int
+    let positionB: Int
     let punkteA: Int?
     let punkteB: Int?
     let winner: Int // winner: 0 for none, 1 for A, 2 for B
-    init(spielnummer: Int, tipperA: Tippspieler, tipperB: Tippspieler, punkteA: Int?, punkteB: Int?) {
+    init(spielnummer: Int, tipperA: Tippspieler, tipperB: Tippspieler, positionA: Int, positionB: Int, punkteA: Int?, punkteB: Int?, tieBreaker: TieBreaker) {
         self.spielnummer = spielnummer
         self.tipperA = tipperA
         self.tipperB = tipperB
+        self.positionA = positionA
+        self.positionB = positionB
         self.punkteA = punkteA
         self.punkteB = punkteB
 
         if let pointsA = punkteA, let pointsB = punkteB {
             if pointsA == pointsB {
-                self.winner = tipperA.gesamtpunkte > tipperB.gesamtpunkte ? 1 : 2
+                switch tieBreaker {
+                case .gesamtpunkte:
+                    self.winner = tipperA.gesamtpunkte + pointsA > tipperB.gesamtpunkte + pointsB ? 1 : 2
+                case .mehrTeamPunkte(let team):
+                    let levA = tipperA.tipps.first(where: { $0.heimteam == team || $0.gastteam == team })?.spielpunkte ?? 0
+                    let levB = tipperB.tipps.first(where: { $0.heimteam == team || $0.gastteam == team })?.spielpunkte ?? 0
+                    if levA == levB {
+                        self.winner = tipperA.gesamtpunkte + pointsA > tipperB.gesamtpunkte + pointsB ? 1 : 2
+                    } else {
+                        self.winner = levA > levB ? 1 : 2
+                    }
+                }
             } else {
                 self.winner = pointsA > pointsB ? 1 : 2
             }
@@ -132,10 +152,12 @@ struct KnockOutDuel: Content {
         
     }
 
-    init(withWildcard spielnummer: Int, tipper: Tippspieler) {
+    init(withWildcard spielnummer: Int, tipper: Tippspieler, position: Int) {
         self.spielnummer = spielnummer
         self.tipperA = tipper
         self.tipperB = Tippspieler(name: "Freilos", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: -1)
+        self.positionA = position
+        self.positionB = 0
         self.punkteA = nil
         self.punkteB = nil
         self.winner = 1

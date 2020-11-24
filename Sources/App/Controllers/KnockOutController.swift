@@ -12,7 +12,7 @@ struct KnockOutController: RouteCollection {
             guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
-            let duels = self.getDuels(round, start: 8, filter: ["choli"])
+            let duels = self.getDuels(round, start: 8, tieBreaker: .gesamtpunkte, filter: ["choli"])
             let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
@@ -63,18 +63,18 @@ struct KnockOutController: RouteCollection {
         return ""
     }
 
-    private func getDuels(_ round: Int, start: Int, filter: [String]? = nil) -> [KnockOutDuel] {
+    private func getDuels(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, filter: [String]? = nil) -> [KnockOutDuel] {
         guard round > 1
-        else { return self.getFirstRoundDuels(start: start, filter: filter ?? []) }
+        else { return self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filter: filter ?? []) }
 
-        let round = self.getDuelsInRound(round, start: start, filter: filter ?? [])
+        let round = self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, filter: filter ?? [])
         return round
     }
 
-    private func getDuelsInRound(_ round: Int, start: Int, filter: [String]) -> [KnockOutDuel] {
+    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, filter: [String]) -> [KnockOutDuel] {
         let previousDuels = round == 2 ?
-            self.getFirstRoundDuels(start: start, filter: filter) :
-            self.getDuelsInRound(round - 1, start: start, filter: filter)
+            self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filter: filter) :
+            self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, filter: filter)
         let maxId = previousDuels.map { $0.spielnummer }.max()!
 
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start + round - 1 })
@@ -83,14 +83,14 @@ struct KnockOutController: RouteCollection {
         for i in 0..<(previousDuels.count / 2) {
             let first = previousDuels[2 * i]
             let second = previousDuels[2 * i + 1]
-            let new = self.getNewDuel(from: first, against: second, matchNumber: maxId + i + 1, results: resultMD)
+            let new = self.getNewDuel(from: first, against: second, matchNumber: maxId + i + 1, results: resultMD, tieBreaker: tieBreaker)
             duels.append(new)
         }
 
         return duels
     }
 
-    private func getNewDuel(from first: KnockOutDuel, against second: KnockOutDuel, matchNumber: Int, results: Spieltag?) -> KnockOutDuel {
+    private func getNewDuel(from first: KnockOutDuel, against second: KnockOutDuel, matchNumber: Int, results: Spieltag?, tieBreaker: KnockOutDuel.TieBreaker) -> KnockOutDuel {
         let tipperA: Tippspieler
         if first.winner == 0 {
             tipperA = Tippspieler(name: "Sieger*in Spiel \(first.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0)
@@ -105,30 +105,39 @@ struct KnockOutController: RouteCollection {
             tipperB = second.winner == 1 ? second.tipperA : second.tipperB
         }
 
-        if let results = results {
+        if let results = results,
+           let updateTipperA = results.tippspieler.first(where: { $0.name == tipperA.name }),
+           let updateTipperB = results.tippspieler.first(where: { $0.name == tipperB.name })
+        {
             let pointsA = results.tippspieler.first(where: { $0.name == tipperA.name })?.punkte ?? 0
             let pointsB = results.tippspieler.first(where: { $0.name == tipperB.name })?.punkte ?? 0
             return KnockOutDuel(
                 spielnummer: matchNumber,
-                tipperA: tipperA,
-                tipperB: tipperB,
+                tipperA: updateTipperA,
+                tipperB: updateTipperB,
+                positionA: tipperA.position,
+                positionB: tipperB.position,
                 punkteA: pointsA,
-                punkteB: pointsB
+                punkteB: pointsB,
+                tieBreaker: tieBreaker
             )
         } else {
             return KnockOutDuel(
                 spielnummer: matchNumber,
                 tipperA: tipperA,
                 tipperB: tipperB,
+                positionA: tipperA.position,
+                positionB: tipperB.position,
                 punkteA: nil,
-                punkteB: nil
+                punkteB: nil,
+                tieBreaker: tieBreaker
             )
         }
 
 
     }
 
-    private func getFirstRoundDuels(start: Int, filter: [String]) -> [KnockOutDuel] {
+    private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, filter: [String]) -> [KnockOutDuel] {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
 
         let tippers = firstMatchday.tippspieler
@@ -151,30 +160,39 @@ struct KnockOutController: RouteCollection {
             let tipperA = tippers[2 * i]
             let tipperB = tippers[2 * i + 1]
 
-            if let results = resultMD {
-                let pointsA = results.tippspieler.first(where: { $0.name == tipperA.name })?.punkte ?? 0
-                let pointsB = results.tippspieler.first(where: { $0.name == tipperB.name })?.punkte ?? 0
+            if let results = resultMD,
+               let updateTipperA = results.tippspieler.first(where: { $0.name == tipperA.name }),
+               let updateTipperB = results.tippspieler.first(where: { $0.name == tipperB.name })
+            {
+                let pointsA = updateTipperA.punkte
+                let pointsB = updateTipperB.punkte
                 duels.append(KnockOutDuel(
                     spielnummer: i + 1,
-                    tipperA: tipperA,
-                    tipperB: tipperB,
+                    tipperA: updateTipperA,
+                    tipperB: updateTipperB,
+                    positionA: tipperA.position,
+                    positionB: tipperB.position,
                     punkteA: pointsA,
-                    punkteB: pointsB
+                    punkteB: pointsB,
+                    tieBreaker: tieBreaker
                 ))
             } else {
                 duels.append(KnockOutDuel(
                     spielnummer: i + 1,
                     tipperA: tipperA,
                     tipperB: tipperB,
+                    positionA: tipperA.position,
+                    positionB: tipperB.position,
                     punkteA: nil,
-                    punkteB: nil
+                    punkteB: nil,
+                    tieBreaker: tieBreaker
                 ))
             }
         }
 
         for i in (2 * nonWildcardDuelsCount)..<tippers.count {
             let tipper = tippers[i]
-            duels.append(KnockOutDuel(withWildcard: (nonWildcardDuelsCount / 2) + 1, tipper: tipper))
+            duels.append(KnockOutDuel(withWildcard: (nonWildcardDuelsCount / 2) + 1, tipper: tipper, position: tipper.position))
         }
 
         return duels
