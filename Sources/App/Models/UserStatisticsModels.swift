@@ -26,6 +26,13 @@ struct Tippspieler: Content {
     let bonus: Int
     let siege: Decimal
     let gesamtpunkte: Int
+
+    var hashValue: Int {
+        var hasher = Hasher()
+        hasher.combine(self.name)
+        hasher.combine(self.position)
+        return hasher.finalize()
+    }
 }
 
 struct Spieltag: Content {

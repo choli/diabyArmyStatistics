@@ -12,7 +12,7 @@ struct KnockOutController: RouteCollection {
             guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
-            let duels = self.getDuels(round, start: 8, tieBreaker: .gesamtpunkte, filter: ["choli"])
+            let duels = self.getDuels(round, start: 8, tieBreaker: .gesamtpunkte, sortingAlgo: .reverseBase64, filter: ["choli"])
             let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
@@ -42,6 +42,11 @@ struct KnockOutController: RouteCollection {
         return items
     }
 
+    private enum SortingAlgorithm {
+        case reverseBase64
+        case hashingValue
+    }
+
     private func title(for round: Int, duels: Int) -> String {
         switch duels {
         case 1: return "Finale"
@@ -63,18 +68,18 @@ struct KnockOutController: RouteCollection {
         return ""
     }
 
-    private func getDuels(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, filter: [String]? = nil) -> [KnockOutDuel] {
+    private func getDuels(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, sortingAlgo: SortingAlgorithm, filter: [String]? = nil) -> [KnockOutDuel] {
         guard round > 1
-        else { return self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filter: filter ?? []) }
+        else { return self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, sortigAlgo: sortingAlgo, filter: filter ?? []) }
 
-        let round = self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, filter: filter ?? [])
+        let round = self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, sortingAlgo: sortingAlgo, filter: filter ?? [])
         return round
     }
 
-    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, filter: [String]) -> [KnockOutDuel] {
+    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, sortingAlgo: SortingAlgorithm, filter: [String]) -> [KnockOutDuel] {
         let previousDuels = round == 2 ?
-            self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filter: filter) :
-            self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, filter: filter)
+            self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, sortigAlgo: sortingAlgo, filter: filter) :
+            self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, sortingAlgo: sortingAlgo, filter: filter)
         let maxId = previousDuels.map { $0.spielnummer }.max()!
 
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start + round - 1 })
@@ -137,15 +142,20 @@ struct KnockOutController: RouteCollection {
 
     }
 
-    private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, filter: [String]) -> [KnockOutDuel] {
+    private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, sortigAlgo: SortingAlgorithm, filter: [String]) -> [KnockOutDuel] {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
 
         let tippers = firstMatchday.tippspieler
             .filter { !filter.contains($0.name) }
             .sorted(by: { a,b in
-                let pseudoA = String(a.name.data(using: .utf8)!.base64EncodedString().reversed())
-                let pseudoB = String(b.name.data(using: .utf8)!.base64EncodedString().reversed())
-                return pseudoA < pseudoB
+                switch sortigAlgo {
+                case .reverseBase64:
+                    let pseudoA = String(a.name.data(using: .utf8)!.base64EncodedString().reversed())
+                    let pseudoB = String(b.name.data(using: .utf8)!.base64EncodedString().reversed())
+                    return pseudoA < pseudoB
+                case .hashingValue:
+                    return a.hashValue < b.hashValue
+                }
             })
 
         let participants = Int(pow(2,ceil(log2(Double(tippers.count)))))
