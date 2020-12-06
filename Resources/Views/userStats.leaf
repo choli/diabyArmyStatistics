@@ -1,0 +1,54 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>Punkte-Übersicht</h4>
+                <p class="subtitle">Wie setzten sicht die Punkte von #(username) zusammen?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Total</th>
+                        <th>Heim</th>
+                        <th>Un.</th>
+                        <th>Gast</th>
+                    </tr>
+                    #for(item in pointsPerTipp):
+                    <tr>
+                        <td>#(item.name)</td>
+                        <td style="text-align:right">#(item.heimsiege + item.unentschieden + item.gastsiege)</td>
+                        <td style="text-align:right">#(item.heimsiege)</td>
+                        <td style="text-align:right">#(item.unentschieden)</td>
+                        <td style="text-align:right">#(item.gastsiege)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>mostTippedResults
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Meistgetippte Resultate</h4>
+                <p class="subtitle">Was sind die meistgetippten Resultate von #(username)?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(item in mostTippedResults):
+                    <tr>
+                        <td>#(item.name)</td>
+                        <td style="text-align:right">#(item.heimsiege + item.unentschieden + item.gastsiege)</td>
+                        <td>Tipps</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+#endexport
+#endextend
