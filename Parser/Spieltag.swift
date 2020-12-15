@@ -41,6 +41,10 @@ class Tippspieler: Codable {
 
 
 class Spieltag: Codable {
+    init(spieltag: Int) {
+        self.spieltag = spieltag
+    }
+    let spieltag: Int
     var resultate: [Spiel] = []
     var tippspieler: [Tippspieler] = []
 }

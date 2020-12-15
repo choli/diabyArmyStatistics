@@ -8,13 +8,14 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     private var currentString = ""
 
     // matchday object holders
-    private var completeMatchday = Spieltag()
-
     private var readingMatchday = false
 
     private var readingPlayer = false
     private var helperDict: [PlayerStep: Any] = [:]
     private var currentStep: PlayerStep = .none
+
+    // MARK: - Put proper matchday in here
+    private var completeMatchday = Spieltag(spieltag: 12)
 
     private enum PlayerStep: Hashable {
         case none
@@ -29,21 +30,73 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     }
 
     var parsedSpieltag: Bool {
-        // get the file path for the passed file in the playground bundle
+        let matchday = self.completeMatchday.spieltag
 
-        guard let contentData = FileManager.default.contents(atPath: "/Users/choli/Documents/workspace/diabyArmyParser/diabyArmyParser/Resources/sp11.xml")
-        else { return false }
+        let semaphore = DispatchSemaphore (value: 0)
+        self.getXmlData(for: matchday) { data in
+            guard let contentData = data else { fatalError() }
 
-        self.xmlParser = XMLParser(data: contentData)
-        self.xmlParser.delegate = self
-        let success = self.xmlParser.parse()
+            self.xmlParser = XMLParser(data: contentData)
+            self.xmlParser.delegate = self
+            self.xmlParser.parse()
 
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let matchdayJsonData = try! encoder.encode(self.completeMatchday)
-        print(String(data: matchdayJsonData, encoding: .utf8)!)
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let matchdayJsonData = try! encoder.encode(self.completeMatchday)
 
+            let json = String(data: matchdayJsonData, encoding: .utf8)!
+
+            self.writeJson(json, for: matchday)
+
+            semaphore.signal()
+        }
+
+        semaphore.wait()
         return success
+    }
+
+    private func writeJson(_ json: String, for matchday: Int) {
+        let fileUrl = URL(fileURLWithPath: "/Users/choli/Documents/workspace/diabyArmy/Resources/Matchdays/diabyarmy\(matchday).json")
+        try! json.write(to: fileUrl, atomically: true, encoding: .utf8)
+    }
+
+    private func getXmlData(for matchday: Int, completion: @escaping (Data?) -> Void) {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        var request = URLRequest(url: URL(string: "https://www.kicktipp.de/diabyarmy/tippuebersicht?&spieltagIndex=\(matchday)")!,timeoutInterval: Double.infinity)
+        request.addValue("www.kicktipp.de", forHTTPHeaderField: "Host")
+        request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
+        // Adds login from intercepted headers
+        //request.addValue("kurzname=diabyarmy; login=***; JSESSIONID=***; kt_browser_timezone=Europe%2FZurich; kurzname=diabyarmy; kurzname=diabyarmy; login=***; JSESSIONID=***", forHTTPHeaderField: "Cookie")
+        request.addValue("de-ch", forHTTPHeaderField: "Accept-Language")
+
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let fullContent = String(data: data, encoding: .utf8) else {
+                print(String(describing: error))
+                completion(nil)
+                return
+            }
+
+            var trimmedString = self.crawlNecessaryTableOnly(from: fullContent)
+            trimmedString = trimmedString.replacingOccurrences(of: "&e", with: "&amp;e")
+            trimmedString = trimmedString.replacingOccurrences(of: "&r", with: "&amp;r")
+
+            completion(trimmedString.data(using: .utf8))
+            semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+
+    }
+
+    private func crawlNecessaryTableOnly(from string: String) -> String {
+        let string2 = "<table id=\"ranking\""
+        let index2 = string.range(of: string2)!.lowerBound
+
+        return String(string[index2...])
     }
 
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -85,10 +138,12 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
         let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
         guard string.count > 0 else { return }
         self.currentString += string
+        print(string)
     }
 
     public func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
-        assertionFailure("ERROR: \(parseError.localizedDescription)")
+//        assertionFailure("ERROR: \(parseError.localizedDescription)")
+        print("whats the error:\n\(parseError.localizedDescription)")
     }
 
     // Parser functions

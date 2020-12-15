@@ -22,5 +22,6 @@ let package = Package(
             ]
         ),
         .target(name: "Run", dependencies: [.target(name: "App")]),
+        .target(name: "Parse", path: "Parser")
     ]
 )
