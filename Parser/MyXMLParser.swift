@@ -1,6 +1,8 @@
 import Foundation
-
-//remove scores per player: sub.p --> display.none
+#if !DEBUG
+import FoundationXML
+import FoundationNetworking
+#endif
 
 public class MyXMLParser: NSObject, XMLParserDelegate {
 
