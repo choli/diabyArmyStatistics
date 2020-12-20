@@ -45,6 +45,7 @@ struct KnockOutController: RouteCollection {
     private enum SortingAlgorithm {
         case reverseBase64
         case hashingValue
+        case filename(String)
     }
 
     private func title(for round: Int, duels: Int) -> String {
@@ -142,11 +143,33 @@ struct KnockOutController: RouteCollection {
 
     }
 
+    private struct DrawArray: Codable {
+        let tippspieler: [String]
+    }
+
     private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, sortigAlgo: SortingAlgorithm, filter: [String]) -> [KnockOutDuel] {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
 
+        let drawOrder: [String]?
+        if case let .filename(filename) = sortigAlgo {
+            guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/\(filename).json"),
+              let spieler = try? JSONDecoder().decode(DrawArray.self, from: fileContent)
+            else { fatalError("Couldn't read file with draws") }
+            drawOrder = spieler.tippspieler
+        } else {
+            drawOrder = nil
+        }
+
         let tippers = firstMatchday.tippspieler
-            .filter { !filter.contains($0.name) }
+            .filter {
+                if case .filename = sortigAlgo {
+                    guard let drawOrder = drawOrder else { fatalError("Draw order must not be null")}
+                    return drawOrder.contains($0.name)
+                } else {
+                    return !filter.contains($0.name)
+                }
+
+            }
             .sorted(by: { a,b in
                 switch sortigAlgo {
                 case .reverseBase64:
@@ -155,6 +178,12 @@ struct KnockOutController: RouteCollection {
                     return pseudoA < pseudoB
                 case .hashingValue:
                     return a.hashValue < b.hashValue
+                case .filename:
+                    guard let drawOrder = drawOrder,
+                          let indexA = drawOrder.firstIndex(of: a.name),
+                          let indexB = drawOrder.firstIndex(of: b.name)
+                    else { fatalError("Couldn't find \(a.name) or \(b.name) in draw array.")}
+                    return indexA < indexB
                 }
             })
 

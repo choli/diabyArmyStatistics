@@ -16,8 +16,8 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     private var helperDict: [PlayerStep: Any] = [:]
     private var currentStep: PlayerStep = .none
 
-    // MARK: - Put proper matchday in here
-    private var completeMatchday = Spieltag(spieltag: 12)
+    // MARK: - Put proper matchday in here <---- 👈🏽 🐸
+    private var completeMatchday = Spieltag(spieltag: 13)
 
     private enum PlayerStep: Hashable {
         case none
