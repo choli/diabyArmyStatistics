@@ -140,7 +140,6 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
         let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
         guard string.count > 0 else { return }
         self.currentString += string
-        print(string)
     }
 
     public func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
