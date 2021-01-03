@@ -7,6 +7,17 @@ struct SingleUserStatisticsController: RouteCollection {
     }
 
     func boot(routes: RoutesBuilder) throws {
+        routes.get("user") { (req) -> EventLoopFuture<View> in
+            guard let users = self.mdc.matchdays.last?.tippspieler
+                    .sorted(by: { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending })
+                    .map({ StatisticObject.singleString($0.name) }), users.count > 0
+            else { throw Abort(.badRequest, reason: "No users found.") }
+
+            return req.view.render(
+                "userOverview",
+                ["users": StatisticObject.statsObjectArray(users)]
+            )
+        }
 
         routes.get("user", ":user") { (req) -> EventLoopFuture<View> in
             guard let user = req.parameters.get("user")
@@ -18,7 +29,9 @@ struct SingleUserStatisticsController: RouteCollection {
                 "userStats",
                 ["username": StatisticObject.singleString(user),
                  "pointsPerTipp": self.getCorrectTipps(from: userTipps),
-                 "mostTippedResults": self.getMostTippedResults(from: userTipps)]
+                 "mostTippedResults": self.getMostTippedResults(from: userTipps),
+                 "mostPointsPerTeam": self.getMostPointsPerTeam(from: userTipps)
+                ]
             )
         }
     }
@@ -31,6 +44,33 @@ struct SingleUserStatisticsController: RouteCollection {
                 tippDict[key] = previous + 1
             } else {
                 tippDict[key] = 1
+            }
+        }
+
+        let entries = tippDict.sorted(by: { $0.value > $1.value }).map {
+            TendenzCounter(name: $0.key, heimsiege: $0.value, gastsiege: 0, unentschieden: 0)
+        }
+
+        return StatisticObject.tendenzCounter(entries.getTop(5))
+    }
+
+    private func getMostPointsPerTeam(from tipps: [Spiel]) -> StatisticObject {
+        var tippDict: [String: Int] = [:]
+        for tipp in tipps {
+            //home
+            let home = tipp.heimteam
+            if let previous = tippDict[home] {
+                tippDict[home] = previous + tipp.spielpunkte
+            } else {
+                tippDict[home] = tipp.spielpunkte
+            }
+
+            //away
+            let away = tipp.gastteam
+            if let previous = tippDict[away] {
+                tippDict[away] = previous + tipp.spielpunkte
+            } else {
+                tippDict[away] = tipp.spielpunkte
             }
         }
 

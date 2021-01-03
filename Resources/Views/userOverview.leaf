@@ -1,0 +1,20 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
+        #for(user in users):
+        <div class="card">
+            <a href="/user/#(user)">
+                <div class="card-body">
+                    <p style="margin-bottom: 0px; text-align:center; color:black">#(user)</p>
+                </div>
+            </a>
+        </div>
+        #endfor
+
+    </div>
+</div>
+#endexport
+#endextend

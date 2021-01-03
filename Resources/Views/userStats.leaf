@@ -28,7 +28,7 @@
                     #endfor
                 </table>
             </div>
-        </div>mostTippedResults
+        </div>
 
         <div class="card">
             <div class="card-header">
@@ -47,6 +47,26 @@
                 </table>
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Punktebringer</h4>
+                <p class="subtitle">Tipps von welchem Team bringen #(username) die Punkte?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(item in mostPointsPerTeam):
+                    <tr>
+                        <td>#(item.name)</td>
+                        <td style="text-align:right">#(item.heimsiege + item.unentschieden + item.gastsiege)</td>
+                        <td>Punkte</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
 
     </div>
 </div>
