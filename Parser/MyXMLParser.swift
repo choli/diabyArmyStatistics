@@ -17,7 +17,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     private var currentStep: PlayerStep = .none
 
     // MARK: - Put proper matchday in here <---- 👈🏽 🐸
-    private var completeMatchday = Spieltag(spieltag: 15)
+    private var completeMatchday = Spieltag(spieltag: 16)
 
     private enum PlayerStep: Hashable {
         case none
@@ -32,25 +32,29 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     }
 
     var parsedSpieltag: Bool {
-        let matchday = self.completeMatchday.spieltag
-
         let semaphore = DispatchSemaphore (value: 0)
-        self.getXmlData(for: matchday) { data in
-            guard let contentData = data else { fatalError() }
 
-            self.xmlParser = XMLParser(data: contentData)
-            self.xmlParser.delegate = self
-            self.xmlParser.parse()
+        let matchday = self.completeMatchday.spieltag
+        var previousContent = Data()
 
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            let matchdayJsonData = try! encoder.encode(self.completeMatchday)
+        for offset in stride(from: 20, through: 400, by: 20) {
+            self.getXmlData(for: matchday, offset: offset) { data in
+                guard let contentData = data else { fatalError() }
+                guard contentData != previousContent else { semaphore.signal(); return }
+                previousContent = contentData
 
-            let json = String(data: matchdayJsonData, encoding: .utf8)!
+                self.xmlParser = XMLParser(data: contentData)
+                self.xmlParser.delegate = self
+                self.xmlParser.parse()
 
-            self.writeJson(json, for: matchday)
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+                let matchdayJsonData = try! encoder.encode(self.completeMatchday)
 
-            semaphore.signal()
+                let json = String(data: matchdayJsonData, encoding: .utf8)!
+
+                self.writeJson(json, for: matchday)
+            }
         }
 
         semaphore.wait()
@@ -62,10 +66,10 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
         try! json.write(to: fileUrl, atomically: true, encoding: .utf8)
     }
 
-    private func getXmlData(for matchday: Int, completion: @escaping (Data?) -> Void) {
+    private func getXmlData(for matchday: Int, offset: Int, completion: @escaping (Data?) -> Void) {
         let semaphore = DispatchSemaphore (value: 0)
 
-        var request = URLRequest(url: URL(string: "https://www.kicktipp.de/diabyarmy/tippuebersicht?&spieltagIndex=\(matchday)")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://www.kicktipp.de/diabyarmy/tippuebersicht?&spieltagIndex=\(matchday)&offset=\(offset)")!,timeoutInterval: Double.infinity)
         request.addValue("www.kicktipp.de", forHTTPHeaderField: "Host")
         request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
         // Adds login from intercepted headers
@@ -156,6 +160,10 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
         guard let heim = Int(strings[3]), let gast = Int(strings[5]), let key = Int(strings[0])
         else { fatalError("Match not complete") }
 
+        if self.completeMatchday.resultate.contains(where: { $0.heimteam == strings[1] && $0.gastteam == strings[2] }) {
+            return
+        }
+
         let result = Spiel(heimteam: strings[1],
                            gastteam: strings[2],
                            heim: heim,
@@ -220,6 +228,9 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
                let siegeString = self.helperDict[.siege] as? String,
                let gesamtString = self.helperDict[.gesamtpunkte] as? String, let gesamt = Int(gesamtString)
         else { fatalError("not all fields here") }
+
+        guard !self.completeMatchday.tippspieler.contains(where: { $0.name == name }) else { return }
+
         let player = Tippspieler(name: name, punkte: punkte, position: position, bonus: bonus, siege: Decimal(Double(siegeString.replacingOccurrences(of: ",", with: ".")) ?? 0), gesamtpunkte: gesamt)
         for key in self.helperDict.keys.map({ $0 as PlayerStep }) {
             switch key {
