@@ -1,0 +1,60 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>20/21 Apertura</h4>
+                <p class="subtitle">Pokal der 20/21er Vorrunde</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🥇</td>
+                        <td><a style="color:black" href="https://twitter.com/_NoNico/">NoNico</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/FrankZi35640768/">EdmondTapsoba</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/Germanbsfan/">Germanbsfan</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/SergioSahne/">SergioSahne</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>19/20 Liga</h4>
+                <p class="subtitle">Komplette Tipprunde der 19/20er Saison</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🏆</td>
+                        <td><a style="color:black" href="https://twitter.com/Jules_says_yeah/">Jules_says_yeah</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/tschwarz1204/">tschwarz1204</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/Escardos/">Escardos</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+#endexport
+#endextend

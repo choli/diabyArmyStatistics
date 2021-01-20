@@ -8,6 +8,9 @@ struct HomepageController: RouteCollection {
 
     func boot(routes: RoutesBuilder) throws {
         routes.get(use: getHomeStats)
+        routes.get("halloffame") { (req) -> EventLoopFuture<View> in
+            return req.view.render("hallOfFame", ["":""])
+        }
     }
 
     private func getHomeStats(req: Request) throws -> EventLoopFuture<View> {
