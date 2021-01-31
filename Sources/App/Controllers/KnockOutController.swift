@@ -138,23 +138,27 @@ struct KnockOutController: RouteCollection {
     }
 
     private struct DrawArray: Codable {
-        let tippspieler: [String]
+        struct Tipper: Codable {
+            let name: String
+            let twitterHandle: String?
+        }
+        let tippspieler: [Tipper]
     }
 
     private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, filename: String) -> [KnockOutDuel] {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
 
-        let drawOrder: [String]
+        let drawOrder: [DrawArray.Tipper]
             guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/\(filename).json"),
               let spieler = try? JSONDecoder().decode(DrawArray.self, from: fileContent)
             else { fatalError("Couldn't read file with draws") }
-            drawOrder = spieler.tippspieler
+        drawOrder = spieler.tippspieler
 
         let tippers = firstMatchday.tippspieler
-            .filter { return drawOrder.contains($0.name) }
+            .filter { return drawOrder.map { $0.name }.contains($0.name) }
             .sorted(by: { a,b in
-                guard let indexA = drawOrder.firstIndex(of: a.name),
-                      let indexB = drawOrder.firstIndex(of: b.name)
+                guard let indexA = drawOrder.firstIndex(where: { $0.name == a.name }),
+                      let indexB = drawOrder.firstIndex(where: { $0.name == b.name })
                 else { fatalError("Couldn't find \(a.name) or \(b.name) in draw array.")}
                 return indexA < indexB
             })
