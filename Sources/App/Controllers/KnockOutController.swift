@@ -24,6 +24,22 @@ struct KnockOutController: RouteCollection {
                 ]
             )
         }
+
+        routes.get("clausura") { (req) -> EventLoopFuture<View> in
+            guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/clausura2021.json"),
+              let spieler = try? JSONDecoder().decode(DrawArray.self, from: fileContent)
+            else { throw Abort(.badRequest, reason: "No idea what happened") }
+
+            let users = spieler.tippspieler.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }.map { StatisticObject.singleString($0.name) }
+
+            return req.view.render(
+                "clausura",
+                [
+                    "users": StatisticObject.statsObjectArray(users),
+                    "count": StatisticObject.singleInt(spieler.tippspieler.count)
+                ]
+            )
+        }
     }
 
     private func getDropDownMenu(for url: String, duels: Int, in round: Int) -> [DropDownDataObject] {
