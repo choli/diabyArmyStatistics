@@ -1,10 +1,67 @@
 #extend("base"):
 #export("body"):
 
+<!--
+<div class="container">
+
+    <form>
+        <select name="teams" class="custom-select"
+            onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
+            <option selected>Runde auswählen</option>
+            
+        </select>
+    </form>
+
+</div>
+-->
+
+#if(!isEmpty(duels)):
 <div class="container" style="margin-top: 30px;">
     <div class="card">
         <div class="card-header">
-            <h4 style="text-align:center">#(count) Anmeldungen</h4>
+            <h4 style="text-align:center">#(title)</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
+        #for(duel in duels):
+        <div class="card">
+            <div class="card-header">
+                <p class="subtitle">Spiel #(duel.spielnummer)</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td style="text-align:right">#(duel.positionA))</td>
+                        <td>#(duel.tipperA.name)</td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right"><strong>#(duel.punkteA)</strong></td>
+                        <td>&ensp;#if(duel.winner == 1):🎉#endif</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">#(duel.positionB))</td>
+                        <td>#(duel.tipperB.name)</td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right"><strong>#(duel.punkteB)</strong></td>
+                        <td>&ensp;#if(duel.winner == 2):🎉#endif</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        #endfor
+
+    </div>
+</div>
+#endif
+
+<div class="container" style="margin-top: 30px;">
+    <div class="card">
+        <div class="card-header">
+            <h4 style="text-align:center">#count(notDrawn) #if(isEmpty(duels)):Anmeldungen#else:verbleibende Lose#endif</h4>
         </div>
     </div>
 </div>
@@ -12,10 +69,10 @@
 <div class="container stats">
     <div class="card-columns mb-5 mt-5">
 
-        #for(user in users):
+        #for(user in notDrawn):
         <div class="card">
             <div class="card-body">
-                <p style="margin-bottom: 0px; text-align:center; color:black">#(user)</p>
+                <p style="margin-bottom: 0px; text-align:center; color:black">#(user.name)</p>
             </div>
         </div>
         #endfor

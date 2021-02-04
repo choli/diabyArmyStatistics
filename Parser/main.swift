@@ -1,9 +1,3 @@
-//
-//  main.swift
-//  diabyArmyParser
-//
-//  Created by Sandro Kolly on 28.10.20.
-//
 
 import Foundation
 

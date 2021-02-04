@@ -3,7 +3,7 @@
     "_comment2" : "All usernames in reverse and then base64 encoded strings, those strings were storted alphabetically, see _comment3 for a code example",
     "_comment3" : "let pseudoA = String(a.name.data(using: .utf8)!.base64EncodedString().reversed())",
     
-    "tippspieler" : [
+    "ausgelosteUser" : [
         {"name":"tschwarz1204"},
         {"name":"Torhamster04"},
         {"name":"forzabayer04"},

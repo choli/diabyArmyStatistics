@@ -26,6 +26,7 @@ struct Tippspieler: Content {
     let bonus: Int
     let siege: Decimal
     let gesamtpunkte: Int
+    var drawTipper: DrawArray.Tipper?
 
     var hashValue: Int {
         var hasher = Hasher()

@@ -30,13 +30,19 @@ struct KnockOutController: RouteCollection {
               let spieler = try? JSONDecoder().decode(DrawArray.self, from: fileContent)
             else { throw Abort(.badRequest, reason: "No idea what happened") }
 
-            let users = spieler.tippspieler.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }.map { StatisticObject.singleString($0.name) }
+            let users = spieler.nichtGezogeneUser?.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
+
+            let duels = getFirstRoundDuels(start: 20, tieBreaker: .gesamtpunkte, filename: "clausura2021")
+
+//            let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
                 "clausura",
                 [
-                    "users": StatisticObject.statsObjectArray(users),
-                    "count": StatisticObject.singleInt(spieler.tippspieler.count)
+                    "notDrawn": StatisticObject.drawUsers(users ?? []),
+                    "duels": StatisticObject.knockOutDuels(duels),
+                    "title": StatisticObject.singleString("Erste Runde")//self.title(for: round, duels: duels.count)),
+                    //"dropDown": StatisticObject.dropDownDataObject(dropDowns)
                 ]
             )
         }
@@ -153,14 +159,6 @@ struct KnockOutController: RouteCollection {
 
     }
 
-    private struct DrawArray: Codable {
-        struct Tipper: Codable {
-            let name: String
-            let twitterHandle: String?
-        }
-        let tippspieler: [Tipper]
-    }
-
     private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, filename: String) -> [KnockOutDuel] {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
 
@@ -168,7 +166,7 @@ struct KnockOutController: RouteCollection {
             guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/\(filename).json"),
               let spieler = try? JSONDecoder().decode(DrawArray.self, from: fileContent)
             else { fatalError("Couldn't read file with draws") }
-        drawOrder = spieler.tippspieler
+        drawOrder = spieler.ausgelosteUser
 
         let tippers = firstMatchday.tippspieler
             .filter { return drawOrder.map { $0.name }.contains($0.name) }
@@ -179,7 +177,14 @@ struct KnockOutController: RouteCollection {
                 return indexA < indexB
             })
 
-        guard tippers.count == drawOrder.count else { fatalError("Missing tippers in first matchday that appeared in draw") }
+        guard tippers.count == drawOrder.count else {
+            for drawUser in drawOrder {
+                if !tippers.contains(where: { $0.name == drawUser.name }) {
+                    print("falsch geschrieben: " + drawUser.name)
+                }
+            }
+            fatalError("Missing tippers in first matchday that appeared in draw")
+        }
 
         let participants = Int(pow(2,ceil(log2(Double(tippers.count)))))
 
