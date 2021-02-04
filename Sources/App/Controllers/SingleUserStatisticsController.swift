@@ -82,9 +82,12 @@ struct SingleUserStatisticsController: RouteCollection {
     }
 
     private func getCorrectTipps(from tipps: [Spiel]) -> StatisticObject {
-        let first = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == 4 }, title: "4 Punkte")
-        let second = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == 3 }, title: "3 Punkte")
-        let third = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == 2 }, title: "2 Punkte")
+        let full = Constants.MatchPoints.exactResult.rawValue
+        let medium = Constants.MatchPoints.correctDiff.rawValue
+        let low = Constants.MatchPoints.correctWinner.rawValue
+        let first = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == full }, title: "\(full) Punkte")
+        let second = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == medium }, title: "\(medium) Punkte")
+        let third = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == low }, title: "\(low) Punkte")
         let fourth = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == 0 }, title: "0 Punkte")
 
         return StatisticObject.tendenzCounter([first, second, third, fourth])

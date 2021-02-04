@@ -133,7 +133,7 @@ struct UserStatisticsController {
         self.mdc.matchdays.forEach { matchday in
             for tippspieler in matchday.tippspieler {
                 guard let teamTipp = tippspieler.tipps.first(where: { $0.heimteam == team || $0.gastteam == team }),
-                      (!exactOnly || teamTipp.spielpunkte == 4)
+                      (!exactOnly || teamTipp.spielpunkte == Constants.MatchPoints.exactResult.rawValue)
                 else { continue }
 
                 if var tipps = userTipps[tippspieler.name] {
