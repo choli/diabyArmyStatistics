@@ -71,9 +71,11 @@
 
         #for(user in notDrawn):
         <div class="card">
-            <div class="card-body">
-                <p style="margin-bottom: 0px; text-align:center; color:black">#(user.name)</p>
-            </div>
+            <a href="https://twitter.com/#(user.twitterHandle)">
+                <div class="card-body">
+                    <p style="margin-bottom: 0px; text-align:center; color:black">#(user.name)</p>
+                </div>
+            </a>
         </div>
         #endfor
 

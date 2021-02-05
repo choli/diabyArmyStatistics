@@ -21,6 +21,7 @@ struct DrawArray: Content {
             case name
             case customTwitterHandle
             case tweetLink
+            case twitterHandle
         }
     }
     let nichtGezogeneUser: [Tipper]?
