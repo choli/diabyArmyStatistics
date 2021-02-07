@@ -31,7 +31,8 @@ struct SingleUserStatisticsController: RouteCollection {
                  "pointsPerTipp": self.getCorrectTipps(from: userTipps),
                  "avgPointsPerTipp": self.getAvgPointsPerTipp(from: userTipps),
                  "mostTippedResults": self.getMostTippedResults(from: userTipps),
-                 "mostPointsPerTeam": self.getMostPointsPerTeam(from: userTipps)
+                 "mostPointsPerTeam": self.getMostPointsPerTeam(from: userTipps, most: true),
+                 "fewestPointsPerTeam": self.getMostPointsPerTeam(from: userTipps, most: false)
                 ]
             )
         }
@@ -55,7 +56,7 @@ struct SingleUserStatisticsController: RouteCollection {
         return StatisticObject.tendenzCounter(entries.getTop(5))
     }
 
-    private func getMostPointsPerTeam(from tipps: [Spiel]) -> StatisticObject {
+    private func getMostPointsPerTeam(from tipps: [Spiel], most: Bool) -> StatisticObject {
         var tippDict: [String: Int] = [:]
         for tipp in tipps {
             //home
@@ -75,7 +76,7 @@ struct SingleUserStatisticsController: RouteCollection {
             }
         }
 
-        let entries = tippDict.sorted(by: { $0.value > $1.value }).map {
+        let entries = tippDict.sorted(by: { most ? $0.value > $1.value : $0.value < $1.value }).map {
             TendenzCounter(name: $0.key, heimsiege: $0.value, gastsiege: 0, unentschieden: 0)
         }
 

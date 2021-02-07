@@ -73,6 +73,24 @@
             </div>
         </div>
 
+        <div class="card">
+            <div class="card-header">
+                <h4>Punktegeizhälse</h4>
+                <p class="subtitle">Tipps von welchem Team mögen #(username) keine Punkte bringen?</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    #for(item in fewestPointsPerTeam):
+                    <tr>
+                        <td>#(item.name)</td>
+                        <td style="text-align:right">#(item.heimsiege + item.unentschieden + item.gastsiege)</td>
+                        <td>Punkte</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
 
 
     </div>
