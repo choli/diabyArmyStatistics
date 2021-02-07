@@ -32,6 +32,8 @@ struct HomepageController: RouteCollection {
              "oneDiff": userStats.getResultDifference(difference: 1),
              "mostGoals": userStats.getTotalGoals(most: true),
              "fewestGoals": userStats.getTotalGoals(most: false),
+             "mostAvgPoints": userStats.getAveragePointsPerTipp(most: true),
+             "fewestAvgPoints": userStats.getAveragePointsPerTipp(most: false),
              "missed": userStats.getMissedTipps()
             ]
         )

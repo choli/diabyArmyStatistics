@@ -52,6 +52,12 @@ struct UserStatisticsController {
         return StatisticObject.tendenzCounter(result)
     }
 
+    func getAveragePointsPerTipp(most: Bool) -> StatisticObject {
+        let tipps = self.getAllTippsOfUsers()
+        let result = tipps.averagePointsPerTipp(most: most).getTop(5)
+        return StatisticObject.tendenzCounter(result)
+    }
+
     func getPoints(for team: String) -> StatisticObject {
         let tipps = self.getAllTippResults(of: team, exactOnly: false)
         let result = tipps.summedUpTippPoints.getTop(5)

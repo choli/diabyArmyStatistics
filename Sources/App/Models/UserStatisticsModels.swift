@@ -277,6 +277,15 @@ extension Array where Element == UserTipps {
         }
         return all.sortAverage(descending: most)
     }
+
+    func averagePointsPerTipp(most: Bool) -> [TendenzCounter] {
+        let all = self.map { userTipps -> TendenzCounter in
+            let points = userTipps.tipps.reduce(0) { $0 + $1.points }
+            let avg = round(Double(points) / Double(userTipps.tipps.count) * 100.0) / 100.0
+            return TendenzCounter(name: userTipps.name, heimsiege: points, gastsiege: 0, unentschieden: userTipps.tipps.count, average: avg)
+        }
+        return all.sortAverage(descending: most)
+    }
 }
 
 extension Array where Element: TotalEquatable {

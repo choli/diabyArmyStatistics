@@ -360,6 +360,60 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>Durchschnittskönig*innen</h4>
+                <p>Wer erreicht den höchsten Durchschnitt pro getippte Partie?</p>
+                <p class="inventor">By _NoNico</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Ø Punkte</th>
+                        <th>Punkte</th>
+                        <th>Spiele</th>
+                    </tr>
+                    #for(user in mostAvgPoints):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.average)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Unterdurchschnittlich...</h4>
+                <p>Wer erreicht den niedrigsten Durchschnitt pro getippte Partie?</p>
+                <p class="inventor">By _NoNico</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Ø Punkte</th>
+                        <th>Punkte</th>
+                        <th>Spiele</th>
+                    </tr>
+                    #for(user in fewestAvgPoints):
+                    <tr>
+                        <td>#(user.name)</td>
+                        <td style="text-align:right">#(user.average)</td>
+                        <td style="text-align:right">#(user.heimsiege)</td>
+                        <td style="text-align:right">#(user.unentschieden)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Spätaufsteher</h4>
                 <p class="subtitle">Wer hat total wieviele Spiele nicht getippt?</p>
             </div>
