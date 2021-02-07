@@ -29,6 +29,7 @@ struct SingleUserStatisticsController: RouteCollection {
                 "userStats",
                 ["username": StatisticObject.singleString(user),
                  "pointsPerTipp": self.getCorrectTipps(from: userTipps),
+                 "avgPointsPerTipp": self.getAvgPointsPerTipp(from: userTipps),
                  "mostTippedResults": self.getMostTippedResults(from: userTipps),
                  "mostPointsPerTeam": self.getMostPointsPerTeam(from: userTipps)
                 ]
@@ -91,6 +92,22 @@ struct SingleUserStatisticsController: RouteCollection {
         let fourth = self.getTendenzCounter(for: tipps.filter { $0.spielpunkte == 0 }, title: "0 Punkte")
 
         return StatisticObject.tendenzCounter([first, second, third, fourth])
+    }
+
+    private func getAvgPointsPerTipp(from tipps: [Spiel]) -> StatisticObject {
+        let points = tipps.reduce(0) { $0 + $1.spielpunkte }
+        let gamesHome = tipps.filter({ $0.heim > $0.gast })
+        let pointsHome = gamesHome.reduce(0) { $0 + $1.spielpunkte }
+        let gamesAway = tipps.filter({ $0.heim < $0.gast })
+        let pointsAway = gamesAway.reduce(0) { $0 + $1.spielpunkte }
+        let gamesDraw = tipps.filter({ $0.heim == $0.gast })
+        let pointsDraw = gamesDraw.reduce(0) { $0 + $1.spielpunkte }
+
+        let avg = StatisticObject.singleString("\(round(Double(points) / Double(tipps.count) * 100.0) / 100.0)")
+        let avgHome = StatisticObject.singleString("\(round(Double(pointsHome) / Double(gamesHome.count) * 100.0) / 100.0)")
+        let avgDraw = StatisticObject.singleString("\(round(Double(pointsDraw) / Double(gamesDraw.count) * 100.0) / 100.0)")
+        let avgAway = StatisticObject.singleString("\(round(Double(pointsAway) / Double(gamesAway.count) * 100.0) / 100.0)")
+        return StatisticObject.statsObjectArray([avg, avgHome, avgDraw, avgAway])
     }
 
     private func getTendenzCounter(for tipps: [Spiel], title: String) -> TendenzCounter {
