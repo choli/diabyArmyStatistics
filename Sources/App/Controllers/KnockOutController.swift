@@ -115,14 +115,14 @@ struct KnockOutController: RouteCollection {
     private func getNewDuel(from first: KnockOutDuel, against second: KnockOutDuel, matchNumber: Int, results: Spieltag?, tieBreaker: KnockOutDuel.TieBreaker) -> KnockOutDuel {
         let tipperA: Tippspieler
         if first.winner == 0 {
-            tipperA = Tippspieler(name: "Sieger*in Spiel \(first.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0)
+            tipperA = Tippspieler(name: "Sieger*in Spiel \(first.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0, spieltagssieger: nil)
         } else {
             tipperA = first.winner == 1 ? first.tipperA : first.tipperB
         }
 
         let tipperB: Tippspieler
         if second.winner == 0 {
-            tipperB = Tippspieler(name: "Sieger*in Spiel \(second.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0)
+            tipperB = Tippspieler(name: "Sieger*in Spiel \(second.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0, spieltagssieger: nil)
         } else {
             tipperB = second.winner == 1 ? second.tipperA : second.tipperB
         }

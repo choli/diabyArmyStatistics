@@ -29,6 +29,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
         case bonus
         case siege
         case gesamtpunkte
+        case spieltagssieger
     }
 
     var parsedSpieltag: Bool {
@@ -111,6 +112,9 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
                 self.readingMatchday = true
                 self.currentString = String(classes.suffix(1)) + ";"
             } else if classes.hasPrefix("clickable kicktipp") {
+                if classes.contains("sptsieger") {
+                    self.helperDict[.spieltagssieger] = true
+                }
                 self.readingPlayer = true
                 self.currentString = ""
             } else if self.readingPlayer {
@@ -217,6 +221,8 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
             self.helperDict[.siege] = self.currentString
         case .gesamtpunkte:
             self.helperDict[.gesamtpunkte] = self.currentString
+        case .spieltagssieger:
+            break
         }
     }
 
@@ -231,7 +237,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
 
         guard !self.completeMatchday.tippspieler.contains(where: { $0.name == name }) else { return }
 
-        let player = Tippspieler(name: name, punkte: punkte, position: position, bonus: bonus, siege: Decimal(Double(siegeString.replacingOccurrences(of: ",", with: ".")) ?? 0), gesamtpunkte: gesamt)
+        let player = Tippspieler(name: name, punkte: punkte, position: position, bonus: bonus, siege: Decimal(Double(siegeString.replacingOccurrences(of: ",", with: ".")) ?? 0), gesamtpunkte: gesamt, spieltagssieger: helperDict[.spieltagssieger] as? Bool)
         for key in self.helperDict.keys.map({ $0 as PlayerStep }) {
             switch key {
             case .positionsdifferenz(let positive):

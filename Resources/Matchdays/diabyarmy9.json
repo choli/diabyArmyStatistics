@@ -662,6 +662,7 @@
       "siege" : 0.25,
       "punkte" : 17,
       "position" : 8,
+      "spieltagssieger" : true,
       "positiondiff" : 11,
       "name" : "Zawax"
     },
@@ -994,6 +995,7 @@
       "siege" : 1.25,
       "punkte" : 17,
       "position" : 12,
+      "spieltagssieger" : true,
       "positiondiff" : 9,
       "name" : "Mahqz"
     },
@@ -1982,6 +1984,7 @@
       "siege" : 0.25,
       "punkte" : 17,
       "position" : 24,
+      "spieltagssieger" : true,
       "positiondiff" : 15,
       "name" : "EdmondTapsoba"
     },
@@ -2563,6 +2566,7 @@
       "siege" : 0.27,
       "punkte" : 17,
       "position" : 31,
+      "spieltagssieger" : true,
       "positiondiff" : 17,
       "name" : "SergioSahne"
     },

@@ -12,6 +12,7 @@ enum StatisticObject: Content {
     case singleInt(Int)
     case statsObjectArray([StatisticObject])
     case drawUsers([DrawArray.Tipper])
+    case spieltagFacts([SpieltagFacts])
 
     func encode(to encoder: Encoder) throws {
         switch self {
@@ -37,6 +38,8 @@ enum StatisticObject: Content {
             try statsObjectArray.encode(to: encoder)
         case .drawUsers(let drawUsers):
             try drawUsers.encode(to: encoder)
+        case .spieltagFacts(let spieltagFacts):
+            try spieltagFacts.encode(to: encoder)
         }
     }
 

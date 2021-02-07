@@ -26,15 +26,17 @@ class Tippspieler: Codable {
     let bonus: Int
     let siege: Decimal
     let gesamtpunkte: Int
+    let spieltagssieger: Bool?
     var positiondiff = 0
 
-    init(name: String, punkte: Int, position: Int, bonus: Int, siege: Decimal, gesamtpunkte: Int) {
+    init(name: String, punkte: Int, position: Int, bonus: Int, siege: Decimal, gesamtpunkte: Int, spieltagssieger: Bool?) {
         self.name = name
         self.punkte = punkte
         self.position = position
         self.bonus = bonus
         self.siege = siege
         self.gesamtpunkte = gesamtpunkte
+        self.spieltagssieger = spieltagssieger
     }
 }
 

@@ -26,6 +26,7 @@ struct Tippspieler: Content {
     let bonus: Int
     let siege: Decimal
     let gesamtpunkte: Int
+    let spieltagssieger: Bool?
     var drawTipper: DrawArray.Tipper?
 
     var hashValue: Int {
@@ -163,7 +164,7 @@ struct KnockOutDuel: Content {
     init(withWildcard spielnummer: Int, tipper: Tippspieler, position: Int) {
         self.spielnummer = spielnummer
         self.tipperA = tipper
-        self.tipperB = Tippspieler(name: "Freilos", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: -1)
+        self.tipperB = Tippspieler(name: "Freilos", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: -1, spieltagssieger: nil)
         self.positionA = position
         self.positionB = 0
         self.punkteA = nil

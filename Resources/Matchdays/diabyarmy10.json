@@ -1152,6 +1152,7 @@
       "siege" : 0.52,
       "punkte" : 14,
       "position" : 14,
+      "spieltagssieger" : true,
       "positiondiff" : 16,
       "name" : "NoNico"
     },
@@ -3385,6 +3386,7 @@
       "siege" : 0.5,
       "punkte" : 14,
       "position" : 41,
+      "spieltagssieger" : true,
       "positiondiff" : 19,
       "name" : "DrRomanEngel"
     },

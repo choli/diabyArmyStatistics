@@ -330,6 +330,7 @@
       "siege" : 0.33,
       "punkte" : 19,
       "position" : 4,
+      "spieltagssieger" : true,
       "positiondiff" : 16,
       "name" : "Zedd29x"
     },
@@ -1160,6 +1161,7 @@
       "siege" : 0.33,
       "punkte" : 19,
       "position" : 14,
+      "spieltagssieger" : true,
       "positiondiff" : 18,
       "name" : "RWingartz"
     },
@@ -3527,6 +3529,7 @@
       "siege" : 0.33,
       "punkte" : 19,
       "position" : 43,
+      "spieltagssieger" : true,
       "positiondiff" : 13,
       "name" : "jultex04"
     },

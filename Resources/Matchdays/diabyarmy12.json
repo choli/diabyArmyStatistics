@@ -1740,6 +1740,7 @@
       "siege" : 0.52,
       "punkte" : 20,
       "position" : 21,
+      "spieltagssieger" : true,
       "positiondiff" : 24,
       "name" : "levtoto"
     },
@@ -3459,6 +3460,7 @@
       "siege" : 0.5,
       "punkte" : 20,
       "position" : 42,
+      "spieltagssieger" : true,
       "positiondiff" : 14,
       "name" : "Bayer04Forever"
     },
