@@ -1,6 +1,6 @@
 import Vapor
 
-struct SingleStatisticController: RouteCollection {
+struct SingleTeamStatisticController: RouteCollection {
     let mdc: MatchdayController
     init(mdc: MatchdayController) {
         self.mdc = mdc
