@@ -250,7 +250,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>Zwei-zu-Eins Tipper</h4>
+                <h4>Zwei-zu-Eins Tipper*innen</h4>
                 <p class="subtitle">Wer denkt, dass Fussballspiele immer die Gleichen sind?</p>
             </div>
             <div class="card-body">
@@ -405,6 +405,52 @@
                         <td style="text-align:right">#(user.average)</td>
                         <td style="text-align:right">#(user.heimsiege)</td>
                         <td style="text-align:right">#(user.unentschieden)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Punkte für alle</h4>
+                <p>Welche Spieltage wurden überdurchschnittlich gut getippt?</p>
+                <p class="inventor">By _NoNico</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Ø Punkte</th>
+                    </tr>
+                    #for(md in easiestMatchdays):
+                    <tr>
+                        <td>#(md.name)</td>
+                        <td style="text-align:right">#(md.average)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Alle sind schlecht</h4>
+                <p>Welche Spieltage zeigten die Schwächen aller Tipper*innen gnadenlos auf?</p>
+                <p class="inventor">By _NoNico</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <th></th>
+                        <th>Ø Punkte</th>
+                    </tr>
+                    #for(md in hardestMatchdays):
+                    <tr>
+                        <td>#(md.name)</td>
+                        <td style="text-align:right">#(md.average)</td>
                     </tr>
                     #endfor
                 </table>

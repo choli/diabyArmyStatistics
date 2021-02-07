@@ -14,7 +14,8 @@ struct HomepageController: RouteCollection {
     }
 
     private func getHomeStats(req: Request) throws -> EventLoopFuture<View> {
-        let userStats = UserStatisticsController(mdc: self.mdc)
+        let userStats = UserStatisticsController(mdc: mdc)
+        let mdStats = MatchdayStatisticsController(mdc: mdc)
 
         return req.view.render(
             "stats",
@@ -34,6 +35,8 @@ struct HomepageController: RouteCollection {
              "fewestGoals": userStats.getTotalGoals(most: false),
              "mostAvgPoints": userStats.getAveragePointsPerTipp(most: true),
              "fewestAvgPoints": userStats.getAveragePointsPerTipp(most: false),
+             "easiestMatchdays": mdStats.getAveragePointsPerMatchday(most: true),
+             "hardestMatchdays": mdStats.getAveragePointsPerMatchday(most: false),
              "missed": userStats.getMissedTipps()
             ]
         )

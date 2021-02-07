@@ -71,7 +71,7 @@
         #for(results in resultsTab):
         <div class="card">
             <div class="card-header">
-                <h4>#(diff + index)-#(index) Tipper</h4>
+                <h4>#(diff + index)-#(index) Tipper*innen</h4>
                 <p class="subtitle">Wer tippt dieses Resultat am meisten?</p>
             </div>
             <div class="card-body">
