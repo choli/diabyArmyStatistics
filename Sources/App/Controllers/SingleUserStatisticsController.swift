@@ -103,10 +103,10 @@ struct SingleUserStatisticsController: RouteCollection {
         let gamesDraw = tipps.filter({ $0.heim == $0.gast })
         let pointsDraw = gamesDraw.reduce(0) { $0 + $1.spielpunkte }
 
-        let avg = StatisticObject.singleString("\(round(Double(points) / Double(tipps.count) * 100.0) / 100.0)")
-        let avgHome = StatisticObject.singleString("\(round(Double(pointsHome) / Double(gamesHome.count) * 100.0) / 100.0)")
-        let avgDraw = StatisticObject.singleString("\(round(Double(pointsDraw) / Double(gamesDraw.count) * 100.0) / 100.0)")
-        let avgAway = StatisticObject.singleString("\(round(Double(pointsAway) / Double(gamesAway.count) * 100.0) / 100.0)")
+        let avg = StatisticObject.singleString("\(round(Double(points) / Double(max(tipps.count, 1)) * 100.0) / 100.0)")
+        let avgHome = StatisticObject.singleString("\(round(Double(pointsHome) / Double(max(gamesHome.count, 1)) * 100.0) / 100.0)")
+        let avgDraw = StatisticObject.singleString("\(round(Double(pointsDraw) / Double(max(gamesDraw.count, 1)) * 100.0) / 100.0)")
+        let avgAway = StatisticObject.singleString("\(round(Double(pointsAway) / Double(max(gamesAway.count, 1)) * 100.0) / 100.0)")
         return StatisticObject.statsObjectArray([avg, avgHome, avgDraw, avgAway])
     }
 

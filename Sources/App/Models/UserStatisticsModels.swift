@@ -209,8 +209,8 @@ extension Array where Element == UserTipps {
             let points1 = $1.siege * 3 + $1.unentschieden * 1
             let count0 = $0.siege + $0.unentschieden + $0.niederlagen
             let count1 = $1.siege + $1.unentschieden + $1.niederlagen
-            let pointsAvg0 = Double(points0) / Double(count0)
-            let pointsAvg1 = Double(points1) / Double(count1)
+            let pointsAvg0 = Double(points0) / Double(Swift.max(count0, 1))
+            let pointsAvg1 = Double(points1) / Double(Swift.max(count1, 1))
             if descending {
                 if points0 != points1 { return points0 > points1 }
                 if $0.siege != $1.siege { return $0.siege > $1.siege }
@@ -271,7 +271,7 @@ extension Array where Element == UserTipps {
             let home = userTipps.tipps.reduce(0) { $0 + $1.goalsFor }
             let away = userTipps.tipps.reduce(0) { $0 + $1.goalsAgainst }
 
-            let avg = round((Double(home) + Double(away)) / Double(userTipps.tipps.count) * 100.0) / 100.0
+            let avg = round((Double(home) + Double(away)) / Double(Swift.max(userTipps.tipps.count, 1)) * 100.0) / 100.0
 
             return TendenzCounter(name: userTipps.name, heimsiege: home, gastsiege: away, unentschieden: 0, average: avg)
         }
@@ -281,7 +281,7 @@ extension Array where Element == UserTipps {
     func averagePointsPerTipp(most: Bool) -> [TendenzCounter] {
         let all = self.map { userTipps -> TendenzCounter in
             let points = userTipps.tipps.reduce(0) { $0 + $1.points }
-            let avg = round(Double(points) / Double(userTipps.tipps.count) * 100.0) / 100.0
+            let avg = round(Double(points) / Double(Swift.max(userTipps.tipps.count, 1)) * 100.0) / 100.0
             return TendenzCounter(name: userTipps.name, heimsiege: points, gastsiege: 0, unentschieden: userTipps.tipps.count, average: avg)
         }
         return all.sortAverage(descending: most)
