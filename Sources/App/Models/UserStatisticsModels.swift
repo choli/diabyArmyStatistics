@@ -43,6 +43,12 @@ struct Spieltag: Content {
     let spieltag: Int
 }
 
+struct SpieltagFacts: Content {
+    let spieltag: Int
+    let spieltagssieger: [String]
+    let punkteAvg: Double
+}
+
 struct UserTipp: Content {
     let goalsFor: Int
     let goalsAgainst: Int

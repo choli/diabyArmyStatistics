@@ -1,0 +1,33 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
+        #for(matchday in matchdays):
+        <div class="card">
+            <div class="card-header">
+                <h4>#(matchday.spieltag). Spieltag</h4>
+                <p class="subtitle">Wichtigstes in Kürze zum #(matchday.spieltag). Spieltag</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>Ø Punkte</td>
+                        <td style="text-align:center">#(matchday.punkteAvg)</td>
+                    </tr>
+                    #for(winner in matchday.spieltagssieger):
+                    <tr>
+                        <td>Sieger*in:</td>
+                        <td>#(winner)</td>
+                    </tr>
+                    #endfor
+                </table>
+            </div>
+        </div>
+        #endfor
+
+    </div>
+</div>
+#endexport
+#endextend
