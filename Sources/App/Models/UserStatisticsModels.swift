@@ -124,7 +124,7 @@ enum Tendenz {
 struct KnockOutDuel: Content {
     enum TieBreaker {
         case gesamtpunkte
-        case mehrTeamPunkte(String)
+        case mehrExakteTipps
     }
 
     let spielnummer: Int
@@ -149,13 +149,19 @@ struct KnockOutDuel: Content {
                 switch tieBreaker {
                 case .gesamtpunkte:
                     self.winner = tipperA.gesamtpunkte + pointsA > tipperB.gesamtpunkte + pointsB ? 1 : 2
-                case .mehrTeamPunkte(let team):
-                    let levA = tipperA.tipps.first(where: { $0.heimteam == team || $0.gastteam == team })?.spielpunkte ?? 0
-                    let levB = tipperB.tipps.first(where: { $0.heimteam == team || $0.gastteam == team })?.spielpunkte ?? 0
-                    if levA == levB {
-                        self.winner = tipperA.gesamtpunkte + pointsA > tipperB.gesamtpunkte + pointsB ? 1 : 2
+                case .mehrExakteTipps:
+                    let exactA = tipperA.tipps.filter { $0.spielpunkte == Constants.MatchPoints.exactResult.rawValue }.count
+                    let exactB = tipperB.tipps.filter { $0.spielpunkte == Constants.MatchPoints.exactResult.rawValue }.count
+                    if exactA == exactB {
+                        let correctDiffA = tipperA.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
+                        let correctDiffB = tipperB.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
+                        if correctDiffA == correctDiffA {
+                            self.winner = positionA < positionB ? 1 : 2
+                        } else {
+                            self.winner = correctDiffA > correctDiffB ? 1 : 2
+                        }
                     } else {
-                        self.winner = levA > levB ? 1 : 2
+                        self.winner = exactA > exactB ? 1 : 2
                     }
                 }
             } else {
