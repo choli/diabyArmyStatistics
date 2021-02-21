@@ -32,7 +32,7 @@ struct KnockOutController: RouteCollection {
 
             let users = spieler.nichtGezogeneUser?.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
 
-            let duels = getFirstRoundDuels(start: 20, tieBreaker: .gesamtpunkte, filename: "clausura2021")
+            let duels = getDuelsForDraw(spieler, firstMatchday: 23)
 
 //            let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
@@ -40,7 +40,8 @@ struct KnockOutController: RouteCollection {
                 "clausura",
                 [
                     "notDrawn": StatisticObject.drawUsers(users ?? []),
-                    "duels": StatisticObject.knockOutDuels(duels),
+                    "duels": StatisticObject.knockOutDuels(duels.firstRound),
+                    "duels2": StatisticObject.knockOutDuels(duels.secondRound),
                     "title": StatisticObject.singleString("Erste Runde")//self.title(for: round, duels: duels.count)),
                     //"dropDown": StatisticObject.dropDownDataObject(dropDowns)
                 ]
@@ -238,4 +239,73 @@ struct KnockOutController: RouteCollection {
 
         return duels
     }
+}
+
+extension KnockOutController { // Helper for draw
+
+    private func getDuelsForDraw(_ draw: DrawArray, firstMatchday: Int) -> (firstRound: [KnockOutDuel], secondRound: [KnockOutDuel]) {
+        let drawOrder = draw.ausgelosteUser
+        let numberOfParticipants = draw.ausgelosteUser.count + (draw.nichtGezogeneUser?.count ?? 0)
+
+        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == firstMatchday - 1 }) else { fatalError("First start matchday is MD2") }
+
+        let tippers = firstMatchday.tippspieler
+            .filter { return drawOrder.map { $0.name }.contains($0.name) }
+            .sorted(by: { a,b in
+                guard let indexA = drawOrder.firstIndex(where: { $0.name == a.name }),
+                      let indexB = drawOrder.firstIndex(where: { $0.name == b.name })
+                else { fatalError("Couldn't find \(a.name) or \(b.name) in draw array.")}
+                return indexA < indexB
+            })
+
+        let participants = Int(pow(2,ceil(log2(Double(numberOfParticipants)))))
+        let nonWildcardDuelsCount = (participants / 2) - (participants - numberOfParticipants)
+        var duels: [KnockOutDuel] = []
+
+        func fetchTipper(_ index: Int) -> Tippspieler {
+            var tipper = tippers[index]
+            tipper.drawTipper = drawOrder.first(where: { $0.name == tipper.name })
+            return tipper
+        }
+
+        for i in 0..<min(nonWildcardDuelsCount, tippers.count/2) {
+            let tipperA = fetchTipper(2 * i)
+            let tipperB = fetchTipper(2 * i + 1)
+
+            duels.append(KnockOutDuel(
+                spielnummer: i + 1,
+                tipperA: tipperA,
+                tipperB: tipperB,
+                positionA: tipperA.position,
+                positionB: tipperB.position,
+                punkteA: nil,
+                punkteB: nil,
+                tieBreaker: .mehrExakteTipps
+            ))
+        }
+
+
+        var duels2: [KnockOutDuel] = []
+
+        if 2 * nonWildcardDuelsCount < tippers.count {
+            for i in (2 * nonWildcardDuelsCount)..<tippers.count  {
+                let tipper = fetchTipper(i)
+                duels.append(KnockOutDuel(withWildcard: i - nonWildcardDuelsCount + 1, tipper: tipper, position: tipper.position))
+            }
+
+            // Round 2:
+
+            for i in 0..<(duels.count / 2) {
+                let first = duels[2 * i]
+                let second = duels[2 * i + 1]
+                duels2.append(getNewDuel(from: first, against: second, matchNumber: i + participants/2 + 1, results: nil, tieBreaker: .mehrExakteTipps))
+            }
+        }
+
+        duels = Array(duels[0..<nonWildcardDuelsCount])
+
+        return (firstRound: duels, secondRound: duels2)
+    }
+
+
 }
