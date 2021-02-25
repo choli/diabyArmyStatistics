@@ -16,7 +16,24 @@ struct KnockOutController: RouteCollection {
             let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
-                "apertura",
+                "knockOut",
+                [
+                    "duels": StatisticObject.knockOutDuels(duels),
+                    "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
+                    "dropDown": StatisticObject.dropDownDataObject(dropDowns)
+                ]
+            )
+        }
+
+        routes.get("clausura", ":round") { (req) -> EventLoopFuture<View> in
+            guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
+            else { throw Abort(.badRequest, reason: "Round not provided.") }
+
+            let duels = self.getDuels(round, start: 23, tieBreaker: .mehrExakteTipps, filename: "clausura2021")
+            let dropDowns = self.getDropDownMenu(for: "clausura", duels: duels.count, in: round)
+
+            return req.view.render(
+                "knockOut",
                 [
                     "duels": StatisticObject.knockOutDuels(duels),
                     "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
@@ -37,7 +54,7 @@ struct KnockOutController: RouteCollection {
 //            let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
-                "clausura",
+                "liveDraw",
                 [
                     "notDrawn": StatisticObject.drawUsers(users ?? []),
                     "duels": StatisticObject.knockOutDuels(duels.firstRound),
