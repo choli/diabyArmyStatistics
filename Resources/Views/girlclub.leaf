@@ -1,0 +1,8 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+    <img src="https://media.giphy.com/media/Jo16djaq3b7VOTeMj5/giphy.gif" alt="DiabyGirlclub" width="100%">
+</div>
+#endexport
+#endextend

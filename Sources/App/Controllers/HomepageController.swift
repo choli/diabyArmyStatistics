@@ -11,6 +11,9 @@ struct HomepageController: RouteCollection {
         routes.get("halloffame") { (req) -> EventLoopFuture<View> in
             return req.view.render("hallOfFame", ["":""])
         }
+        routes.get("girlclub") { (req) -> EventLoopFuture<View> in
+            return req.view.render("girlclub", ["":""])
+        }
     }
 
     private func getHomeStats(req: Request) throws -> EventLoopFuture<View> {
