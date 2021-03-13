@@ -37,14 +37,22 @@
                 <table class="">
                     <tr>
                         <td style="text-align:right">#(duel.positionA))</td>
+                        #if(duel.tipperA.drawTipper.twitterHandle):
                         <td><a href="https://twitter.com/#(duel.tipperA.drawTipper.twitterHandle)" style="color:black">#(duel.tipperA.name)</a></td>
+                        #else:
+                        <td>#(duel.tipperA.name)</td>
+                        #endif
                         <td>&emsp;</td>
                         <td style="text-align:right"><strong>#(duel.punkteA)</strong></td>
                         <td>&ensp;#if(duel.winner == 1):🎉#endif</td>
                     </tr>
                     <tr>
                         <td style="text-align:right">#(duel.positionB))</td>
+                        #if(duel.tipperB.drawTipper.twitterHandle):
                         <td><a href="https://twitter.com/#(duel.tipperB.drawTipper.twitterHandle)" style="color:black">#(duel.tipperB.name)</a></td>
+                        #else:
+                        <td>#(duel.tipperB.name)</td>
+                        #endif
                         <td>&emsp;</td>
                         <td style="text-align:right"><strong>#(duel.punkteB)</strong></td>
                         <td>&ensp;#if(duel.winner == 2):🎉#endif</td>

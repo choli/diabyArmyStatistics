@@ -50,17 +50,14 @@ struct KnockOutController: RouteCollection {
             let users = spieler.nichtGezogeneUser?.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
 
             let duels = getDuelsForDraw(spieler, firstMatchday: 23)
-
-//            let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
-
             return req.view.render(
                 "liveDraw",
                 [
                     "notDrawn": StatisticObject.drawUsers(users ?? []),
-                    "duels": StatisticObject.knockOutDuels(duels.firstRound),
+                    "duels1": StatisticObject.knockOutDuels(duels.firstRound),
                     "duels2": StatisticObject.knockOutDuels(duels.secondRound),
-                    "title": StatisticObject.singleString("Erste Runde")//self.title(for: round, duels: duels.count)),
-                    //"dropDown": StatisticObject.dropDownDataObject(dropDowns)
+                    "title1": StatisticObject.singleString(title(for: 1, duels: 2*duels.secondRound.count)),
+                    "title2": StatisticObject.singleString(title(for: 2, duels: 2*duels.secondRound.count))
                 ]
             )
         }
@@ -86,8 +83,8 @@ struct KnockOutController: RouteCollection {
         switch duels {
         case 1: return "Finale"
         case 2: return "Halbfinale"
-        case 4: return "Viertelfinale"
-        case 8: return "Achtelfinale"
+        case 3,4: return "Viertelfinale"
+        case 5,6,7,8: return "Achtelfinale"
         default: break
         }
 

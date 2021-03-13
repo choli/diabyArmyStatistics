@@ -1,25 +1,11 @@
 #extend("base"):
 #export("body"):
 
-<!--
-<div class="container">
-
-    <form>
-        <select name="teams" class="custom-select"
-            onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
-            <option selected>Runde auswählen</option>
-            
-        </select>
-    </form>
-
-</div>
--->
-
-#if(!isEmpty(duels)):
+#if(!isEmpty(duels1)):
 <div class="container" style="margin-top: 30px;">
     <div class="card">
         <div class="card-header">
-            <h4 style="text-align:center">#(title)</h4>
+            <h4 style="text-align:center">#(title1)</h4>
         </div>
     </div>
 </div>
@@ -28,7 +14,7 @@
 <div class="container stats">
     <div class="card-columns mb-5 mt-5">
 
-        #for(duel in duels):
+        #for(duel in duels1):
         <div class="card">
             <div class="card-header">
                 <p class="subtitle">Spiel #(duel.spielnummer)</p>
@@ -37,17 +23,19 @@
                 <table class="">
                     <tr>
                         <td style="text-align:right">#(duel.positionA))</td>
+                        #if(duel.tipperA.drawTipper.twitterHandle):
                         <td><a href="https://twitter.com/#(duel.tipperA.drawTipper.twitterHandle)" style="color:black">#(duel.tipperA.name)</a></td>
-                        <td>&emsp;</td>
-                        <td style="text-align:right"><strong>#(duel.punkteA)</strong></td>
-                        <td>&ensp;#if(duel.winner == 1):🎉#endif</td>
+                        #else:
+                        <td>#(duel.tipperA.name)</td>
+                        #endif
                     </tr>
                     <tr>
                         <td style="text-align:right">#(duel.positionB))</td>
+                        #if(duel.tipperB.drawTipper.twitterHandle):
                         <td><a href="https://twitter.com/#(duel.tipperB.drawTipper.twitterHandle)" style="color:black">#(duel.tipperB.name)</a></td>
-                        <td>&emsp;</td>
-                        <td style="text-align:right"><strong>#(duel.punkteB)</strong></td>
-                        <td>&ensp;#if(duel.winner == 2):🎉#endif</td>
+                        #else:
+                        <td>#(duel.tipperB.name)</td>
+                        #endif
                     </tr>
                 </table>
             </div>
@@ -62,7 +50,7 @@
 <div class="container" style="margin-top: 30px;">
     <div class="card">
         <div class="card-header">
-            <h4 style="text-align:center">Zweite Runde</h4>
+            <h4 style="text-align:center">#(title2)</h4>
         </div>
     </div>
 </div>
@@ -80,17 +68,19 @@
                 <table class="">
                     <tr>
                         <td style="text-align:right">#(duel.positionA))</td>
+                        #if(duel.tipperA.drawTipper.twitterHandle):
                         <td><a href="https://twitter.com/#(duel.tipperA.drawTipper.twitterHandle)" style="color:black">#(duel.tipperA.name)</a></td>
-                        <td>&emsp;</td>
-                        <td style="text-align:right"><strong>#(duel.punkteA)</strong></td>
-                        <td>&ensp;#if(duel.winner == 1):🎉#endif</td>
+                        #else:
+                        <td>#(duel.tipperA.name)</td>
+                        #endif
                     </tr>
                     <tr>
                         <td style="text-align:right">#(duel.positionB))</td>
+                        #if(duel.tipperB.drawTipper.twitterHandle):
                         <td><a href="https://twitter.com/#(duel.tipperB.drawTipper.twitterHandle)" style="color:black">#(duel.tipperB.name)</a></td>
-                        <td>&emsp;</td>
-                        <td style="text-align:right"><strong>#(duel.punkteB)</strong></td>
-                        <td>&ensp;#if(duel.winner == 2):🎉#endif</td>
+                        #else:
+                        <td>#(duel.tipperB.name)</td>
+                        #endif
                     </tr>
                 </table>
             </div>
@@ -104,7 +94,7 @@
 <div class="container" style="margin-top: 30px;">
     <div class="card">
         <div class="card-header">
-            <h4 style="text-align:center">#count(notDrawn) #if(isEmpty(duels)):Anmeldungen#else:verbleibende Lose#endif</h4>
+            <h4 style="text-align:center">#count(notDrawn) #if(isEmpty(duels1)):Anmeldungen#else:verbleibende Lose#endif</h4>
         </div>
     </div>
 </div>
@@ -114,11 +104,18 @@
 
         #for(user in notDrawn):
         <div class="card">
+            #if(user.twitterHandle):
             <a href="https://twitter.com/#(user.twitterHandle)">
                 <div class="card-body">
                     <p style="margin-bottom: 0px; text-align:center; color:black">#(user.name)</p>
                 </div>
             </a>
+            #else:
+            <div class="card-body">
+                <p style="margin-bottom: 0px; text-align:center; color:black">#(user.name)</p>
+            </div>
+            #endif
+
         </div>
         #endfor
 
