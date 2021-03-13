@@ -128,24 +128,38 @@ struct KnockOutController: RouteCollection {
     }
 
     private func getNewDuel(from first: KnockOutDuel, against second: KnockOutDuel, matchNumber: Int, results: Spieltag?, tieBreaker: KnockOutDuel.TieBreaker) -> KnockOutDuel {
-        let tipperA: Tippspieler
+        var tipperA: Tippspieler
         if first.winner == 0 {
             tipperA = Tippspieler(name: "Sieger*in Spiel \(first.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0, spieltagssieger: nil)
         } else {
-            tipperA = first.winner == 1 ? first.tipperA : first.tipperB
+            if first.winner == 1 {
+                tipperA = first.tipperA
+                tipperA.drawTipper = first.tipperA.drawTipper
+            } else {
+                tipperA = first.tipperB
+                tipperA.drawTipper = first.tipperB.drawTipper
+            }
         }
 
-        let tipperB: Tippspieler
+        var tipperB: Tippspieler
         if second.winner == 0 {
             tipperB = Tippspieler(name: "Sieger*in Spiel \(second.spielnummer)", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: 0, spieltagssieger: nil)
         } else {
-            tipperB = second.winner == 1 ? second.tipperA : second.tipperB
+            if second.winner == 1 {
+                tipperB = second.tipperA
+                tipperB.drawTipper = second.tipperA.drawTipper
+            } else {
+                tipperB = second.tipperB
+                tipperB.drawTipper = second.tipperB.drawTipper
+            }
         }
 
         if let results = results,
-           let updateTipperA = results.tippspieler.first(where: { $0.name == tipperA.name }),
-           let updateTipperB = results.tippspieler.first(where: { $0.name == tipperB.name })
+           var updateTipperA = results.tippspieler.first(where: { $0.name == tipperA.name }),
+           var updateTipperB = results.tippspieler.first(where: { $0.name == tipperB.name })
         {
+            updateTipperA.drawTipper = tipperA.drawTipper
+            updateTipperB.drawTipper = tipperB.drawTipper
             let pointsA = results.tippspieler.first(where: { $0.name == tipperA.name })?.punkte ?? 0
             let pointsB = results.tippspieler.first(where: { $0.name == tipperB.name })?.punkte ?? 0
             return KnockOutDuel(
@@ -217,9 +231,11 @@ struct KnockOutController: RouteCollection {
             let tipperB = fetchTipper(2 * i + 1)
 
             if let results = resultMD,
-               let updateTipperA = results.tippspieler.first(where: { $0.name == tipperA.name }),
-               let updateTipperB = results.tippspieler.first(where: { $0.name == tipperB.name })
+               var updateTipperA = results.tippspieler.first(where: { $0.name == tipperA.name }),
+               var updateTipperB = results.tippspieler.first(where: { $0.name == tipperB.name })
             {
+                updateTipperA.drawTipper = tipperA.drawTipper
+                updateTipperB.drawTipper = tipperB.drawTipper
                 let pointsA = updateTipperA.punkte
                 let pointsB = updateTipperB.punkte
                 duels.append(KnockOutDuel(
