@@ -14,6 +14,9 @@ struct HomepageController: RouteCollection {
         routes.get("girlclub") { (req) -> EventLoopFuture<View> in
             return req.view.render("girlclub", ["":""])
         }
+        routes.get("proclubs") { (req) -> Response in
+            req.redirect(to: "https://twitch.tv/thediabyarmy", type: .normal)
+        }
     }
 
     private func getHomeStats(req: Request) throws -> EventLoopFuture<View> {
