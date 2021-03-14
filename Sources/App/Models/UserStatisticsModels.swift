@@ -155,7 +155,7 @@ struct KnockOutDuel: Content {
                     if exactA == exactB {
                         let correctDiffA = tipperA.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
                         let correctDiffB = tipperB.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
-                        if correctDiffA == correctDiffA {
+                        if correctDiffA == correctDiffB {
                             self.winner = positionA < positionB ? 1 : 2
                         } else {
                             self.winner = correctDiffA > correctDiffB ? 1 : 2
