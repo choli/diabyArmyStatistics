@@ -9,13 +9,16 @@ struct HomepageController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.get(use: getHomeStats)
         routes.get("halloffame") { (req) -> EventLoopFuture<View> in
-            return req.view.render("hallOfFame", ["":""])
+            req.view.render("hallOfFame", ["":""])
         }
         routes.get("girlclub") { (req) -> EventLoopFuture<View> in
-            return req.view.render("girlclub", ["":""])
+            req.view.render("girlclub", ["":""])
         }
         routes.get("proclubs") { (req) -> Response in
             req.redirect(to: "https://twitch.tv/thediabyarmy", type: .normal)
+        }
+        routes.get("onlydragofans") { (req) -> Response in
+            req.redirect(to: "https://twitter.com/_nonico", type: .normal)
         }
     }
 
