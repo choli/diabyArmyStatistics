@@ -44,7 +44,7 @@
                         #endif
                         <td>&emsp;</td>
                         <td style="text-align:right"><strong>#(duel.punkteA)</strong></td>
-                        <td>&ensp;#if(duel.winner == 1):🎉#endif</td>
+                        <td>&ensp;#if(duel.winner == 1 && roundInterrupted != true):🎉#endif</td>
                     </tr>
                     <tr>
                         <td style="text-align:right">#(duel.positionB))</td>
@@ -55,7 +55,7 @@
                         #endif
                         <td>&emsp;</td>
                         <td style="text-align:right"><strong>#(duel.punkteB)</strong></td>
-                        <td>&ensp;#if(duel.winner == 2):🎉#endif</td>
+                        <td>&ensp;#if(duel.winner == 2 && roundInterrupted != true):🎉#endif</td>
                     </tr>
                 </table>
             </div>

@@ -10,6 +10,7 @@ enum StatisticObject: Content {
     case knockOutDuels([KnockOutDuel])
     case singleString(String)
     case singleInt(Int)
+    case singleBool(Bool)
     case statsObjectArray([StatisticObject])
     case drawUsers([DrawArray.Tipper])
     case spieltagFacts([SpieltagFacts])
@@ -34,6 +35,8 @@ enum StatisticObject: Content {
             try string.encode(to: encoder)
         case .singleInt(let int):
             try int.encode(to: encoder)
+        case .singleBool(let bool):
+            try bool.encode(to: encoder)
         case .statsObjectArray(let statsObjectArray):
             try statsObjectArray.encode(to: encoder)
         case .drawUsers(let drawUsers):
