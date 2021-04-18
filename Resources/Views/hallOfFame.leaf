@@ -6,6 +6,33 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>20/21 Clausura</h4>
+                <p class="subtitle">Pokal der 20/21er Vorrunde</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🥇</td>
+                        <td>?<!--<a style="color:black" href="https://twitter.com/_NoNico/">NoNico</a>--></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td>?<!--<a style="color:black" href="https://twitter.com/FrankZi35640768/">EdmondTapsoba</a>--></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/fausto79/">bernd</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/CFLMSO">OwenMurphy</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>20/21 Apertura</h4>
                 <p class="subtitle">Pokal der 20/21er Vorrunde</p>
             </div>
