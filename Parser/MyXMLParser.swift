@@ -17,7 +17,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     private var currentStep: PlayerStep = .none
 
     // MARK: - Put proper matchday in here <---- 👈🏽 🐸
-    private var completeMatchday = Spieltag(spieltag: 29)
+    private var completeMatchday = Spieltag(spieltag: 30)
 
     private enum PlayerStep: Hashable {
         case none
@@ -248,12 +248,11 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
                 player.positiondiff = positive ? diff : -diff
 
             case .ereignis(let matchday):
-                guard matchday < self.completeMatchday.resultate.count else {
+                guard let match = self.completeMatchday.resultate.first(where: { $0.matchkey == matchday }) else {
                     print("matchday \(matchday) not played yet")
                     continue
                 }
-                guard let match = self.completeMatchday.resultate.first(where: { $0.matchkey == matchday }),
-                      let resultString = self.helperDict[.ereignis(matchday)] as? String
+                guard let resultString = self.helperDict[.ereignis(matchday)] as? String
                 else { fatalError("couldn't parse matchday \(matchday) of \(name) properly") }
 
                 let goals = resultString.split(separator: ":")
