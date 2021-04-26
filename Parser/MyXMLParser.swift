@@ -17,7 +17,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     private var currentStep: PlayerStep = .none
 
     // MARK: - Put proper matchday in here <---- 👈🏽 🐸
-    private var completeMatchday = Spieltag(spieltag: 30)
+    private var completeMatchday = Spieltag(spieltag: 31)
 
     private enum PlayerStep: Hashable {
         case none
@@ -247,18 +247,18 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
                 let diff = Int(diffString) ?? 0
                 player.positiondiff = positive ? diff : -diff
 
-            case .ereignis(let matchday):
-                guard let match = self.completeMatchday.resultate.first(where: { $0.matchkey == matchday }) else {
-                    print("matchday \(matchday) not played yet")
+            case .ereignis(let matchkey):
+                guard let match = self.completeMatchday.resultate.first(where: { $0.matchkey == matchkey }) else {
+                    print("match \(matchkey) not played yet")
                     continue
                 }
-                guard let resultString = self.helperDict[.ereignis(matchday)] as? String
-                else { fatalError("couldn't parse matchday \(matchday) of \(name) properly") }
+                guard let resultString = self.helperDict[.ereignis(matchkey)] as? String
+                else { fatalError("couldn't parse matchday \(matchkey) of \(name) properly") }
 
                 let goals = resultString.split(separator: ":")
                 if goals.count < 2 { continue }
                 guard let heim = Int(goals[0]), let gast = Int(goals[1])
-                else { fatalError("couldn't parse matchday \(matchday) of \(name) properly") }
+                else { fatalError("couldn't parse matchday \(matchkey) of \(name) properly") }
 
                 var spielpunkte = 0
                 if goals.count >= 3, let points = Int(goals[2]) { spielpunkte = points }
@@ -268,7 +268,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
                                   heim: heim,
                                   gast: gast,
                                   spielpunkte: spielpunkte,
-                                  key: matchday)
+                                  key: matchkey)
                 player.tipps.append(spiel)
             default:
                 break
