@@ -9,4 +9,5 @@ func routes(_ app: Application) throws {
     try app.register(collection: KnockOutController(mdc: mdc))
     try app.register(collection: SingleUserStatisticsController(mdc: mdc))
     try app.register(collection: MatchdayStatisticsController(mdc: mdc))
+    try app.register(collection: OAuthController())
 }
