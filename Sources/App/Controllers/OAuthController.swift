@@ -1,23 +1,22 @@
 import Vapor
-import CommonCrypto
 
 private struct RequestOAuthTokenInput {
     let consumerKey: String
     let consumerSecret: String
 }
 
-struct RequestOAuthTokenResponse: Content {
+private struct RequestOAuthTokenResponse {
     let oauthToken: String
     let oauthTokenSecret: String
     let oauthCallbackConfirmed: String
 }
 
-struct RequestOAuthAuthenticationResponse: Content {
+private struct RequestOAuthAuthenticationResponse: Content {
     let oauth_token: String
     let oauth_verifier: String
 }
 
-struct RequestAccessTokenInput {
+private struct RequestAccessTokenInput {
     let consumerKey: String
     let consumerSecret: String
     let requestToken: String // = RequestOAuthTokenResponse.oauthToken
@@ -25,7 +24,7 @@ struct RequestAccessTokenInput {
     let oauthVerifier: String
 }
 
-struct RequestAccessTokenResponse {
+private struct RequestAccessTokenResponse {
     let accessToken: String
     let accessTokenSecret: String
     let userId: String
@@ -35,23 +34,30 @@ struct RequestAccessTokenResponse {
 struct OAuthController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.get("requestLogin") { req -> EventLoopFuture<Response> in
-            let input = RequestOAuthTokenInput(consumerKey: "PnnpLbBUlAa3p7VHnom0JHzgL",
-                                               consumerSecret: "vQTpmXCOxZY2b4cHBOExHsp5KuSIak0aE2uXMaLfiR2tmDngDb")
+            guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
+            else { throw HTTPClientError.invalidURL }
+            let input = RequestOAuthTokenInput(consumerKey: consumerKey,
+                                               consumerSecret: consumerSecret)
 
             let requestTokenELF = try requestOAuthToken(req: req, args: input)
             return requestTokenELF.map { requestToken in
-                // save token in db
-                req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)", type: .normal)
+                req.session.data["oauthToken"] = requestToken.oauthToken
+                req.session.data["oauthTokenSecret"] = requestToken.oauthTokenSecret
+                return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)", type: .normal)
             }
         }
 
         routes.get("oauthCallback") { req -> EventLoopFuture<String> in
             let authRes = try req.query.decode(RequestOAuthAuthenticationResponse.self)
-            //db: get pw
-            // TODO: Remove dummy
-            let auth_token_secret = "abc"
-            let input = RequestAccessTokenInput(consumerKey: "PnnpLbBUlAa3p7VHnom0JHzgL",
-                                                consumerSecret: "vQTpmXCOxZY2b4cHBOExHsp5KuSIak0aE2uXMaLfiR2tmDngDb",
+
+            guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
+            else { throw HTTPClientError.invalidURL }
+
+            guard let oauthToken = req.session.data["oauthToken"], oauthToken == authRes.oauth_token, let auth_token_secret = req.session.data["oauthTokenSecret"]
+            else { throw HTTPClientError.cancelled }
+
+            let input = RequestAccessTokenInput(consumerKey: consumerKey,
+                                                consumerSecret: consumerSecret,
                                                 requestToken: authRes.oauth_token,
                                                 requestTokenSecret: auth_token_secret,
                                                 oauthVerifier: authRes.oauth_verifier)
@@ -67,7 +73,7 @@ struct OAuthController: RouteCollection {
     private func requestOAuthToken(req: Request, args: RequestOAuthTokenInput) throws -> EventLoopFuture<RequestOAuthTokenResponse> {
 
         let request = (url: "https://api.twitter.com/oauth/request_token", httpMethod: "POST")
-        let callback = "https://localhost:8080/oauthCallback"
+        let callback = "https://diabyarmy.de/oauthCallback"
 
         var params: [String: Any] = [
             "oauth_callback" : callback,
@@ -107,24 +113,24 @@ struct OAuthController: RouteCollection {
 
     private func requestAccessToken(req: Request, args: RequestAccessTokenInput) throws -> EventLoopFuture<RequestAccessTokenResponse> {
 
-      let request = (url: "https://api.twitter.com/oauth/access_token", httpMethod: "POST")
+        let request = (url: "https://api.twitter.com/oauth/access_token", httpMethod: "POST")
 
-      var params: [String: Any] = [
-        "oauth_token" : args.requestToken,
-        "oauth_verifier" : args.oauthVerifier,
-        "oauth_consumer_key" : args.consumerKey,
-        "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
-        "oauth_signature_method" : "HMAC-SHA1",
-        "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
-        "oauth_version" : "1.0"
-      ]
+        var params: [String: Any] = [
+            "oauth_token" : args.requestToken,
+            "oauth_verifier" : args.oauthVerifier,
+            "oauth_consumer_key" : args.consumerKey,
+            "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
+            "oauth_signature_method" : "HMAC-SHA1",
+            "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
+            "oauth_version" : "1.0"
+        ]
 
-      // Build the OAuth Signature from Parameters
-      params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
-                                                 params: params, consumerSecret: args.consumerSecret,
-                                                 oauthTokenSecret: args.requestTokenSecret)
+        // Build the OAuth Signature from Parameters
+        params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
+                                                   params: params, consumerSecret: args.consumerSecret,
+                                                   oauthTokenSecret: args.requestTokenSecret)
 
-      // Once OAuth Signature is included in our parameters, build the authorization header
+        // Once OAuth Signature is included in our parameters, build the authorization header
         let authHeader = authorizationHeader(params: params)
         let url = URI(string: request.url)
 
@@ -187,8 +193,10 @@ struct OAuthController: RouteCollection {
 
     private func hmac_sha1(signingKey: String, signatureBase: String) -> String {
         // HMAC-SHA1 hashing algorithm returned as a base64 encoded string
-        var digest = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
-        CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), signingKey, signingKey.count, signatureBase, signatureBase.count, &digest)
+        let keyArray: [UInt8] = Array(signingKey.utf8)
+        let key = SymmetricKey(data: keyArray)
+        let signature: [UInt8] = Array(signatureBase.utf8)
+        let digest = Array(HMAC<Insecure.SHA1>.authenticationCode(for: signature, using: key))
         let data = Data(digest)
         return data.base64EncodedString()
     }
