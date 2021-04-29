@@ -23,13 +23,14 @@ struct OAuthController: RouteCollection {
         }
 
         routes.get("status") { req -> EventLoopFuture<Response> in
+            let targetedCall = "/verifyCredentials"
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
             else {
-                req.session.data["initialRequest"] = "status"
+                req.session.data["initialRequest"] = targetedCall
                 return req.eventLoop.future(req.redirect(to: "/requestLogin"))
             }
 
-            return req.eventLoop.future(req.redirect(to: "/verifyCredentials"))
+            return req.eventLoop.future(req.redirect(to: targetedCall))
         }
 
         routes.get("verifyCredentials") { req -> EventLoopFuture<VerificationObject> in
@@ -40,7 +41,11 @@ struct OAuthController: RouteCollection {
 
             let request = (url: "https://api.twitter.com/1.1/account/verify_credentials.json", httpMethod: "GET")
 
-            var params: [String: Any] = [
+            let queryParams = [
+                "skip_status" : "true"
+            ]
+
+            var headerParams = [
                 "oauth_consumer_key" : consumerKey,
                 "oauth_token" : accessToken.accessToken,
                 "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
@@ -49,13 +54,21 @@ struct OAuthController: RouteCollection {
                 "oauth_version" : "1.0"
             ]
             // Build the OAuth Signature from Parameters
-            params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
-                                                       params: params, consumerSecret: consumerSecret,
+            let allParams = queryParams.merging(headerParams) { _, _ in
+                assertionFailure("no common keys")
+                return ""
+            }
+
+            headerParams["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
+                                                       params: allParams, consumerSecret: consumerSecret,
                                                        oauthTokenSecret: accessToken.accessTokenSecret)
 
             // Once OAuth Signature is included in our parameters, build the authorization header
-            let authHeader = authorizationHeader(params: params)
-            let url = URI(string: request.url)
+            let authHeader = authorizationHeader(params: headerParams)
+
+            var urlComponents = URLComponents(string: request.url)
+            urlComponents?.queryItems = queryParams.map { URLQueryItem(name: $0.key, value: $0.value) }
+            let url = URI(string: urlComponents!.url!.absoluteString)
 
             return req.client.get(url) { req in
                 req.headers.add(name: "Authorization", value: authHeader)
@@ -78,7 +91,7 @@ struct OAuthController: RouteCollection {
             return requestTokenELF.map { requestToken in
                 req.session.data["oauthToken"] = requestToken.oauthToken
                 req.session.data["oauthTokenSecret"] = requestToken.oauthTokenSecret
-                return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
+                return req.redirect(to: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.oauthToken)")
             }
         }
 
