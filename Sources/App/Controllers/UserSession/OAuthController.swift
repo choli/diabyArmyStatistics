@@ -1,38 +1,19 @@
 import Vapor
 
-private struct RequestOAuthTokenInput {
-    let consumerKey: String
-    let consumerSecret: String
-}
-
-private struct RequestOAuthTokenResponse {
-    let oauthToken: String
-    let oauthTokenSecret: String
-    let oauthCallbackConfirmed: String
-}
-
-private struct RequestOAuthAuthenticationResponse: Content {
-    let oauth_token: String
-    let oauth_verifier: String
-}
-
-private struct RequestAccessTokenInput {
-    let consumerKey: String
-    let consumerSecret: String
-    let requestToken: String // = RequestOAuthTokenResponse.oauthToken
-    let requestTokenSecret: String // = RequestOAuthTokenResponse.oauthTokenSecret
-    let oauthVerifier: String
-}
-
-private struct RequestAccessTokenResponse {
-    let accessToken: String
-    let accessTokenSecret: String
-    let userId: String
-    let screenName: String
-}
-
 struct OAuthController: RouteCollection {
+
+    let consumerKey: String
+    let consumerSecret: String
+
+    init() {
+        guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
+        else { fatalError("Consumer key or secret not set properly") }
+        self.consumerKey = consumerKey
+        self.consumerSecret = consumerSecret
+    }
+
     func boot(routes: RoutesBuilder) throws {
+
         routes.get("twitter") { req -> String in
             if let screenName = req.session.data["screenName"] {
                 return "Dein Twitter handle ist \(screenName)"
@@ -41,16 +22,59 @@ struct OAuthController: RouteCollection {
             }
         }
 
+        routes.get("status") { req -> EventLoopFuture<Response> in
+            guard RequestAccessTokenResponse.sessionToken(in: req) != nil
+            else {
+                req.session.data["initialRequest"] = "status"
+                return req.eventLoop.future(req.redirect(to: "/requestLogin"))
+            }
+
+            return req.eventLoop.future(req.redirect(to: "/verifyCredentials"))
+        }
+
+        routes.get("verifyCredentials") { req -> EventLoopFuture<VerificationObject> in
+            guard let accessToken = RequestAccessTokenResponse.sessionToken(in: req)
+            else {
+                fatalError("Shouldn't access directly! Else this check should be done")
+            }
+
+            let request = (url: "https://api.twitter.com/1.1/account/verify_credentials.json", httpMethod: "GET")
+
+            var params: [String: Any] = [
+                "oauth_consumer_key" : consumerKey,
+                "oauth_token" : accessToken.accessToken,
+                "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
+                "oauth_signature_method" : "HMAC-SHA256",
+                "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
+                "oauth_version" : "1.0"
+            ]
+            // Build the OAuth Signature from Parameters
+            params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
+                                                       params: params, consumerSecret: consumerSecret,
+                                                       oauthTokenSecret: accessToken.accessTokenSecret)
+
+            // Once OAuth Signature is included in our parameters, build the authorization header
+            let authHeader = authorizationHeader(params: params)
+            let url = URI(string: request.url)
+
+            return req.client.get(url) { req in
+                req.headers.add(name: "Authorization", value: authHeader)
+            }.flatMapThrowing { res in
+                return try res.content.decode(VerificationObject.self)
+            }
+        }
+
+        struct VerificationObject: Content {
+            let name: String
+        }
+
+        // MARK: - Login flow
+
         routes.get("requestLogin") { req -> EventLoopFuture<Response> in
             // Clear session when a user requests a new login
             clearSession(req.session)
 
-            guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
-            else { throw HTTPClientError.invalidURL }
-            let input = RequestOAuthTokenInput(consumerKey: consumerKey,
-                                               consumerSecret: consumerSecret)
-
-            let requestTokenELF = try requestOAuthToken(req: req, args: input)
+            let requestTokenELF = try requestOAuthToken(req: req)
             return requestTokenELF.map { requestToken in
                 req.session.data["oauthToken"] = requestToken.oauthToken
                 req.session.data["oauthTokenSecret"] = requestToken.oauthTokenSecret
@@ -61,15 +85,10 @@ struct OAuthController: RouteCollection {
         routes.get("oauthCallback") { req -> EventLoopFuture<Response> in
             let authRes = try req.query.decode(RequestOAuthAuthenticationResponse.self)
 
-            guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
-            else { throw HTTPClientError.invalidURL }
-
             guard let oauthToken = req.session.data["oauthToken"], oauthToken == authRes.oauth_token, let auth_token_secret = req.session.data["oauthTokenSecret"]
             else { throw HTTPClientError.cancelled }
 
-            let input = RequestAccessTokenInput(consumerKey: consumerKey,
-                                                consumerSecret: consumerSecret,
-                                                requestToken: authRes.oauth_token,
+            let input = RequestAccessTokenInput(requestToken: authRes.oauth_token,
                                                 requestTokenSecret: auth_token_secret,
                                                 oauthVerifier: authRes.oauth_verifier)
             let accessTokenELF = try requestAccessToken(req: req, args: input)
@@ -80,12 +99,19 @@ struct OAuthController: RouteCollection {
                 req.session.data["screenName"] = accessToken.screenName
                 req.session.data["oauthToken"] = nil
                 req.session.data["oauthTokenSecret"] = nil
-                return req.redirect(to: "/twitter")
+
+                if let initialRequest = req.session.data["initialRequest"] {
+                    req.session.data["initialRequest"] = nil
+                    return req.redirect(to: initialRequest)
+                } else {
+                    return req.redirect(to: "/")
+                }
             }
         }
     }
 
     // MARK: - Session handling
+
     private func clearSession(_ session: Session) {
         let keysToClean = [
             "oauthToken",
@@ -103,14 +129,14 @@ struct OAuthController: RouteCollection {
 
     // MARK: - request methods
 
-    private func requestOAuthToken(req: Request, args: RequestOAuthTokenInput) throws -> EventLoopFuture<RequestOAuthTokenResponse> {
+    private func requestOAuthToken(req: Request) throws -> EventLoopFuture<RequestOAuthTokenResponse> {
 
         let request = (url: "https://api.twitter.com/oauth/request_token", httpMethod: "POST")
         let callback = "https://diabyarmy.de/oauthCallback"
 
         var params: [String: Any] = [
             "oauth_callback" : callback,
-            "oauth_consumer_key" : args.consumerKey,
+            "oauth_consumer_key" : consumerKey,
             "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
             "oauth_signature_method" : "HMAC-SHA256",
             "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
@@ -118,7 +144,7 @@ struct OAuthController: RouteCollection {
         ]
         // Build the OAuth Signature from Parameters
         params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
-                                                   params: params, consumerSecret: args.consumerSecret)
+                                                   params: params, consumerSecret: consumerSecret)
 
         // Once OAuth Signature is included in our parameters, build the authorization header
         let authHeader = authorizationHeader(params: params)
@@ -151,7 +177,7 @@ struct OAuthController: RouteCollection {
         var params: [String: Any] = [
             "oauth_token" : args.requestToken,
             "oauth_verifier" : args.oauthVerifier,
-            "oauth_consumer_key" : args.consumerKey,
+            "oauth_consumer_key" : consumerKey,
             "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
             "oauth_signature_method" : "HMAC-SHA256",
             "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
@@ -160,7 +186,7 @@ struct OAuthController: RouteCollection {
 
         // Build the OAuth Signature from Parameters
         params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
-                                                   params: params, consumerSecret: args.consumerSecret,
+                                                   params: params, consumerSecret: consumerSecret,
                                                    oauthTokenSecret: args.requestTokenSecret)
 
         // Once OAuth Signature is included in our parameters, build the authorization header
@@ -189,6 +215,7 @@ struct OAuthController: RouteCollection {
     }
 
     // MARK: - Helper methods
+
     private func authorizationHeader(params: [String: Any]) -> String {
         var parts: [String] = []
         for param in params {
@@ -245,7 +272,7 @@ struct OAuthController: RouteCollection {
     }
 }
 
-extension String {
+private extension String {
     var urlEncoded: String {
         var charset: CharacterSet = .urlQueryAllowed
         charset.remove(charactersIn: "\n:#/?@!$&'()*+,;=")
