@@ -193,9 +193,13 @@ struct OAuthController: RouteCollection {
 
     private func hmac_sha1(signingKey: String, signatureBase: String) -> String {
         // HMAC-SHA1 hashing algorithm returned as a base64 encoded string
-        let keyArray: [UInt8] = Array(signingKey.utf8)
+        guard let keyArray = signingKey.data(using: .utf8), let signature = signatureBase.data(using: .utf8)
+        else {
+            assertionFailure("There is no reason for this not to work")
+            return ""
+        }
+
         let key = SymmetricKey(data: keyArray)
-        let signature: [UInt8] = Array(signatureBase.utf8)
         let digest = Array(HMAC<Insecure.SHA1>.authenticationCode(for: signature, using: key))
         let data = Data(digest)
         return data.base64EncodedString()
