@@ -33,6 +33,14 @@ private struct RequestAccessTokenResponse {
 
 struct OAuthController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
+        routes.get("twitter") { req -> String in
+            if let screenName = req.session.data["screenName"] {
+                return "Dein Twitter handle ist \(screenName)"
+            } else {
+                return "Du bist nicht eingeloggt."
+            }
+        }
+
         routes.get("requestLogin") { req -> EventLoopFuture<Response> in
             // Clear session when a user requests a new login
             clearSession(req.session)
@@ -46,11 +54,11 @@ struct OAuthController: RouteCollection {
             return requestTokenELF.map { requestToken in
                 req.session.data["oauthToken"] = requestToken.oauthToken
                 req.session.data["oauthTokenSecret"] = requestToken.oauthTokenSecret
-                return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)", type: .normal)
+                return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
             }
         }
 
-        routes.get("oauthCallback") { req -> EventLoopFuture<String> in
+        routes.get("oauthCallback") { req -> EventLoopFuture<Response> in
             let authRes = try req.query.decode(RequestOAuthAuthenticationResponse.self)
 
             guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
@@ -72,7 +80,7 @@ struct OAuthController: RouteCollection {
                 req.session.data["screenName"] = accessToken.screenName
                 req.session.data["oauthToken"] = nil
                 req.session.data["oauthTokenSecret"] = nil
-                return "Dein Twitter handle ist \(accessToken.screenName)"
+                return req.redirect(to: "/twitter")
             }
         }
     }
