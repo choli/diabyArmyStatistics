@@ -34,6 +34,9 @@ private struct RequestAccessTokenResponse {
 struct OAuthController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.get("requestLogin") { req -> EventLoopFuture<Response> in
+            // Clear session when a user requests a new login
+            clearSession(req.session)
+
             guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
             else { throw HTTPClientError.invalidURL }
             let input = RequestOAuthTokenInput(consumerKey: consumerKey,
@@ -63,8 +66,30 @@ struct OAuthController: RouteCollection {
                                                 oauthVerifier: authRes.oauth_verifier)
             let accessTokenELF = try requestAccessToken(req: req, args: input)
             return accessTokenELF.map { accessToken in
+                req.session.data["accessToken"] = accessToken.accessToken
+                req.session.data["accessTokenSecret"] = accessToken.accessTokenSecret
+                req.session.data["userId"] = accessToken.userId
+                req.session.data["screenName"] = accessToken.screenName
+                req.session.data["oauthToken"] = nil
+                req.session.data["oauthTokenSecret"] = nil
                 return "Dein Twitter handle ist \(accessToken.screenName)"
             }
+        }
+    }
+
+    // MARK: - Session handling
+    private func clearSession(_ session: Session) {
+        let keysToClean = [
+            "oauthToken",
+            "oauthTokenSecret",
+            "userId",
+            "screenName",
+            "accessToken",
+            "accessTokenSecret"
+        ]
+
+        keysToClean.forEach {
+            session.data[$0] = nil
         }
     }
 
