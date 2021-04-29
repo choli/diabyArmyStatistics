@@ -104,7 +104,7 @@ struct OAuthController: RouteCollection {
             "oauth_callback" : callback,
             "oauth_consumer_key" : args.consumerKey,
             "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
-            "oauth_signature_method" : "HMAC-SHA1",
+            "oauth_signature_method" : "HMAC-SHA256",
             "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
             "oauth_version" : "1.0"
         ]
@@ -145,7 +145,7 @@ struct OAuthController: RouteCollection {
             "oauth_verifier" : args.oauthVerifier,
             "oauth_consumer_key" : args.consumerKey,
             "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
-            "oauth_signature_method" : "HMAC-SHA1",
+            "oauth_signature_method" : "HMAC-SHA256",
             "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
             "oauth_version" : "1.0"
         ]
@@ -225,7 +225,7 @@ struct OAuthController: RouteCollection {
         }
 
         let key = SymmetricKey(data: keyArray)
-        let digest = Array(HMAC<Insecure.SHA1>.authenticationCode(for: signature, using: key))
+        let digest = Array(HMAC<SHA256>.authenticationCode(for: signature, using: key))
         let data = Data(digest)
         return data.base64EncodedString()
     }
