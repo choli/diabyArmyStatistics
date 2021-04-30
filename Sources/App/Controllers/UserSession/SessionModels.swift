@@ -24,16 +24,37 @@ struct RequestAccessTokenResponse {
     let screenName: String
 
     static func sessionToken(in req: Request) -> RequestAccessTokenResponse? {
-        guard let accessToken = req.session.data["accessToken"],
-        let accessTokenSecret = req.session.data["accessTokenSecret"],
-        let userId = req.session.data["userId"],
-        let screenName = req.session.data["screenName"]
+        guard let accessToken = req.session.stringForKey(.accessToken),
+              let accessTokenSecret = req.session.stringForKey(.accessTokenSecret),
+              let userId = req.session.stringForKey(.userId),
+              let screenName = req.session.stringForKey(.screenName)
         else { return nil }
 
         return RequestAccessTokenResponse(accessToken: accessToken,
                                    accessTokenSecret: accessTokenSecret,
                                    userId: userId,
                                    screenName: screenName)
+    }
+}
+
+enum DASessionKeys: String {
+    case oauthToken
+    case oauthTokenSecret
+
+    case accessToken
+    case accessTokenSecret
+    case userId
+    case screenName
+    case initialRequest
+}
+
+extension Session {
+    func stringForKey(_ key: DASessionKeys) -> String? {
+        self.data[key.rawValue]
+    }
+
+    func setValue(_ value: String?, for key: DASessionKeys) {
+        self.data[key.rawValue] = value
     }
 }
 

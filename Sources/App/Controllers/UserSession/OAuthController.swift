@@ -17,7 +17,7 @@ struct OAuthController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
 
         routes.get("twitter") { req -> String in
-            if let screenName = req.session.data["screenName"] {
+            if let screenName = req.session.stringForKey(.screenName) {
                 return "Dein Twitter handle ist \(screenName)"
             } else {
                 return "Du bist nicht eingeloggt."
@@ -27,7 +27,7 @@ struct OAuthController: RouteCollection {
         routes.get("status") { req -> EventLoopFuture<Response> in
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
             else {
-                req.session.data["initialRequest"] = req.url.string
+                req.session.setValue(req.url.string, for: .initialRequest)
                 return req.eventLoop.future(req.redirect(to: "/requestLogin"))
             }
 
@@ -46,7 +46,7 @@ struct OAuthController: RouteCollection {
             else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
             else {
-                req.session.data["initialRequest"] = req.url.string
+                req.session.setValue(req.url.string, for: .initialRequest)
                 return req.eventLoop.future(req.redirect(to: "/requestLogin"))
             }
 
@@ -69,8 +69,8 @@ struct OAuthController: RouteCollection {
 
             let requestTokenELF = try requestOAuthToken(req: req)
             return requestTokenELF.map { requestToken in
-                req.session.data["oauthToken"] = requestToken.oauthToken
-                req.session.data["oauthTokenSecret"] = requestToken.oauthTokenSecret
+                req.session.setValue(requestToken.oauthToken, for: .oauthToken)
+                req.session.setValue(requestToken.oauthTokenSecret, for: .oauthTokenSecret)
                 return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
             }
         }
@@ -78,7 +78,7 @@ struct OAuthController: RouteCollection {
         routes.get("oauthCallback") { req -> EventLoopFuture<Response> in
             let authRes = try req.query.decode(RequestOAuthAuthenticationResponse.self)
 
-            guard let oauthToken = req.session.data["oauthToken"], oauthToken == authRes.oauth_token, let auth_token_secret = req.session.data["oauthTokenSecret"]
+            guard let oauthToken = req.session.stringForKey(.oauthToken), oauthToken == authRes.oauth_token, let auth_token_secret = req.session.stringForKey(.oauthTokenSecret)
             else { throw HTTPClientError.cancelled }
 
             let input = RequestAccessTokenInput(requestToken: authRes.oauth_token,
@@ -86,15 +86,15 @@ struct OAuthController: RouteCollection {
                                                 oauthVerifier: authRes.oauth_verifier)
             let accessTokenELF = try requestAccessToken(req: req, args: input)
             return accessTokenELF.map { accessToken in
-                req.session.data["accessToken"] = accessToken.accessToken
-                req.session.data["accessTokenSecret"] = accessToken.accessTokenSecret
-                req.session.data["userId"] = accessToken.userId
-                req.session.data["screenName"] = accessToken.screenName
-                req.session.data["oauthToken"] = nil
-                req.session.data["oauthTokenSecret"] = nil
+                req.session.setValue(accessToken.accessToken, for: .accessToken)
+                req.session.setValue(accessToken.accessTokenSecret, for: .accessTokenSecret)
+                req.session.setValue(accessToken.userId, for: .userId)
+                req.session.setValue(accessToken.screenName, for: .screenName)
+                req.session.setValue(nil, for: .oauthToken)
+                req.session.setValue(nil, for: .oauthTokenSecret)
 
-                if let initialRequest = req.session.data["initialRequest"] {
-                    req.session.data["initialRequest"] = nil
+                if let initialRequest = req.session.stringForKey(.initialRequest) {
+                    req.session.setValue(nil, for: .initialRequest)
                     return req.redirect(to: initialRequest)
                 } else {
                     return req.redirect(to: "/")
