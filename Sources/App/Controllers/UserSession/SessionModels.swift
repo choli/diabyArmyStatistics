@@ -49,12 +49,44 @@ enum DASessionKeys: String {
 }
 
 extension Session {
+    var encryptionKey: Data? {
+        guard let sessionKey = Environment.get("SESSION_ENCRYPTION_KEY") else { return nil }
+        return sessionKey.data(using: .utf8)
+    }
+
     func stringForKey(_ key: DASessionKeys) -> String? {
-        self.data[key.rawValue]
+        guard let keyData = encryptionKey else {
+            assertionFailure("Key missing?")
+            return nil
+        }
+
+        let encKey = SymmetricKey(data: keyData)
+        guard let base64String = data[key.rawValue],
+              let base64Decoded = Data(base64Encoded: base64String),
+              let sealedBox = try? AES.GCM.SealedBox(combined: base64Decoded),
+              let valueData = try? AES.GCM.open(sealedBox, using: encKey)
+        else { return nil }
+
+        return String(decoding: valueData, as: UTF8.self)
     }
 
     func setValue(_ value: String?, for key: DASessionKeys) {
-        self.data[key.rawValue] = value
+        guard let keyData = encryptionKey else {
+            assertionFailure("Key missing?")
+            return
+        }
+
+        let encKey = SymmetricKey(data: keyData)
+
+        guard let value = value, let valueData = value.data(using: .utf8)
+        else {
+            data[key.rawValue] = nil
+            return
+        }
+        let sealedBox = try! AES.GCM.seal(valueData, using: encKey)
+        let sealedString = sealedBox.combined!.base64EncodedString()
+
+        data[key.rawValue] = sealedString
     }
 }
 
