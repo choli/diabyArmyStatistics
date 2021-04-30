@@ -2,6 +2,8 @@ import Vapor
 
 struct OAuthController: RouteCollection {
 
+    typealias StringDictionary = [String: String]
+
     let consumerKey: String
     let consumerSecret: String
 
@@ -23,63 +25,41 @@ struct OAuthController: RouteCollection {
         }
 
         routes.get("status") { req -> EventLoopFuture<Response> in
-            let targetedCall = "/verifyCredentials"
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
             else {
-                req.session.data["initialRequest"] = targetedCall
+                req.session.data["initialRequest"] = req.url.string
                 return req.eventLoop.future(req.redirect(to: "/requestLogin"))
             }
 
-            return req.eventLoop.future(req.redirect(to: targetedCall))
-        }
-
-        routes.get("verifyCredentials") { req -> EventLoopFuture<VerificationObject> in
-            guard let accessToken = RequestAccessTokenResponse.sessionToken(in: req)
-            else {
-                fatalError("Shouldn't access directly! Else this check should be done")
-            }
-
-            let request = (url: "https://api.twitter.com/1.1/account/verify_credentials.json", httpMethod: "GET")
-
-            let queryParams = [
-                "skip_status" : "true"
-            ]
-
-            var headerParams = [
-                "oauth_consumer_key" : consumerKey,
-                "oauth_token" : accessToken.accessToken,
-                "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
-                "oauth_signature_method" : "HMAC-SHA256",
-                "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
-                "oauth_version" : "1.0"
-            ]
-            // Build the OAuth Signature from Parameters
-            let allParams = queryParams.merging(headerParams) { _, _ in
-                assertionFailure("no common keys")
-                return ""
-            }
-
-            headerParams["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
-                                                       params: allParams, consumerSecret: consumerSecret,
-                                                       oauthTokenSecret: accessToken.accessTokenSecret)
-
-            // Once OAuth Signature is included in our parameters, build the authorization header
-            let authHeader = authorizationHeader(params: headerParams)
-
-            var urlComponents = URLComponents(string: request.url)
-            urlComponents?.queryItems = queryParams.map { URLQueryItem(name: $0.key, value: $0.value) }
-            let url = URI(string: urlComponents!.url!.absoluteString)
-
-            return req.client.get(url) { req in
-                req.headers.add(name: "Authorization", value: authHeader)
-            }.flatMapThrowing { res in
-                return try res.content.decode(VerificationObject.self)
-            }
+            return callGetRequest(with: req, url: "https://api.twitter.com/1.1/account/verify_credentials.json", queryParams: ["skip_status" : "true"])
+                .flatMapThrowing { res in
+                    return try res.content.decode(VerificationObject.self)
+                }.encodeResponse(for: req)
         }
 
         struct VerificationObject: Content {
             let name: String
         }
+
+        routes.get("tweetThis", ":tweet") { req -> EventLoopFuture<Response> in
+            guard let tweet = req.parameters.get("tweet")
+            else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
+            guard RequestAccessTokenResponse.sessionToken(in: req) != nil
+            else {
+                req.session.data["initialRequest"] = req.url.string
+                return req.eventLoop.future(req.redirect(to: "/requestLogin"))
+            }
+
+            return callPostRequest(with: req, url: "https://api.twitter.com/1.1/statuses/update.json", formParams: ["status" : tweet])
+                .flatMapThrowing { res in
+                    return try res.content.decode(TweetObject.self)
+                }.encodeResponse(for: req)
+        }
+
+        struct TweetObject: Content {
+            let text: String
+        }
+
 
         // MARK: - Login flow
 
@@ -91,7 +71,7 @@ struct OAuthController: RouteCollection {
             return requestTokenELF.map { requestToken in
                 req.session.data["oauthToken"] = requestToken.oauthToken
                 req.session.data["oauthTokenSecret"] = requestToken.oauthTokenSecret
-                return req.redirect(to: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.oauthToken)")
+                return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
             }
         }
 
@@ -147,7 +127,7 @@ struct OAuthController: RouteCollection {
         let request = (url: "https://api.twitter.com/oauth/request_token", httpMethod: "POST")
         let callback = "https://diabyarmy.de/oauthCallback"
 
-        var params: [String: Any] = [
+        var params: StringDictionary = [
             "oauth_callback" : callback,
             "oauth_consumer_key" : consumerKey,
             "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
@@ -156,8 +136,7 @@ struct OAuthController: RouteCollection {
             "oauth_version" : "1.0"
         ]
         // Build the OAuth Signature from Parameters
-        params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
-                                                   params: params, consumerSecret: consumerSecret)
+        params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url, headerParams: params)
 
         // Once OAuth Signature is included in our parameters, build the authorization header
         let authHeader = authorizationHeader(params: params)
@@ -187,7 +166,7 @@ struct OAuthController: RouteCollection {
 
         let request = (url: "https://api.twitter.com/oauth/access_token", httpMethod: "POST")
 
-        var params: [String: Any] = [
+        var params: StringDictionary = [
             "oauth_token" : args.requestToken,
             "oauth_verifier" : args.oauthVerifier,
             "oauth_consumer_key" : consumerKey,
@@ -199,8 +178,7 @@ struct OAuthController: RouteCollection {
 
         // Build the OAuth Signature from Parameters
         params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod, url: request.url,
-                                                   params: params, consumerSecret: consumerSecret,
-                                                   oauthTokenSecret: args.requestTokenSecret)
+                                                   headerParams: params, oauthTokenSecret: args.requestTokenSecret)
 
         // Once OAuth Signature is included in our parameters, build the authorization header
         let authHeader = authorizationHeader(params: params)
@@ -227,9 +205,67 @@ struct OAuthController: RouteCollection {
         }
     }
 
+    // MARK: - API Call methods
+
+    private func callGetRequest(with req: Request, url: String, queryParams: StringDictionary = [:]) -> EventLoopFuture<Response> {
+        guard let accessToken = RequestAccessTokenResponse.sessionToken(in: req)
+        else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingAccessToken) }
+
+        var headerParams = headerParams(with: accessToken)
+
+        headerParams["oauth_signature"] = oauthSignature(httpMethod: "GET", url: url,
+                                                         queryParams: queryParams, headerParams: headerParams,
+                                                         oauthTokenSecret: accessToken.accessTokenSecret)
+
+        // Once OAuth Signature is included in our parameters, build the authorization header
+        let authHeader = authorizationHeader(params: headerParams)
+
+        let url = URI(string: url)
+
+        return req.client.get(url) { req in
+            req.headers.add(name: "Authorization", value: authHeader)
+            req.headers.add(name: "Content-Type", value: "application/x-www-form-urlencoded")
+            try req.query.encode(queryParams)
+        }.encodeResponse(for: req)
+    }
+
+    private func callPostRequest(with req: Request, url: String, queryParams: StringDictionary = [:], formParams: StringDictionary = [:]) -> EventLoopFuture<Response> {
+        guard let accessToken = RequestAccessTokenResponse.sessionToken(in: req)
+        else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingAccessToken) }
+
+        var headerParams = headerParams(with: accessToken)
+
+        headerParams["oauth_signature"] = oauthSignature(httpMethod: "POST", url: url,
+                                                         queryParams: queryParams, formParams: formParams, headerParams: headerParams,
+                                                         oauthTokenSecret: accessToken.accessTokenSecret)
+
+        // Once OAuth Signature is included in our parameters, build the authorization header
+        let authHeader = authorizationHeader(params: headerParams)
+
+        let url = URI(string: url)
+
+        return req.client.post(url) { req in
+            req.headers.add(name: "Authorization", value: authHeader)
+            req.headers.add(name: "Content-Type", value: "application/x-www-form-urlencoded")
+            try req.query.encode(queryParams)
+            try req.content.encode(formParams, as: .urlEncodedForm)
+        }.encodeResponse(for: req)
+    }
+
     // MARK: - Helper methods
 
-    private func authorizationHeader(params: [String: Any]) -> String {
+    private func headerParams(with accessToken: RequestAccessTokenResponse) -> StringDictionary {
+        return [
+            "oauth_consumer_key" : consumerKey,
+            "oauth_token" : accessToken.accessToken,
+            "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
+            "oauth_signature_method" : "HMAC-SHA256",
+            "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
+            "oauth_version" : "1.0"
+        ]
+    }
+
+    private func authorizationHeader(params: StringDictionary) -> String {
         var parts: [String] = []
         for param in params {
             let key = param.key.urlEncoded
@@ -239,7 +275,7 @@ struct OAuthController: RouteCollection {
         return "OAuth " + parts.sorted().joined(separator: ", ")
     }
 
-    private func signatureKey(_ consumerSecret: String,_ oauthTokenSecret: String?) -> String {
+    private func signatureKey(_ oauthTokenSecret: String?) -> String {
 
         guard let oauthSecret = oauthTokenSecret?.urlEncoded
         else { return consumerSecret.urlEncoded+"&" }
@@ -247,7 +283,7 @@ struct OAuthController: RouteCollection {
         return consumerSecret.urlEncoded+"&"+oauthSecret
     }
 
-    private func signatureParameterString(params: [String: Any]) -> String {
+    private func signatureParameterString(params: StringDictionary) -> String {
         var result: [String] = []
         for param in params {
             let key = param.key.urlEncoded
@@ -257,7 +293,7 @@ struct OAuthController: RouteCollection {
         return result.sorted().joined(separator: "&")
     }
 
-    private func signatureBaseString(_ httpMethod: String = "POST",_ url: String, _ params: [String:Any]) -> String {
+    private func signatureBaseString(_ httpMethod: String = "POST",_ url: String, _ params: StringDictionary) -> String {
 
         let parameterString = signatureParameterString(params: params)
         return httpMethod + "&" + url.urlEncoded + "&" + parameterString.urlEncoded
@@ -278,11 +314,27 @@ struct OAuthController: RouteCollection {
         return data.base64EncodedString()
     }
 
-    private func oauthSignature(httpMethod: String = "POST", url: String, params: [String: Any], consumerSecret: String, oauthTokenSecret: String? = nil) -> String {
-        let signingKey = signatureKey(consumerSecret, oauthTokenSecret)
-        let signatureBase = signatureBaseString(httpMethod, url, params)
+    private func oauthSignature(httpMethod: String = "POST",
+                                url: String,
+                                queryParams: StringDictionary = [:],
+                                formParams: StringDictionary = [:],
+                                headerParams: StringDictionary,
+                                oauthTokenSecret: String? = nil) -> String {
+
+        var allParams: [String: String] = [:]
+        allParams.merge(queryParams) { _,_ in "" }
+        allParams.merge(formParams) { _,_ in "" }
+        allParams.merge(headerParams) { _,_ in "" }
+
+        let signingKey = signatureKey(oauthTokenSecret)
+        let signatureBase = signatureBaseString(httpMethod, url, allParams)
         return hmac_sha1(signingKey: signingKey, signatureBase: signatureBase)
     }
+}
+
+private enum DAHTTPErrors: Error {
+    case missingAccessToken
+    case missingArgument
 }
 
 private extension String {
