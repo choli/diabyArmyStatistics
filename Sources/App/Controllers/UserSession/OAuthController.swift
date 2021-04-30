@@ -211,7 +211,7 @@ struct OAuthController: RouteCollection {
         guard let accessToken = RequestAccessTokenResponse.sessionToken(in: req)
         else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingAccessToken) }
 
-        var headerParams = headerParams(with: accessToken)
+        var headerParams = getHeaderParams(with: accessToken)
 
         headerParams["oauth_signature"] = oauthSignature(httpMethod: "GET", url: url,
                                                          queryParams: queryParams, headerParams: headerParams,
@@ -233,7 +233,7 @@ struct OAuthController: RouteCollection {
         guard let accessToken = RequestAccessTokenResponse.sessionToken(in: req)
         else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingAccessToken) }
 
-        var headerParams = headerParams(with: accessToken)
+        var headerParams = getHeaderParams(with: accessToken)
 
         headerParams["oauth_signature"] = oauthSignature(httpMethod: "POST", url: url,
                                                          queryParams: queryParams, formParams: formParams, headerParams: headerParams,
@@ -254,7 +254,7 @@ struct OAuthController: RouteCollection {
 
     // MARK: - Helper methods
 
-    private func headerParams(with accessToken: RequestAccessTokenResponse) -> StringDictionary {
+    private func getHeaderParams(with accessToken: RequestAccessTokenResponse) -> StringDictionary {
         return [
             "oauth_consumer_key" : consumerKey,
             "oauth_token" : accessToken.accessToken,
