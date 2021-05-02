@@ -10,7 +10,7 @@ struct MatchdayStatisticsController: RouteCollection {
 
         routes.get("matchdays") { (req) -> EventLoopFuture<View> in
             return req.view.render(
-                "matchdayStats",
+                "Statistics/matchdayStats",
                 ["matchdays": getMatchdayFacts()]
             )
         }

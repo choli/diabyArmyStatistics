@@ -18,7 +18,7 @@ struct SingleTeamStatisticController: RouteCollection {
             let results = resultsStats.getAggregatedResults(for: team)
 
             return req.view.render(
-                "teamStats",
+                "Statistics/teamStats",
                 ["team": StatisticObject.singleString(team),
                  "exact": userStats.getExactTipps(for: team),
                  "optimists": userStats.getAggregatedTipps(for: team, optimist: true),
@@ -52,7 +52,7 @@ struct SingleTeamStatisticController: RouteCollection {
             let diffObj = StatisticObject.tendenzCounterWithResult(diffWrapper)
 
             return req.view.render(
-                "differenceStat",
+                "Statistics/differenceStat",
                 ["diff": StatisticObject.singleInt(diff),
                  "results": diffObj,
                  "resultsTab": StatisticObject.statsObjectArray(results)]

@@ -9,10 +9,10 @@ struct HomepageController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.get(use: getHomeStats)
         routes.get("halloffame") { (req) -> EventLoopFuture<View> in
-            req.view.render("hallOfFame", ["":""])
+            req.view.render("Pokal/hallOfFame", ["":""])
         }
         routes.get("girlclub") { (req) -> EventLoopFuture<View> in
-            req.view.render("girlclub", ["":""])
+            req.view.render("Fun/girlclub", ["":""])
         }
         routes.get("proclubs") { (req) -> Response in
             req.redirect(to: "https://twitch.tv/thediabyarmy", type: .normal)
@@ -27,7 +27,7 @@ struct HomepageController: RouteCollection {
         let mdStats = MatchdayStatisticsController(mdc: mdc)
 
         return req.view.render(
-            "stats",
+            "Statistics/stats",
             ["exactLev": userStats.getExactTipps(for: "Lev"),
              "exactAll": userStats.getExactTipps(),
              "tendencies": userStats.getCorrectTendencies(by: .total),

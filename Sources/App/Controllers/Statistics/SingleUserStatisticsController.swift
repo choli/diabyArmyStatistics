@@ -14,7 +14,7 @@ struct SingleUserStatisticsController: RouteCollection {
             else { throw Abort(.badRequest, reason: "No users found.") }
 
             return req.view.render(
-                "userOverview",
+                "Statistics/userOverview",
                 ["users": StatisticObject.statsObjectArray(users)]
             )
         }
@@ -26,7 +26,7 @@ struct SingleUserStatisticsController: RouteCollection {
             let userTipps = self.mdc.matchdays.compactMap { $0.tippspieler.first { $0.name == user } }.reduce([Spiel]()) { $0 + $1.tipps }
 
             return req.view.render(
-                "userStats",
+                "Statistics/userStats",
                 ["username": StatisticObject.singleString(user),
                  "pointsPerTipp": self.getCorrectTipps(from: userTipps),
                  "avgPointsPerTipp": self.getAvgPointsPerTipp(from: userTipps),

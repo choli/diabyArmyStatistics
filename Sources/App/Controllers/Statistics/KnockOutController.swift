@@ -16,7 +16,7 @@ struct KnockOutController: RouteCollection {
             let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
-                "knockOut",
+                "Pokal/knockOut",
                 [
                     "duels": StatisticObject.knockOutDuels(duels),
                     "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
@@ -36,7 +36,7 @@ struct KnockOutController: RouteCollection {
             let roundInterrupted = round == 7
 
             return req.view.render(
-                "knockOut",
+                "Pokal/knockOut",
                 [
                     "duels": StatisticObject.knockOutDuels(duels),
                     "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
@@ -55,7 +55,7 @@ struct KnockOutController: RouteCollection {
 
             let duels = getDuelsForDraw(spieler, firstMatchday: 23)
             return req.view.render(
-                "liveDraw",
+                "Pokal/liveDraw",
                 [
                     "notDrawn": StatisticObject.drawUsers(users ?? []),
                     "duels1": StatisticObject.knockOutDuels(duels.firstRound),
