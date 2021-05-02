@@ -27,13 +27,17 @@ struct OAuthController: RouteCollection {
         routes.get("status") { req -> EventLoopFuture<Response> in
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
             else {
-                req.session.setValue(req.url.string, for: .initialRequest)
-                return req.eventLoop.future(req.redirect(to: "/requestLogin"))
+                return redirectionForLogin(with: req)
             }
 
             return callGetRequest(with: req, url: "https://api.twitter.com/1.1/account/verify_credentials.json", queryParams: ["skip_status" : "true"])
-                .flatMapThrowing { res in
-                    return try res.content.decode(VerificationObject.self)
+                .flatMapThrowing { res -> EventLoopFuture<Response> in
+                    if let verification = try? res.content.decode(VerificationObject.self) {
+                        return req.view.render("Twitter/success", ["verification":verification]).encodeResponse(for: req)
+                    } else if let handledError = handleTwitterError(of: res, with: req) {
+                        return handledError
+                    }
+                    return res.encodeResponse(for: req)
                 }.encodeResponse(for: req)
         }
 
@@ -46,13 +50,17 @@ struct OAuthController: RouteCollection {
             else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
             else {
-                req.session.setValue(req.url.string, for: .initialRequest)
-                return req.eventLoop.future(req.redirect(to: "/requestLogin"))
+                return redirectionForLogin(with: req)
             }
 
             return callPostRequest(with: req, url: "https://api.twitter.com/1.1/statuses/update.json", formParams: ["status" : tweet])
-                .flatMapThrowing { res in
-                    return try res.content.decode(TweetObject.self)
+                .flatMapThrowing { res -> EventLoopFuture<Response> in
+                    if let tweet = try? res.content.decode(TweetObject.self) {
+                        return req.view.render("Twitter/success", ["tweet":tweet]).encodeResponse(for: req)
+                    } else if let handledError = handleTwitterError(of: res, with: req) {
+                        return handledError
+                    }
+                    return res.encodeResponse(for: req)
                 }.encodeResponse(for: req)
         }
 
@@ -106,17 +114,17 @@ struct OAuthController: RouteCollection {
     // MARK: - Session handling
 
     private func clearSession(_ session: Session) {
-        let keysToClean = [
-            "oauthToken",
-            "oauthTokenSecret",
-            "userId",
-            "screenName",
-            "accessToken",
-            "accessTokenSecret"
+        let keysToClean: [DASessionKeys] = [
+            .oauthToken,
+            .oauthTokenSecret,
+            .userId,
+            .screenName,
+            .accessToken,
+            .accessTokenSecret
         ]
 
         keysToClean.forEach {
-            session.data[$0] = nil
+            session.setValue(nil, for: $0)
         }
     }
 
@@ -254,6 +262,25 @@ struct OAuthController: RouteCollection {
 
     // MARK: - Helper methods
 
+    private func handleTwitterError(of res: Response, with req: Request) -> EventLoopFuture<Response>? {
+        guard let errors = try? res.content.decode(TwitterErrors.self),
+              let firstError = errors.errors.first
+        else { return nil }
+        switch firstError.code {
+        case 89:
+            return redirectionForLogin(with: req)
+        case 32:
+            return req.view.render("Twitter/error", ["":""]).encodeResponse(for: req)
+        default:
+            return req.view.render("Twitter/error", ["":""]).encodeResponse(for: req)
+        }
+    }
+
+    private func redirectionForLogin(with req: Request) -> EventLoopFuture<Response> {
+        req.session.setValue(req.url.string, for: .initialRequest)
+        return req.eventLoop.future(req.redirect(to: "/requestLogin"))
+    }
+
     private func getHeaderParams(with accessToken: RequestAccessTokenResponse) -> StringDictionary {
         return [
             "oauth_consumer_key" : consumerKey,
@@ -335,6 +362,15 @@ struct OAuthController: RouteCollection {
 private enum DAHTTPErrors: Error {
     case missingAccessToken
     case missingArgument
+}
+
+struct TwitterErrors: Content {
+    struct TwitterError: Content {
+        let code: Int
+        let message: String
+    }
+
+    let errors: [TwitterError]
 }
 
 private extension String {

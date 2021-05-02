@@ -1,0 +1,9 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+    <p>Sorry, es gab ein Problem, da hat choli wohl wieder nur halbe Arbeit geleistet.</p>
+    <img src="https://pbs.twimg.com/media/EzP5n47VEAQdL72?format=jpg&name=900x900" alt="Schade" width="100%">
+</div>
+#endexport
+#endextend

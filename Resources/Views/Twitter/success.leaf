@@ -1,0 +1,9 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+    <p>Das hat geklappt, yay!</p>
+    <img src="https://pbs.twimg.com/media/EzMd1O1UYAgmUUY?format=jpg&name=large" alt="Judihui" width="100%">
+</div>
+#endexport
+#endextend
