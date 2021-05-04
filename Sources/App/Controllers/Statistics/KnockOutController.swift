@@ -32,16 +32,12 @@ struct KnockOutController: RouteCollection {
             let duels = self.getDuels(round, start: 23, tieBreaker: .mehrExakteTipps, filename: "clausura2021")
             let dropDowns = self.getDropDownMenu(for: "clausura", duels: duels.count, in: round)
 
-            // temporary: final not done
-            let roundInterrupted = round == 7
-
             return req.view.render(
                 "Pokal/knockOut",
                 [
                     "duels": StatisticObject.knockOutDuels(duels),
                     "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
-                    "dropDown": StatisticObject.dropDownDataObject(dropDowns),
-                    "roundInterrupted": StatisticObject.singleBool(roundInterrupted)
+                    "dropDown": StatisticObject.dropDownDataObject(dropDowns)
                 ]
             )
         }
