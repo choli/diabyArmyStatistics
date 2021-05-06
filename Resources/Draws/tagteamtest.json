@@ -1,0 +1,38 @@
+{
+    "_comment1" : "This is just a test.",
+
+    "drawnTeams" : [
+        { "teamname": "team1",
+            "teamplayerA": { "name": "VanDoerlemann" },
+            "teamplayerB": { "name": "funbird589" }
+        },
+        { "teamname": "team2",
+            "teamplayerA": { "name": "Joh.N", "twitterHandle": "cub_joh"},
+            "teamplayerB": { "name": "Misses_Ellie", "twitterHandle": "larifariiiiii"}
+        },
+        { "teamname": "team3",
+            "teamplayerA": { "name": "Janek", "twitterHandle": "Janek_1904"},
+            "teamplayerB": { "name": "JustusvfLWOB" }
+        },
+        { "teamname": "team4",
+            "teamplayerA": { "name": "84_Littlestar" },
+            "teamplayerB": { "name": "LucaKH29", "twitterHandle": "LucaMD19"}
+        },
+        { "teamname": "team5",
+            "teamplayerA": { "name": "Moussa", "twitterHandle": "dommy__nik"},
+            "teamplayerB": { "name": "Sinho04" }
+        },
+        { "teamname": "team6",
+            "teamplayerA": { "name": "Bayer04imHerzen", "twitterHandle": "baumgovic"},
+            "teamplayerB": { "name": "Mahqz" }
+        },
+        { "teamname": "team7",
+            "teamplayerA": { "name": "Tine1904", "twitterHandle": "TineMachine"},
+            "teamplayerB": { "name": "Basti", "twitterHandle": "BastiBoers11"}
+        },
+        { "teamname": "team8",
+            "teamplayerA": { "name": "NewAgeNexus", "twitterHandle": "DiabyArmy"},
+            "teamplayerB": { "name": "Rheindorfer", "twitterHandle": "TorstenLev" }
+        }
+    ]
+}

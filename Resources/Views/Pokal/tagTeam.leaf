@@ -1,0 +1,85 @@
+#extend("base"):
+#export("body"):
+
+<div class="container">
+
+    <form>
+        <select name="teams" class="custom-select"
+            onchange="window.open(this.options[this.selectedIndex].value,'_self')">>
+            <option selected>Runde auswählen</option>
+            #for(d in dropDown):
+            <option value="#(d.url)">#(d.name)</option>
+            #endfor
+        </select>
+    </form>
+
+</div>
+
+
+<div class="container" style="margin-top: 30px;">
+    <div class="card">
+        <div class="card-header">
+            <h4 style="text-align:center">#(title)</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
+        #for(duel in duels):
+        <div class="card">
+            <div class="card-header">
+                <p class="subtitle">Spiel #(duel.spielnummer)</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>#(duel.tipperAa.name)</td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right">#if(duel.punkteB):#(duel.tipperAa.punkte)#endif</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>#(duel.tipperAb.name)</td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right">#if(duel.punkteB):#(duel.tipperAb.punkte)#endif</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#(duel.teamnameA)</strong></td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right"><strong>#(duel.punkteA)</strong></td>
+                        <td>&ensp;#if(duel.winner == 1 && roundInterrupted != true):🎉#endif</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid black">
+                        <td colspan="100%"></td>
+                    </tr>
+                    <tr>
+                        <td>#(duel.tipperBa.name)</td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right">#if(duel.punkteB):#(duel.tipperBa.punkte)#endif</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>#(duel.tipperBb.name)</td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right">#if(duel.punkteB):#(duel.tipperBb.punkte)#endif</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#(duel.teamnameB)</strong></td>
+                        <td>&emsp;</td>
+                        <td style="text-align:right"><strong>#(duel.punkteB)</strong></td>
+                        <td>&ensp;#if(duel.winner == 2 && roundInterrupted != true):🎉#endif</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        #endfor
+
+    </div>
+</div>
+#endexport
+#endextend

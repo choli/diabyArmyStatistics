@@ -1,29 +1,38 @@
 
 import Vapor
 
-struct DrawArray: Content {
-    struct Tipper: Content {
-        let name: String
-        let customTwitterHandle: String?
-        let tweetLink: String?
-        let twitterHandle: String
+struct DrawTipperArray: Content {
+    let nonDrawnUser: [DrawTipper]?
+    let drawnUser: [DrawTipper]
+}
 
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            let decName = try container.decode(String.self, forKey: .name)
-            name = decName
-            customTwitterHandle = try? container.decode(String?.self, forKey: .customTwitterHandle)
-            tweetLink = try? container.decode(String?.self, forKey: .tweetLink)
-            twitterHandle = customTwitterHandle ?? decName
-        }
+struct DrawTagTeamArray: Content {
+    let nonDrawnTeams: [DrawTagTeam]?
+    let drawnTeams: [DrawTagTeam]
+}
 
-        private enum CodingKeys: String, CodingKey {
-            case name
-            case customTwitterHandle
-            case tweetLink
-            case twitterHandle
-        }
+struct DrawTipper: Content {
+    let name: String
+    let twitterHandle: String
+    let tweetLink: String?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let decName = try container.decode(String.self, forKey: .name)
+        name = decName
+        twitterHandle = (try? container.decode(String?.self, forKey: .twitterHandle)) ?? decName
+        tweetLink = try? container.decode(String?.self, forKey: .tweetLink)
     }
-    let nichtGezogeneUser: [Tipper]?
-    let ausgelosteUser: [Tipper]
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case twitterHandle
+        case tweetLink
+    }
+}
+
+struct DrawTagTeam: Content {
+    let teamname: String
+    let teamplayerA: DrawTipper
+    let teamplayerB: DrawTipper
 }

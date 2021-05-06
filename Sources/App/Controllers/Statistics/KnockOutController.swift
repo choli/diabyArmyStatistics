@@ -44,10 +44,10 @@ struct KnockOutController: RouteCollection {
 
         routes.get("clausura") { (req) -> EventLoopFuture<View> in
             guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/clausura2021.json"),
-              let spieler = try? JSONDecoder().decode(DrawArray.self, from: fileContent)
+              let spieler = try? JSONDecoder().decode(DrawTipperArray.self, from: fileContent)
             else { throw Abort(.badRequest, reason: "No idea what happened") }
 
-            let users = spieler.nichtGezogeneUser?.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
+            let users = spieler.nonDrawnUser?.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
 
             let duels = getDuelsForDraw(spieler, firstMatchday: 23)
             return req.view.render(
@@ -191,11 +191,11 @@ struct KnockOutController: RouteCollection {
     private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, filename: String) -> [KnockOutDuel] {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
 
-        let drawOrder: [DrawArray.Tipper]
+        let drawOrder: [DrawTipper]
             guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/\(filename).json"),
-              let spieler = try? JSONDecoder().decode(DrawArray.self, from: fileContent)
+              let spieler = try? JSONDecoder().decode(DrawTipperArray.self, from: fileContent)
             else { fatalError("Couldn't read file with draws") }
-        drawOrder = spieler.ausgelosteUser
+        drawOrder = spieler.drawnUser
 
         let tippers = firstMatchday.tippspieler
             .filter { return drawOrder.map { $0.name }.contains($0.name) }
@@ -273,9 +273,9 @@ struct KnockOutController: RouteCollection {
 
 extension KnockOutController { // Helper for draw
 
-    private func getDuelsForDraw(_ draw: DrawArray, firstMatchday: Int) -> (firstRound: [KnockOutDuel], secondRound: [KnockOutDuel]) {
-        let drawOrder = draw.ausgelosteUser
-        let numberOfParticipants = draw.ausgelosteUser.count + (draw.nichtGezogeneUser?.count ?? 0)
+    private func getDuelsForDraw(_ draw: DrawTipperArray, firstMatchday: Int) -> (firstRound: [KnockOutDuel], secondRound: [KnockOutDuel]) {
+        let drawOrder = draw.drawnUser
+        let numberOfParticipants = draw.drawnUser.count + (draw.nonDrawnUser?.count ?? 0)
 
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == firstMatchday - 1 }) else { fatalError("First start matchday is MD2") }
 

@@ -27,7 +27,7 @@ struct Tippspieler: Content {
     let siege: Decimal
     let gesamtpunkte: Int
     let spieltagssieger: Bool?
-    var drawTipper: DrawArray.Tipper?
+    var drawTipper: DrawTipper?
 
     var hashValue: Int {
         var hasher = Hasher()
@@ -179,6 +179,92 @@ struct KnockOutDuel: Content {
         self.tipperB = Tippspieler(name: "Freilos", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: -1, spieltagssieger: nil)
         self.positionA = position
         self.positionB = 0
+        self.punkteA = nil
+        self.punkteB = nil
+        self.winner = 1
+    }
+}
+
+struct TagTeamDuel: Content {
+    enum TieBreaker {
+        case gesamtpunkte
+        case mehrExakteTipps
+    }
+
+    let spielnummer: Int
+    let teamnameA: String
+    let teamnameB: String
+    let tipperAa: Tippspieler
+    let tipperAb: Tippspieler
+    let tipperBa: Tippspieler
+    let tipperBb: Tippspieler
+    let punkteA: Int?
+    let punkteB: Int?
+    let winner: Int // winner: 0 for none, 1 for A, 2 for B
+    init(spielnummer: Int, teamnameA: String, teamnameB: String,
+         tipperAa: Tippspieler, tipperAb: Tippspieler, tipperBa: Tippspieler, tipperBb: Tippspieler,
+         punkteA: Int?, punkteB: Int?, tieBreaker: TieBreaker) {
+        self.spielnummer = spielnummer
+        self.teamnameA = teamnameA
+        self.teamnameB = teamnameB
+        self.tipperAa = tipperAa
+        self.tipperAb = tipperAb
+        self.tipperBa = tipperBa
+        self.tipperBb = tipperBb
+        self.punkteA = punkteA
+        self.punkteB = punkteB
+
+        if let pointsA = punkteA, let pointsB = punkteB {
+            if pointsA == pointsB {
+                switch tieBreaker {
+                case .gesamtpunkte:
+                    self.winner = tipperAa.gesamtpunkte + tipperAb.gesamtpunkte + pointsA > tipperBa.gesamtpunkte + tipperBb.gesamtpunkte + pointsB ? 1 : 2
+                case .mehrExakteTipps:
+                    let exactAa = tipperAa.tipps.filter { $0.spielpunkte == Constants.MatchPoints.exactResult.rawValue }.count
+                    let exactAb = tipperAb.tipps.filter { $0.spielpunkte == Constants.MatchPoints.exactResult.rawValue }.count
+                    let exactBa = tipperBa.tipps.filter { $0.spielpunkte == Constants.MatchPoints.exactResult.rawValue }.count
+                    let exactBb = tipperBb.tipps.filter { $0.spielpunkte == Constants.MatchPoints.exactResult.rawValue }.count
+                    let exactA = exactAa + exactAb
+                    let exactB = exactBa + exactBb
+                    if exactA == exactB {
+                        let correctDiffAa = tipperAa.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
+                        let correctDiffAb = tipperAb.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
+                        let correctDiffBa = tipperBa.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
+                        let correctDiffBb = tipperBb.tipps.filter { $0.spielpunkte == Constants.MatchPoints.correctDiff.rawValue }.count
+                        let correctDiffA = correctDiffAa + correctDiffAb
+                        let correctDiffB = correctDiffBa + correctDiffBb
+                        if correctDiffA == correctDiffB {
+                            let positionA = tipperAa.position + tipperAb.position
+                            let positionB = tipperBa.position + tipperBb.position
+                            if positionA == positionB {
+                                self.winner = min(tipperAa.position, tipperAb.position) < min(tipperBa.position, tipperBb.position) ? 1 : 2
+                            } else {
+                                self.winner = positionA < positionB ? 1 : 2
+                            }
+                        } else {
+                            self.winner = correctDiffA > correctDiffB ? 1 : 2
+                        }
+                    } else {
+                        self.winner = exactA > exactB ? 1 : 2
+                    }
+                }
+            } else {
+                self.winner = pointsA > pointsB ? 1 : 2
+            }
+        } else {
+            self.winner = 0
+        }
+
+    }
+
+    init(withWildcard spielnummer: Int, teamname: String, tipperAa: Tippspieler, tipperAb: Tippspieler) {
+        self.spielnummer = spielnummer
+        self.teamnameA = teamname
+        self.teamnameB = "Freilos"
+        self.tipperAa = tipperAa
+        self.tipperAb = tipperAb
+        self.tipperBa = Tippspieler(name: " ", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: -1, spieltagssieger: nil)
+        self.tipperBb = Tippspieler(name: " ", tipps: [], punkte: 0, position: 0, bonus: 0, siege: 0, gesamtpunkte: -1, spieltagssieger: nil)
         self.punkteA = nil
         self.punkteB = nil
         self.winner = 1

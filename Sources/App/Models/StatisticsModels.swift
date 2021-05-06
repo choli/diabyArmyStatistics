@@ -8,11 +8,12 @@ enum StatisticObject: Content {
     case roundStatistics([RoundStatisticsObject])
     case dropDownDataObject([DropDownDataObject])
     case knockOutDuels([KnockOutDuel])
+    case tagTeamDuels([TagTeamDuel])
     case singleString(String)
     case singleInt(Int)
     case singleBool(Bool)
     case statsObjectArray([StatisticObject])
-    case drawUsers([DrawArray.Tipper])
+    case drawUsers([DrawTipper])
     case spieltagFacts([SpieltagFacts])
 
     func encode(to encoder: Encoder) throws {
@@ -31,6 +32,8 @@ enum StatisticObject: Content {
             try dropDowns.encode(to: encoder)
         case .knockOutDuels(let knockOutDuels):
             try knockOutDuels.encode(to: encoder)
+        case .tagTeamDuels(let tagTeamDuels):
+            try tagTeamDuels.encode(to: encoder)
         case .singleString(let string):
             try string.encode(to: encoder)
         case .singleInt(let int):
