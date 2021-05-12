@@ -25,7 +25,7 @@ final class Registration: Model, Content {
 
     init() { }
 
-    init(id: UUID? = nil, twitterid: String, twittername: String, kicktippname: String, cupID: UUID, state: State = .unknown) {
+    init(id: UUID? = nil, twitterid: String, twittername: String, kicktippname: String, cupID: UUID, state: State) {
         self.id = id
         self.twitterid = twitterid
         self.twittername = twittername
@@ -35,16 +35,16 @@ final class Registration: Model, Content {
     }
 
     var state: State {
-        get { State(rawValue: stateString) ?? .unknown }
+        get { State(rawValue: stateString)! }
         set { stateString = newValue.rawValue }
     }
 
     enum State: String {
-        case registered
+        case notRegistered
         case kicktippNameMissing
-        case matchingRequested
+        case registered
+        
         case declined
-        case unknown
     }
 
 }
@@ -57,7 +57,7 @@ struct CreateRegistration: Migration {
             .field("twitterid", .string)
             .field("twittername", .string)
             .field("kicktippname", .string)
-            .field("state", .string)
+            .field("stateString", .string)
             .field("cup_id", .uuid, .references("cups", "id"))
             .create()
     }

@@ -1,0 +1,58 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+  <div class="card-columns mb-5 mt-5">
+
+    <div class="card">
+      <div class="card-header">
+        <p class="subtitle">Anmeldestatus</p>
+      </div>
+      <div class="card-body">
+
+        #if(status == "notRegistered"):
+        <form method="post">
+
+          <input type="hidden" id="cupID" name="cupID" value="#(cupID)">
+          <input type="hidden" id="cupName" name="cupName" value="#(cupName)">
+          <input type="hidden" id="status" name="status" value="#(status)">
+          <button type="submit" class="btn btn-primary">
+            Mitmachen
+          </button>
+        </form>
+        #elseif(status == "kicktippNameMissing"):
+        <p>Folgende Tipper*innen waren beim letzten Spieltag aufgelistet. Bitte wähle deinen Kicktipp Usernamen aus, um dich anzumelden.</p>
+        <form method="post">
+
+          <div class="form-group">
+            <label for="kicktippID">Kicktipp-Usernamen</label>
+            <select name="kicktippID" class="form-control" id="kicktippID">
+              #for(user in users):
+                <option value="#(user)">
+                  #(user)
+                </option>
+              #endfor
+            </select>
+          </div>
+
+          <input type="hidden" id="cupID" name="cupID" value="#(cupID)">
+          <input type="hidden" id="cupName" name="cupName" value="#(cupName)">
+          <input type="hidden" id="status" name="status" value="#(status)">
+          <button type="submit" class="btn btn-primary">
+            Anmelden
+          </button>
+        </form>
+        #elseif(status == "declined"):
+        <p>Bei deiner Anmeldung scheint etwas falsch gelaufen zu sein, bitte melde dich bei direkt choli.</p>
+        #elseif(status == "registered"):
+        <p>Deine Anmeldung ist erfolgreich, du bist beim Pokal dabei.</p>
+        #elseif(status == "matchingRequested"):
+        <p>Deine Anmeldung wurde abgeschickt. Sobald sie bestätigt wurde, du kannst hier jederzeit deinen aktuellen Status verfolgen.</p>
+        #endif
+      </div>
+    </div>
+
+  </div>
+</div>
+#endexport
+#endextend

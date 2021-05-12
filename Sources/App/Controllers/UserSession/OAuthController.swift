@@ -1,4 +1,5 @@
 import Vapor
+import FluentKit
 
 struct OAuthController: RouteCollection {
 
@@ -7,11 +8,13 @@ struct OAuthController: RouteCollection {
     let consumerKey: String
     let consumerSecret: String
 
-    init() {
+    let mdc: MatchdayController
+    init(mdc: MatchdayController) {
         guard let consumerKey = Environment.get("TWITTER_CONSUMER_KEY"), let consumerSecret = Environment.get("TWITTER_CONSUMER_SECRET")
         else { fatalError("Consumer key or secret not set properly") }
         self.consumerKey = consumerKey
         self.consumerSecret = consumerSecret
+        self.mdc = mdc
     }
 
     func boot(routes: RoutesBuilder) throws {
@@ -26,32 +29,112 @@ struct OAuthController: RouteCollection {
 
         routes.get("status") { req -> EventLoopFuture<Response> in
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
-            else {
-                return redirectionForLogin(with: req)
-            }
+            else { return redirectionForLogin(with: req) }
 
             return callGetRequest(with: req, url: "https://api.twitter.com/1.1/account/verify_credentials.json", queryParams: ["skip_status" : "true"])
                 .flatMapThrowing { res -> EventLoopFuture<Response> in
                     if let verification = try? res.content.decode(VerificationObject.self) {
-                        return req.view.render("Twitter/success", ["verification":verification]).encodeResponse(for: req)
+                        return verification.encodeResponse(for: req)
                     } else if let handledError = handleTwitterError(of: res, with: req) {
                         return handledError
+                    } else {
+                        return res.encodeResponse(for: req)
                     }
-                    return res.encodeResponse(for: req)
                 }.encodeResponse(for: req)
         }
 
         struct VerificationObject: Content {
+            let id_str: String
             let name: String
+            let screen_name: String
         }
+
+//        routes.get("abc") { req -> EventLoopFuture<Response> in
+//            return Registration.query(on: req.db).delete()
+//            return Cup(name: "test", start: 27, state: .registrationNotYetOpen)
+//                .save(on: req.db)
+//                .transform(to: req.view.render("Twitter/success", ["":""]).encodeResponse(for: req))
+//        }
+
+        struct RegistrationObject: Content {
+            let status: String
+            let cupName: String
+            let cupID: UUID
+            var users: [String]? = nil
+            var kicktippID: String? = nil
+        }
+
+        routes.post(":cup", "registration") { req -> EventLoopFuture<View> in
+            guard let cupParam = req.parameters.get("cup"),
+                  let regObject = try? req.content.decode(RegistrationObject.self),
+                  regObject.cupName == cupParam,
+                  let status = Registration.State(rawValue: regObject.status)
+            else { return req.view.render("Twitter/error", ["":""]) }
+
+            let context: RegistrationObject
+            switch status {
+            case .notRegistered:
+                let users = (mdc.matchdays.last?.tippspieler.map({ $0.name }) ?? [])
+                    .sorted(by: { $0.caseInsensitiveCompare($1) == ComparisonResult.orderedAscending })
+                context = RegistrationObject(status: Registration.State.kicktippNameMissing.rawValue, cupName: regObject.cupName, cupID: regObject.cupID, users: users)
+            case .kicktippNameMissing:
+                guard let twitterid = req.session.stringForKey(.userId),
+                      let twittername = req.session.stringForKey(.screenName),
+                      let kicktippname = regObject.kicktippID
+                else { return req.view.render("Twitter/error", ["":""]) }
+                let registration = Registration(twitterid: twitterid, twittername: twittername, kicktippname: kicktippname, cupID: regObject.cupID, state: .registered)
+                return registration.save(on: req.db)
+                    .transform(to: {
+                        let context = RegistrationObject(status: Registration.State.registered.rawValue, cupName: regObject.cupName, cupID: regObject.cupID, kicktippID: regObject.kicktippID)
+                        return req.view.render("Pokal/Registration/status", context)
+                    }())
+            default:
+                return req.view.render("Twitter/error", ["":""])
+            }
+
+            return req.view.render("Pokal/Registration/status", context)
+        }
+
+        routes.get(":cup", "registration") { req -> EventLoopFuture<EventLoopFuture<Response>> in
+
+            guard let cupParam = req.parameters.get("cup")
+            else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
+            guard RequestAccessTokenResponse.sessionToken(in: req) != nil
+            else { return req.eventLoop.future(redirectionForLogin(with: req)) }
+
+            return callGetRequest(with: req, url: "https://api.twitter.com/1.1/account/verify_credentials.json", queryParams: ["skip_status" : "true"])
+                .and(Cup.query(on: req.db)
+                        .filter(\.$name == cupParam)
+                        .with(\.$registrations)
+                        .all())
+                .flatMapThrowing({ (res, cupObjects) -> EventLoopFuture<Response> in
+                    guard let verification = try? res.content.decode(VerificationObject.self)
+                    else { return handleTwitterError(of: res, with: req) ?? req.view.render("Twitter/error", ["":""]).encodeResponse(for: req) }
+
+                    guard verification.id_str == req.session.stringForKey(.userId)
+                    else { return redirectionForLogin(with: req) }
+                    req.session.setValue(verification.screen_name, for: .screenName)
+
+                    guard cupObjects.count == 1, let cup = cupObjects.first, let cupID = cup.id
+                    else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.noOpenRegistrationFound) }
+
+                    if let registration = cup.registrations.first(where: { $0.twitterid == verification.id_str }) {
+                        let context = RegistrationObject(status: registration.state.rawValue, cupName: cupParam, cupID: cupID)
+                        return req.view.render("Pokal/Registration/status", context).encodeResponse(for: req)
+                    } else {
+                        let context = RegistrationObject(status: Registration.State.notRegistered.rawValue, cupName: cupParam, cupID: cupID)
+                        return req.view.render("Pokal/Registration/status", context).encodeResponse(for: req)
+                    }
+                })
+        }
+
+
 
         routes.get("tweetThis", ":tweet") { req -> EventLoopFuture<Response> in
             guard let tweet = req.parameters.get("tweet")
             else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
-            else {
-                return redirectionForLogin(with: req)
-            }
+            else { return redirectionForLogin(with: req) }
 
             return callPostRequest(with: req, url: "https://api.twitter.com/1.1/statuses/update.json", formParams: ["status" : tweet])
                 .flatMapThrowing { res -> EventLoopFuture<Response> in
@@ -59,8 +142,9 @@ struct OAuthController: RouteCollection {
                         return req.view.render("Twitter/success", ["tweet":tweet]).encodeResponse(for: req)
                     } else if let handledError = handleTwitterError(of: res, with: req) {
                         return handledError
+                    } else {
+                        return res.encodeResponse(for: req)
                     }
-                    return res.encodeResponse(for: req)
                 }.encodeResponse(for: req)
         }
 
@@ -362,6 +446,9 @@ struct OAuthController: RouteCollection {
 private enum DAHTTPErrors: Error {
     case missingAccessToken
     case missingArgument
+
+    case noOpenRegistrationFound
+    case tipperNotFoundInLastMatchday
 }
 
 struct TwitterErrors: Content {

@@ -9,17 +9,35 @@ final class Cup: Model, Content {
     var id: UUID?
 
     @Field(key: "name")
-    var user: String
+    var name: String
 
     @Field(key: "start")
     var start: Int
 
+    @Field(key: "stateString")
+    private var stateString: String
+
+    @Children(for: \.$cup)
+    var registrations: [Registration]
+
     init() { }
 
-    init(id: UUID? = nil, user: String, start: Int) {
+    init(id: UUID? = nil, name: String, start: Int, state: State) {
         self.id = id
-        self.user = user
+        self.name = name
         self.start = start
+        self.state = state
+    }
+
+    var state: State {
+        get { State(rawValue: stateString) ?? .registrationNotYetOpen }
+        set { stateString = newValue.rawValue }
+    }
+
+    enum State: String {
+        case registrationOpen
+        case registrationNotYetOpen
+        case registrationClosed
     }
 }
 
@@ -30,6 +48,7 @@ struct CreateCups: Migration {
             .id()
             .field("name", .string)
             .field("start", .int)
+            .field("stateString", .string)
             .create()
     }
 
