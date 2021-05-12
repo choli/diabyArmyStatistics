@@ -1,4 +1,5 @@
 import Vapor
+import FluentKit
 
 struct KnockOutController: RouteCollection {
     let mdc: MatchdayController
@@ -60,6 +61,34 @@ struct KnockOutController: RouteCollection {
                     "title2": StatisticObject.singleString(title(for: 2, duels: 2*duels.secondRound.count))
                 ]
             )
+        }
+
+        routes.get("testPokal") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
+            let cupELF = Cup.query(on: req.db)
+                .filter(\.$name == "test")
+                .with(\.$registrations)
+                .all()
+
+            return cupELF.flatMapThrowing { cups -> EventLoopFuture<View> in
+                guard cups.count == 1, let cup = cups.first
+                else { fatalError("error") }
+
+                let participants = cup.registrations.map { DrawTipper(with: $0) }
+                let users = participants.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
+
+                let tipperArray = DrawTipperArray(nonDrawnUser: participants, drawnUser: [])
+                let duels = getDuelsForDraw(tipperArray, firstMatchday: 23)
+                return req.view.render(
+                    "Pokal/liveDraw",
+                    [
+                        "notDrawn": StatisticObject.drawUsers(users),
+                        "duels1": StatisticObject.knockOutDuels(duels.firstRound),
+                        "duels2": StatisticObject.knockOutDuels(duels.secondRound),
+                        "title1": StatisticObject.singleString(title(for: 1, duels: 2*duels.secondRound.count)),
+                        "title2": StatisticObject.singleString(title(for: 2, duels: 2*duels.secondRound.count))
+                    ]
+                )
+            }
         }
     }
 

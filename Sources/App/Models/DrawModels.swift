@@ -24,6 +24,12 @@ struct DrawTipper: Content {
         tweetLink = try? container.decode(String?.self, forKey: .tweetLink)
     }
 
+    init(with registration: Registration) {
+        name = registration.kicktippname
+        twitterHandle = registration.twittername
+        tweetLink = nil
+    }
+
     private enum CodingKeys: String, CodingKey {
         case name
         case twitterHandle
