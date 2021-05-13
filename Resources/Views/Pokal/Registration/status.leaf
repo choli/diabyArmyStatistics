@@ -16,6 +16,7 @@
           <input type="hidden" id="cupID" name="cupID" value="#(cupID)">
           <input type="hidden" id="cupName" name="cupName" value="#(cupName)">
           <input type="hidden" id="status" name="status" value="#(status)">
+          <input type="hidden" id="registeredUsers" name="registeredUsers" value="#(registeredUsers)">
           <button type="submit" class="btn btn-primary">
             Mitmachen
           </button>
@@ -38,6 +39,7 @@
           <input type="hidden" id="cupID" name="cupID" value="#(cupID)">
           <input type="hidden" id="cupName" name="cupName" value="#(cupName)">
           <input type="hidden" id="status" name="status" value="#(status)">
+          <input type="hidden" id="registeredUsers" name="registeredUsers" value="#(registeredUsers)">
           <button type="submit" class="btn btn-primary">
             Anmelden
           </button>
@@ -48,15 +50,11 @@
         <p>Deine Anmeldung ist erfolgreich, du bist beim Pokal dabei.</p>
         
         <!--<form method="post">
-
-          <input type="hidden" id="cupID" name="cupID" value="#(cupID)">
-          <input type="hidden" id="cupName" name="cupName" value="#(cupName)">
-          <input type="hidden" id="status" name="status" value="#(status)">
           <button type="submit" class="btn btn-primary">
             Darüber twittern
           </button>
         </form>
-        <br/>-->
+        <br>-->
         <a href="/testPokal">
           <button type="submit" class="btn btn-secondary">
             Teilnehmerübersicht

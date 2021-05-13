@@ -49,11 +49,11 @@ struct OAuthController: RouteCollection {
             let screen_name: String
         }
 
-//        routes.get("abc") { req -> EventLoopFuture<Response> in
+//        routes.get("abc") { req -> EventLoopFuture<View> in
 //            return Registration.query(on: req.db).delete()
 //            return Cup(name: "test", start: 27, state: .registrationNotYetOpen)
 //                .save(on: req.db)
-//                .transform(to: req.view.render("Twitter/success", ["":""]).encodeResponse(for: req))
+//                .transform(to: req.view.render("Twitter/success", ["":""]))
 //        }
 
         struct RegistrationObject: Content {
@@ -62,6 +62,15 @@ struct OAuthController: RouteCollection {
             let cupID: UUID
             var users: [String]? = nil
             var kicktippID: String? = nil
+            let registeredUsers: String
+        }
+
+        func commaSeparatedString(for strings: [String]) -> String {
+            return strings.joined(separator: ";")
+        }
+
+        func arrayFromCommaSeparatedString(_ string: String) -> [String] {
+            return string.split(separator: ";").map { String($0) }
         }
 
         routes.post(":cup", "registration") { req -> EventLoopFuture<View> in
@@ -71,21 +80,29 @@ struct OAuthController: RouteCollection {
                   let status = Registration.State(rawValue: regObject.status)
             else { return req.view.render("Twitter/error", ["":""]) }
 
+            let selectionString = "Kicktippname auswählen"
             let context: RegistrationObject
             switch status {
             case .notRegistered:
-                let users = (mdc.matchdays.last?.tippspieler.map({ $0.name }) ?? [])
+                var users = (mdc.matchdays.last?.tippspieler.map({ $0.name }) ?? [])
+                    .filter({ !arrayFromCommaSeparatedString(regObject.registeredUsers).contains($0) })
                     .sorted(by: { $0.caseInsensitiveCompare($1) == ComparisonResult.orderedAscending })
-                context = RegistrationObject(status: Registration.State.kicktippNameMissing.rawValue, cupName: regObject.cupName, cupID: regObject.cupID, users: users)
+                users.insert(selectionString, at: 0)
+                context = RegistrationObject(status: Registration.State.kicktippNameMissing.rawValue, cupName: regObject.cupName, cupID: regObject.cupID, users: users, registeredUsers: regObject.registeredUsers)
             case .kicktippNameMissing:
                 guard let twitterid = req.session.stringForKey(.userId),
                       let twittername = req.session.stringForKey(.screenName),
-                      let kicktippname = regObject.kicktippID
+                      let kicktippname = regObject.kicktippID,
+                      kicktippname != selectionString
                 else { return req.view.render("Twitter/error", ["":""]) }
                 let registration = Registration(twitterid: twitterid, twittername: twittername, kicktippname: kicktippname, cupID: regObject.cupID, state: .registered)
                 return registration.save(on: req.db)
                     .transform(to: {
-                        let context = RegistrationObject(status: Registration.State.registered.rawValue, cupName: regObject.cupName, cupID: regObject.cupID, kicktippID: regObject.kicktippID)
+                        let context = RegistrationObject(status: Registration.State.registered.rawValue,
+                                                         cupName: regObject.cupName,
+                                                         cupID: regObject.cupID,
+                                                         kicktippID: regObject.kicktippID,
+                                                         registeredUsers: regObject.registeredUsers)
                         return req.view.render("Pokal/Registration/status", context)
                     }())
             default:
@@ -118,11 +135,13 @@ struct OAuthController: RouteCollection {
                     guard cupObjects.count == 1, let cup = cupObjects.first, let cupID = cup.id
                     else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.noOpenRegistrationFound) }
 
+                    let registeredUsers = cup.registrations.map { $0.kicktippname }
+                    let registeredUsersString = commaSeparatedString(for: registeredUsers)
                     if let registration = cup.registrations.first(where: { $0.twitterid == verification.id_str }) {
-                        let context = RegistrationObject(status: registration.state.rawValue, cupName: cupParam, cupID: cupID)
+                        let context = RegistrationObject(status: registration.state.rawValue, cupName: cupParam, cupID: cupID, registeredUsers: registeredUsersString)
                         return req.view.render("Pokal/Registration/status", context).encodeResponse(for: req)
                     } else {
-                        let context = RegistrationObject(status: Registration.State.notRegistered.rawValue, cupName: cupParam, cupID: cupID)
+                        let context = RegistrationObject(status: Registration.State.notRegistered.rawValue, cupName: cupParam, cupID: cupID, registeredUsers: registeredUsersString)
                         return req.view.render("Pokal/Registration/status", context).encodeResponse(for: req)
                     }
                 })
@@ -184,7 +203,8 @@ struct OAuthController: RouteCollection {
             return requestTokenELF.map { requestToken in
                 req.session.setValue(requestToken.oauthToken, for: .oauthToken)
                 req.session.setValue(requestToken.oauthTokenSecret, for: .oauthTokenSecret)
-                return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
+                return req.redirect(to: "/")//https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
+
             }
         }
 
