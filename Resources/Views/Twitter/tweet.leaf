@@ -1,0 +1,15 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+  <form method="post">
+    <textarea name="tweet" id="tweet">This is a test!</textarea>  
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">
+      Tweet
+    </button>
+  </form>
+</div>
+#endexport
+#endextend

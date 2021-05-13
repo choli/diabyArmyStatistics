@@ -152,6 +152,27 @@ struct OAuthController: RouteCollection {
             let text: String
         }
 
+        routes.get("tweetThis") { req -> EventLoopFuture<View> in
+            return req.view.render("Twitter/tweet")
+        }
+
+        routes.post("tweetThis") { req -> EventLoopFuture<Response> in
+            guard let tweet = try? req.content.decode(StringDictionary.self)
+            else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
+            guard RequestAccessTokenResponse.sessionToken(in: req) != nil
+            else { return redirectionForLogin(with: req) }
+
+            return callPostRequest(with: req, url: "https://api.twitter.com/1.1/statuses/update.json", formParams: ["status" : tweet["tweet"]!])
+                .flatMapThrowing { res -> EventLoopFuture<Response> in
+                    if let tweet = try? res.content.decode(TweetObject.self) {
+                        return req.view.render("Twitter/success", ["tweet":tweet]).encodeResponse(for: req)
+                    } else if let handledError = handleTwitterError(of: res, with: req) {
+                        return handledError
+                    } else {
+                        return res.encodeResponse(for: req)
+                    }
+                }.encodeResponse(for: req)
+        }
 
         // MARK: - Login flow
 
@@ -411,8 +432,8 @@ struct OAuthController: RouteCollection {
 
     }
 
-    private func hmac_sha1(signingKey: String, signatureBase: String) -> String {
-        // HMAC-SHA1 hashing algorithm returned as a base64 encoded string
+    private func hmac_sha256(signingKey: String, signatureBase: String) -> String {
+        // HMAC-SHA256 hashing algorithm returned as a base64 encoded string
         guard let keyArray = signingKey.data(using: .utf8), let signature = signatureBase.data(using: .utf8)
         else {
             assertionFailure("There is no reason for this not to work")
@@ -439,7 +460,7 @@ struct OAuthController: RouteCollection {
 
         let signingKey = signatureKey(oauthTokenSecret)
         let signatureBase = signatureBaseString(httpMethod, url, allParams)
-        return hmac_sha1(signingKey: signingKey, signatureBase: signatureBase)
+        return hmac_sha256(signingKey: signingKey, signatureBase: signatureBase)
     }
 }
 
