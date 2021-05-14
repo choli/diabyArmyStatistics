@@ -203,7 +203,7 @@ struct OAuthController: RouteCollection {
             return requestTokenELF.map { requestToken in
                 req.session.setValue(requestToken.oauthToken, for: .oauthToken)
                 req.session.setValue(requestToken.oauthTokenSecret, for: .oauthTokenSecret)
-                return req.redirect(to: "/")//https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
+                return req.redirect(to: "https://api.twitter.com/oauth/authenticate?oauth_token=\(requestToken.oauthToken)")
 
             }
         }
