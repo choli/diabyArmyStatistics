@@ -77,15 +77,15 @@ struct KnockOutController: RouteCollection {
                 let users = participants.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
 
                 let tipperArray = DrawTipperArray(nonDrawnUser: participants, drawnUser: [])
-                let duels = getDuelsForDraw(tipperArray, firstMatchday: 23)
+//                let duels = getDuelsForDraw(tipperArray, firstMatchday: 23)
                 return req.view.render(
                     "Pokal/liveDraw",
                     [
                         "notDrawn": StatisticObject.drawUsers(users),
-                        "duels1": StatisticObject.knockOutDuels(duels.firstRound),
-                        "duels2": StatisticObject.knockOutDuels(duels.secondRound),
-                        "title1": StatisticObject.singleString(title(for: 1, duels: 2*duels.secondRound.count)),
-                        "title2": StatisticObject.singleString(title(for: 2, duels: 2*duels.secondRound.count))
+                        "duels1": StatisticObject.knockOutDuels([]),//(duels.firstRound),
+                        "duels2": StatisticObject.knockOutDuels([])//(duels.secondRound),
+//                        "title1": StatisticObject.singleString(title(for: 1, duels: 2*duels.secondRound.count)),
+//                        "title2": StatisticObject.singleString(title(for: 2, duels: 2*duels.secondRound.count))
                     ]
                 )
             }
