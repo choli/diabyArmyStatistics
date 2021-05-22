@@ -6,6 +6,29 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>20/21 Liga</h4>
+                <p class="subtitle">Komplette Tipprunde der 20/21er Saison</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🏆</td>
+                        <td><a style="color:black" href="https://twitter.com/crash22crash/">crash22crash</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/VanDoerlemann/">VanDoerlemann</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/TineMaschine/">Tine1904</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>20/21 Clausura</h4>
                 <p class="subtitle">Pokal der 20/21er Rückrunde</p>
             </div>
