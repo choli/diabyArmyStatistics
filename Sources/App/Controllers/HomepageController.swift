@@ -18,7 +18,7 @@ struct HomepageController: RouteCollection {
             req.redirect(to: "https://twitch.tv/thediabyarmy", type: .normal)
         }
         routes.get("onlydragofans") { (req) -> Response in
-            req.redirect(to: "https://twitter.com/_nonico", type: .normal)
+            req.redirect(to: "https://twitter.com/nicoleg1904", type: .normal)
         }
     }
 
