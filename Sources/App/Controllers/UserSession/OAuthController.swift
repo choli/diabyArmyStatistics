@@ -147,9 +147,9 @@ struct OAuthController: RouteCollection {
                 })
         }
 
-
-
         routes.get("tweetThis", ":tweet") { req -> EventLoopFuture<Response> in
+            guard false
+            else { throw Abort(.badRequest, reason: "diabyArmy Twitter currently disabled.") }
             guard let tweet = req.parameters.get("tweet")
             else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil

@@ -20,17 +20,21 @@ final class Registration: Model, Content {
     @Field(key: "stateString")
     private var stateString: String
 
+    @OptionalField(key: "order")
+    private var order: Int?
+
     @Parent(key: "cup_id")
     var cup: Cup
 
     init() { }
 
-    init(id: UUID? = nil, twitterid: String, twittername: String, kicktippname: String, cupID: UUID, state: State) {
+    init(id: UUID? = nil, twitterid: String, twittername: String, kicktippname: String, cupID: UUID, state: State, order: Int? = nil) {
         self.id = id
         self.twitterid = twitterid
         self.twittername = twittername
         self.kicktippname = kicktippname
         self.state = state
+        self.order = order
         self.$cup.id = cupID
     }
 
@@ -58,6 +62,7 @@ struct CreateRegistration: Migration {
             .field("twittername", .string)
             .field("kicktippname", .string)
             .field("stateString", .string)
+            .field("order", .int)
             .field("cup_id", .uuid, .references("cups", "id"))
             .create()
     }

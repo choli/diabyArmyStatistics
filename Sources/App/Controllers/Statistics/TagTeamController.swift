@@ -9,7 +9,7 @@ struct TagTeamController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
 
         routes.get("tagteam", ":round") { (req) -> EventLoopFuture<View> in
-            guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
+            guard false, let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
             let duels = self.getDuels(round, start: 31, tieBreaker: .mehrExakteTipps, filename: "tagteamtest")

@@ -9,6 +9,23 @@ struct KnockOutController: RouteCollection {
 
     func boot(routes: RoutesBuilder) throws {
 
+        routes.get("supercup", ":round") { (req) -> EventLoopFuture<View> in
+            guard false, let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
+            else { throw Abort(.badRequest, reason: "Round not provided.") }
+
+            let duels = self.getDuels(round, start: 2, tieBreaker: .gesamtpunkte, filename: "supercup2122")
+            let dropDowns = self.getDropDownMenu(for: "supercup", duels: duels.count, in: round)
+
+            return req.view.render(
+                "Pokal/knockOut",
+                [
+                    "duels": StatisticObject.knockOutDuels(duels),
+                    "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
+                    "dropDown": StatisticObject.dropDownDataObject(dropDowns)
+                ]
+            )
+        }
+
         routes.get("apertura", ":round") { (req) -> EventLoopFuture<View> in
             guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
