@@ -365,7 +365,7 @@ extension KnockOutController { // Helper for draw
             })
 
         let participants = Int(pow(2,ceil(log2(Double(numberOfParticipants)))))
-        let nonWildcardDuelsCount = (participants / 2) - (participants - numberOfParticipants)
+        let nonWildcardDuelsCount = numberOfParticipants == participants ? 0 : (participants / 2) - (participants - numberOfParticipants)
         var duels: [KnockOutDuel] = []
 
         func fetchTipper(_ index: Int) -> Tippspieler {
