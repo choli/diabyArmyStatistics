@@ -49,13 +49,6 @@ struct OAuthController: RouteCollection {
             let screen_name: String
         }
 
-//        routes.get("abc") { req -> EventLoopFuture<View> in
-//            return Registration.query(on: req.db).delete()
-//            return Cup(name: "test", start: 27, state: .registrationNotYetOpen)
-//                .save(on: req.db)
-//                .transform(to: req.view.render("Twitter/success", ["":""]))
-//        }
-
         struct RegistrationObject: Content {
             let status: String
             let cupName: String
@@ -63,7 +56,7 @@ struct OAuthController: RouteCollection {
             var users: [String]? = nil
             var kicktippID: String? = nil
             let registeredUsers: String
-            let shortCupName: String
+            var shortCupName: String? = nil
         }
 
         func commaSeparatedString(for strings: [String]) -> String {

@@ -93,6 +93,9 @@ struct KnockOutController: RouteCollection {
                     .filter { $0.order != nil }
                     .sorted { $0.order! < $1.order! }
 
+                guard users.count == participants.count
+                else { return req.eventLoop.makeFailedFuture("Auslosung ist noch nicht abgeschlossen") }
+
                 let duels = self.getDuels(round, start: cup.start, tieBreaker: .mehrExakteTipps, participants: users)
 
                 let dropDowns = self.getDropDownMenu(for: cupname, duels: duels.count, in: round)
@@ -123,7 +126,7 @@ struct KnockOutController: RouteCollection {
                 else { return req.eventLoop.makeFailedFuture("Cup does not exist") }
 
                 let participants = cup.registrations.map { DrawTipper(with: $0) }
-                let drawnUsers = participants.filter { $0.order != nil }
+                let drawnUsers = participants.filter { $0.order != nil }.sorted { $0.order! < $1.order! }
                 let nonDrawnUsers = participants.filter { $0.order == nil }
                     .sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
 

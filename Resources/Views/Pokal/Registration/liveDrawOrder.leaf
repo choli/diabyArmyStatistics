@@ -1,0 +1,32 @@
+#extend("base"):
+#export("body"):
+
+<div class="container stats">
+  <div class="card">
+    <div class="card-header">
+      <p class="subtitle">Anmeldestatus</p>
+    </div>
+    <div class="card-body">
+
+      <form method="post">
+        <table style="width:100%">
+          #for(user in users):
+          <tr>
+            <th>#(user.twittername)</th>
+            <th>#(user.kicktippname)</th>
+            <th><input type="text" name="#(user.id)" id="#(user.id)" value="#(user.order)"/></th>
+          </tr>
+          #endfor
+        </table> 
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">
+          Update!
+        </button>
+      </form>
+      
+    </div>
+  </div>
+</div>
+#endexport
+#endextend

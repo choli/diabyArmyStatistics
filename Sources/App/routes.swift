@@ -11,4 +11,9 @@ func routes(_ app: Application) throws {
     try app.register(collection: SingleUserStatisticsController(mdc: mdc))
     try app.register(collection: MatchdayStatisticsController(mdc: mdc))
     try app.register(collection: OAuthController(mdc: mdc))
+
+
+    #if DEBUG
+    try app.register(collection: DebugController())
+    #endif
 }
