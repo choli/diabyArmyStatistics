@@ -1,13 +1,21 @@
 #extend("base"):
 #export("body"):
 
+<div class="container" style="margin-top: 30px;">
+    <div class="card">
+        <div class="card-header">
+            <h4 style="text-align:center">Saison 20/21</h4>
+        </div>
+    </div>
+</div>
+
 <div class="container stats">
     <div class="card-columns mb-5 mt-5">
 
         <div class="card">
             <div class="card-header">
-                <h4>20/21 Liga</h4>
-                <p class="subtitle">Komplette Tipprunde der 20/21er Saison</p>
+                <h4>Liga</h4>
+                <p class="subtitle">Tipprundenmeisterschaft</p>
             </div>
             <div class="card-body">
                 <table class="">
@@ -29,8 +37,8 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>20/21 Clausura</h4>
-                <p class="subtitle">Pokal der 20/21er Rückrunde</p>
+                <h4>Clausura</h4>
+                <p class="subtitle">Pokal der Rückrunde</p>
             </div>
             <div class="card-body">
                 <table class="">
@@ -56,8 +64,8 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>20/21 Apertura</h4>
-                <p class="subtitle">Pokal der 20/21er Vorrunde</p>
+                <h4>Apertura</h4>
+                <p class="subtitle">Pokal der Vorrunde</p>
             </div>
             <div class="card-body">
                 <table class="">
@@ -81,10 +89,24 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+    <div class="card">
+        <div class="card-header">
+            <h4 style="text-align:center">Saison 19/20</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
         <div class="card">
             <div class="card-header">
-                <h4>19/20 Liga</h4>
-                <p class="subtitle">Komplette Tipprunde der 19/20er Saison</p>
+                <h4>Liga</h4>
+                <p class="subtitle">Tipprundenmeisterschaft</p>
             </div>
             <div class="card-body">
                 <table class="">
@@ -106,5 +128,6 @@
 
     </div>
 </div>
+
 #endexport
 #endextend
