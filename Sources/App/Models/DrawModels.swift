@@ -15,6 +15,7 @@ struct DrawTipper: Content {
     let name: String
     let twitterHandle: String
     let tweetLink: String?
+    let order: Int?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -22,18 +23,21 @@ struct DrawTipper: Content {
         name = decName
         twitterHandle = (try? container.decode(String?.self, forKey: .twitterHandle)) ?? decName
         tweetLink = try? container.decode(String?.self, forKey: .tweetLink)
+        order = try? container.decode(Int?.self, forKey: .order)
     }
 
     init(with registration: Registration) {
         name = registration.kicktippname
         twitterHandle = registration.twittername
         tweetLink = nil
+        order = registration.order
     }
 
     private enum CodingKeys: String, CodingKey {
         case name
         case twitterHandle
         case tweetLink
+        case order
     }
 }
 

@@ -7,4 +7,13 @@ enum Constants {
         case correctWinner = 2
         case noPoints = 0
     }
+
+    enum Season: String {
+        case season2021 = "2021"
+        case season2122 = "2122"
+
+        static var currentSeason: String {
+            return Self.season2122.rawValue
+        }
+    }
 }

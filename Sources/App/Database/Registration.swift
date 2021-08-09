@@ -21,7 +21,7 @@ final class Registration: Model, Content {
     private var stateString: String
 
     @OptionalField(key: "order")
-    private var order: Int?
+    var order: Int?
 
     @Parent(key: "cup_id")
     var cup: Cup

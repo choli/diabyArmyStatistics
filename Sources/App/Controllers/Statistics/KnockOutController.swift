@@ -9,28 +9,15 @@ struct KnockOutController: RouteCollection {
 
     func boot(routes: RoutesBuilder) throws {
 
-        routes.get("supercup", ":round") { (req) -> EventLoopFuture<View> in
-            guard false, let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
-            else { throw Abort(.badRequest, reason: "Round not provided.") }
-
-            let duels = self.getDuels(round, start: 2, tieBreaker: .gesamtpunkte, filename: "supercup2122")
-            let dropDowns = self.getDropDownMenu(for: "supercup", duels: duels.count, in: round)
-
-            return req.view.render(
-                "Pokal/knockOut",
-                [
-                    "duels": StatisticObject.knockOutDuels(duels),
-                    "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
-                    "dropDown": StatisticObject.dropDownDataObject(dropDowns)
-                ]
-            )
-        }
-
         routes.get("apertura", ":round") { (req) -> EventLoopFuture<View> in
             guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
-            let duels = self.getDuels(round, start: 8, tieBreaker: .gesamtpunkte, filename: "apertura2021")
+            guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/apertura2021.json"),
+                  let allRegistrations = try? JSONDecoder().decode(DrawTipperArray.self, from: fileContent)
+            else { fatalError("Couldn't read file with draws") }
+
+            let duels = self.getDuels(round, start: 8, tieBreaker: .gesamtpunkte, participants: allRegistrations.drawnUser)
             let dropDowns = self.getDropDownMenu(for: "apertura", duels: duels.count, in: round)
 
             return req.view.render(
@@ -47,7 +34,11 @@ struct KnockOutController: RouteCollection {
             guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
-            let duels = self.getDuels(round, start: 23, tieBreaker: .mehrExakteTipps, filename: "clausura2021")
+            guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/clausura2021.json"),
+                  let allRegistrations = try? JSONDecoder().decode(DrawTipperArray.self, from: fileContent)
+            else { fatalError("Couldn't read file with draws") }
+
+            let duels = self.getDuels(round, start: 23, tieBreaker: .mehrExakteTipps, participants: allRegistrations.drawnUser)
             let dropDowns = self.getDropDownMenu(for: "clausura", duels: duels.count, in: round)
 
             return req.view.render(
@@ -80,9 +71,15 @@ struct KnockOutController: RouteCollection {
             )
         }
 
-        routes.get("testPokal") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
+        routes.get("cup", ":cupname", ":round") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
+            guard let cupname = req.parameters.get("cupname")
+            else { throw Abort(.badRequest, reason: "Round not provided.") }
+
+            guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
+            else { throw Abort(.badRequest, reason: "Round not provided.") }
+
             let cupELF = Cup.query(on: req.db)
-                .filter(\.$name == "test")
+                .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
                 .with(\.$registrations)
                 .all()
 
@@ -91,18 +88,55 @@ struct KnockOutController: RouteCollection {
                 else { fatalError("error") }
 
                 let participants = cup.registrations.map { DrawTipper(with: $0) }
-                let users = participants.sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
 
-                let tipperArray = DrawTipperArray(nonDrawnUser: participants, drawnUser: [])
-//                let duels = getDuelsForDraw(tipperArray, firstMatchday: 23)
+                let users = participants
+                    .filter { $0.order != nil }
+                    .sorted { $0.order! < $1.order! }
+
+                let duels = self.getDuels(round, start: cup.start, tieBreaker: .mehrExakteTipps, participants: users)
+
+                let dropDowns = self.getDropDownMenu(for: cupname, duels: duels.count, in: round)
+
+                return req.view.render(
+                    "Pokal/knockOut",
+                    [
+                        "duels": StatisticObject.knockOutDuels(duels),
+                        "title": StatisticObject.singleString(self.title(for: round, duels: duels.count)),
+                        "dropDown": StatisticObject.dropDownDataObject(dropDowns)
+                    ]
+                )
+            }
+        }
+
+
+        routes.get("cup", ":cupname") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
+            guard let cupname = req.parameters.get("cupname")
+            else { throw Abort(.badRequest, reason: "Round not provided.") }
+
+            let cupELF = Cup.query(on: req.db)
+                .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
+                .with(\.$registrations)
+                .all()
+
+            return cupELF.flatMapThrowing { cups -> EventLoopFuture<View> in
+                guard cups.count == 1, let cup = cups.first
+                else { return req.eventLoop.makeFailedFuture("Cup does not exist") }
+
+                let participants = cup.registrations.map { DrawTipper(with: $0) }
+                let drawnUsers = participants.filter { $0.order != nil }
+                let nonDrawnUsers = participants.filter { $0.order == nil }
+                    .sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
+
+                let tipperArray = DrawTipperArray(nonDrawnUser: nonDrawnUsers, drawnUser: drawnUsers)
+                let duels = getDuelsForDraw(tipperArray, firstMatchday: cup.start)
                 return req.view.render(
                     "Pokal/liveDraw",
                     [
-                        "notDrawn": StatisticObject.drawUsers(users),
-                        "duels1": StatisticObject.knockOutDuels([]),//(duels.firstRound),
-                        "duels2": StatisticObject.knockOutDuels([])//(duels.secondRound),
-//                        "title1": StatisticObject.singleString(title(for: 1, duels: 2*duels.secondRound.count)),
-//                        "title2": StatisticObject.singleString(title(for: 2, duels: 2*duels.secondRound.count))
+                        "notDrawn": StatisticObject.drawUsers(nonDrawnUsers),
+                        "duels1": StatisticObject.knockOutDuels(duels.firstRound),
+                        "duels2": StatisticObject.knockOutDuels(duels.secondRound),
+                        "title1": StatisticObject.singleString(title(for: 1, duels: 2*duels.secondRound.count)),
+                        "title2": StatisticObject.singleString(title(for: 2, duels: 2*duels.secondRound.count))
                     ]
                 )
             }
@@ -146,18 +180,18 @@ struct KnockOutController: RouteCollection {
         return ""
     }
 
-    private func getDuels(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, filename: String) -> [KnockOutDuel] {
+    private func getDuels(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) -> [KnockOutDuel] {
         guard round > 1
-        else { return self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filename: filename) }
+        else { return self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, participants: participants) }
 
-        let round = self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, filename: filename)
+        let round = self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, participants: participants)
         return round
     }
 
-    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, filename: String) -> [KnockOutDuel] {
+    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) -> [KnockOutDuel] {
         let previousDuels = round == 2 ?
-            self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filename: filename) :
-            self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, filename: filename)
+            self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, participants: participants) :
+            self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, participants: participants)
         let maxId = previousDuels.map { $0.spielnummer }.max()!
 
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start + round - 1 })
@@ -234,14 +268,10 @@ struct KnockOutController: RouteCollection {
 
     }
 
-    private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, filename: String) -> [KnockOutDuel] {
+    private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) -> [KnockOutDuel] {
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
 
-        let drawOrder: [DrawTipper]
-            guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/\(filename).json"),
-              let spieler = try? JSONDecoder().decode(DrawTipperArray.self, from: fileContent)
-            else { fatalError("Couldn't read file with draws") }
-        drawOrder = spieler.drawnUser
+        let drawOrder = participants
 
         let tippers = firstMatchday.tippspieler
             .filter { return drawOrder.map { $0.name }.contains($0.name) }

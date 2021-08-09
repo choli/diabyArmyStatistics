@@ -36,6 +36,7 @@ final class Cup: Model, Content {
 
     enum State: String {
         case registrationOpen
+        case registrationNotPublic
         case registrationNotYetOpen
         case registrationClosed
     }

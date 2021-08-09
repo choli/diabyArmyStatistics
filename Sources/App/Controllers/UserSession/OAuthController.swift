@@ -73,10 +73,10 @@ struct OAuthController: RouteCollection {
             return string.split(separator: ";").map { String($0) }
         }
 
-        routes.post(":cup", "registration") { req -> EventLoopFuture<View> in
-            guard let cupParam = req.parameters.get("cup"),
+        routes.post("cup", ":cupname", "registration") { req -> EventLoopFuture<View> in
+            guard let cupname = req.parameters.get("cupname"),
                   let regObject = try? req.content.decode(RegistrationObject.self),
-                  regObject.cupName == cupParam,
+                  regObject.cupName == "\(cupname)\(Constants.Season.currentSeason)",
                   let status = Registration.State(rawValue: regObject.status)
             else { return req.view.render("Twitter/error", ["":""]) }
 
@@ -112,16 +112,16 @@ struct OAuthController: RouteCollection {
             return req.view.render("Pokal/Registration/status", context)
         }
 
-        routes.get(":cup", "registration") { req -> EventLoopFuture<EventLoopFuture<Response>> in
+        routes.get("cup", ":cupname", "registration") { req -> EventLoopFuture<EventLoopFuture<Response>> in
 
-            guard let cupParam = req.parameters.get("cup")
+            guard let cupname = req.parameters.get("cupname")
             else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.missingArgument) }
             guard RequestAccessTokenResponse.sessionToken(in: req) != nil
             else { return req.eventLoop.future(redirectionForLogin(with: req)) }
 
             return callGetRequest(with: req, url: "https://api.twitter.com/1.1/account/verify_credentials.json", queryParams: ["skip_status" : "true"])
                 .and(Cup.query(on: req.db)
-                        .filter(\.$name == cupParam)
+                        .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
                         .with(\.$registrations)
                         .all())
                 .flatMapThrowing({ (res, cupObjects) -> EventLoopFuture<Response> in
@@ -135,13 +135,21 @@ struct OAuthController: RouteCollection {
                     guard cupObjects.count == 1, let cup = cupObjects.first, let cupID = cup.id
                     else { return req.eventLoop.makeFailedFuture(DAHTTPErrors.noOpenRegistrationFound) }
 
+                    if cup.state == .registrationNotYetOpen {
+                        return req.eventLoop.makeFailedFuture(DAHTTPErrors.registrationNotYetOpen)
+                    } else if cup.state == .registrationClosed {
+                        return req.eventLoop.makeFailedFuture(DAHTTPErrors.registrationClosed)
+                    } else if cup.state == .registrationNotPublic {
+                        // check if user allowed
+                    }
+
                     let registeredUsers = cup.registrations.map { $0.kicktippname }
                     let registeredUsersString = commaSeparatedString(for: registeredUsers)
                     if let registration = cup.registrations.first(where: { $0.twitterid == verification.id_str }) {
-                        let context = RegistrationObject(status: registration.state.rawValue, cupName: cupParam, cupID: cupID, registeredUsers: registeredUsersString)
+                        let context = RegistrationObject(status: registration.state.rawValue, cupName: cupname, cupID: cupID, registeredUsers: registeredUsersString)
                         return req.view.render("Pokal/Registration/status", context).encodeResponse(for: req)
                     } else {
-                        let context = RegistrationObject(status: Registration.State.notRegistered.rawValue, cupName: cupParam, cupID: cupID, registeredUsers: registeredUsersString)
+                        let context = RegistrationObject(status: Registration.State.notRegistered.rawValue, cupName: cupname, cupID: cupID, registeredUsers: registeredUsersString)
                         return req.view.render("Pokal/Registration/status", context).encodeResponse(for: req)
                     }
                 })
@@ -490,6 +498,9 @@ private enum DAHTTPErrors: Error {
 
     case noOpenRegistrationFound
     case tipperNotFoundInLastMatchday
+
+    case registrationNotYetOpen
+    case registrationClosed
 }
 
 struct TwitterErrors: Content {
