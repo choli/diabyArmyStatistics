@@ -368,7 +368,7 @@ extension KnockOutController { // Helper for draw
             })
 
         let participants = Int(pow(2,ceil(log2(Double(numberOfParticipants)))))
-        let nonWildcardDuelsCount = numberOfParticipants == participants ? 0 : (participants / 2) - (participants - numberOfParticipants)
+        let firstRoundDuelsCount = (participants / 2) - (participants - numberOfParticipants)
         var duels: [KnockOutDuel] = []
 
         func fetchTipper(_ index: Int) -> Tippspieler {
@@ -377,7 +377,7 @@ extension KnockOutController { // Helper for draw
             return tipper
         }
 
-        for i in 0..<min(nonWildcardDuelsCount, tippers.count/2) {
+        for i in 0..<min(firstRoundDuelsCount, tippers.count/2) {
             let tipperA = fetchTipper(2 * i)
             let tipperB = fetchTipper(2 * i + 1)
 
@@ -396,10 +396,10 @@ extension KnockOutController { // Helper for draw
 
         var duels2: [KnockOutDuel] = []
 
-        if 2 * nonWildcardDuelsCount < tippers.count {
-            for i in (2 * nonWildcardDuelsCount)..<tippers.count  {
+        if 2 * firstRoundDuelsCount < tippers.count {
+            for i in (2 * firstRoundDuelsCount)..<tippers.count  {
                 let tipper = fetchTipper(i)
-                duels.append(KnockOutDuel(withWildcard: i - nonWildcardDuelsCount + 1, tipper: tipper, position: tipper.position))
+                duels.append(KnockOutDuel(withWildcard: i - firstRoundDuelsCount + 1, tipper: tipper, position: tipper.position))
             }
 
             // Round 2:
@@ -411,7 +411,7 @@ extension KnockOutController { // Helper for draw
             }
         }
 
-        duels = Array(duels[0..<nonWildcardDuelsCount])
+        duels = Array(duels[0..<(min(duels.count, firstRoundDuelsCount))])
 
         return (firstRound: duels, secondRound: duels2)
     }
