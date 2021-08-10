@@ -17,7 +17,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     private var currentStep: PlayerStep = .none
 
     // MARK: - Put proper matchday in here <---- 👈🏽 🐸
-    private var completeMatchday = Spieltag(spieltag: 34)
+    private var completeMatchday = Spieltag(spieltag: 1)
 
     private enum PlayerStep: Hashable {
         case none
@@ -63,7 +63,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     }
 
     private func writeJson(_ json: String, for matchday: Int) {
-        let fileUrl = URL(fileURLWithPath: "/Users/choli/Documents/workspace/diabyArmy/Resources/Matchdays/diabyarmy\(matchday).json")
+        let fileUrl = URL(fileURLWithPath: "/Users/choli/Documents/workspace/diabyArmy/Resources/Matchdays/diabyarmy_2122_\(matchday).json")
         try! json.write(to: fileUrl, atomically: true, encoding: .utf8)
     }
 

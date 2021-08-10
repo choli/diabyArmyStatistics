@@ -7,7 +7,8 @@ struct MatchdayController {
         var matchdays: [Spieltag] = []
 
         for index in 1..<35 {
-            guard let fileContent = FileManager.default.contents(atPath: "Resources/Matchdays/diabyarmy\(index).json"),
+            guard let fileContent = FileManager.default
+                    .contents(atPath: "Resources/Matchdays/diabyarmy_\(Constants.Season.currentSeason)_\(index).json"),
                   let matchday = try? JSONDecoder().decode(Spieltag.self, from: fileContent)
             else {
                 self.matchdays = matchdays
