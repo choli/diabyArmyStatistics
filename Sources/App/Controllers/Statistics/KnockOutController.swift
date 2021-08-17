@@ -98,7 +98,7 @@ struct KnockOutController: RouteCollection {
 
                 let duels = self.getDuels(round, start: cup.start, tieBreaker: .mehrExakteTipps, participants: users)
 
-                let dropDowns = self.getDropDownMenu(for: cupname, duels: duels.count, in: round)
+                let dropDowns = self.getDropDownMenu(for: "cup/"+cupname, duels: duels.count, in: round)
 
                 return req.view.render(
                     "Pokal/knockOut",
