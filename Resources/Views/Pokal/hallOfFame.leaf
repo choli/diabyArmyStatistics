@@ -4,6 +4,47 @@
 <div class="container" style="margin-top: 30px;">
     <div class="card">
         <div class="card-header">
+            <h4 style="text-align:center">Saison 21/22</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Supercopa</h4>
+                <p class="subtitle">Einführung der neuen Pokalsaison</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🥇</td>
+                        <td><a style="color:black" href="https://twitter.com/crash22crash/">crash22crash</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/_NoNico/">NoNico</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/BastiBoers11/">Basti</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/Jules_says_yeah/">Jules_says_yeah</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+    <div class="card">
+        <div class="card-header">
             <h4 style="text-align:center">Saison 20/21</h4>
         </div>
     </div>
@@ -79,7 +120,7 @@
                     </tr>
                     <tr>
                         <td>🥉</td>
-                        <td><a style="color:black" href="https://twitter.com/Germanbsfan/">Germanbsfan</a></td>
+                        <td><a style="color:black" href="https://twitter.com/FarbenstadtPhil/">FarbenstadtPhil</a></td>
                     </tr>
                     <tr>
                         <td>🥉</td>
