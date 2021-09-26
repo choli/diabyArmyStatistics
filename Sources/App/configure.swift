@@ -15,7 +15,8 @@ public func configure(_ app: Application) throws {
     let dbURL: String?
     dbURL = Environment.get("DATABASE_URL")
     guard let databaseURL = dbURL , var postgresConfig = PostgresConfiguration(url: databaseURL) else { fatalError() }
-    postgresConfig.tlsConfiguration = .forClient(certificateVerification: .none)
+    postgresConfig.tlsConfiguration = .makeClientConfiguration()
+    postgresConfig.tlsConfiguration?.certificateVerification = .none
     app.databases.use(.postgres(configuration: postgresConfig), as: .psql)
     app.migrations.add(CreateCups())
     app.migrations.add(CreateRegistration())
