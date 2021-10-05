@@ -356,7 +356,7 @@ extension KnockOutController { // Helper for draw
         let drawOrder = draw.drawnUser
         let numberOfParticipants = draw.drawnUser.count + (draw.nonDrawnUser?.count ?? 0)
 
-        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == firstMatchday - 1 }) else { fatalError("First start matchday is MD2") }
+        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == firstMatchday - 1 }) else { return (firstRound: [], secondRound: []) } // old behaviour: fatalError("First start matchday is MD2")
 
         let tippers = firstMatchday.tippspieler
             .filter { return drawOrder.map { $0.name }.contains($0.name) }

@@ -6,7 +6,6 @@ struct DebugController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
 
 //        routes.get("abcd1234") { req -> EventLoopFuture<View> in
-//            Registration.query(on: req.db).delete()
 //            return Cup(name: "supercopa2122", start: 2, state: .registrationNotYetOpen)
 //                .save(on: req.db)
 //                .transform(to: req.view.render("Twitter/success", ["":""]))
