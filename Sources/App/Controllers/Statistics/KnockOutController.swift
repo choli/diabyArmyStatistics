@@ -9,6 +9,7 @@ struct KnockOutController: RouteCollection {
 
     func boot(routes: RoutesBuilder) throws {
 
+        /* old ones
         routes.get("apertura", ":round") { (req) -> EventLoopFuture<View> in
             guard let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
@@ -70,6 +71,7 @@ struct KnockOutController: RouteCollection {
                 ]
             )
         }
+*/
 
         routes.get("cup", ":cupname", ":round") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
             guard let cupname = req.parameters.get("cupname")

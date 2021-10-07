@@ -5,13 +5,29 @@ struct DebugController: RouteCollection {
 
     func boot(routes: RoutesBuilder) throws {
 
-//        routes.get("abcd1234") { req -> EventLoopFuture<View> in
-//            return Cup(name: "supercopa2122", start: 2, state: .registrationNotYetOpen)
+//        routes.get("addsDefinedCup") { req -> EventLoopFuture<View> in
+//            return Cup(name: "test2122", start: 22, state: .registrationNotYetOpen)
 //                .save(on: req.db)
 //                .transform(to: req.view.render("Twitter/success", ["":""]))
 //        }
 
 //        routes.get("abcd", ":cupname") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
+//            guard let cupname = req.parameters.get("cupname")
+//            else { return req.eventLoop.makeFailedFuture("Name not provided.") }
+//
+//            let cupELF = Cup.query(on: req.db)
+//                .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
+//                .first()
+//
+//            return cupELF.map({ cup in
+//                cup?.state = .registrationOpen
+//                return (cup?.save(on: req.db)
+//                            .transform(to: req.view.render("Twitter/success", ["":""])))!
+//            })
+//        }
+
+
+//        routes.get("drawOrder", ":cupname") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
 //            guard let cupname = req.parameters.get("cupname")
 //            else { return req.eventLoop.makeFailedFuture("Name not provided.") }
 //
@@ -27,7 +43,41 @@ struct DebugController: RouteCollection {
 //                    return req.view.render("Pokal/Registration/liveDrawOrder", ["users":allRegs])
 //            }
 //        }
+
+
+//        routes.get("duplicates", ":cupname") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
+//            guard let cupname = req.parameters.get("cupname")
+//            else { return req.eventLoop.makeFailedFuture("Name not provided.") }
 //
+//            let cupELF = Cup.query(on: req.db)
+//                .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
+//                .with(\.$registrations)
+//                .first()
+//
+//            return cupELF.flatMapThrowing { cup -> EventLoopFuture<View> in
+//                guard let cup = cup else { fatalError("nope") }
+//                let allRegs = cup.registrations
+//                var validRegs = [Registration]()
+//                var duplicatedRegs = [Registration]()
+//
+//                for reg in allRegs {
+//                    if validRegs.contains(where: { reg1 in reg1.kicktippname == reg.kicktippname && reg1.twittername == reg.twittername }) {
+//                        duplicatedRegs.append(reg)
+//                    } else {
+//                        validRegs.append(reg)
+//                    }
+//                }
+//
+//                for reg in duplicatedRegs {
+////                    reg.delete(on: req.db)
+//                }
+//
+//                    return req.view.render("Twitter/success", ["":""])
+//            }
+//        }
+
+
+
 //        routes.post("abcd", ":cupname") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
 //            guard let cupname = req.parameters.get("cupname"),
 //                  let orders = try? req.content.decode([String:String].self)
