@@ -15,16 +15,16 @@ struct SingleTeamStatisticController: RouteCollection {
             let userStats = UserStatisticsController(mdc: self.mdc)
             let resultsStats = ResultsStatisticsController(mdc: self.mdc)
 
-            let results = resultsStats.getAggregatedResults(for: team)
+            let results = try resultsStats.getAggregatedResults(for: team)
 
             return req.view.render(
                 "Statistics/teamStats",
                 ["team": StatisticObject.singleString(team),
-                 "exact": userStats.getExactTipps(for: team),
-                 "optimists": userStats.getAggregatedTipps(for: team, optimist: true),
-                 "pessimists": userStats.getAggregatedTipps(for: team, optimist: false),
+                 "exact": try userStats.getExactTipps(for: team),
+                 "optimists": try userStats.getAggregatedTipps(for: team, optimist: true),
+                 "pessimists": try userStats.getAggregatedTipps(for: team, optimist: false),
                  "result": StatisticObject.singleAggregatedUserTipp(results),
-                 "points": userStats.getPoints(for: team)]
+                 "points": try userStats.getPoints(for: team)]
             )
         }
 

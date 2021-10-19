@@ -6,7 +6,7 @@ struct ResultsStatisticsController {
         self.mdc = mdc
     }
 
-    func getAggregatedResults(for team: String) -> AggregatedUserTipp {
+    func getAggregatedResults(for team: String) throws -> AggregatedUserTipp {
         let results = self.getAllResults(of: team)
         var wins = 0, draws = 0, losses = 0, goalsFor = 0, goalsAgainst = 0
         for game in results {
@@ -23,7 +23,7 @@ struct ResultsStatisticsController {
                 goalsFor += game.gast
                 goalsAgainst += game.heim
             } else {
-                fatalError("This should not happen")
+                throw Abort(.badRequest, reason: "This should not happen")
             }
         }
         let tipp = UserTipp(goalsFor: goalsFor, goalsAgainst: goalsAgainst, points: 0)

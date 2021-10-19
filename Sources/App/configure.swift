@@ -12,9 +12,9 @@ public func configure(_ app: Application) throws {
     // uncomment to serve files from /Public folder
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
-    let dbURL: String?
-    dbURL = Environment.get("DATABASE_URL")
-    guard let databaseURL = dbURL , var postgresConfig = PostgresConfiguration(url: databaseURL) else { fatalError() }
+    guard let databaseURL = Environment.get("DATABASE_URL"), var postgresConfig = PostgresConfiguration(url: databaseURL)
+    else { fatalError("DB setup not working") }
+
     postgresConfig.tlsConfiguration = .makeClientConfiguration()
     postgresConfig.tlsConfiguration?.certificateVerification = .none
     app.databases.use(.postgres(configuration: postgresConfig), as: .psql)

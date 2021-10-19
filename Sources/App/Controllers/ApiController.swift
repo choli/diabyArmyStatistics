@@ -34,16 +34,16 @@ struct ApiController: RouteCollection {
         return self.mdc.matchdays
     }
 
-    private func getExactTipps(req: Request) -> StatisticObject {
-        guard let team = req.parameters.get("team") else { fatalError("no team defined") }
-        return UserStatisticsController(mdc: self.mdc).getExactTipps(for: team)
+    private func getExactTipps(req: Request) throws -> StatisticObject {
+        guard let team = req.parameters.get("team") else { throw Abort(.badRequest, reason: "no team defined") }
+        return try UserStatisticsController(mdc: self.mdc).getExactTipps(for: team)
     }
 
-    func getAggregatedTipps(req: Request) -> StatisticObject {
+    func getAggregatedTipps(req: Request) throws -> StatisticObject {
         let optimists = "optimists"
         let pessimists = "pessimists"
-        guard let team = req.parameters.get("team") else { fatalError("no team defined") }
-        guard let paths = req.route?.path else { fatalError("empty paths, not cool") }
+        guard let team = req.parameters.get("team") else { throw Abort(.badRequest, reason: "no team defined") }
+        guard let paths = req.route?.path else { throw Abort(.badRequest, reason: "empty paths, not cool") }
 
         let opt: Bool
         if (paths.first(where: { $0.isConstantComponent(optimists) }) != nil) {
@@ -51,10 +51,10 @@ struct ApiController: RouteCollection {
         } else if (paths.first(where: { $0.isConstantComponent(pessimists) }) != nil) {
             opt = false
         } else {
-            fatalError("Wrong path in here")
+            throw Abort(.badRequest, reason: "Wrong path in here")
         }
 
-        return UserStatisticsController(mdc: self.mdc).getAggregatedTipps(for: team, optimist: opt)
+        return try UserStatisticsController(mdc: self.mdc).getAggregatedTipps(for: team, optimist: opt)
     }
 }
 

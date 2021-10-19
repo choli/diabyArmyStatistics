@@ -83,11 +83,11 @@ struct KnockOutController: RouteCollection {
             let cupELF = Cup.query(on: req.db)
                 .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
                 .with(\.$registrations)
-                .all()
+                .first()
 
-            return cupELF.flatMapThrowing { cups -> EventLoopFuture<View> in
-                guard cups.count == 1, let cup = cups.first
-                else { fatalError("error") }
+            return cupELF.flatMapThrowing { cup -> EventLoopFuture<View> in
+                guard let cup = cup
+                else { throw Abort(.badRequest, reason: "Cup does not exist") }
 
                 let participants = cup.registrations.map { DrawTipper(with: $0) }
 
@@ -96,9 +96,9 @@ struct KnockOutController: RouteCollection {
                     .sorted { $0.order! < $1.order! }
 
                 guard users.count == participants.count
-                else { return req.eventLoop.makeFailedFuture("Auslosung ist noch nicht abgeschlossen") }
+                else { throw Abort(.badRequest, reason: "Auslosung ist noch nicht abgeschlossen") }
 
-                let duels = self.getDuels(round, start: cup.start, tieBreaker: .mehrExakteTipps, participants: users)
+                let duels = try self.getDuels(round, start: cup.start, tieBreaker: .mehrExakteTipps, participants: users)
 
                 let dropDowns = self.getDropDownMenu(for: "cup/"+cupname, duels: duels.count, in: round)
 
@@ -121,10 +121,10 @@ struct KnockOutController: RouteCollection {
             let cupELF = Cup.query(on: req.db)
                 .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
                 .with(\.$registrations)
-                .all()
+                .first()
 
-            return cupELF.flatMapThrowing { cups -> EventLoopFuture<View> in
-                guard cups.count == 1, let cup = cups.first
+            return cupELF.flatMapThrowing { cup -> EventLoopFuture<View> in
+                guard let cup = cup
                 else { return req.eventLoop.makeFailedFuture("Cup does not exist") }
 
                 let participants = cup.registrations.map { DrawTipper(with: $0) }
@@ -133,7 +133,7 @@ struct KnockOutController: RouteCollection {
                     .sorted { $0.name.caseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending }
 
                 let tipperArray = DrawTipperArray(nonDrawnUser: nonDrawnUsers, drawnUser: drawnUsers)
-                let duels = getDuelsForDraw(tipperArray, firstMatchday: cup.start)
+                let duels = try getDuelsForDraw(tipperArray, firstMatchday: cup.start)
                 return req.view.render(
                     "Pokal/liveDraw",
                     [
@@ -185,18 +185,18 @@ struct KnockOutController: RouteCollection {
         return ""
     }
 
-    private func getDuels(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) -> [KnockOutDuel] {
+    private func getDuels(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) throws -> [KnockOutDuel] {
         guard round > 1
-        else { return self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, participants: participants) }
+        else { return try self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, participants: participants) }
 
-        let round = self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, participants: participants)
+        let round = try self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, participants: participants)
         return round
     }
 
-    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) -> [KnockOutDuel] {
+    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) throws -> [KnockOutDuel] {
         let previousDuels = round == 2 ?
-            self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, participants: participants) :
-            self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, participants: participants)
+            try self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, participants: participants) :
+            try self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, participants: participants)
         let maxId = previousDuels.map { $0.spielnummer }.max()!
 
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start + round - 1 })
@@ -273,17 +273,17 @@ struct KnockOutController: RouteCollection {
 
     }
 
-    private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) -> [KnockOutDuel] {
-        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
+    private func getFirstRoundDuels(start: Int, tieBreaker: KnockOutDuel.TieBreaker, participants: [DrawTipper]) throws -> [KnockOutDuel] {
+        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { throw Abort(.badRequest, reason: "First start matchday is MD2") }
 
         let drawOrder = participants
 
-        let tippers = firstMatchday.tippspieler
+        let tippers = try firstMatchday.tippspieler
             .filter { return drawOrder.map { $0.name }.contains($0.name) }
             .sorted(by: { a,b in
                 guard let indexA = drawOrder.firstIndex(where: { $0.name == a.name }),
                       let indexB = drawOrder.firstIndex(where: { $0.name == b.name })
-                else { fatalError("Couldn't find \(a.name) or \(b.name) in draw array.")}
+                else { throw Abort(.badRequest, reason: "Couldn't find \(a.name) or \(b.name) in draw array.")}
                 return indexA < indexB
             })
 
@@ -293,7 +293,7 @@ struct KnockOutController: RouteCollection {
                     print("falsch geschrieben: " + drawUser.name)
                 }
             }
-            fatalError("Missing tippers in first matchday that appeared in draw")
+            throw Abort(.badRequest, reason: "Missing tippers in first matchday that appeared in draw")
         }
 
         let participants = Int(pow(2,ceil(log2(Double(tippers.count)))))
@@ -354,18 +354,18 @@ struct KnockOutController: RouteCollection {
 
 extension KnockOutController { // Helper for draw
 
-    private func getDuelsForDraw(_ draw: DrawTipperArray, firstMatchday: Int) -> (firstRound: [KnockOutDuel], secondRound: [KnockOutDuel]) {
+    private func getDuelsForDraw(_ draw: DrawTipperArray, firstMatchday: Int) throws -> (firstRound: [KnockOutDuel], secondRound: [KnockOutDuel]) {
         let drawOrder = draw.drawnUser
         let numberOfParticipants = draw.drawnUser.count + (draw.nonDrawnUser?.count ?? 0)
 
         guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == firstMatchday - 1 }) else { return (firstRound: [], secondRound: []) } // old behaviour: fatalError("First start matchday is MD2")
 
-        let tippers = firstMatchday.tippspieler
+        let tippers = try firstMatchday.tippspieler
             .filter { return drawOrder.map { $0.name }.contains($0.name) }
             .sorted(by: { a,b in
                 guard let indexA = drawOrder.firstIndex(where: { $0.name == a.name }),
                       let indexB = drawOrder.firstIndex(where: { $0.name == b.name })
-                else { fatalError("Couldn't find \(a.name) or \(b.name) in draw array.")}
+                else { throw Abort(.badRequest, reason: "Couldn't find \(a.name) or \(b.name) in draw array.")}
                 return indexA < indexB
             })
 

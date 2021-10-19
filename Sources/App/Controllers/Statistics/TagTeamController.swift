@@ -12,7 +12,7 @@ struct TagTeamController: RouteCollection {
             guard false, let roundString = req.parameters.get("round"), let round = Int(roundString), round > 0
             else { throw Abort(.badRequest, reason: "Round not provided.") }
 
-            let duels = self.getDuels(round, start: 31, tieBreaker: .mehrExakteTipps, filename: "tagteamtest")
+            let duels = try self.getDuels(round, start: 31, tieBreaker: .mehrExakteTipps, filename: "tagteamtest")
             let dropDowns = self.getDropDownMenu(for: "tagteam", duels: duels.count, in: round)
 
             return req.view.render(
@@ -63,18 +63,18 @@ struct TagTeamController: RouteCollection {
         return ""
     }
 
-    private func getDuels(_ round: Int, start: Int, tieBreaker: TagTeamDuel.TieBreaker, filename: String) -> [TagTeamDuel] {
+    private func getDuels(_ round: Int, start: Int, tieBreaker: TagTeamDuel.TieBreaker, filename: String) throws -> [TagTeamDuel] {
         guard round > 1
-        else { return self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filename: filename) }
+        else { return try self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filename: filename) }
 
-        let round = self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, filename: filename)
+        let round = try self.getDuelsInRound(round, start: start, tieBreaker: tieBreaker, filename: filename)
         return round
     }
 
-    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: TagTeamDuel.TieBreaker, filename: String) -> [TagTeamDuel] {
+    private func getDuelsInRound(_ round: Int, start: Int, tieBreaker: TagTeamDuel.TieBreaker, filename: String) throws -> [TagTeamDuel] {
         let previousDuels = round == 2 ?
-            self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filename: filename) :
-            self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, filename: filename)
+            try self.getFirstRoundDuels(start: start, tieBreaker: tieBreaker, filename: filename) :
+            try self.getDuelsInRound(round - 1, start: start, tieBreaker: tieBreaker, filename: filename)
         let maxId = previousDuels.map { $0.spielnummer }.max()!
 
         let resultMD = self.mdc.matchdays.first(where: { $0.spieltag == start + round - 1 })
@@ -181,16 +181,16 @@ struct TagTeamController: RouteCollection {
         }
     }
 
-    private func getFirstRoundDuels(start: Int, tieBreaker: TagTeamDuel.TieBreaker, filename: String) -> [TagTeamDuel] {
-        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { fatalError("First start matchday is MD2") }
+    private func getFirstRoundDuels(start: Int, tieBreaker: TagTeamDuel.TieBreaker, filename: String) throws -> [TagTeamDuel] {
+        guard let firstMatchday = self.mdc.matchdays.first(where: { $0.spieltag == start - 1 }) else { throw Abort(.badRequest, reason: "First start matchday is MD2") }
 
         let drawOrder: [DrawTagTeam]
             guard let fileContent = FileManager.default.contents(atPath: "Resources/Draws/\(filename).json"),
               let spieler = try? JSONDecoder().decode(DrawTagTeamArray.self, from: fileContent)
-            else { fatalError("Couldn't read file with draws") }
+            else { throw Abort(.badRequest, reason: "Couldn't read file with draws") }
         drawOrder = spieler.drawnTeams
 
-        let tippers = firstMatchday.tippspieler
+        let tippers = try firstMatchday.tippspieler
             .filter {
                 let mapped = drawOrder.reduce([String]()) { res, team in
                     var res2 = res
@@ -203,7 +203,7 @@ struct TagTeamController: RouteCollection {
             .sorted(by: { a,b in
                 guard let indexA = drawOrder.firstIndex(where: { $0.teamplayerA.name == a.name || $0.teamplayerB.name == a.name }),
                       let indexB = drawOrder.firstIndex(where: { $0.teamplayerA.name == b.name || $0.teamplayerB.name == b.name })
-                else { fatalError("Couldn't find \(a.name) or \(b.name) in draw array.")}
+                else { throw Abort(.badRequest, reason: "Couldn't find \(a.name) or \(b.name) in draw array.")}
                 return indexA == indexB ? drawOrder[indexA].teamplayerA.name == a.name : indexA < indexB
             })
 
@@ -213,7 +213,7 @@ struct TagTeamController: RouteCollection {
                     print("falsch geschrieben: Mitglied aus " + drawTeam.teamname)
                 }
             }
-            fatalError("Missing tippers in first matchday that appeared in draw")
+            throw Abort(.badRequest, reason: "Missing tippers in first matchday that appeared in draw")
         }
 
         let participants = Int(pow(2,ceil(log2(Double(tippers.count / 2)))))

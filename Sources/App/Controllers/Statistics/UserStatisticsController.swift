@@ -6,14 +6,14 @@ struct UserStatisticsController {
         self.mdc = mdc
     }
     
-    func getExactTipps(for team: String? = nil) -> StatisticObject {
-        let tipps = self.getAllTippResults(of: team, exactOnly: true)
+    func getExactTipps(for team: String? = nil) throws -> StatisticObject {
+        let tipps = try self.getAllTippResults(of: team, exactOnly: true)
         let result = tipps.convertedToTendencies.sorted(by: .total).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getAggregatedTipps(for team: String, optimist: Bool) -> StatisticObject {
-        let tipps = self.getAllTippResults(of: team, exactOnly: false)
+    func getAggregatedTipps(for team: String, optimist: Bool) throws -> StatisticObject {
+        let tipps = try self.getAllTippResults(of: team, exactOnly: false)
         let result = tipps.summedUpAndSorted(descending: optimist).getTop(5)
         return StatisticObject.aggregatedUserTipp(result)
     }
@@ -24,8 +24,8 @@ struct UserStatisticsController {
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getCorrectTendencies(by tendency: Tendenz) -> StatisticObject {
-        let tendencies = self.getAllCorrectUserTendencies()
+    func getCorrectTendencies(by tendency: Tendenz) throws -> StatisticObject {
+        let tendencies = try self.getAllCorrectUserTendencies()
         let result = tendencies.sorted(by: tendency).getTop(5, total: true)
         return StatisticObject.tendenzCounter(result)
     }
@@ -58,8 +58,8 @@ struct UserStatisticsController {
         return StatisticObject.tendenzCounter(result)
     }
 
-    func getPoints(for team: String) -> StatisticObject {
-        let tipps = self.getAllTippResults(of: team, exactOnly: false)
+    func getPoints(for team: String) throws -> StatisticObject {
+        let tipps = try self.getAllTippResults(of: team, exactOnly: false)
         let result = tipps.summedUpTippPoints.getTop(5)
         return StatisticObject.tendenzCounter(result)
     }
@@ -80,11 +80,11 @@ struct UserStatisticsController {
         return StatisticObject.tendenzCounter(tendencies)
     }
 
-    private func getAllCorrectUserTendencies() -> [TendenzCounter] {
+    private func getAllCorrectUserTendencies() throws -> [TendenzCounter] {
         var userTendencies: [String: [Tendenz: Int]] = [:]
         let emptyDict: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]
-        self.mdc.matchdays.forEach { matchday in
-            matchday.tippspieler.forEach { user in
+        try self.mdc.matchdays.forEach { matchday in
+            try matchday.tippspieler.forEach { user in
                 var currentUserTendencies: [Tendenz: Int]
                 if let alreadyThere = userTendencies[user.name] {
                     currentUserTendencies = alreadyThere
@@ -92,11 +92,11 @@ struct UserStatisticsController {
                     currentUserTendencies = emptyDict
                 }
 
-                let correct = user.tipps.getCorrectTippTendencies(for: matchday.resultate)
+                let correct = try user.tipps.getCorrectTippTendencies(for: matchday.resultate)
                 guard let correctHome = correct[.heimsieg],
                       let correctDraw = correct[.unentschieden],
                       let correctAway = correct[.gastsieg]
-                else { fatalError("New User added, not included, or parsing error for correct tendencies in matchday") }
+                else { throw Abort(.badRequest, reason: "New User added, not included, or parsing error for correct tendencies in matchday") }
 
                 currentUserTendencies[.heimsieg]! += correctHome
                 currentUserTendencies[.unentschieden]! += correctDraw
@@ -184,8 +184,8 @@ struct UserStatisticsController {
         return userTipps
     }
 
-    private func getAllTippResults(of team: String?, exactOnly: Bool) -> [UserTipps] {
-        return self.getAllTipps(of: team, exactOnly: exactOnly).map { (name, userTipps) in
+    private func getAllTippResults(of team: String?, exactOnly: Bool) throws -> [UserTipps] {
+        return try self.getAllTipps(of: team, exactOnly: exactOnly).map { (name, userTipps) in
             var allTippResults: [UserTipp] = []
             for tipp in userTipps {
                 if tipp.heimteam == team {
@@ -193,7 +193,7 @@ struct UserStatisticsController {
                 } else if tipp.gastteam == team {
                     allTippResults.append(UserTipp(goalsFor: tipp.gast, goalsAgainst: tipp.heim, points: tipp.spielpunkte))
                 } else {
-                    guard team == nil else { fatalError("This should not happen") }
+                    guard team == nil else { throw Abort(.badRequest, reason: "This should not happen") }
                     allTippResults.append(tipp.asUserTipp)
                 }
             }

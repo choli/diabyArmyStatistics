@@ -50,7 +50,7 @@ enum StatisticObject: Content {
     }
 
     init(from decoder: Decoder) throws {
-        fatalError("why do i need to decode?")
+        throw Abort(.badRequest, reason: "why do i need to decode?")
     }
 }
 

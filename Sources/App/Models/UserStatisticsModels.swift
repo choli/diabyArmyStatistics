@@ -272,11 +272,11 @@ struct TagTeamDuel: Content {
 }
 
 extension Array where Element == Spiel {
-    func getCorrectTippTendencies(for results: [Spiel]) -> [Tendenz: Int] {
+    func getCorrectTippTendencies(for results: [Spiel]) throws -> [Tendenz: Int] {
         var correct: [Tendenz: Int] = [.heimsieg: 0, .unentschieden: 0, .gastsieg: 0]
-        self.forEach { userTipp in
+        try self.forEach { userTipp in
             guard let result = results.first(where: { $0.heimteam == userTipp.heimteam && $0.gastteam == userTipp.gastteam })
-            else {  fatalError("Match not played on this matchday") }
+            else {  throw Abort(.badRequest, reason: "Match not played on this matchday") }
 
             if result.heim > result.gast && userTipp.heim > userTipp.gast {
                 correct[.heimsieg]! += 1
