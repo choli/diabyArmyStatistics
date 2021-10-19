@@ -496,7 +496,7 @@ struct OAuthController: RouteCollection {
     }
 }
 
-private enum DAHTTPErrors: Error {
+private enum DAHTTPErrors: String, Error {
     case missingAccessToken
     case missingArgument
 
@@ -506,6 +506,35 @@ private enum DAHTTPErrors: Error {
     case registrationNotYetOpen
     case registrationClosed
     case registrationNotPublic
+}
+
+extension DAHTTPErrors: AbortError {
+    var status: HTTPResponseStatus {
+        switch self {
+        case .missingAccessToken:
+            fallthrough
+        case .missingArgument:
+            return .expectationFailed
+
+        case .noOpenRegistrationFound:
+            return .notFound
+
+        case .tipperNotFoundInLastMatchday:
+            fallthrough
+        case .registrationNotYetOpen:
+            fallthrough
+        case .registrationClosed:
+            fallthrough
+        case .registrationNotPublic:
+            return .forbidden
+        }
+    }
+
+    var reason: String {
+        rawValue
+    }
+
+
 }
 
 struct TwitterErrors: Content {
