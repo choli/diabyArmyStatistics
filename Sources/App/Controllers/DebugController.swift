@@ -37,10 +37,34 @@ struct DebugController: RouteCollection {
 //                .all()
 //
 //            return cupELF.flatMapThrowing { cups -> EventLoopFuture<View> in
-//                guard let cup = cups.first else { fatalError("nope") }
+//                guard let cup = cups.first else { throw Abort(.badRequest, reason: "Nope, whats that?") }
 //                let allRegs = cup.registrations
 //
 //                    return req.view.render("Pokal/Registration/liveDrawOrder", ["users":allRegs])
+//            }
+//        }
+
+
+//        routes.post("drawOrder", ":cupname") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
+//            guard let cupname = req.parameters.get("cupname"),
+//                  let orders = try? req.content.decode([String:String].self)
+//            else { return req.eventLoop.makeFailedFuture("Oh oh.") }
+//
+//            // check all unique
+//
+//            let cupELF = Cup.query(on: req.db)
+//                .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
+//                .with(\.$registrations)
+//                .all()
+//
+//            return cupELF.flatMapThrowing { cups -> EventLoopFuture<View> in
+//                let allRegs = cups.first!.registrations
+//                for reg in allRegs {
+//                    let newOrder = orders[reg.id!.uuidString]
+//                    reg.order = Int(newOrder!)
+//                    reg.save(on: req.db)
+//                }
+//                return req.view.render("Pokal/Registration/liveDrawOrder", ["users":allRegs])
 //            }
 //        }
 
@@ -77,28 +101,5 @@ struct DebugController: RouteCollection {
 //        }
 
 
-
-//        routes.post("abcd", ":cupname") { (req) -> EventLoopFuture<EventLoopFuture<View>> in
-//            guard let cupname = req.parameters.get("cupname"),
-//                  let orders = try? req.content.decode([String:String].self)
-//            else { return req.eventLoop.makeFailedFuture("Oh oh.") }
-//
-//            // check all unique
-//
-//            let cupELF = Cup.query(on: req.db)
-//                .filter(\.$name == "\(cupname)\(Constants.Season.currentSeason)")
-//                .with(\.$registrations)
-//                .all()
-//
-//            return cupELF.flatMapThrowing { cups -> EventLoopFuture<View> in
-//                let allRegs = cups.first!.registrations
-//                for reg in allRegs {
-//                    let newOrder = orders[reg.id!.uuidString]
-//                    reg.order = Int(newOrder!)
-//                    reg.save(on: req.db)
-//                }
-//                return req.view.render("Pokal/Registration/liveDrawOrder", ["users":allRegs])
-//            }
-//        }
     }
 }
