@@ -6,9 +6,9 @@ struct UserStatisticsController {
         self.mdc = mdc
     }
     
-    func getExactTipps(for team: String? = nil) throws -> StatisticObject {
+    func getExactTipps(for team: String? = nil, top: Int = 5) throws -> StatisticObject {
         let tipps = try self.getAllTippResults(of: team, exactOnly: true)
-        let result = tipps.convertedToTendencies.sorted(by: .total).getTop(5, total: true)
+        let result = tipps.convertedToTendencies.sorted(by: .total).getTop(top, total: true)
         return StatisticObject.tendenzCounter(result)
     }
 

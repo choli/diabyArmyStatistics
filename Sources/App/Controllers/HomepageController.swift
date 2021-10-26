@@ -28,7 +28,7 @@ struct HomepageController: RouteCollection {
 
         return req.view.render(
             "Statistics/stats",
-            ["exactLev": try userStats.getExactTipps(for: "Lev"),
+            ["exactLev": try userStats.getExactTipps(for: "Lev", top: 4),
              "exactAll": try userStats.getExactTipps(),
              "tendencies": try userStats.getCorrectTendencies(by: .total),
              "opt": try userStats.getAggregatedTipps(for: "Lev", optimist: true),
