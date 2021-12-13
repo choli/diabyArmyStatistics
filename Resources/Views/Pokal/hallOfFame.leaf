@@ -14,6 +14,33 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>Apertura</h4>
+                <p class="subtitle">Pokal der Vorrunde</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🥇</td>
+                        <td><a style="color:black" href="https://twitter.com/fausto79/">bernd</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/siriusacht/">Sachtig</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/escherjung/">BaypodNils</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/RWingartz/">RWingartz</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Supercopa</h4>
                 <p class="subtitle">Einführung der neuen Pokalsaison</p>
             </div>
