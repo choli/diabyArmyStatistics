@@ -1,0 +1,8718 @@
+{
+  "tippspieler" : [
+    {
+      "gesamtpunkte" : 245,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 14,
+      "position" : 1,
+      "positiondiff" : 0,
+      "name" : "kevin_scheuren"
+    },
+    {
+      "gesamtpunkte" : 233,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 9,
+      "position" : 2,
+      "positiondiff" : 0,
+      "name" : "crash22crash"
+    },
+    {
+      "gesamtpunkte" : 233,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 3,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 21,
+      "position" : 3,
+      "positiondiff" : 0,
+      "name" : "Rheindorfer"
+    },
+    {
+      "gesamtpunkte" : 230,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 20,
+      "position" : 4,
+      "positiondiff" : 0,
+      "name" : "Mo"
+    },
+    {
+      "gesamtpunkte" : 225,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.55,
+      "punkte" : 20,
+      "position" : 5,
+      "positiondiff" : 7,
+      "name" : "baronvonpanzer"
+    },
+    {
+      "gesamtpunkte" : 225,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 15,
+      "position" : 6,
+      "positiondiff" : -2,
+      "name" : "mario_1196"
+    },
+    {
+      "gesamtpunkte" : 223,
+      "tipps" : [
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 13,
+      "position" : 7,
+      "positiondiff" : -3,
+      "name" : "Chiquitaflanke"
+    },
+    {
+      "gesamtpunkte" : 220,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 1,
+      "punkte" : 19,
+      "position" : 8,
+      "positiondiff" : 8,
+      "name" : "PhilipJ90"
+    },
+    {
+      "gesamtpunkte" : 220,
+      "tipps" : [
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 4,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.25,
+      "punkte" : 14,
+      "position" : 9,
+      "positiondiff" : 1,
+      "name" : "Escardos"
+    },
+    {
+      "gesamtpunkte" : 219,
+      "tipps" : [
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 1.05,
+      "punkte" : 15,
+      "position" : 10,
+      "positiondiff" : 3,
+      "name" : "tschwarz1204"
+    },
+    {
+      "gesamtpunkte" : 219,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 22,
+      "position" : 11,
+      "spieltagssieger" : true,
+      "positiondiff" : 15,
+      "name" : "SebastianOhme"
+    },
+    {
+      "gesamtpunkte" : 219,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 4
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 18,
+      "position" : 12,
+      "positiondiff" : 5,
+      "name" : "Til"
+    },
+    {
+      "gesamtpunkte" : 218,
+      "tipps" : [
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.25,
+      "punkte" : 9,
+      "position" : 13,
+      "positiondiff" : -6,
+      "name" : "Torhamster04"
+    },
+    {
+      "gesamtpunkte" : 217,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 10,
+      "position" : 14,
+      "positiondiff" : -5,
+      "name" : "_phityt04"
+    },
+    {
+      "gesamtpunkte" : 216,
+      "tipps" : [
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 13,
+      "position" : 15,
+      "positiondiff" : -1,
+      "name" : "FarbenstadtPhil"
+    },
+    {
+      "gesamtpunkte" : 216,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 8,
+      "position" : 15,
+      "positiondiff" : -7,
+      "name" : "Kschelth"
+    },
+    {
+      "gesamtpunkte" : 216,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 17,
+      "positiondiff" : -2,
+      "name" : "Janek"
+    },
+    {
+      "gesamtpunkte" : 215,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 10,
+      "position" : 18,
+      "positiondiff" : -7,
+      "name" : "Lenneth"
+    },
+    {
+      "gesamtpunkte" : 215,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 6,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 3
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 1,
+      "punkte" : 16,
+      "position" : 18,
+      "positiondiff" : 2,
+      "name" : "Schnix25"
+    },
+    {
+      "gesamtpunkte" : 215,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 16,
+      "position" : 20,
+      "positiondiff" : 2,
+      "name" : "KS04LEV"
+    },
+    {
+      "gesamtpunkte" : 215,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 4
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 3,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 17,
+      "position" : 20,
+      "positiondiff" : 4,
+      "name" : "SergioSahne"
+    },
+    {
+      "gesamtpunkte" : 215,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 16,
+      "position" : 20,
+      "positiondiff" : 2,
+      "name" : "Tine1904"
+    },
+    {
+      "gesamtpunkte" : 213,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 5,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 14,
+      "position" : 23,
+      "positiondiff" : -3,
+      "name" : "Kilian"
+    },
+    {
+      "gesamtpunkte" : 211,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 24,
+      "positiondiff" : -6,
+      "name" : "bernd"
+    },
+    {
+      "gesamtpunkte" : 211,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 13,
+      "position" : 24,
+      "positiondiff" : 0,
+      "name" : "Hannes1904"
+    },
+    {
+      "gesamtpunkte" : 210,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 10,
+      "position" : 26,
+      "positiondiff" : -8,
+      "name" : "Bayer_Pitti"
+    },
+    {
+      "gesamtpunkte" : 209,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 27,
+      "positiondiff" : 2,
+      "name" : "Bayer04imHerzen"
+    },
+    {
+      "gesamtpunkte" : 209,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 12,
+      "position" : 27,
+      "positiondiff" : -1,
+      "name" : "Mahqz"
+    },
+    {
+      "gesamtpunkte" : 208,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 29,
+      "positiondiff" : -3,
+      "name" : "DrRomanEngel"
+    },
+    {
+      "gesamtpunkte" : 208,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 13,
+      "position" : 29,
+      "positiondiff" : 0,
+      "name" : "RobertoHilbert"
+    },
+    {
+      "gesamtpunkte" : 206,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 13,
+      "position" : 31,
+      "positiondiff" : 0,
+      "name" : "19Release91"
+    },
+    {
+      "gesamtpunkte" : 206,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 17,
+      "position" : 32,
+      "positiondiff" : 5,
+      "name" : "Sinho04"
+    },
+    {
+      "gesamtpunkte" : 205,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 4,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 1,
+      "punkte" : 18,
+      "position" : 33,
+      "positiondiff" : 8,
+      "name" : "VanDoerlemann"
+    },
+    {
+      "gesamtpunkte" : 205,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 16,
+      "position" : 34,
+      "positiondiff" : 4,
+      "name" : "B04Flo"
+    },
+    {
+      "gesamtpunkte" : 204,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 11,
+      "position" : 35,
+      "positiondiff" : -3,
+      "name" : "84_Littlestar"
+    },
+    {
+      "gesamtpunkte" : 203,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 9,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 36,
+      "positiondiff" : -3,
+      "name" : "crizzo89"
+    },
+    {
+      "gesamtpunkte" : 203,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 12,
+      "position" : 36,
+      "positiondiff" : -2,
+      "name" : "DerFlippi"
+    },
+    {
+      "gesamtpunkte" : 203,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 16,
+      "position" : 36,
+      "positiondiff" : 7,
+      "name" : "Kolle77"
+    },
+    {
+      "gesamtpunkte" : 203,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 12,
+      "position" : 36,
+      "positiondiff" : -2,
+      "name" : "Pazo3003"
+    },
+    {
+      "gesamtpunkte" : 202,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 19,
+      "position" : 40,
+      "positiondiff" : 14,
+      "name" : "levtoto"
+    },
+    {
+      "gesamtpunkte" : 201,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 4
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 10,
+      "position" : 41,
+      "positiondiff" : -7,
+      "name" : "krischibuhl"
+    },
+    {
+      "gesamtpunkte" : 200,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 3,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 18,
+      "position" : 42,
+      "positiondiff" : 15,
+      "name" : "Kupferleitung_"
+    },
+    {
+      "gesamtpunkte" : 200,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 12,
+      "position" : 42,
+      "positiondiff" : -3,
+      "name" : "LifeofBen"
+    },
+    {
+      "gesamtpunkte" : 200,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 42,
+      "positiondiff" : 6,
+      "name" : "OwenMurphy"
+    },
+    {
+      "gesamtpunkte" : 199,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 45,
+      "positiondiff" : -6,
+      "name" : "justmy04cents"
+    },
+    {
+      "gesamtpunkte" : 199,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 13,
+      "position" : 45,
+      "positiondiff" : 3,
+      "name" : "Moussa"
+    },
+    {
+      "gesamtpunkte" : 199,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 17,
+      "position" : 45,
+      "positiondiff" : 12,
+      "name" : "ÄtHerrGehacktes"
+    },
+    {
+      "gesamtpunkte" : 198,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 12,
+      "position" : 48,
+      "positiondiff" : -2,
+      "name" : "nurdersvb94"
+    },
+    {
+      "gesamtpunkte" : 198,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 17,
+      "position" : 49,
+      "positiondiff" : 14,
+      "name" : "BaypodSebi"
+    },
+    {
+      "gesamtpunkte" : 198,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 49,
+      "positiondiff" : -6,
+      "name" : "Perke"
+    },
+    {
+      "gesamtpunkte" : 197,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 4
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 1,
+      "punkte" : 14,
+      "position" : 51,
+      "positiondiff" : 1,
+      "name" : "niismo"
+    },
+    {
+      "gesamtpunkte" : 197,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 1,
+      "punkte" : 13,
+      "position" : 51,
+      "positiondiff" : 0,
+      "name" : "RWingartz"
+    },
+    {
+      "gesamtpunkte" : 197,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 3,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 15,
+      "position" : 53,
+      "positiondiff" : 4,
+      "name" : "jultex04"
+    },
+    {
+      "gesamtpunkte" : 197,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 12,
+      "position" : 53,
+      "positiondiff" : -3,
+      "name" : "Nelson04"
+    },
+    {
+      "gesamtpunkte" : 196,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0.2,
+      "punkte" : 9,
+      "position" : 55,
+      "positiondiff" : -13,
+      "name" : "wupper_tom"
+    },
+    {
+      "gesamtpunkte" : 194,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0.2,
+      "punkte" : 13,
+      "position" : 56,
+      "positiondiff" : 5,
+      "name" : "TobyRoppo"
+    },
+    {
+      "gesamtpunkte" : 194,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 8,
+      "position" : 57,
+      "positiondiff" : -11,
+      "name" : "Mduemmen"
+    },
+    {
+      "gesamtpunkte" : 194,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 18,
+      "position" : 58,
+      "positiondiff" : 15,
+      "name" : "MichaHönsch"
+    },
+    {
+      "gesamtpunkte" : 193,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 5,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 12,
+      "position" : 59,
+      "positiondiff" : 3,
+      "name" : "choli"
+    },
+    {
+      "gesamtpunkte" : 193,
+      "tipps" : [
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 3
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 16,
+      "position" : 59,
+      "positiondiff" : 11,
+      "name" : "Petzie87"
+    },
+    {
+      "gesamtpunkte" : 193,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 61,
+      "positiondiff" : -4,
+      "name" : "EG9"
+    },
+    {
+      "gesamtpunkte" : 193,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 61,
+      "positiondiff" : 6,
+      "name" : "Fuchs1"
+    },
+    {
+      "gesamtpunkte" : 192,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 5,
+          "spielpunkte" : 3,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 16,
+      "position" : 63,
+      "positiondiff" : 10,
+      "name" : "Joh.N"
+    },
+    {
+      "gesamtpunkte" : 191,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0.5,
+      "punkte" : 8,
+      "position" : 64,
+      "positiondiff" : -11,
+      "name" : "Aroundbayer04"
+    },
+    {
+      "gesamtpunkte" : 191,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 4,
+      "position" : 65,
+      "positiondiff" : -22,
+      "name" : "CaLEVornia"
+    },
+    {
+      "gesamtpunkte" : 191,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 15,
+      "position" : 65,
+      "positiondiff" : 8,
+      "name" : "DanKnight"
+    },
+    {
+      "gesamtpunkte" : 190,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 4
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 13,
+      "position" : 67,
+      "positiondiff" : 4,
+      "name" : "eseliano"
+    },
+    {
+      "gesamtpunkte" : 190,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 5,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 16,
+      "position" : 67,
+      "positiondiff" : 10,
+      "name" : "Zockerkerl"
+    },
+    {
+      "gesamtpunkte" : 189,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 1.2,
+      "punkte" : 9,
+      "position" : 69,
+      "positiondiff" : -3,
+      "name" : "Mucki73"
+    },
+    {
+      "gesamtpunkte" : 189,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 6,
+      "position" : 70,
+      "positiondiff" : -16,
+      "name" : "BaypodNils"
+    },
+    {
+      "gesamtpunkte" : 189,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 3,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 8,
+      "position" : 70,
+      "positiondiff" : -7,
+      "name" : "bk2000"
+    },
+    {
+      "gesamtpunkte" : 189,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 70,
+      "positiondiff" : -2,
+      "name" : "Julius1912"
+    },
+    {
+      "gesamtpunkte" : 188,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 4,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 73,
+      "positiondiff" : -2,
+      "name" : "nicowrldd"
+    },
+    {
+      "gesamtpunkte" : 188,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 5,
+      "position" : 73,
+      "positiondiff" : -19,
+      "name" : "Sachtig"
+    },
+    {
+      "gesamtpunkte" : 188,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 7,
+      "position" : 73,
+      "positiondiff" : -10,
+      "name" : "Zedd29x"
+    },
+    {
+      "gesamtpunkte" : 186,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 8,
+      "position" : 76,
+      "positiondiff" : -8,
+      "name" : "Brudi_Völler"
+    },
+    {
+      "gesamtpunkte" : 186,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 76,
+      "positiondiff" : 5,
+      "name" : "Heropig96"
+    },
+    {
+      "gesamtpunkte" : 186,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 76,
+      "positiondiff" : 5,
+      "name" : "Jules_says_yeah"
+    },
+    {
+      "gesamtpunkte" : 186,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 4,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 13,
+      "position" : 76,
+      "positiondiff" : 4,
+      "name" : "NoNico"
+    },
+    {
+      "gesamtpunkte" : 185,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 10,
+      "position" : 80,
+      "positiondiff" : -4,
+      "name" : "bloodymary2go"
+    },
+    {
+      "gesamtpunkte" : 185,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 80,
+      "positiondiff" : -3,
+      "name" : "Criessus"
+    },
+    {
+      "gesamtpunkte" : 185,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 11,
+      "position" : 80,
+      "positiondiff" : -3,
+      "name" : "Phipsie04"
+    },
+    {
+      "gesamtpunkte" : 184,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 83,
+      "positiondiff" : 0,
+      "name" : "StefanFunke"
+    },
+    {
+      "gesamtpunkte" : 183,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 3,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 4,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 84,
+      "positiondiff" : 1,
+      "name" : "LucaKH29"
+    },
+    {
+      "gesamtpunkte" : 182,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 5,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 12,
+      "position" : 85,
+      "positiondiff" : -2,
+      "name" : "Shnadders"
+    },
+    {
+      "gesamtpunkte" : 179,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 13,
+      "position" : 86,
+      "positiondiff" : 1,
+      "name" : "EdmondTapsoba"
+    },
+    {
+      "gesamtpunkte" : 179,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 4,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 13,
+      "position" : 87,
+      "positiondiff" : 2,
+      "name" : "Basti"
+    },
+    {
+      "gesamtpunkte" : 179,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 15,
+      "position" : 87,
+      "positiondiff" : 4,
+      "name" : "forzabayer04"
+    },
+    {
+      "gesamtpunkte" : 178,
+      "tipps" : [
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 12,
+      "position" : 89,
+      "positiondiff" : -2,
+      "name" : "BloedeBoehm"
+    },
+    {
+      "gesamtpunkte" : 177,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 3,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 4,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 15,
+      "position" : 90,
+      "positiondiff" : 4,
+      "name" : "Niclas"
+    },
+    {
+      "gesamtpunkte" : 177,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 6,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 90,
+      "positiondiff" : 2,
+      "name" : "StechpaIme"
+    },
+    {
+      "gesamtpunkte" : 176,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 5,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 10,
+      "position" : 92,
+      "positiondiff" : -3,
+      "name" : "Larifariiiiii"
+    },
+    {
+      "gesamtpunkte" : 174,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 3,
+          "matchkey" : 1,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 17,
+      "position" : 93,
+      "positiondiff" : 4,
+      "name" : "QST89"
+    },
+    {
+      "gesamtpunkte" : 171,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 5,
+          "spielpunkte" : 3,
+          "matchkey" : 5,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 9,
+      "position" : 94,
+      "positiondiff" : 0,
+      "name" : "FriedaElaine"
+    },
+    {
+      "gesamtpunkte" : 168,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 95,
+      "positiondiff" : -9,
+      "name" : "FlorianB04"
+    },
+    {
+      "gesamtpunkte" : 166,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 15,
+      "position" : 96,
+      "positiondiff" : 3,
+      "name" : "funbird589"
+    },
+    {
+      "gesamtpunkte" : 165,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 8,
+      "position" : 97,
+      "positiondiff" : 0,
+      "name" : "mchl_sts"
+    },
+    {
+      "gesamtpunkte" : 163,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 98,
+      "positiondiff" : -6,
+      "name" : "JustusvfLWOB"
+    },
+    {
+      "gesamtpunkte" : 161,
+      "tipps" : [
+
+      ],
+      "bonus" : 10,
+      "siege" : 1.05,
+      "punkte" : 0,
+      "position" : 99,
+      "positiondiff" : -3,
+      "name" : "Lukjam"
+    },
+    {
+      "gesamtpunkte" : 155,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 7,
+      "position" : 100,
+      "positiondiff" : 0,
+      "name" : "1904online"
+    },
+    {
+      "gesamtpunkte" : 144,
+      "tipps" : [
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 1,
+          "spielpunkte" : 4,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 4,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 20,
+      "position" : 101,
+      "positiondiff" : 4,
+      "name" : "MB13"
+    },
+    {
+      "gesamtpunkte" : 136,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 0,
+      "position" : 102,
+      "positiondiff" : -1,
+      "name" : "NikolasSVB"
+    },
+    {
+      "gesamtpunkte" : 134,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 0,
+      "position" : 103,
+      "positiondiff" : -1,
+      "name" : "B04_David"
+    },
+    {
+      "gesamtpunkte" : 133,
+      "tipps" : [
+
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 104,
+      "positiondiff" : -1,
+      "name" : "ErbederElfen"
+    },
+    {
+      "gesamtpunkte" : 131,
+      "tipps" : [
+
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 0,
+      "position" : 105,
+      "positiondiff" : -1,
+      "name" : "Nbarth1998"
+    },
+    {
+      "gesamtpunkte" : 130,
+      "tipps" : [
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 0,
+          "spielpunkte" : 4,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 3,
+          "matchkey" : 6,
+          "heim" : 2
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 11,
+      "position" : 106,
+      "positiondiff" : 1,
+      "name" : "ninjo"
+    },
+    {
+      "gesamtpunkte" : 124,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 107,
+      "positiondiff" : -2,
+      "name" : "rheinhessenulf"
+    },
+    {
+      "gesamtpunkte" : 118,
+      "tipps" : [
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 1,
+          "heim" : 3
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 14,
+      "position" : 108,
+      "positiondiff" : 2,
+      "name" : "SV_FloWirtzhaus"
+    },
+    {
+      "gesamtpunkte" : 115,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 109,
+      "positiondiff" : -1,
+      "name" : "Kappi"
+    },
+    {
+      "gesamtpunkte" : 114,
+      "tipps" : [
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 2,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 8,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 0,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 0,
+          "spielpunkte" : 0,
+          "matchkey" : 7,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 4,
+          "spielpunkte" : 2,
+          "matchkey" : 6,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 3,
+          "spielpunkte" : 0,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 8,
+      "position" : 110,
+      "positiondiff" : -1,
+      "name" : "Bayer.04_aktuel"
+    },
+    {
+      "gesamtpunkte" : 104,
+      "tipps" : [
+        {
+          "heimteam" : "Stgt",
+          "gastteam" : "Leip",
+          "gast" : 2,
+          "spielpunkte" : 4,
+          "matchkey" : 2,
+          "heim" : 0
+        },
+        {
+          "heimteam" : "ArmB",
+          "gastteam" : "GrFü",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 8,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "BVB",
+          "gastteam" : "Frei",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 0,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Union",
+          "gastteam" : "Hoff",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 3,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "M05",
+          "gastteam" : "Boch",
+          "gast" : 1,
+          "spielpunkte" : 0,
+          "matchkey" : 1,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "FCA",
+          "gastteam" : "SGE",
+          "gast" : 2,
+          "spielpunkte" : 2,
+          "matchkey" : 7,
+          "heim" : 2
+        },
+        {
+          "heimteam" : "Köln",
+          "gastteam" : "FCB",
+          "gast" : 3,
+          "spielpunkte" : 2,
+          "matchkey" : 5,
+          "heim" : 1
+        },
+        {
+          "heimteam" : "BMG",
+          "gastteam" : "Lev",
+          "gast" : 2,
+          "spielpunkte" : 0,
+          "matchkey" : 6,
+          "heim" : 3
+        },
+        {
+          "heimteam" : "Wolf",
+          "gastteam" : "Herth",
+          "gast" : 1,
+          "spielpunkte" : 2,
+          "matchkey" : 4,
+          "heim" : 1
+        }
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 12,
+      "position" : 111,
+      "positiondiff" : 1,
+      "name" : "Boersentrader"
+    },
+    {
+      "gesamtpunkte" : 101,
+      "tipps" : [
+
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 0,
+      "position" : 112,
+      "positiondiff" : -1,
+      "name" : "Michi04Lev"
+    },
+    {
+      "gesamtpunkte" : 79,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 1,
+      "punkte" : 0,
+      "position" : 113,
+      "positiondiff" : 0,
+      "name" : "johSchmittmann"
+    },
+    {
+      "gesamtpunkte" : 73,
+      "tipps" : [
+
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 114,
+      "positiondiff" : 0,
+      "name" : "jann1k_b3n"
+    },
+    {
+      "gesamtpunkte" : 71,
+      "tipps" : [
+
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 0,
+      "position" : 115,
+      "positiondiff" : 0,
+      "name" : "Jack"
+    },
+    {
+      "gesamtpunkte" : 57,
+      "tipps" : [
+
+      ],
+      "bonus" : 10,
+      "siege" : 0.05,
+      "punkte" : 0,
+      "position" : 116,
+      "positiondiff" : 0,
+      "name" : "B04Alex"
+    },
+    {
+      "gesamtpunkte" : 52,
+      "tipps" : [
+
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 117,
+      "positiondiff" : 0,
+      "name" : "Tino1904"
+    },
+    {
+      "gesamtpunkte" : 24,
+      "tipps" : [
+
+      ],
+      "bonus" : 5,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 118,
+      "positiondiff" : 0,
+      "name" : "Zawax"
+    },
+    {
+      "gesamtpunkte" : 10,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 119,
+      "positiondiff" : 0,
+      "name" : "dxgrex"
+    },
+    {
+      "gesamtpunkte" : 10,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 119,
+      "positiondiff" : 0,
+      "name" : "StuhlDefekt"
+    },
+    {
+      "gesamtpunkte" : 6,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 121,
+      "positiondiff" : 0,
+      "name" : "Wirtz_FC"
+    },
+    {
+      "gesamtpunkte" : 4,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 122,
+      "positiondiff" : 0,
+      "name" : "Leversohn"
+    },
+    {
+      "gesamtpunkte" : 0,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 123,
+      "positiondiff" : 0,
+      "name" : "19Jannik04"
+    },
+    {
+      "gesamtpunkte" : 0,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 123,
+      "positiondiff" : 0,
+      "name" : "ColinB04"
+    },
+    {
+      "gesamtpunkte" : 0,
+      "tipps" : [
+
+      ],
+      "bonus" : 0,
+      "siege" : 0,
+      "punkte" : 0,
+      "position" : 123,
+      "positiondiff" : 0,
+      "name" : "lukas_513"
+    }
+  ],
+  "resultate" : [
+    {
+      "heimteam" : "BVB",
+      "gastteam" : "Frei",
+      "gast" : 1,
+      "spielpunkte" : 0,
+      "matchkey" : 0,
+      "heim" : 5
+    },
+    {
+      "heimteam" : "M05",
+      "gastteam" : "Boch",
+      "gast" : 0,
+      "spielpunkte" : 0,
+      "matchkey" : 1,
+      "heim" : 1
+    },
+    {
+      "heimteam" : "Stgt",
+      "gastteam" : "Leip",
+      "gast" : 2,
+      "spielpunkte" : 0,
+      "matchkey" : 2,
+      "heim" : 0
+    },
+    {
+      "heimteam" : "Union",
+      "gastteam" : "Hoff",
+      "gast" : 1,
+      "spielpunkte" : 0,
+      "matchkey" : 3,
+      "heim" : 2
+    },
+    {
+      "heimteam" : "Wolf",
+      "gastteam" : "Herth",
+      "gast" : 0,
+      "spielpunkte" : 0,
+      "matchkey" : 4,
+      "heim" : 0
+    },
+    {
+      "heimteam" : "Köln",
+      "gastteam" : "FCB",
+      "gast" : 4,
+      "spielpunkte" : 0,
+      "matchkey" : 5,
+      "heim" : 0
+    },
+    {
+      "heimteam" : "BMG",
+      "gastteam" : "Lev",
+      "gast" : 2,
+      "spielpunkte" : 0,
+      "matchkey" : 6,
+      "heim" : 1
+    },
+    {
+      "heimteam" : "FCA",
+      "gastteam" : "SGE",
+      "gast" : 1,
+      "spielpunkte" : 0,
+      "matchkey" : 7,
+      "heim" : 1
+    },
+    {
+      "heimteam" : "ArmB",
+      "gastteam" : "GrFü",
+      "gast" : 2,
+      "spielpunkte" : 0,
+      "matchkey" : 8,
+      "heim" : 2
+    }
+  ],
+  "spieltag" : 19
+}
