@@ -17,7 +17,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     private var currentStep: PlayerStep = .none
 
     // MARK: - Put proper matchday in here <---- 👈🏽 🐸
-    private var completeMatchday = Spieltag(spieltag: 23)
+    private var completeMatchday = Spieltag(spieltag: 1)
 
     private enum PlayerStep: Hashable {
         case none
@@ -63,14 +63,15 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
     }
 
     private func writeJson(_ json: String, for matchday: Int) {
-        let fileUrl = URL(fileURLWithPath: "/Users/choli/Documents/workspace/diabyArmy/Resources/Matchdays/diabyarmy_2122_\(matchday).json")
+        let fileUrl = URL(fileURLWithPath: "/Users/choli/Documents/workspace/diabyArmy/Resources/Matchdays/diabyarmy_2223_\(matchday).json")
         try! json.write(to: fileUrl, atomically: true, encoding: .utf8)
     }
 
     private func getXmlData(for matchday: Int, offset: Int, completion: @escaping (Data?) -> Void) {
         let semaphore = DispatchSemaphore (value: 0)
 
-        var request = URLRequest(url: URL(string: "https://www.kicktipp.de/diabyarmy/tippuebersicht?&spieltagIndex=\(matchday)&offset=\(offset)")!,timeoutInterval: Double.infinity)
+        // old seasonIds: 238819(21/22)
+        var request = URLRequest(url: URL(string: "https://www.kicktipp.de/diabyarmy/tippuebersicht?tippsaisonId=918293&spieltagIndex=\(matchday)&offset=\(offset)")!,timeoutInterval: Double.infinity)
         request.addValue("www.kicktipp.de", forHTTPHeaderField: "Host")
         request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
         // Adds login from intercepted headers
@@ -89,6 +90,7 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
             var trimmedString = self.crawlNecessaryTableOnly(from: fullContent)
             trimmedString = trimmedString.replacingOccurrences(of: "&e", with: "&amp;e")
             trimmedString = trimmedString.replacingOccurrences(of: "&r", with: "&amp;r")
+            trimmedString = trimmedString.replacingOccurrences(of: "&s", with: "&amp;s")
 
             completion(trimmedString.data(using: .utf8))
             semaphore.signal()
@@ -183,8 +185,6 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
                 self.currentStep = .positionsdifferenz(!classes.hasSuffix("down"))
             } else if classes.hasPrefix("position") {
                 self.currentStep = .position
-            } else if classes.hasSuffix("name") {
-                self.currentStep = .name
             } else if classes.contains("ereignis"), let matchday = Int(classes.suffix(1)) {
                 self.currentStep = .ereignis(matchday)
             } else if classes.hasPrefix("spieltagspunkte") {
@@ -196,6 +196,8 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
             } else if classes.hasPrefix("gesamtpunkte")  {
                 self.currentStep = .gesamtpunkte
             }
+        } else if element == "div", classes == "mg_name" {
+            self.currentStep = .name
         } else if element == "sub" {
             self.currentString += ":"
         }
@@ -277,3 +279,4 @@ public class MyXMLParser: NSObject, XMLParserDelegate {
         self.completeMatchday.tippspieler.append(player)
     }
 }
+//<table id="ranking" class="tippuebersicht ktable" data-wertung="einzelwertung" data-selectedereignisindex="8"><thead class="sticky"><tr class="headerErgebnis"><th class="position"><div class="rprevsticky"><div class="rprev disabled"><span class="kicktipp-icon-arrow-left"> </span></div></div>Pos</th><th class="positionsdifferenz sortable"><ahref="/diabyarmy/tippuebersicht?tippsaisonId=918293&spieltagIndex=1&ereignisIndex=8&sortBy=differenzPos">+/-</a></th><th class="sortable name suche"><ahref="/diabyarmy/tippuebersicht/suche?tippsaisonId=918293&spieltagIndex=1&ereignisIndex=8"><spanclass="kicktipp-icon-search"> </span>Name</a></th><th class="ereignis nw ereignis0" data-index="0" data-spiel="true" data-live="false"><div class="headerbox">SGE</div><div class="headerbox">FCB</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">1</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">6</span></span></div></th><th class="ereignis nw ereignis1" data-index="1" data-spiel="true" data-live="false"><div class="headerbox">FCA</div><div class="headerbox">SCF</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">0</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">4</span></span></div></th><th class="ereignis nw ereignis2" data-index="2" data-spiel="true" data-live="false"><div class="headerbox">BOC</div><div class="headerbox">M05</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">1</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">2</span></span></div></th><th class="ereignis nw ereignis3" data-index="3" data-spiel="true" data-live="false"><div class="headerbox">BMG</div><div class="headerbox">TSG</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">3</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">1</span></span></div></th><th class="ereignis nw ereignis4" data-index="4" data-spiel="true" data-live="false"><div class="headerbox">FCU</div><div class="headerbox">BSC</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">3</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">1</span></span></div></th><th class="ereignis nw ereignis5" data-index="5" data-spiel="true" data-live="false"><div class="headerbox">WOB</div><div class="headerbox">SVW</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">2</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">2</span></span></div></th><th class="ereignis nw ereignis6" data-index="6" data-spiel="true" data-live="false"><div class="headerbox">BVB</div><div class="headerbox">B04</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">1</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">0</span></span></div></th><th class="ereignis nw ereignis7" data-index="7" data-spiel="true" data-live="false"><div class="headerbox">VFB</div><div class="headerbox">RBL</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">1</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">1</span></span></div></th><th class="ereignis nw ereignis8" data-index="8" data-spiel="true" data-live="false"><div class="headerbox">KOE</div><div class="headerbox">S04</div><div class="headerbox"><span class="kicktipp-abschnitt kicktipp-tippwertung kicktipp-abpfiff"><spanclass="kicktipp-heim">3</span><span class="kicktipp-tortrenner">:</span><spanclass="kicktipp-gast">1</span></span></div></th><th class="spieltagspunkte sortable right" data-label="Spieltagspunkte"><ahref="/diabyarmy/tippuebersicht?tippsaisonId=918293&spieltagIndex=1&ereignisIndex=8&sortBy=spieltagspunkte">P</a></th><th class="bonus sortable right" data-label="Bonusspunkte"><ahref="/diabyarmy/tippuebersicht?tippsaisonId=918293&spieltagIndex=1&ereignisIndex=8&sortBy=bonus">B</a></th><th class="siege sortable right" data-label="Spieltagssiege"><ahref="/diabyarmy/tippuebersicht?tippsaisonId=918293&spieltagIndex=1&ereignisIndex=8&sortBy=siege">S</a></th><th class="gesamtpunkte sortable right sort" data-label="Gesamtpunkte"><div class="rnextsticky"><div class="rnext disabled"><span class="kicktipp-icon-arrow-right"> </span></div></div><ahref="/diabyarmy/tippuebersicht?tippsaisonId=918293&spieltagIndex=1&ereignisIndex=8&sortBy=gesamtpunkte"rel="nofollow">G</a></th></tr></thead><tbody><tr class="clickable kicktipp-pos1 teilnehmer teilnehmer37341105 sptsieger" data-teilnehmer-id="37341105"data-url="/diabyarmy/tippuebersicht/tipper?tippsaisonId=918293&spieltagIndex=1&ereignisIndex=8&rankingTeilnehmerId=37341105"><td class="position right nw d0"><div>1</div></td><td class="positionsdifferenz nw d0 position-icon-gleich"><span class="kicktipp-icon-dot"> </span></td><td class="mg_class"><div class="mg_name">Fuchs1</div></td
