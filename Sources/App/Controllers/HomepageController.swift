@@ -28,13 +28,13 @@ struct HomepageController: RouteCollection {
 
         return req.view.render(
             "Statistics/stats",
-            ["exactLev": try userStats.getExactTipps(for: "Lev", top: 4),
+            ["exactB04": try userStats.getExactTipps(for: "B04", top: 4),
              "exactAll": try userStats.getExactTipps(),
              "tendencies": try userStats.getCorrectTendencies(by: .total),
-             "opt": try userStats.getAggregatedTipps(for: "Lev", optimist: true),
-             "pess": try userStats.getAggregatedTipps(for: "Lev", optimist: false),
-             "col": try userStats.getAggregatedTipps(for: "Köln", optimist: true),
-             "levpoints": try userStats.getPoints(for: "Lev"),
+             "opt": try userStats.getAggregatedTipps(for: "B04", optimist: true),
+             "pess": try userStats.getAggregatedTipps(for: "B04", optimist: false),
+             "col": try userStats.getAggregatedTipps(for: "KOE", optimist: true),
+             "B04points": try userStats.getPoints(for: "B04"),
              "home": userStats.getTendencies(by: .heimsieg),
              "draw": userStats.getTendencies(by: .unentschieden),
              "away": userStats.getTendencies(by: .gastsieg),

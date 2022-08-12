@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <table class="">
-                    #for(user in exactLev):
+                    #for(user in exactB04):
                     <tr>
                         <td>#(user.name)</td>
                         <td style="text-align:right">#(user.heimsiege + user.unentschieden + user.gastsiege)</td>
@@ -179,7 +179,7 @@
             </div>
             <div class="card-body">
                 <table class="">
-                    #for(user in levpoints):
+                    #for(user in B04points):
                     <tr>
                         <td>#(user.name)</td>
                         <td style="text-align:right">#(user.heimsiege)</td>
