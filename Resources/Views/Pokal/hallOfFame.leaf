@@ -14,8 +14,31 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>Liga</h4>
+                <p class="subtitle">Tipprundenmeisterschaft</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🏆</td>
+                        <td><a style="color:black" href="https://twitter.com/TineMaschine/">Tine1904</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/baronvonpanzer/">baronvonpanzer</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/crash22crash/">crash22crash</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Apertura</h4>
-                <p class="subtitle">Pokal der Vorrunde</p>
+                <p class="subtitle">Pokal</p>
             </div>
             <div class="card-body">
                 <table class="">
