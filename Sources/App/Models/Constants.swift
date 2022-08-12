@@ -11,9 +11,10 @@ enum Constants {
     enum Season: String {
         case season2021 = "2021"
         case season2122 = "2122"
+        case season2223 = "2223"
 
         static var currentSeason: String {
-            return Self.season2122.rawValue
+            return Self.season2223.rawValue
         }
     }
 }
