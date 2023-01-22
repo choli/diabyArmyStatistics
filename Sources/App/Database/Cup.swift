@@ -58,3 +58,5 @@ struct CreateCups: Migration {
         database.schema("cups").delete()
     }
 }
+
+//INSERT INTO "public"."cups" (id,name,start,"stateString") VALUES (gen_random_uuid(),'apertura2223',21,'registrationNotYetOpen');
