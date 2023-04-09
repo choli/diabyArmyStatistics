@@ -4,6 +4,47 @@
 <div class="container" style="margin-top: 30px;">
     <div class="card">
         <div class="card-header">
+            <h4 style="text-align:center">Saison 22/23</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container stats">
+    <div class="card-columns mb-5 mt-5">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Apertura</h4>
+                <p class="subtitle">Pokal</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🥇</td>
+                        <td><a style="color:black" href="https://twitter.com/RobAFella88/">Brudi_Völler	</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/QST89/">QST89</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/Escardos/">Escardos</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/hannesB04/">Hannes1904	</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+    <div class="card">
+        <div class="card-header">
             <h4 style="text-align:center">Saison 21/22</h4>
         </div>
     </div>
