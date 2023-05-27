@@ -14,6 +14,29 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>Liga</h4>
+                <p class="subtitle">Tipprundenmeisterschaft</p>
+            </div>
+            <div class="card-body">
+                <table class="">
+                    <tr>
+                        <td>🏆</td>
+                        <td><a style="color:black" href="https://twitter.com/chiquitaflanke/">Chiquitaflanke</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥈</td>
+                        <td><a style="color:black" href="https://twitter.com/TorstenLev/">Rheindorfer</a></td>
+                    </tr>
+                    <tr>
+                        <td>🥉</td>
+                        <td><a style="color:black" href="https://twitter.com/LifeofBen/">LifeofBen</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Apertura</h4>
                 <p class="subtitle">Pokal</p>
             </div>
